@@ -1,8 +1,8 @@
 #!/bin/bash
 
-echo "Running setup script for gobierto-gencat-engine"
+engine_name="gobierto-gencat-engine"
 
-GOBIERTO_ENGINES_PATH=$DEV_DIR/gobierto/vendor/gobierto_engines
+echo "Running setup script for $engine_name"
 
 if [ -z "$DEV_DIR" ]
 then
@@ -10,12 +10,13 @@ then
 else
   echo "Using DEV_DIR: $DEV_DIR"
   echo "Using GOBIERTO_ENGINES_PATH: $GOBIERTO_ENGINES_PATH"
-
-  echo "Creating necessary directories..."
-  mkdir -p $GOBIERTO_ENGINES_PATH/gobierto-gencat-engine
+  engines_path=${GOBIERTO_ENGINES_PATH:-"$DEV_DIR/gobierto/vendor/gobierto_engines"}
+  source_path=$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )
+  echo "This is the dir: $DIR"
+  echo "This is the other dir: $GOBIERTO_ENGINES_PATH"
 
   echo "Creating symlinks..."
-  ln -s $DEV_DIR/gobierto-gencat-engine/app $GOBIERTO_ENGINES_PATH/gobierto-gencat-engine/app
+  ln -s $source_path "$engines_path/$engine_name"
 
   echo "[OK]"
 fi
