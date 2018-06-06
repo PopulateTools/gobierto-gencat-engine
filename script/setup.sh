@@ -12,11 +12,10 @@ else
   echo "Using GOBIERTO_ENGINES_PATH: $GOBIERTO_ENGINES_PATH"
   engines_path=${GOBIERTO_ENGINES_PATH:-"$DEV_DIR/gobierto/vendor/gobierto_engines"}
   source_path=$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )
-  echo "This is the dir: $DIR"
-  echo "This is the other dir: $GOBIERTO_ENGINES_PATH"
 
   echo "Creating symlinks..."
-  ln -s $source_path "$engines_path/$engine_name"
+  echo executing "ln -s $source_path $engines_path"
+  ln -s $source_path $engines_path
 
   echo "[OK]"
 fi
