@@ -1,9 +1,9 @@
 <section class="row">
   <div class="col-md-9">
-    <%= render "gobierto_people/gencat/breadcrumb" %>
+    <%= render "gobierto_people/shared/breadcrumb" %>
   </div>
   <div class="col-md-3">
-    <%= render "gobierto_people/gencat/datepicker" %>
+    <%= render "gobierto_people/shared/datepicker" %>
   </div>
 </section>
 
@@ -46,7 +46,7 @@
       <figcaption class="mb_20">Viatges realizats per Jaume I</figcaption>
       <ul class="color-2 transparent">
         <% 8.times do %>
-          <%= render "gobierto_people/gencat/cargo-item" %>
+          <%= render "cargo-item" %>
         <% end %>
       </ul>
     </figure>

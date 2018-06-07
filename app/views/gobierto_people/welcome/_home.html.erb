@@ -1,7 +1,7 @@
 <section class="row">
   <p class="col-md-9">Des d’aquí podeu accedir a informació exhaustiva sobre la relació de llocs de treball dels empleats públics, quants n’hi ha</p>
   <div class="col-md-3">
-    <%= render "gobierto_people/gencat/datepicker" %>
+    <%= render "gobierto_people/shared/datepicker" %>
   </div>
 </section>
 
@@ -60,7 +60,7 @@
 <hr>
 <section id="map-chart">
   <p><strong>¿Cap a on viatgen els alts carrècs?</strong></p>
-  <%= render "gobierto_people/gencat/map" %>
+  <%= render "gobierto_people/shared/map" %>
   <div id="punchcard-<%= SecureRandom.random_number(100) %>" class="punchcard color-2 transparent"></div>
 </section>
 <hr>
@@ -77,7 +77,7 @@
       <figcaption class="mb_20">Últims obsequis</figcaption>
       <ul class="color-3 transparent">
         <% 4.times do %>
-          <%= render "gobierto_people/gencat/home-table-item" %>
+          <%= render "table-item" %>
         <% end %>
       </ul>
     </figure>
@@ -97,7 +97,7 @@
       <figcaption class="mb_20">Últimes invitacions</figcaption>
       <ul class="color-3 transparent">
         <% 4.times do %>
-          <%= render "gobierto_people/gencat/home-table-item" %>
+          <%= render "table-item" %>
         <% end %>
       </ul>
     </figure>
