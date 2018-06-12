@@ -10,17 +10,16 @@ while getopts “:d” opt; do
     d) opt_dir=$OPTARG ;;
   esac
 done
-dev_dir=${opt_dir:-$DEV_DIR}
+gobierto_dir=${opt_dir:-"$DEV_DIR/gobierto"}
 
-if [ -z "$dev_dir" ]
+if [ -z "$gobierto_dir" ]
 then
-  echo "Please set DEV_DIR in your .bash_profile before running this script or invoke it with -d dev_dir, where dev_dir is the path containing gobierto";
+  echo "Please set DEV_DIR in your .bash_profile before running this script or invoke it with -d gobierto_dir, where gobierto_dir is the path of gobierto release";
 else
-  engines_path=${GOBIERTO_ENGINES_PATH:-"$DEV_DIR/gobierto/vendor/gobierto_engines"}
   source_path=$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )
 
   # This configuration is taken from gobierto/config/webpacker.yml
-  gobierto_webpack_source_path="$dev_dir/gobierto/app/javascript"
+  gobierto_webpack_source_path="$gobierto_dir/app/javascript"
   gobierto_webpack_entry_path="$gobierto_webpack_source_path/packs"
 
   echo "    Creating webpacker symlinks..."
