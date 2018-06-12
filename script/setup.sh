@@ -32,5 +32,8 @@ else
   echo executing "ln -s $source_path/$engine_webpack_source_path $gobierto_webpack_source_path/"
   ln -s $source_path/$engine_webpack_source_path $gobierto_webpack_source_path/
 
+  echo executing "ln -s $DEV_DIR/gobierto/node_modules $source_path/"
+  ln -s $DEV_DIR/gobierto/node_modules $source_path/
+
   echo "[OK]"
 fi
