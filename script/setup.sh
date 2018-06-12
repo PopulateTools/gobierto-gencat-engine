@@ -1,39 +1,33 @@
 #!/bin/bash
 
 engine_name="gobierto-gencat-engine"
-engine_webpack_entry_path="app/javascripts/packs/gencat.js"
-engine_webpack_source_path="app/javascripts/gencat"
 
 echo "Running setup script for $engine_name"
+while getopts “:d:” opt; do
+  case $opt in
+    d) opt_dir=$OPTARG ;;
+  esac
+done
 
-if [ -z "$DEV_DIR" ]
+dev_dir=${opt_dir:-$DEV_DIR}
+
+if [ -z "$dev_dir" ]
 then
-  echo "Please set DEV_DIR in your .bash_profile before running this script";
+  echo "Please set DEV_DIR in your .bash_profile before running this script or invoke it with -d dev_dir, where dev_dir is the path containing gobierto";
 else
   engines_path=${GOBIERTO_ENGINES_PATH:-"$DEV_DIR/gobierto/vendor/gobierto_engines"}
   source_path=$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )
-  echo "Using DEV_DIR: $DEV_DIR"
+  echo "Using dev_dir: $dev_dir"
   echo "Using engines_path: $engines_path"
 
   echo "Creating symlinks..."
-  echo executing "ln -s $source_path $engines_path"
+  echo "executing ln -s $source_path $engines_path"
   ln -s $source_path $engines_path
 
-  # This configuration is taken from gobierto/config/webpacker.yml
-  gobierto_webpack_source_path="$DEV_DIR/gobierto/app/javascript"
-  gobierto_webpack_entry_path="$gobierto_webpack_source_path/packs"
+  $source_path/script/create_webpacker_symlinks.sh -d $dev_dir
 
-  webpack_path="$DEV_DIR/gobierto/app/javascript"
-
-  echo "Adding webpack symlinks..."
-  echo executing "ln -s $source_path/$engine_webpack_entry_path $gobierto_webpack_entry_path/"
-  ln -s $source_path/$engine_webpack_entry_path $gobierto_webpack_entry_path/
-
-  echo executing "ln -s $source_path/$engine_webpack_source_path $gobierto_webpack_source_path/"
-  ln -s $source_path/$engine_webpack_source_path $gobierto_webpack_source_path/
-
-  echo executing "ln -s $DEV_DIR/gobierto/node_modules $source_path/"
-  ln -s $DEV_DIR/gobierto/node_modules $source_path/
+  echo "executing ln -s $dev_dir/gobierto/node_modules $source_path"
+  ln -s $dev_dir/gobierto/node_modules $source_path
 
   echo "[OK]"
 fi
