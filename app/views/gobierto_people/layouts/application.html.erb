@@ -1,0 +1,12 @@
+<% content_for :javascript_module_link do %>
+  <!-- load module javascript specifics -->
+  <%= javascript_pack_tag 'gencat', 'data-turbolinks-track': true %>
+<% end %>
+
+<% content_for(:current_submodule_link) do %>
+  <% if controller_name == "welcome" %>
+    <%= link_to t("layouts.application.start"), gobierto_people_root_path %>
+  <% end %>
+<% end %>
+
+<%= render template: "layouts/application" %>
