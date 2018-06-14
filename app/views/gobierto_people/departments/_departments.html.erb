@@ -13,6 +13,7 @@
 </section>
 
 <section class="row">
+
   <div class="col-md-5">
     <div class="box color-1">
       <div>
@@ -22,15 +23,18 @@
         </h5>
       </div>
     </div>
+
     <div class="margin_top_xs">
       <p>Departaments amb més reunions</p>
       <div id="rowchart-<%= SecureRandom.random_number(100) %>" class="rowchart color-1"></div>
     </div>
+
     <div class="margin_top_xs">
       <p>Consulta les reunions</p>
       <a href="" class="show-more bg-danger"><small>Veure tot</small></a>
     </div>
   </div>
+
   <div class="col-md-5 col-md-offset-2">
     <div class="box color-3">
       <div>
@@ -40,21 +44,30 @@
         </h5>
       </div>
     </div>
+
     <div class="margin_top_xs">
-      <p><%= t("gobierto_people.departments.index.people_by_department") %></p>
-      <div id="rowchart-<%= SecureRandom.random_number(100) %>" class="rowchart color-3"></div>
+      <p><%= t("gobierto_people.departments.index.people_events") %></p>
+      <div id="people_events_rowchart" class="rowchart color-3"></div>
     </div>
+
     <div class="margin_top_xs">
       <p>Consulta les reunions</p>
       <a href="" class="show-more bg-danger"><small>Veure tot</small></a>
     </div>
   </div>
+
 </section>
 
 <section>
-  <div id="punchcard-<%= SecureRandom.random_number(100) %>" class="punchcard color-2 transparent"></div>
+  <!--<div id="departments_events_punchcard" class="punchcard color-2 transparent"></div>-->
 </section>
 
 <section class="row">
   <a href="" class="col-md-12 bg-danger p_2">Accedeix a les dades al portal de Dades Obertes</a>
 </section>
+
+<%= javascript_tag do %>
+  window.GobiertoPeople.gencat_departments_controller.index({
+    people_events_api_url: '<%= gobierto_people_api_v1_people_url %>'
+  });
+<% end %>
