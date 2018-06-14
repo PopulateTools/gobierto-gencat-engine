@@ -1,0 +1,34 @@
+---
+es:
+  gobierto_people:
+    departments:
+      index:
+        description: Cualquier organización que se reune con un alto cargo debe registrarse
+          como grupo de interés, y se crea un registro de los encuentros. <a href="https://web.gencat.cat/es/tramits/tramits-temes/registre-grups-interes">Aprende
+          más sobre la Normativa de Grupos de Interés</a>. Explora las organizaciones
+          (empresas, fundaciones, asociaciones…) que se reunen con cargos de la Generalitat.
+        events: reuniones registradas
+        events_by_department: Reuniones por departamentos
+        events_by_department_and_month: Reuniones por departamento y mes
+        explore_departments: Explora los Departamentos y sus Altos Cargos
+        explore_people: Consulta las agendas de los Altos Cargos
+        open_data_web_portal: Accede a los datos en el portal de Datos Abiertos
+        people_by_department: Altos cargos con reuniones por departamento
+        people_events: Altos cargos con más reuniones en departamentos
+        people_with_events: altos cargos con reuniones registradas
+        view_all: Ver todos
+      show:
+        events: reuniones registradas
+        events_by_people: Altos Cargos de este departamento con más reuniones
+        events_by_person_and_month: Reuniones por Alto Cargo y mes
+        people_with_events: altos cargos de este departamento con más reuniones
+    interest_groups:
+      index:
+        events_by_interest_group: Grupos de interés con más reuniones
+        interest_groups: grupos de interés inscritos
+      show:
+        events: reuniones registradas
+        events_by_department: Con qué departamentos se reúne este grupo
+        events_by_person: Altos cargos con los que se ha reunido este grupo
+        people_with_events: el número de Altos Cargos con los que se ha reunido este
+          grupo
