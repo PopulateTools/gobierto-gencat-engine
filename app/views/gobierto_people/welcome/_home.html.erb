@@ -78,46 +78,67 @@
 </section>
 <hr>
 <section class="row">
+
   <div class="col-md-6">
     <section>
       <p><strong>Regals</strong></p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis vero praesentium soluta maxime aperiam fuga sint harum tempora perspiciatis eveniet porro culpa, est eaque pariatur earum in accusamus, odio, qui.</p>
+      <p>Los Altos cargos reciben obsequios como cortesia de organizaciones con las que se reunen. Aquí tienes el inventario de lo que se ha recibido</p>
       <div class="alert alert-warning">
-        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit</small>
+        <small>El Código de Conducta regula qué regalos se pueden recibir. Consúltalo</small>
       </div>
     </section>
+
     <figure>
       <figcaption class="mb_20">Últims obsequis</figcaption>
       <ul class="color-3 transparent">
-        <% 4.times do %>
-          <%= render "table-item" %>
+        <% @received_gifts.each do |gift| %>
+          <%= render(
+                "table-item",
+                title: gift.name,
+                resource: gift,
+                display_date: gift.date
+              ) %>
         <% end %>
       </ul>
     </figure>
+
     <div class="pd-15">
-      <a href="" class="show-more color-3"><small>Veure tot</small></a>
+      <%= link_to "#", class: "show-more color-3" do %>
+        <small>Veure tot</small>
+      <% end %>
     </div>
   </div>
+
   <div class="col-md-6">
     <section>
       <p><strong>Invitacions</strong></p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis vero praesentium soluta maxime aperiam fuga sint harum tempora perspiciatis eveniet porro culpa, est eaque pariatur earum in accusamus, odio, qui.</p>
+      <p>Los Altos cargos reciben invitaciones a eventos, para realizar visitas, dar conferencias... Aquí tienes una relación de las invitaciones aceptadas.</p>
       <div class="alert alert-warning">
-        <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit</small>
+        <small>El Código de Conducta regula qué invitaciones se pueden aceptar. Consúltalo</small>
       </div>
     </section>
+
     <figure>
       <figcaption class="mb_20">Últimes invitacions</figcaption>
       <ul class="color-3 transparent">
-        <% 4.times do %>
-          <%= render "table-item" %>
+        <% @received_invitations.each do |invitation| %>
+          <%= render(
+                "table-item",
+                title: invitation.title,
+                resource: invitation,
+                display_date: invitation.start_date
+              ) %>
         <% end %>
       </ul>
     </figure>
+
     <div class="pd-15">
-      <a href="" class="show-more color-3"><small>Veure tot</small></a>
+      <%= link_to "#", class: "show-more color-3" do %>
+        <small>Veure tot</small>
+      <% end %>
     </div>
   </div>
+
 </section>
 
 <section class="row">

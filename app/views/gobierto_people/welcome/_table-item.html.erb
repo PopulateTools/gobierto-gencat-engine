@@ -1,12 +1,17 @@
 <li class="container-fluid">
-  <div class="row p_v_1">    
+  <div class="row p_v_1">
+
     <div class="col-md-9">
-      <p><strong>Parlament de Catalunya proclamés la República Catalana</strong></p>
-      <p>Meritxell Serret i Aleu</p>
+      <p><strong><%= link_to title, resource.to_path %></strong></p>
+      <p><%= link_to resource.person.name, resource.person.to_path %></p>
     </div>
+
     <div class="col-md-3">
-      <p><strong>23/06/08</strong></p>
-      <a href=""><small>Veure detalls</small></a>
+      <p><strong><%= l(display_date) %></strong></p>
+      <%= link_to resource.to_path do %>
+        <small>Veure detalls</small>
+      <% end %>
     </div>
+
   </div>
 </li>
