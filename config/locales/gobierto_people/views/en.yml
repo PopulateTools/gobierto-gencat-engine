@@ -35,7 +35,7 @@ en:
         events_by_person: Officials with which this group has met
         people_with_events: the number of Officials with which this group has met
     welcome:
-      home:
+      index:
         title: Check with whom meets each Official in the Generalitat, companies and organizations that request meetings, and the trips and gifts received
         meetings_box_title: Meetings registered
         departments_rowchart_title: Departments with most meetings

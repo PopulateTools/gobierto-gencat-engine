@@ -1,3 +1,93 @@
 <div class="theme-gencat">
-  <%= render "department" %>
+
+  <section class="row">
+    <div class="col-md-3">
+      <%= render "gobierto_people/shared/datepicker" %>
+    </div>
+  </section>
+
+  <section>
+    <h3 class="h3 text-left"><% @department.name %></h3>
+  </section>
+
+  <section class="row">
+    <div class="col-md-5">
+
+      <div class="box color-1">
+        <div>
+          <h1><%= @department_stats[:total_people_with_attendances] %></h1>
+          <h5>
+            <p><strong><%= t(".people_box_title") %></strong></p>
+            <p><%= t(".people_box_subtitle") %></p>
+          </h5>
+        </div>
+        <div class="margin_top_xs">
+          <span><%= t(".people_rowchart_title") %></span>
+          <div id="department_people_events_rowchart" class="rowchart"></div>
+        </div>
+      </div>
+
+      <div class="margin_top_xs">
+        <%= link_to gobierto_people_events_path, class: "show-more bg-danger", data: { turbolinks: false } do %>
+          <small><%= t("gobierto_people.shared.view_all") %></small>
+        <% end %>
+      </div>
+
+    </div>
+
+    <div class="col-md-5 col-md-offset-2">
+
+      <div class="box color-3">
+        <div>
+          <h1><%= @department_stats[:unique_interest_groups] %></h1>
+          <h5>
+            <p><strong><%= t(".interest_groups_box_title") %></strong></p>
+            <p><%= t(".interest_groups_box_subtitle") %></p>
+          </h5>
+        </div>
+        <div class="margin_top_xs">
+          <span><%= t(".interest_groups_rowchart_title") %></span>
+          <div id="department_interest_groups_events_rowchart" class="rowchart"></div>
+        </div>
+      </div>
+
+      <div class="margin_top_xs">
+        <%= link_to gobierto_people_interest_groups_path, class: "show-more bg-danger", data: { turbolinks: false } do %>
+          <small><%= t("gobierto_people.shared.view_all") %></small>
+        <% end %>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="map-chart">
+    <p><strong><%= t(".map_title") %></strong></p>
+
+    <%= render "gobierto_people/shared/map" %>
+
+    <div class="margin_top_xs">
+      <%= link_to gobierto_people_trips_path, class: "show-more bg-danger", data: { turbolinks: false } do %>
+        <small><%= t("gobierto_people.shared.view_all") %></small>
+      <% end %>
+    </div>
+
+    <div id="department_people_events_punchcard" class="punchcard color-2 transparent"></div>
+  </section>
+
+  <section class="row">
+    <div class="col-md-12 bg-danger p_2">
+      <%= t("gobierto_people.shared.view_open_data_portal") %>:
+      <%= render 'gobierto_people/shared/open_data_portal_links/interest_groups' %> -
+      <%= render 'gobierto_people/shared/open_data_portal_links/events_with_interest_groups' %>
+    </div>
+  </section>
+
 </div>
+
+<%= javascript_tag do %>
+  window.GobiertoPeople.gencat_departments_controller.show({
+    department_people_events_rowchart_api_path: '<%= gobierto_people_api_v1_people_path(department_id: @department.id) %>',
+    department_interest_groups_rowchart_api_path: '<%= gobierto_people_api_v1_interest_groups_path(department_id: @department.id) %>',
+    department_people_events_punchcard_api_path: '<%= gobierto_people_api_v1_people_path(include_history: true, department_id: @department.id) %>'
+  });
+<% end %>

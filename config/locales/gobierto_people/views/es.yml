@@ -36,7 +36,7 @@ es:
         people_with_events: el número de Altos Cargos con los que se ha reunido este
           grupo
     welcome:
-      home:
+      index:
         title: Consulta con quién se reúne cada alto cargo de la Generalitat, las empresas y organizaciones que solicitan reuniones, y los viajes y obsequios recibidos
         meetings_box_title: Reuniones registradas
         departments_rowchart_title: Departamentos con más reuniones

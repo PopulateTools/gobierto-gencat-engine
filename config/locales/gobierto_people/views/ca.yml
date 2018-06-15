@@ -38,7 +38,7 @@ ca:
         people_with_events: el nombre de Alts Càrrecs amb els quals s'ha reunit aquest
           grup
     welcome:
-      home:
+      index:
         title: Consulta amb qui es reuneix cada alt càrrec de la Generalitat, les empreses i organitzacions que sol·liciten reunions, i els viatges i obsequis rebuts
         meetings_box_title: Reunions registrades
         departments_rowchart_title: Departaments amb més reunions
