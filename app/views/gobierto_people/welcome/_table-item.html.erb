@@ -2,15 +2,24 @@
   <div class="row p_v_1">
 
     <div class="col-md-9">
-      <p><strong><%= link_to title, resource.to_path %></strong></p>
-      <p><%= link_to resource.person.name, resource.person.to_path %></p>
+      <p><strong><%= link_to title, resource.to_path, data: { turbolinks: false } %></strong></p>
+      <p><%= link_to resource.person.name, resource.person.to_path, data: { turbolinks: false } %></p>
     </div>
 
     <div class="col-md-3">
-      <p><strong><%= l(display_date) %></strong></p>
-      <%= link_to resource.to_path do %>
+
+      <p><strong>
+        <% if local_assigns[:display_date_range] && (display_date_range.first != display_date_range.last) %>
+            <%= l(display_date_range.first) %> → <%= l(display_date_range.last) %>
+        <% else %>
+            <%= l(local_assigns[:display_date] || display_date_range.first) %>
+        <% end %>
+      </strong></p>
+
+      <%= link_to resource.to_path, data: { turbolinks: false } do %>
         <small>Veure detalls</small>
       <% end %>
+
     </div>
 
   </div>

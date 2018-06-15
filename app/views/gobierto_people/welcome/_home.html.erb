@@ -14,7 +14,7 @@
           <div class="box color-1 distribuidora-nova-3">
 
             <div class="color-decorator">
-              <h1>6.344</h1>
+              <h1><%= number_with_delimiter @home_statistics[:total_events] %></h1>
               <h5>
                 <div><strong>reunions registrades</strong></div>
               </h5>
@@ -32,7 +32,7 @@
           <div class="box color-2 distribuidora-nova-3">
 
             <div class="color-decorator">
-              <h1>5.476</h1>
+              <h1><%= number_with_delimiter @home_statistics[:total_interest_groups] %></h1>
               <h5>
                 <div><strong>grups d'interès inscrits</strong></div>
                 <span>o en procès</span>
@@ -51,7 +51,7 @@
           <div class="box color-3 distribuidora-nova-3">
 
             <div class="color-decorator">
-              <h1>877</h1>
+              <h1><%= number_with_delimiter @home_statistics[:total_people_with_attendances] %></h1>
               <h5>
                 <div><strong>alts càrrecs</strong></div>
                 <span>amb reunions registrades</span>
@@ -91,7 +91,7 @@
     <figure>
       <figcaption class="mb_20">Últims obsequis</figcaption>
       <ul class="color-3 transparent">
-        <% @received_gifts.each do |gift| %>
+        <% @gifts.each do |gift| %>
           <%= render(
                 "table-item",
                 title: gift.name,
@@ -103,7 +103,7 @@
     </figure>
 
     <div class="pd-15">
-      <%= link_to "#", class: "show-more color-3" do %>
+      <%= link_to gobierto_people_gifts_path, class: "show-more color-3", data: { turbolinks: false } do %>
         <small>Veure tot</small>
       <% end %>
     </div>
@@ -121,19 +121,19 @@
     <figure>
       <figcaption class="mb_20">Últimes invitacions</figcaption>
       <ul class="color-3 transparent">
-        <% @received_invitations.each do |invitation| %>
+        <% @invitations.each do |invitation| %>
           <%= render(
                 "table-item",
                 title: invitation.title,
                 resource: invitation,
-                display_date: invitation.start_date
+                display_date_range: [invitation.start_date, invitation.end_date]
               ) %>
         <% end %>
       </ul>
     </figure>
 
     <div class="pd-15">
-      <%= link_to "#", class: "show-more color-3" do %>
+      <%= link_to gobierto_people_invitations_path, class: "show-more color-3", data: { turbolinks: false } do %>
         <small>Veure tot</small>
       <% end %>
     </div>
