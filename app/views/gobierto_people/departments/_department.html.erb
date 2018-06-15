@@ -10,11 +10,12 @@
 
 <section class="row">
   <div class="col-md-5">
+
     <div class="box color-1">
       <div>
-        <h1><%= @department.events.count %></h1>
+        <h1><%= @department_stats[:total_people_with_attendances] %></h1>
         <h5>
-          <div><strong>reunions registrades</strong></div>
+          <div><strong>alts càrrecs d'aquest departament</strong> amb reunions registrades</div>
         </h5>
       </div>
       <div class="margin_top_xs">
@@ -22,16 +23,22 @@
         <div id="department_people_events_rowchart" class="rowchart"></div>
       </div>
     </div>
+
     <div class="margin_top_xs">
-      <a href="" class="show-more bg-danger"><small>Veure tot</small></a>
+      <%= link_to gobierto_people_events_path, class: "show-more bg-danger", data: { turbolinks: false } do %>
+        <small>Veure tot</small>
+      <% end %>
     </div>
+
   </div>
+
   <div class="col-md-5 col-md-offset-2">
+
     <div class="box color-3">
       <div>
-        <h1>6.344</h1>
+        <h1><%= @department_stats[:unique_interest_groups] %></h1>
         <h5>
-          <div><strong>reunions registrades</strong></div>
+          <div><strong>grups d'interès</strong> s'han reunit amb aquest departament</div>
         </h5>
       </div>
       <div class="margin_top_xs">
@@ -39,23 +46,36 @@
         <div id="department_interest_groups_events_rowchart" class="rowchart"></div>
       </div>
     </div>
+
     <div class="margin_top_xs">
-      <a href="" class="show-more bg-danger"><small>Veure tot</small></a>
+      <%= link_to gobierto_people_interest_groups_path, class: "show-more bg-danger", data: { turbolinks: false } do %>
+        <small>Veure tot</small>
+      <% end %>
     </div>
+
   </div>
 </section>
 
 <section id="map-chart">
   <p><strong>¿Cap a on viatgen els alts carrècs?</strong></p>
+
   <%= render "gobierto_people/shared/map" %>
+
   <div class="margin_top_xs">
-    <a href="" class="show-more bg-info"><small>Veure tot</small></a>
+    <%= link_to gobierto_people_trips_path, class: "show-more bg-danger", data: { turbolinks: false } do %>
+      <small>Veure tot</small>
+    <% end %>
   </div>
+
   <div id="department_people_events_punchcard" class="punchcard color-2 transparent"></div>
 </section>
 
 <section class="row">
-  <a href="" class="col-md-12 bg-danger p_2">Accedeix a les dades al portal de Dades Obertes</a>
+  <div class="col-md-12 bg-danger p_2">
+    Accedeix a les dades al portal de Dades Obertes:
+    <%= render 'gobierto_people/shared/open_data_portal_links/interest_groups' %> -
+    <%= render 'gobierto_people/shared/open_data_portal_links/events_with_interest_groups' %>
+  </div>
 </section>
 
 <%= javascript_tag do %>
