@@ -82,8 +82,8 @@
 
 <%= javascript_tag do %>
   window.GobiertoPeople.gencat_departments_controller.show({
-    department_people_events_rowchart_api_url: '<%= gobierto_people_api_v1_people_url(department_id: @department.id) %>',
-    department_interest_groups_rowchart_api_url: '<%= gobierto_people_api_v1_interest_groups_url(department_id: @department.id) %>',
-    department_people_events_punchcard_api_url: '<%= gobierto_people_api_v1_people_url(include_history: true, department_id: @department.id) %>'
+    department_people_events_rowchart_api_path: '<%= gobierto_people_api_v1_people_path(department_id: @department.id) %>',
+    department_interest_groups_rowchart_api_path: '<%= gobierto_people_api_v1_interest_groups_path(department_id: @department.id) %>',
+    department_people_events_punchcard_api_path: '<%= gobierto_people_api_v1_people_path(include_history: true, department_id: @department.id) %>'
   });
 <% end %>

@@ -23,7 +23,7 @@
 
     <div class="margin_top_xs">
       <p><%= t("gobierto_people.departments.index.events_by_department") %></p>
-      <div id="rowchart-<%= SecureRandom.random_number(100) %>" class="rowchart color-1"></div>
+      <div id="departments_events_rowchart" class="rowchart color-1"></div>
     </div>
 
     <div class="margin_top_xs">
@@ -65,6 +65,7 @@
 
 <%= javascript_tag do %>
   window.GobiertoPeople.gencat_departments_controller.index({
-    people_events_api_url: '<%= gobierto_people_api_v1_people_url %>'
+    departments_events_api_path: '<%= gobierto_people_api_v1_departments_path %>',
+    people_events_api_path: '<%= gobierto_people_api_v1_people_path %>'
   });
 <% end %>

@@ -7,15 +7,16 @@ window.GobiertoPeople.GencatDepartmentsController = (function() {
 
   GencatDepartmentsController.prototype.index = function(options) {
     $(document).on('turbolinks:load', function() {
-      _loadRowchart('#people_events_rowchart', options.people_events_api_url)
+      _loadRowchart('#departments_events_rowchart', options.departments_events_api_path)
+      _loadRowchart('#people_events_rowchart', options.people_events_api_path)
     });
   }
 
   GencatDepartmentsController.prototype.show = function(options) {
     $(document).on('turbolinks:load', function() {
-      _loadRowchart('#department_people_events_rowchart', options.department_people_events_rowchart_api_url)
-      _loadRowchart('#department_interest_groups_events_rowchart', options.department_interest_groups_rowchart_api_url)
-      _loadPunchcard('#department_people_events_punchcard', options.department_people_events_punchcard_api_url)
+      _loadRowchart('#department_people_events_rowchart', options.department_people_events_rowchart_api_path)
+      _loadRowchart('#department_interest_groups_events_rowchart', options.department_interest_groups_rowchart_api_path)
+      _loadPunchcard('#department_people_events_punchcard', options.department_people_events_punchcard_api_path)
     });
   };
 
