@@ -15,19 +15,19 @@
       <div>
         <h1><%= @department_stats[:total_people_with_attendances] %></h1>
         <h5>
-          <p><strong>alts càrrecs d'aquest departament</strong></p>
-          <p>amb reunions registrades</p>
+          <p><strong><%= t(".people_box_title") %></strong></p>
+          <p><%= t(".people_box_subtitle") %></p>
         </h5>
       </div>
       <div class="margin_top_xs">
-        <span>Alts càrrec amb més reunions</span>
+        <span><%= t(".people_rowchart_title") %></span>
         <div id="department_people_events_rowchart" class="rowchart"></div>
       </div>
     </div>
 
     <div class="margin_top_xs">
       <%= link_to gobierto_people_events_path, class: "show-more bg-danger", data: { turbolinks: false } do %>
-        <small>Veure tot</small>
+        <small><%= t("gobierto_people.shared.view_all") %></small>
       <% end %>
     </div>
 
@@ -39,19 +39,19 @@
       <div>
         <h1><%= @department_stats[:unique_interest_groups] %></h1>
         <h5>
-          <p><strong>grups d'interès</strong></p>
-          <p>s'han reunit amb aquest departament</p>
+          <p><strong><%= t(".interest_groups_box_title") %></strong></p>
+          <p><%= t(".interest_groups_box_subtitle") %></p>
         </h5>
       </div>
       <div class="margin_top_xs">
-        <span>Grups d' Interès amb més reunions</span>
+        <span><%= t(".interest_groups_rowchart_title") %></span>
         <div id="department_interest_groups_events_rowchart" class="rowchart"></div>
       </div>
     </div>
 
     <div class="margin_top_xs">
       <%= link_to gobierto_people_interest_groups_path, class: "show-more bg-danger", data: { turbolinks: false } do %>
-        <small>Veure tot</small>
+        <small><%= t("gobierto_people.shared.view_all") %></small>
       <% end %>
     </div>
 
@@ -59,13 +59,13 @@
 </section>
 
 <section id="map-chart">
-  <p><strong>¿Cap a on viatgen els alts carrècs?</strong></p>
+  <p><strong><%= t(".map_title") %></strong></p>
 
   <%= render "gobierto_people/shared/map" %>
 
   <div class="margin_top_xs">
     <%= link_to gobierto_people_trips_path, class: "show-more bg-danger", data: { turbolinks: false } do %>
-      <small>Veure tot</small>
+      <small><%= t("gobierto_people.shared.view_all") %></small>
     <% end %>
   </div>
 
@@ -74,7 +74,7 @@
 
 <section class="row">
   <div class="col-md-12 bg-danger p_2">
-    Accedeix a les dades al portal de Dades Obertes:
+    <%= t("gobierto_people.shared.view_open_data_portal") %>:
     <%= render 'gobierto_people/shared/open_data_portal_links/interest_groups' %> -
     <%= render 'gobierto_people/shared/open_data_portal_links/events_with_interest_groups' %>
   </div>

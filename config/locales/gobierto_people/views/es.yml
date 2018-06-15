@@ -18,10 +18,13 @@ es:
         people_with_events: altos cargos con reuniones registradas
         view_all: Ver todos
       show:
-        events: reuniones registradas
-        events_by_people: Altos Cargos de este departamento con más reuniones
-        events_by_person_and_month: Reuniones por Alto Cargo y mes
-        people_with_events: altos cargos de este departamento con más reuniones
+        people_box_title: Altos cargos de este departamento
+        people_box_subtitle: con reuniones registradas
+        people_rowchart_title: Altos cargos con más reuniones
+        interest_groups_box_title: Grupos de Interés
+        interest_groups_box_subtitle: que se han reunido con este departamento
+        interest_groups_rowchart_title: Grupos de Interés con más reuniones
+        map_title: ¿A dónde viajan los altos cargos?
     interest_groups:
       index:
         events_by_interest_group: Grupos de interés con más reuniones
@@ -32,3 +35,39 @@ es:
         events_by_person: Altos cargos con los que se ha reunido este grupo
         people_with_events: el número de Altos Cargos con los que se ha reunido este
           grupo
+    welcome:
+      home:
+        title: Consulta con quién se reúne cada alto cargo de la Generalitat, las empresas y organizaciones que solicitan reuniones, y los viajes y obsequios recibidos
+        meetings_box_title: Reuniones registradas
+        departments_rowchart_title: Departamentos con más reuniones
+        interest_groups_box_title: Grupos de Interés inscritos
+        interest_groups_box_subtitle: o en proceso
+        interest_groups_rowchart_title: Grupos de Interés con más reuniones
+        people_rowchart_title: Altos cargos con más reuniones
+        people_box_title: Altos cargos
+        people_box_subtitle: con reuniones registradas
+        map_title: ¿A dónde viajan los Altos cargos?
+        gifts: Obsequios
+        gifts_description: Los Altos cargos reciben obsequios como cortesia de organizaciones con las que se reunen. Aquí tienes el inventario de lo que se ha recibido
+        gifts_coc: El Código de Conducta regula qué regalos se pueden recibir. Consúltalo
+        last_gifts: Últimos obsequios
+        invitations: Invitaciones
+        invitations_description: Los Altos cargos reciben invitaciones a eventos, para realizar visitas, dar conferencias... Aquí tienes una relación de las invitaciones aceptadas.
+        invitations_coc: El Código de Conducta regula qué invitaciones se pueden aceptar. Consúltalo
+        last_invitations: Últimas invitaciones
+      table_item:
+        view_details: Ver detalles
+    shared:
+      view_all: Ver todo
+      view_open_data_portal: Acceder a los datos en el portal de Datos Abiertos
+      open_data_portal_links:
+        gifts:
+          dataset: Obsequios
+        people:
+          dataset: Altos cargos
+        trips_and_invitations:
+          dataset: Invitaciones viajes, desplazamientos y alojamiento
+        interest_groups:
+          dataset: Grupos de Interés
+        events_with_interest_groups:
+          dataset: Agenda pública con Grupos de Interés

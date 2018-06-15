@@ -20,10 +20,13 @@ ca:
         people_with_events: alts càrrecs amb reunions registrades
         view_all: Veure tot
       show:
-        events: reunions registrades
-        events_by_people: Alts Càrrecs d'aquest departament amb més reunions
-        events_by_person_and_month: Reunions per Alts Càrrec i mes
-        people_with_events: alts càrrecs d'aquest departament amb reunions registrades
+        people_box_title: Alts càrrecs d'aquest departament
+        people_box_subtitle: amb reunions registrades
+        people_rowchart_title: Alts càrrec amb més reunions
+        interest_groups_box_title: Grups d'interès
+        interest_groups_box_subtitle: s'han reunit amb aquest departament
+        interest_groups_rowchart_title: Grups d' Interès amb més reunions
+        map_title: ¿Cap a on viatgen els alts carrècs?
     interest_groups:
       index:
         events_by_interest_group: Grups d'interès amb més reunions
@@ -34,3 +37,39 @@ ca:
         events_by_person: Alts Càrrecs amb els quals s'ha reunit aquest grup
         people_with_events: el nombre de Alts Càrrecs amb els quals s'ha reunit aquest
           grup
+    welcome:
+      home:
+        title: Consulta amb qui es reuneix cada alt càrrec de la Generalitat, les empreses i organitzacions que sol·liciten reunions, i els viatges i obsequis rebuts
+        meetings_box_title: Reunions registrades
+        departments_rowchart_title: Departaments amb més reunions
+        interest_groups_box_title: Grups d'interès inscrits
+        interest_groups_box_subtitle: o en procès
+        interest_groups_rowchart_title: Grups d'interès amb més reunions
+        people_rowchart_title: Alts càrrec amb més reunions
+        people_box_title: Alts càrrecs
+        people_box_subtitle: amb reunions registrades
+        map_title: ¿Cap a on viatgen els alts carrècs?
+        gifts: Regals
+        gifts_description: Els Alts càrrecs reben obsequis com cortesia d'organitzacions amb les que es reuneixen. Aquí tens l'inventari del que s'ha rebut
+        gifts_coc: El Codi de Conducta regula quins regals es poden rebre. Consulta-
+        last_gifts: Últims obsequis
+        invitations: Invitacions
+        invitations_description: Els Alts càrrecs reben invitacions a esdeveniments, per a realitzar visites, donar conferències... Aquí tens una relació de les invitacions acceptades.
+        invitations_coc: El Codi de Conducta regula què invitacions es poden acceptar. Consulta-
+        last_invitations: Últimes invitacions
+      table_item:
+        view_details: Veure detalls
+    shared:
+      view_all: Veure tot
+      view_open_data_portal: Accedeix a les dades al portal de Dades Obertes
+      open_data_portal_links:
+        gifts:
+          dataset: Obsequis
+        people:
+          dataset: Alts càrrecs
+        trips_and_invitations:
+          dataset: Invitacions a viatges, desplaçaments i allotjaments
+        interest_groups:
+          dataset: Grups d'Interès
+        events_with_interest_groups:
+          dataset: Agenda pública amb grups d'interès

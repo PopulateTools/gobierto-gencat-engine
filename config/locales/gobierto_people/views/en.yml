@@ -18,10 +18,13 @@ en:
         people_with_events: officials with registered events
         view_all: View all
       show:
-        events: registered events
-        events_by_people: Officials of this department with more events
-        events_by_person_and_month: Events by Official and month
-        people_with_events: officials of this department with more events
+        people_box_title: Officials in this department
+        people_box_subtitle: with meetings registered
+        people_rowchart_title: Officials with most meetings
+        interest_groups_box_title: Interest groups
+        interest_groups_box_subtitle: have met with this department
+        interest_groups_rowchart_title: Interest groups with most meetings
+        map_title: Where do officials travel?
     interest_groups:
       index:
         events_by_interest_group: Interest groups with more events
@@ -31,3 +34,39 @@ en:
         events_by_department: With which departments does this group meet?
         events_by_person: Officials with which this group has met
         people_with_events: the number of Officials with which this group has met
+    welcome:
+      home:
+        title: Check with whom meets each Official in the Generalitat, companies and organizations that request meetings, and the trips and gifts received
+        meetings_box_title: Meetings registered
+        departments_rowchart_title: Departments with most meetings
+        interest_groups_box_title: Interest groups inscribed
+        interest_groups_box_subtitle: or in process
+        interest_groups_rowchart_title: Interest groups with most meetings
+        people_rowchart_title: Officials with most meetings
+        people_box_title: Officials
+        people_box_subtitle: with meetings registered
+        map_title: Where do officials travel?
+        gifts: Gifts
+        gifts_description: Officials receive gifts as a courtesy from organizations with which they meet. Here is the inventory of what has been received
+        gifts_coc: The Code of Conduct regulates what gifts can be received. Check it out
+        last_gifts: Last gifts
+        invitations: Invitations
+        invitations_description: Officials receive invitations to events, to make visits, give lectures... Here is a list of accepted invitations.
+        invitations_coc: The Code of Conduct regulates which invitations can be accepted. Check it out
+        last_invitations: Last invitations
+      table_item:
+        view_details: View details
+    shared:
+      view_all: View all
+      view_open_data_portal: Access the data in the Open Data portal
+      open_data_portal_links:
+        gifts:
+          dataset: Gifts
+        people:
+          dataset: Officials
+        trips_and_invitations:
+          dataset: Attendance invitations, trips and accommodation
+        interest_groups:
+          dataset: Interest groups
+        events_with_interest_groups:
+          dataset: Public agenda with Interest Groups

@@ -1,5 +1,5 @@
 <section class="row">
-  <p class="col-md-9">Des d’aquí podeu accedir a informació exhaustiva sobre la relació de llocs de treball dels empleats públics, quants n’hi ha</p>
+  <p class="col-md-9"><%= t(".title") %></p>
   <div class="col-md-3">
     <%= render "gobierto_people/shared/datepicker" %>
   </div>
@@ -16,12 +16,13 @@
             <div class="color-decorator">
               <h1><%= number_with_delimiter @home_statistics[:total_events] %></h1>
               <h5>
-                <div><strong>reunions registrades</strong></div>
+                <div><strong></strong></div>
+                <div><strong><%= t(".meetings_box_title") %></strong></div>
               </h5>
             </div>
 
             <div class="margin_top_xs">
-              <span>Departaments amb més reunions</span>
+              <span><%= t(".departments_rowchart_title") %></span>
               <div id="departments_events_rowchart" class="rowchart"></div>
             </div>
 
@@ -34,13 +35,13 @@
             <div class="color-decorator">
               <h1><%= number_with_delimiter @home_statistics[:total_interest_groups] %></h1>
               <h5>
-                <div><strong>grups d'interès inscrits</strong></div>
-                <span>o en procès</span>
+                <div><strong><%= t(".interest_groups_box_title") %></strong></div>
+                <span><%= t(".interest_groups_box_subtitle") %></span>
               </h5>
             </div>
 
             <div class="margin_top_xs">
-              <span>Grups d'interès amb més reunions</span>
+              <span><%= t(".interest_groups_rowchart_title") %></span>
               <div id="interest_groups_events_rowchart" class="rowchart"></div>
             </div>
 
@@ -53,13 +54,13 @@
             <div class="color-decorator">
               <h1><%= number_with_delimiter @home_statistics[:total_people_with_attendances] %></h1>
               <h5>
-                <div><strong>alts càrrecs</strong></div>
-                <span>amb reunions registrades</span>
+                <div><strong><%= t(".people_box_title") %></strong></div>
+                <span><%= t(".people_box_subtitle") %></span>
               </h5>
             </div>
 
             <div class="margin_top_xs">
-              <span>Alts càrrec amb més reunions</span>
+              <span><%= t(".people_rowchart_title") %></span>
               <div id="people_events_rowchart" class="rowchart"></div>
             </div>
 
@@ -70,30 +71,34 @@
     </div>
   </div>
 </section>
+
 <hr>
+
 <section id="map-chart">
-  <p><strong>¿Cap a on viatgen els alts carrècs?</strong></p>
+  <p><strong><%= t(".map_title") %></strong></p>
   <%= render "gobierto_people/shared/map" %>
   <div id="people_events_punchcard" class="punchcard color-2 transparent"></div>
 </section>
+
 <hr>
+
 <section class="row">
 
   <div class="col-md-6">
     <section>
-      <p><strong>Regals</strong></p>
-      <p>Los Altos cargos reciben obsequios como cortesia de organizaciones con las que se reunen. Aquí tienes el inventario de lo que se ha recibido</p>
+      <p><strong><%= t(".gifts") %></strong></p>
+      <p><%= t(".gifts_description") %></p>
       <div class="alert alert-warning">
-        <small>El Código de Conducta regula qué regalos se pueden recibir. Consúltalo</small>
+        <small><%= t(".gifts_coc") %></small>
       </div>
     </section>
 
     <figure>
-      <figcaption class="mb_20">Últims obsequis</figcaption>
+      <figcaption class="mb_20"><%= t(".last_gifts") %></figcaption>
       <ul class="color-3 transparent">
         <% @gifts.each do |gift| %>
           <%= render(
-                "table-item",
+                "table_item",
                 title: gift.name,
                 resource: gift,
                 display_date: gift.date
@@ -104,26 +109,26 @@
 
     <div class="pd-15">
       <%= link_to gobierto_people_gifts_path, class: "show-more color-3", data: { turbolinks: false } do %>
-        <small>Veure tot</small>
+        <small><%= t("gobierto_people.shared.view_all") %></small>
       <% end %>
     </div>
   </div>
 
   <div class="col-md-6">
     <section>
-      <p><strong>Invitacions</strong></p>
-      <p>Los Altos cargos reciben invitaciones a eventos, para realizar visitas, dar conferencias... Aquí tienes una relación de las invitaciones aceptadas.</p>
+      <p><strong><%= t(".invitations") %></strong></p>
+      <p><%= t(".invitations_description") %></p>
       <div class="alert alert-warning">
-        <small>El Código de Conducta regula qué invitaciones se pueden aceptar. Consúltalo</small>
+        <small><%= t(".invitations_coc") %></small>
       </div>
     </section>
 
     <figure>
-      <figcaption class="mb_20">Últimes invitacions</figcaption>
+      <figcaption class="mb_20"><%= t(".last_invitations") %></figcaption>
       <ul class="color-3 transparent">
         <% @invitations.each do |invitation| %>
           <%= render(
-                "table-item",
+                "table_item",
                 title: invitation.title,
                 resource: invitation,
                 display_date_range: [invitation.start_date, invitation.end_date]
@@ -134,7 +139,7 @@
 
     <div class="pd-15">
       <%= link_to gobierto_people_invitations_path, class: "show-more color-3", data: { turbolinks: false } do %>
-        <small>Veure tot</small>
+        <small><%= t("gobierto_people.shared.view_all") %></small>
       <% end %>
     </div>
   </div>
@@ -142,7 +147,14 @@
 </section>
 
 <section class="row">
-  <a href="" class="col-md-12 color-3 p_2">Accedeix a les dades al portal de Dades Obertes</a>
+  <div class="col-md-12 bg-danger p_2">
+    <%= t("gobierto_people.shared.view_open_data_portal") %>:
+    <%= render 'gobierto_people/shared/open_data_portal_links/people' %> -
+    <%= render 'gobierto_people/shared/open_data_portal_links/interest_groups' %> -
+    <%= render 'gobierto_people/shared/open_data_portal_links/events_with_interest_groups' %> -
+    <%= render 'gobierto_people/shared/open_data_portal_links/trips_and_invitations' %> -
+    <%= render 'gobierto_people/shared/open_data_portal_links/gifts' %>
+  </div>
 </section>
 
 <%= javascript_tag do %>
