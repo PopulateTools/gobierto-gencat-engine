@@ -53,6 +53,7 @@
     </div>
   </div>
 
+  <div id="department_people_events_punchcard" class="punchcard color-2 transparent"></div>
 </section>
 
 <section>
@@ -62,10 +63,10 @@
 <section class="row">
   <a href="" class="col-md-12 bg-danger p_2"><%= t("gobierto_people.departments.index.open_data_web_portal") %></a>
 </section>
-
 <%= javascript_tag do %>
   window.GobiertoPeople.gencat_departments_controller.index({
-    departments_events_api_path: '<%= gobierto_people_api_v1_departments_path %>',
-    people_events_api_path: '<%= gobierto_people_api_v1_people_path %>'
+    people_events_api_path: '<%= gobierto_people_api_v1_people_path %>',
+    department_people_events_punchcard_api_path: '<%= gobierto_people_api_v1_departments_path(include_history: true, limit: 14) %>',
+    departments_events_api_path: '<%= gobierto_people_api_v1_departments_path %>'
   });
 <% end %>

@@ -7,8 +7,9 @@ window.GobiertoPeople.GencatDepartmentsController = (function() {
 
   GencatDepartmentsController.prototype.index = function(options) {
     $(document).on('turbolinks:load', function() {
-      _loadRowchart('#departments_events_rowchart', options.departments_events_api_path)
       _loadRowchart('#people_events_rowchart', options.people_events_api_path)
+      _loadRowchart('#departments_events_rowchart', options.departments_events_api_path)
+      _loadPunchcard('#department_people_events_punchcard', options.department_people_events_punchcard_api_path)
     });
   }
 
