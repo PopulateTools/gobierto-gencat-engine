@@ -33,7 +33,11 @@ en:
         events: registered events
         events_by_department: With which departments does this group meet?
         events_by_person: Officials with which this group has met
+        explore_departments: Explore Departments and Officials
+        explore_people: Explore the agendas of Officials
         people_with_events: the number of Officials with which this group has met
+        status: "Inscription status in interest groups registry: %{status}"
+        view_all: View all
     welcome:
       index:
         title: Check with whom meets each Official in the Generalitat, companies and organizations that request meetings, and the trips and gifts received

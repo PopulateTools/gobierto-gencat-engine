@@ -35,8 +35,12 @@ ca:
         events: reunions registrades
         events_by_department: Amb quins departaments es reuneix aquest grup
         events_by_person: Alts Càrrecs amb els quals s'ha reunit aquest grup
+        explore_departments: Explora els Departaments i els seus Alts Càrrecs
+        explore_people: Consulta les agendes dels Alts Càrrecs
         people_with_events: el nombre de Alts Càrrecs amb els quals s'ha reunit aquest
           grup
+        status: "Situació inscripció registre grup interès: %{status}"
+        view_all: Veure tot
     welcome:
       index:
         title: Consulta amb qui es reuneix cada alt càrrec de la Generalitat, les empreses i organitzacions que sol·liciten reunions, i els viatges i obsequis rebuts

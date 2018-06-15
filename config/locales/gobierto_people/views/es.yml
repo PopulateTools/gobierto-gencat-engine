@@ -33,8 +33,12 @@ es:
         events: reuniones registradas
         events_by_department: Con qué departamentos se reúne este grupo
         events_by_person: Altos cargos con los que se ha reunido este grupo
+        explore_departments: Explora los Departamentos y sus Altos Cargos
+        explore_people: Consulta las agendas de los Altos Cargos
         people_with_events: el número de Altos Cargos con los que se ha reunido este
           grupo
+        status: "Situación de inscripción en el registro de grupos de interés: %{status}"
+        view_all: Ver todos
     welcome:
       index:
         title: Consulta con quién se reúne cada alto cargo de la Generalitat, las empresas y organizaciones que solicitan reuniones, y los viajes y obsequios recibidos
