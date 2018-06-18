@@ -20,13 +20,14 @@ ca:
         people_with_events: alts càrrecs amb reunions registrades
         view_all: Veure tot
       show:
-        people_box_title: Alts càrrecs d'aquest departament
+        people_box_title: alts càrrecs d'aquest departament
         people_box_subtitle: amb reunions registrades
-        people_rowchart_title: Alts càrrec amb més reunions
-        interest_groups_box_title: Grups d'interès
+        people_rowchart_title: Alts càrrec d'aquest departament amb més reunions
+        interest_groups_box_title: grups d'interès
         interest_groups_box_subtitle: s'han reunit amb aquest departament
-        interest_groups_rowchart_title: Grups d' Interès amb més reunions
+        interest_groups_rowchart_title: Grups d' Interès amb més reunions amb aquest departament
         map_title: ¿Cap a on viatgen els alts carrècs?
+        punchcard_title: Reunions per alt càrrec i mes
     interest_groups:
       index:
         events_by_interest_group: Grups d'interès amb més reunions
@@ -47,7 +48,7 @@ ca:
         meetings_box_title: Reunions registrades
         departments_rowchart_title: Departaments amb més reunions
         interest_groups_box_title: Grups d'interès inscrits
-        interest_groups_box_subtitle: o en procès
+        interest_groups_box_subtitle: o en procès d'inscripció
         interest_groups_rowchart_title: Grups d'interès amb més reunions
         people_rowchart_title: Alts càrrec amb més reunions
         people_box_title: Alts càrrecs
@@ -55,15 +56,18 @@ ca:
         map_title: ¿Cap a on viatgen els alts carrècs?
         gifts: Regals
         gifts_description: Els Alts càrrecs reben obsequis com cortesia d'organitzacions amb les que es reuneixen. Aquí tens l'inventari del que s'ha rebut
-        gifts_coc: El Codi de Conducta regula quins regals es poden rebre. Consulta-
+        gifts_coc: El Codi de Conducta regula quins regals es poden rebre.
         last_gifts: Últims obsequis
         invitations: Invitacions
         invitations_description: Els Alts càrrecs reben invitacions a esdeveniments, per a realitzar visites, donar conferències... Aquí tens una relació de les invitacions acceptades.
-        invitations_coc: El Codi de Conducta regula què invitacions es poden acceptar. Consulta-
+        invitations_coc: El Codi de Conducta regula què invitacions es poden acceptar.
         last_invitations: Últimes invitacions
+        punchcard_title: Reunions per alt càrrec i mes
       table_item:
         view_details: Veure detalls
     shared:
+      code_of_conduct_link:
+        check_it_out: Consulta-
       view_all: Veure tot
       view_open_data_portal: Accedeix a les dades al portal de Dades Obertes
       open_data_portal_links:
