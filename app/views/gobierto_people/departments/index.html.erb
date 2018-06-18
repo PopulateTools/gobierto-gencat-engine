@@ -62,7 +62,14 @@
   </section>
 
   <section class="row">
-    <a href="" class="col-md-12 bg-danger p_2"><%= t(".open_data_web_portal") %></a>
+    <div class="col-md-12 bg-danger p_2">
+      <%= t("gobierto_people.shared.view_open_data_portal") %>:
+      <%= render 'gobierto_people/shared/open_data_portal_links/people' %> -
+      <%= render 'gobierto_people/shared/open_data_portal_links/interest_groups' %> -
+      <%= render 'gobierto_people/shared/open_data_portal_links/events_with_interest_groups' %> -
+      <%= render 'gobierto_people/shared/open_data_portal_links/trips_and_invitations' %> -
+      <%= render 'gobierto_people/shared/open_data_portal_links/gifts' %>
+    </div>
   </section>
   <%= javascript_tag do %>
     window.GobiertoPeople.gencat_departments_controller.index({
