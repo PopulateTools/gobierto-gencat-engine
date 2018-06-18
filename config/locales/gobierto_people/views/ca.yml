@@ -71,13 +71,11 @@ ca:
       view_all: Veure tot
       view_open_data_portal: Accedeix a les dades al portal de Dades Obertes
       open_data_portal_links:
+        events:
+          dataset: Agenda pública amb grups d'interès
         gifts:
           dataset: Obsequis
-        people:
-          dataset: Alts càrrecs
-        trips_and_invitations:
+        invitations:
           dataset: Invitacions a viatges, desplaçaments i allotjaments
-        interest_groups:
-          dataset: Grups d'Interès
-        events_with_interest_groups:
-          dataset: Agenda pública amb grups d'interès
+        trips:
+          dataset: Viatges oficials

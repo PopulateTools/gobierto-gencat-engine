@@ -74,14 +74,7 @@
     <div id="department_people_events_punchcard" class="punchcard color-2 transparent"></div>
   </section>
 
-  <section class="row">
-    <div class="col-md-12 bg-danger p_2">
-      <%= t("gobierto_people.shared.view_open_data_portal") %>:
-      <%= render 'gobierto_people/shared/open_data_portal_links/interest_groups' %> -
-      <%= render 'gobierto_people/shared/open_data_portal_links/events_with_interest_groups' %>
-    </div>
-  </section>
-
+  <%= render "gobierto_people/shared/open_data_link_footer" %>
 </div>
 
 <%= javascript_tag do %>

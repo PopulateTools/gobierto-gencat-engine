@@ -69,13 +69,11 @@ es:
       view_all: Ver todo
       view_open_data_portal: Acceder a los datos en el portal de Datos Abiertos
       open_data_portal_links:
+        events:
+          dataset: Agenda pública con Grupos de Interés
         gifts:
           dataset: Obsequios
-        people:
-          dataset: Altos cargos
-        trips_and_invitations:
-          dataset: Invitaciones viajes, desplazamientos y alojamiento
-        interest_groups:
-          dataset: Grupos de Interés
-        events_with_interest_groups:
-          dataset: Agenda pública con Grupos de Interés
+        invitations:
+          dataset: Invitaciones a viajes, desplazamientos y alojamiento
+        trips:
+          dataset: Viajes oficiales

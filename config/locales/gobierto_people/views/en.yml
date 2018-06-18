@@ -68,13 +68,11 @@ en:
       view_all: View all
       view_open_data_portal: Access the data in the Open Data portal
       open_data_portal_links:
+        events:
+          dataset: Public agenda with Interest Groups
         gifts:
           dataset: Gifts
-        people:
-          dataset: Officials
-        trips_and_invitations:
+        invitations:
           dataset: Attendance invitations, trips and accommodation
-        interest_groups:
+        trips:
           dataset: Interest groups
-        events_with_interest_groups:
-          dataset: Public agenda with Interest Groups
