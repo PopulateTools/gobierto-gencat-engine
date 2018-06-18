@@ -25,6 +25,7 @@ es:
         interest_groups_box_subtitle: que se han reunido con este departamento
         interest_groups_rowchart_title: Grupos de Interés con más reuniones con este departamento
         map_title: ¿A dónde viajan los altos cargos?
+        punchcard_title: Reuniones por alto cargo y mes
     interest_groups:
       index:
         events_by_interest_group: Grupos de interés con más reuniones
@@ -55,6 +56,7 @@ es:
         invitations_description: Los Altos cargos reciben invitaciones a eventos, para realizar visitas, dar conferencias... Aquí tienes una relación de las invitaciones aceptadas.
         invitations_coc: El Código de Conducta regula qué invitaciones se pueden aceptar.
         last_invitations: Últimas invitaciones
+        punchcard_title: Reuniones por alto cargo y mes
       table_item:
         view_details: Ver detalles
     shared:

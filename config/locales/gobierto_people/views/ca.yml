@@ -27,6 +27,7 @@ ca:
         interest_groups_box_subtitle: s'han reunit amb aquest departament
         interest_groups_rowchart_title: Grups d' Interès amb més reunions amb aquest departament
         map_title: ¿Cap a on viatgen els alts carrècs?
+        punchcard_title: Reunions per alt càrrec i mes
     interest_groups:
       index:
         events_by_interest_group: Grups d'interès amb més reunions
@@ -57,6 +58,7 @@ ca:
         invitations_description: Els Alts càrrecs reben invitacions a esdeveniments, per a realitzar visites, donar conferències... Aquí tens una relació de les invitacions acceptades.
         invitations_coc: El Codi de Conducta regula què invitacions es poden acceptar.
         last_invitations: Últimes invitacions
+        punchcard_title: Reunions per alt càrrec i mes
       table_item:
         view_details: Veure detalls
     shared:
