@@ -26,7 +26,9 @@
       </div>
       <div class="margin_top_xs">
         <p><%= t("explore_departments") %></p>
-        <a href="" class="show-more bg-danger"><small><%= t("view_all") %></small></a>
+        <%= link_to gobierto_people_departments_path, class: "show-more bg-danger", data: { turbolinks: false } do %>
+          <small><%= t("gobierto_people.shared.view_all") %></small>
+        <% end %>
       </div>
     </div>
     <div class="col-md-5 col-md-offset-2">
@@ -44,7 +46,9 @@
       </div>
       <div class="margin_top_xs">
         <p><%= t(".explore_people") %></p>
-        <a href="" class="show-more bg-danger"><small><%= t("view_all") %></small></a>
+        <%= link_to gobierto_people_people_path, class: "show-more bg-danger", data: { turbolinks: false } do %>
+          <small><%= t("gobierto_people.shared.view_all") %></small>
+        <% end %>
       </div>
     </div>
   </section>
