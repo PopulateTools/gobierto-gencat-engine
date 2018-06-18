@@ -18,12 +18,12 @@ es:
         people_with_events: altos cargos con reuniones registradas
         view_all: Ver todos
       show:
-        people_box_title: Altos cargos de este departamento
+        people_box_title: altos cargos de este departamento
         people_box_subtitle: con reuniones registradas
-        people_rowchart_title: Altos cargos con más reuniones
-        interest_groups_box_title: Grupos de Interés
+        people_rowchart_title: Altos cargos de este departamento con más reuniones
+        interest_groups_box_title: grupos de interés
         interest_groups_box_subtitle: que se han reunido con este departamento
-        interest_groups_rowchart_title: Grupos de Interés con más reuniones
+        interest_groups_rowchart_title: Grupos de Interés con más reuniones con este departamento
         map_title: ¿A dónde viajan los altos cargos?
     interest_groups:
       index:
@@ -41,7 +41,7 @@ es:
         meetings_box_title: Reuniones registradas
         departments_rowchart_title: Departamentos con más reuniones
         interest_groups_box_title: Grupos de Interés inscritos
-        interest_groups_box_subtitle: o en proceso
+        interest_groups_box_subtitle: o en proceso de inscripción
         interest_groups_rowchart_title: Grupos de Interés con más reuniones
         people_rowchart_title: Altos cargos con más reuniones
         people_box_title: Altos cargos
@@ -49,15 +49,17 @@ es:
         map_title: ¿A dónde viajan los Altos cargos?
         gifts: Obsequios
         gifts_description: Los Altos cargos reciben obsequios como cortesia de organizaciones con las que se reunen. Aquí tienes el inventario de lo que se ha recibido
-        gifts_coc: El Código de Conducta regula qué regalos se pueden recibir. Consúltalo
+        gifts_coc: El Código de Conducta regula qué regalos se pueden recibir.
         last_gifts: Últimos obsequios
         invitations: Invitaciones
         invitations_description: Los Altos cargos reciben invitaciones a eventos, para realizar visitas, dar conferencias... Aquí tienes una relación de las invitaciones aceptadas.
-        invitations_coc: El Código de Conducta regula qué invitaciones se pueden aceptar. Consúltalo
+        invitations_coc: El Código de Conducta regula qué invitaciones se pueden aceptar.
         last_invitations: Últimas invitaciones
       table_item:
         view_details: Ver detalles
     shared:
+      code_of_conduct_link:
+        check_it_out: Consúltalo
       view_all: Ver todo
       view_open_data_portal: Acceder a los datos en el portal de Datos Abiertos
       open_data_portal_links:

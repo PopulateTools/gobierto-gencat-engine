@@ -18,12 +18,12 @@ en:
         people_with_events: officials with registered events
         view_all: View all
       show:
-        people_box_title: Officials in this department
+        people_box_title: officials in this department
         people_box_subtitle: with meetings registered
-        people_rowchart_title: Officials with most meetings
-        interest_groups_box_title: Interest groups
+        people_rowchart_title: Officials of this department with most meetings
+        interest_groups_box_title: interest groups
         interest_groups_box_subtitle: have met with this department
-        interest_groups_rowchart_title: Interest groups with most meetings
+        interest_groups_rowchart_title: Interest groups with most meetings with this department
         map_title: Where do officials travel?
     interest_groups:
       index:
@@ -40,7 +40,7 @@ en:
         meetings_box_title: Meetings registered
         departments_rowchart_title: Departments with most meetings
         interest_groups_box_title: Interest groups inscribed
-        interest_groups_box_subtitle: or in process
+        interest_groups_box_subtitle: or in registration process
         interest_groups_rowchart_title: Interest groups with most meetings
         people_rowchart_title: Officials with most meetings
         people_box_title: Officials
@@ -48,15 +48,17 @@ en:
         map_title: Where do officials travel?
         gifts: Gifts
         gifts_description: Officials receive gifts as a courtesy from organizations with which they meet. Here is the inventory of what has been received
-        gifts_coc: The Code of Conduct regulates what gifts can be received. Check it out
+        gifts_coc: The Code of Conduct regulates what gifts can be received.
         last_gifts: Last gifts
         invitations: Invitations
         invitations_description: Officials receive invitations to events, to make visits, give lectures... Here is a list of accepted invitations.
-        invitations_coc: The Code of Conduct regulates which invitations can be accepted. Check it out
+        invitations_coc: The Code of Conduct regulates which invitations can be accepted.
         last_invitations: Last invitations
       table_item:
         view_details: View details
     shared:
+      code_of_conduct_link:
+        check_it_out: Check it out
       view_all: View all
       view_open_data_portal: Access the data in the Open Data portal
       open_data_portal_links:
