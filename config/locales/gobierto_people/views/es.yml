@@ -67,6 +67,7 @@ es:
       code_of_conduct_link:
         check_it_out: Consúltalo
       view_all: Ver todo
+      view_details: Ver detalles
       view_open_data_portal: Acceder a los datos en el portal de Datos Abiertos
       open_data_portal_links:
         events:
@@ -77,3 +78,27 @@ es:
           dataset: Invitaciones a viajes, desplazamientos y alojamiento
         trips:
           dataset: Viajes oficiales
+        people:
+          dataset: Altos cargos
+        trips_and_invitations:
+          dataset: Invitaciones viajes, desplazamientos y alojamiento
+        interest_groups:
+          dataset: Grupos de Interés
+        events_with_interest_groups:
+          dataset: Agenda pública con Grupos de Interés
+    people:
+      show:
+        trips_section_title: Viajes realizados por %{person_name}
+        events_section_title: Últimas reuniones
+        trips_section_title: Últimos viajes
+        invitations_section_title: Últimas invitaciones
+        gifts_section_title: Últimos obsequios
+        from: de
+      trip_details:
+        company: Comitiva
+        expenses: Gastos
+      navigation:
+        meetings_box_text: <strong>reuniones con</strong><br> %{count} grupos de interés
+        trips_box_text: viajes realizados
+        invitations_box_text: invitaciones
+        gifts_box_text: obsequios recibidos

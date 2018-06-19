@@ -66,6 +66,7 @@ en:
       code_of_conduct_link:
         check_it_out: Check it out
       view_all: View all
+      view_details: View details
       view_open_data_portal: Access the data in the Open Data portal
       open_data_portal_links:
         events:
@@ -76,3 +77,21 @@ en:
           dataset: Attendance invitations, trips and accommodation
         trips:
           dataset: Interest groups
+        events_with_interest_groups:
+          dataset: Public agenda with Interest Groups
+    people:
+      show:
+        trips_section_title: Trips made by %{person_name}
+        events_section_title: Last meetings
+        trips_section_title: Last trips
+        invitations_section_title: Last invitations
+        gifts_section_title: Last gifts
+        from: from
+      trip_details:
+        company: Trip party
+        expenses: Expenses
+      navigation:
+        meetings_box_text: <strong>meetings with</strong><br> %{count} interest groups
+        trips_box_text: trips made
+        invitations_box_text: invitations
+        gifts_box_text: gifts received

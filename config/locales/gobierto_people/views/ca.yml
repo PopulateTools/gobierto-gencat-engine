@@ -69,6 +69,7 @@ ca:
       code_of_conduct_link:
         check_it_out: 'Consulta-ho'
       view_all: Veure tot
+      view_details: Veure detalls
       view_open_data_portal: Accedeix a les dades al portal de Dades Obertes
       open_data_portal_links:
         events:
@@ -79,3 +80,23 @@ ca:
           dataset: Invitacions a viatges, desplaçaments i allotjaments
         trips:
           dataset: Viatges oficials
+        interest_groups:
+          dataset: Grups d'Interès
+        events_with_interest_groups:
+          dataset: Agenda pública amb grups d'interès
+    people:
+      show:
+        trips_section_title: Viatges realizats per %{person_name}
+        events_section_title: Últimes reunions
+        trips_section_title: Últims viatges
+        invitations_section_title: Últimes invitacions
+        gifts_section_title: Últims obsequis
+        from: de
+      trip_details:
+        company: Comitiva
+        expenses: Despeses
+      navigation:
+        meetings_box_text: <strong>reunions amb</strong><br> %{count} grups d'interès
+        trips_box_text: viatges realitzats
+        invitations_box_text: invitacions
+        gifts_box_text: obsequis rebuts

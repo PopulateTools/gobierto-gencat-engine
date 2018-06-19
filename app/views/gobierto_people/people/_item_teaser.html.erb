@@ -1,0 +1,35 @@
+<li class="table-item">
+
+  <div class="row">
+
+    <div class="<%= meaningful_date_range?(dates) ? 'col-md-8' : 'col-md-10' %>">
+      <p><strong><%= title %></strong></p>
+
+      <% if local_assigns[:description] %>
+        <p><%= truncate(local_assigns[:description], length: 50) %></p>
+      <% end %>
+    </div>
+
+    <% if meaningful_date_range? dates %>
+
+      <div class="col-md-4">
+        <p><%= l(dates.first, format: "%-d/%-m/%Y") %> → <%= l(dates.last, format: "%-d/%-m/%Y") %></p>
+      </div>
+
+    <% else %>
+
+      <div class="col-md-2">
+        <p><%= l(dates.is_a?(Array) ? dates.first : dates, format: "%-d/%-m/%Y") %></p>
+      </div>
+
+    <% end %>
+
+    <div class="pull-right">
+      <%= link_to item_path do %>
+        <small><%= t("gobierto_people.shared.view_details") %></small>
+      <% end %>
+    </div>
+
+  </div>
+
+</li>
