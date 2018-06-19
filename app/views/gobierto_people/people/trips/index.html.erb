@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <figure>
+
+      <figcaption class="mb_20"><%= t(".title", person_name: @person.name) %></figcaption>
+
+      <ul class="color-2 transparent">
+        <% @person_trips.each do |trip| %>
+          <%= render "trip", trip: trip %>
+        <% end %>
+      </ul>
+
+    </figure>
+
+  </div>
+</div>

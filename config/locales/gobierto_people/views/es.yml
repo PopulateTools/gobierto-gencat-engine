@@ -97,6 +97,9 @@ es:
       trip_details:
         company: Comitiva
         expenses: Gastos
+      trips:
+        index:
+          title: Viajes realizados por %{person_name}
       navigation:
         meetings_box_text: <strong>reuniones con</strong><br> %{count} grupos de interés
         trips_box_text: viajes realizados

@@ -90,6 +90,9 @@ en:
       trip_details:
         company: Trip party
         expenses: Expenses
+      trips:
+        index:
+          title: Trips made by %{person_name}
       navigation:
         meetings_box_text: <strong>meetings with</strong><br> %{count} interest groups
         trips_box_text: trips made

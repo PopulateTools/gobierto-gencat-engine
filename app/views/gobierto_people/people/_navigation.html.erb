@@ -1,7 +1,7 @@
 <ul class="toggle-container">
 
   <% unless @person.meetings_with_interest_groups.count.zero? %>
-    <li class="color-1">
+    <li class="color-1 <%= class_if('active', controller_name == 'person_events') %>">
       <%= link_to gobierto_people_person_events_path(@person.slug) do %>
         <h1 class="h1"><%= @person.meetings_with_interest_groups.count %></h1>
         <div><%= t(".meetings_box_text", count: @person.interest_groups_count).html_safe %></div>
@@ -10,7 +10,7 @@
   <% end %>
 
   <% unless @person.trips.count.zero? %>
-    <li class="color-2">
+    <li class="color-2 <%= class_if('active', controller_name == 'trips') %>">
       <%= link_to gobierto_people_person_trips_path(@person.slug) do %>
         <h1 class="h1"><%= @person.trips.count %></h1>
         <div><strong><%= t(".trips_box_text") %></strong></div>
@@ -19,7 +19,7 @@
   <% end %>
 
   <% unless @person.invitations.count.zero? %>
-    <li class="color-3">
+    <li class="color-3 <%= class_if('active', controller_name == 'invitations') %>">
       <%= link_to gobierto_people_person_invitations_path(@person.slug) do %>
         <h1 class="h1"><%= @person.invitations.count %></h1>
         <div><strong><%= t(".invitations_box_text") %></strong></div>
@@ -28,7 +28,7 @@
   <% end %>
 
   <% unless @person.received_gifts.count.zero? %>
-    <li class="color-1">
+    <li class="color-1 <%= class_if('active', controller_name == 'gifts') %>">
       <%= link_to gobierto_people_person_gifts_path(@person.slug) do %>
         <h1 class="h1"><%= @person.received_gifts.count %></h1>
         <div><strong><%= t(".gifts_box_text") %></strong></div>

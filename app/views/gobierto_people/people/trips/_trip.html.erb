@@ -1,0 +1,55 @@
+<li class="table-item" id="trip-<%= trip.id %>">
+
+  <div class="row">
+    <div class="col-md-8">
+      <p><%= trip.original_destinations_attribute %></p>
+      <p><%= trip.purpose %></p>
+    </div>
+
+    <div class="col-md-2 <%= class_if('pull-right', !meaningful_date_range?(trip.duration_dates)) %>">
+      <p><%= trip.formatted_start_date %></p>
+    </div>
+
+    <% if meaningful_date_range? trip.duration_dates %>
+      →
+      <div class="col-md-2">
+        <p><%= trip.formatted_end_date %></p>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <p><%= trip.description %></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <% if trip.company_members.any? %>
+        <div class="col-md-6">
+          <div class="row"><%= t(".company") %></div>
+          <% trip.company_members.each do |member| %>
+            <div class="row"><%= member %></div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="col-md-6">
+        <div class="row"><%= t(".expenses") %></div>
+        <% trip.expenses.each do |expense| %>
+          <% unless expense[:amount].zero? %>
+            <div class="row">
+              <div class="col-md-6"><%= expense[:kind] %></div>
+              <div class="col-md-6"><%= expense[:amount] %></div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+
+</li>

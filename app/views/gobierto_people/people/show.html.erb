@@ -30,7 +30,7 @@
                         "item_teaser",
                         title: event.title,
                         description: event.description,
-                        item_path: gobierto_people_person_events_path(@person.slug, anchor: event.id),
+                        item_path: gobierto_people_person_events_path(@person.slug, anchor: "event-#{event.id}"),
                         dates: [event.starts_at, event.ends_at]
                       ) %>
                 <% end %>
@@ -56,7 +56,7 @@
                   <%= render(
                         "item_teaser",
                         title: trip.original_destinations_attribute,
-                        item_path: gobierto_people_person_trips_path(@person.slug, anchor: trip.id),
+                        item_path: gobierto_people_person_trips_path(@person.slug, anchor: "trip-#{trip.id}"),
                         dates: [trip.start_date, trip.end_date]
                     ) %>
                 <% end %>
@@ -82,7 +82,7 @@
                   <%= render(
                         "item_teaser",
                         title: invitation.title,
-                        item_path: gobierto_people_person_invitations_path(@person.slug, anchor: invitation.id),
+                        item_path: gobierto_people_person_invitations_path(@person.slug, anchor: "invitation-#{invitation.id}"),
                         dates: [invitation.start_date, invitation.end_date]
                     ) %>
                 <% end %>
@@ -109,7 +109,7 @@
                         "item_teaser",
                         title: gift.name,
                         description: "#{t('.from')}: #{gift.delivered_by}",
-                        item_path: gobierto_people_person_gifts_path(@person.slug, anchor: gift.id),
+                        item_path: gobierto_people_person_gifts_path(@person.slug, anchor: "gift-#{gift.id}"),
                         dates: gift.date
                     ) %>
                 <% end %>
