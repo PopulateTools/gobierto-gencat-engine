@@ -93,13 +93,17 @@ es:
         trips_section_title: Últimos viajes
         invitations_section_title: Últimas invitaciones
         gifts_section_title: Últimos obsequios
-        from: de
       trip_details:
         company: Comitiva
         expenses: Gastos
       trips:
         index:
           title: Viajes realizados por %{person_name}
+      gifts:
+        index:
+          title: Obsequios recibidos por %{person_name}
+        gift:
+          from: de
       navigation:
         meetings_box_text: <strong>reuniones con</strong><br> %{count} grupos de interés
         trips_box_text: viajes realizados

@@ -26,13 +26,7 @@
               <figcaption class="mb_20"><%= t(".events_section_title") %></figcaption>
               <ul class="color-1 transparent">
                 <% @last_events.each do |event| %>
-                  <%= render(
-                        "item_teaser",
-                        title: event.interest_group.name,
-                        description: event.title,
-                        item_path: gobierto_people_person_past_events_path(@person.slug, anchor: "event-#{event.id}"),
-                        dates: [event.starts_at, event.ends_at]
-                      ) %>
+                  <%= render "gobierto_people/people/person_events/event", event: event %>
                 <% end %>
               </ul>
 
@@ -105,13 +99,7 @@
               <figcaption class="mb_20"><%= t(".gifts_section_title") %></figcaption>
               <ul class="color-1 transparent">
                 <% @last_gifts.each do |gift| %>
-                  <%= render(
-                        "item_teaser",
-                        title: gift.name,
-                        description: "#{t('.from')}: #{gift.delivered_by}",
-                        item_path: gobierto_people_person_gifts_path(@person.slug, anchor: "gift-#{gift.id}"),
-                        dates: gift.date
-                    ) %>
+                  <%= render "gobierto_people/people/gifts/gift", gift: gift %>
                 <% end %>
               </ul>
 

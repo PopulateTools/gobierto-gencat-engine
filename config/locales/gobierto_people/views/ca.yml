@@ -91,13 +91,17 @@ ca:
         trips_section_title: Últims viatges
         invitations_section_title: Últimes invitacions
         gifts_section_title: Últims obsequis
-        from: de
       trip_details:
         company: Comitiva
         expenses: Despeses
       trips:
         index:
           title: Viatges realitzats per %{person_name}
+      gifts:
+        index:
+          title: Obsequis rebuts per %{person_name}
+        gift:
+          from: de
       navigation:
         meetings_box_text: <strong>reunions amb</strong><br> %{count} grups d'interès
         trips_box_text: viatges realitzats
