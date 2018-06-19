@@ -24,11 +24,13 @@
 
     <% end %>
 
-    <div class="pull-right">
-      <%= link_to item_path do %>
-        <small><%= t("gobierto_people.shared.view_details") %></small>
-      <% end %>
-    </div>
+    <% if local_assigns[:item_path] %>
+      <div class="pull-right">
+        <%= link_to item_path do %>
+          <small><%= t("gobierto_people.shared.view_details") %></small>
+        <% end %>
+      </div>
+    <% end %>
 
   </div>
 

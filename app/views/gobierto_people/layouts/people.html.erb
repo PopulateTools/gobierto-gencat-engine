@@ -9,7 +9,9 @@
     </section>
 
     <section>
-      <h3 class="h3 text-left"><%= @person.name %></h3>
+      <h3 class="h3 text-left">
+        <%= link_to @person.name, gobierto_people_person_path(@person.slug) %>
+      </h3>
       <p><%= @person.charge %></p>
     </section>
 

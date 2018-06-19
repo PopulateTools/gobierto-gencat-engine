@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <figure>
+
+      <figcaption class="mb_20"><%= t(".title", person_name: @person.name) %></figcaption>
+
+      <ul class="color-1 transparent">
+        <% @events.each do |event| %>
+          <%= render(
+                "gobierto_people/people/item_teaser",
+                title: event.interest_group.name,
+                description: event.title,
+                dates: [event.starts_at, event.ends_at]
+              ) %>
+        <% end %>
+      </ul>
+
+    </figure>
+
+  </div>
+</div>
