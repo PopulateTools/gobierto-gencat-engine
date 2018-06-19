@@ -10,12 +10,12 @@ ca:
           (empreses, fundacions, associacions ...) que es reuneixen amb càrrecs de
           la Generalitat.
         events: reunions registrades
-        events_by_department: Reunions per departament
+        events_by_department: Reunions per departaments
         events_by_department_and_month: Reunions per departament i mes
         explore_departments: Explora els Departaments i els seus Alts Càrrecs
         explore_people: Consulta les agendes dels Alts Càrrecs
         open_data_web_portal: Accedeix a les dades al portal de Dades Obertes
-        people_by_department: Alts càrrecs amb reunions per departament
+        people_by_department: Alts càrrecs amb reunions per departaments
         people_events: Alts càrrecs amb més reunions
         people_with_events: alts càrrecs amb reunions registrades
         view_all: Veure tot
