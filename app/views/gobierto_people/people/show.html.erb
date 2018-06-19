@@ -73,12 +73,7 @@
               <figcaption class="mb_20"><%= t(".invitations_section_title") %></figcaption>
               <ul class="color-3 transparent">
                 <% @last_invitations.each do |invitation| %>
-                  <%= render(
-                        "item_teaser",
-                        title: invitation.title,
-                        item_path: gobierto_people_person_invitations_path(@person.slug, anchor: "invitation-#{invitation.id}"),
-                        dates: [invitation.start_date, invitation.end_date]
-                    ) %>
+                  <%= render "gobierto_people/people/invitations/invitation", invitation: invitation %>
                 <% end %>
               </ul>
 

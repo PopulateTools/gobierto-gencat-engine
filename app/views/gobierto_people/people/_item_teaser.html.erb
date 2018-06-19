@@ -5,8 +5,8 @@
     <div class="<%= meaningful_date_range?(dates) ? 'col-md-8' : 'col-md-10' %>">
       <p><strong><%= title %></strong></p>
 
-      <% if local_assigns[:description] %>
-        <p><%= truncate(local_assigns[:description], length: 50) %></p>
+      <% if local_assigns[:subtitle] %>
+        <p><%= truncate(subtitle, length: 50) %></p>
       <% end %>
     </div>
 

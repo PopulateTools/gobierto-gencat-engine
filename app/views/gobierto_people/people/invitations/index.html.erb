@@ -5,9 +5,9 @@
 
       <figcaption class="mb_20"><%= t(".title", person_name: @person.name) %></figcaption>
 
-      <ul class="color-1 transparent">
-        <% @person_gifts.each do |gift| %>
-          <%= render "gift", gift: gift %>
+      <ul class="color-3 transparent">
+        <% @person_invitations.each do |invitation| %>
+          <%= render "invitation", invitation: invitation %>
         <% end %>
       </ul>
 

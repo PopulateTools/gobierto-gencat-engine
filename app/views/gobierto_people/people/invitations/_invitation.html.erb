@@ -1,0 +1,7 @@
+<%= render(
+      "gobierto_people/people/item_teaser",
+      title: invitation.organizer,
+      subtitle: invitation.title,
+      item_path: gobierto_people_person_invitations_path(@person.slug, anchor: "invitation-#{invitation.id}"),
+      dates: [invitation.start_date, invitation.end_date]
+    ) %>

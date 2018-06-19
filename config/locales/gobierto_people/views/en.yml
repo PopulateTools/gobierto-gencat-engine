@@ -97,6 +97,9 @@ en:
           title: Gifts received by %{person_name}
         gift:
           from: from
+      invitations:
+        index:
+          title: Invitations received by %{person_name}
       navigation:
         meetings_box_text: <strong>meetings with</strong><br> %{count} interest groups
         trips_box_text: trips made
