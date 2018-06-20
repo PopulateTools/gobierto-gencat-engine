@@ -31,7 +31,7 @@
               </ul>
 
               <div class="pd-15">
-                <%= link_to gobierto_people_person_past_events_path(@person.slug), class: "show-more color-1" do %>
+                <%= link_to gobierto_people_person_past_events_path(@person.slug, page: false), class: "show-more color-1" do %>
                   <small><%= t("gobierto_people.shared.view_all") %></small>
                 <% end %>
               </div>

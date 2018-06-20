@@ -25,7 +25,7 @@ module GobiertoPeople
 
     def test_index
       with_current_site(site) do
-        visit gobierto_people_person_past_events_path(person.slug)
+        visit gobierto_people_person_past_events_path(person.slug, page: false)
 
         assert has_content? "#{person.name}'s agenda"
         assert has_content? event.title

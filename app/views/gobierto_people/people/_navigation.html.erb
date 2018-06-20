@@ -2,7 +2,7 @@
 
   <% unless @person.meetings_with_interest_groups.count.zero? %>
     <li class="color-1 <%= class_if('active', controller_name == 'person_events') %>">
-      <%= link_to gobierto_people_person_past_events_path(@person.slug) do %>
+      <%= link_to gobierto_people_person_past_events_path(@person.slug, page: false) do %>
         <h1 class="h1"><%= @person.meetings_with_interest_groups.count %></h1>
         <div><%= t(".meetings_box_text", count: @person.interest_groups_count).html_safe %></div>
       <% end %>
