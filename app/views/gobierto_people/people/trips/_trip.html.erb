@@ -6,11 +6,11 @@
       <p><%= trip.purpose %></p>
     </div>
 
-    <div class="col-md-2 <%= class_if('pull-right', !meaningful_date_range?(trip.duration_dates)) %>">
+    <div class="col-md-2 <%= class_if('pull-right', !meaningful_date_range?(trip.duration_dates, only_date: true)) %>">
       <p><%= trip.formatted_start_date %></p>
     </div>
 
-    <% if meaningful_date_range? trip.duration_dates %>
+    <% if meaningful_date_range?(trip.duration_dates, only_date: true) %>
       →
       <div class="col-md-2">
         <p><%= trip.formatted_end_date %></p>
