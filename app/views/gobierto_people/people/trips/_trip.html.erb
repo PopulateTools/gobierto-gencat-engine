@@ -28,24 +28,33 @@
   <div class="row">
     <div class="col-md-12">
 
-      <% if trip.company_members.any? %>
-        <div class="col-md-6">
-          <div class="row"><%= t(".company") %></div>
+      <div class="col-md-6">
+        <div class="row"><strong><%= t(".company") %></strong></div>
+
+        <% if trip.company_members.any? %>
           <% trip.company_members.each do |member| %>
             <div class="row"><%= member %></div>
           <% end %>
-        </div>
-      <% end %>
+        <% else %>
+          -
+        <% end %>
+      </div>
+
 
       <div class="col-md-6">
-        <div class="row"><%= t(".expenses") %></div>
-        <% trip.expenses.each do |expense| %>
-          <% unless expense[:amount].zero? %>
-            <div class="row">
-              <div class="col-md-6"><%= expense[:kind] %></div>
-              <div class="col-md-6"><%= expense[:amount] %></div>
-            </div>
+        <div class="row"><strong><%= t(".expenses") %></strong></div>
+
+        <% if trip.expenses.any? %>
+          <% trip.expenses.each do |expense| %>
+            <% unless expense[:amount].zero? %>
+              <div class="row">
+                <div class="col-md-6"><%= expense[:kind] %></div>
+                <div class="col-md-6"><strong><%= number_with_delimiter(expense[:amount]) %></strong></div>
+              </div>
+            <% end %>
           <% end %>
+        <% else %>
+          -
         <% end %>
       </div>
 
