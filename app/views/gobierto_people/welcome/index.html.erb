@@ -103,6 +103,10 @@
                   "table_item",
                   title: gift.name,
                   resource: gift,
+                  resource_path: gobierto_people_person_gifts_path(
+                    gift.person.slug,
+                    anchor: gift.to_anchor
+                  ),
                   display_date: gift.date
                 ) %>
           <% end %>
@@ -133,6 +137,10 @@
                   "table_item",
                   title: invitation.title,
                   resource: invitation,
+                  resource_path: gobierto_people_person_invitations_path(
+                    invitation.person.slug,
+                    anchor: invitation.to_anchor
+                  ),
                   display_date_range: [invitation.start_date, invitation.end_date]
                 ) %>
           <% end %>

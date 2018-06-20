@@ -2,6 +2,6 @@
       "gobierto_people/people/item_teaser",
       title: gift.name,
       subtitle: "#{t('.from')}: #{gift.delivered_by}",
-      item_path: gobierto_people_person_gifts_path(@person.slug, anchor: "gift-#{gift.id}"),
+      id: gift.to_anchor,
       dates: gift.date
     ) %>
