@@ -6,9 +6,13 @@
       <figcaption class="mb_20"><%= t(".title", person_name: @person.name) %></figcaption>
 
       <ul class="color-3 transparent">
-        <% @person_invitations.each do |invitation| %>
-          <%= render "invitation", invitation: invitation %>
+
+        <% cache "site-#{current_site.id}-person-#{@person.id}-invitations" do %>
+          <% @person_invitations.each do |invitation| %>
+            <%= render "invitation", invitation: invitation %>
+          <% end %>
         <% end %>
+
       </ul>
 
     </figure>
