@@ -3,5 +3,6 @@
       title: invitation.organizer,
       subtitle: invitation.title,
       id: invitation.to_anchor,
-      dates: [invitation.start_date, invitation.end_date]
+      dates: [invitation.start_date, invitation.end_date],
+      item_details_path: local_assigns[:teaser] ? gobierto_people_person_invitations_path(invitation.person.slug, anchor: invitation.to_anchor) : nil
     ) %>

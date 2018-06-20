@@ -3,5 +3,6 @@
       title: event.interest_group.name,
       subtitle: event.title,
       id: event.to_anchor,
-      dates: [event.starts_at, event.ends_at]
+      dates: [event.starts_at, event.ends_at],
+      item_details_path: local_assigns[:teaser] ? gobierto_people_person_past_events_path(event.collection.container.slug, anchor: event.to_anchor) : nil
     ) %>

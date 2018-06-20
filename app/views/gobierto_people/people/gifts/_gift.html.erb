@@ -3,5 +3,6 @@
       title: gift.name,
       subtitle: "#{t('.from')}: #{gift.delivered_by}",
       id: gift.to_anchor,
-      dates: gift.date
+      dates: gift.date,
+      item_details_path: local_assigns[:teaser] ? gobierto_people_person_gifts_path(gift.person.slug, anchor: gift.to_anchor) : nil
     ) %>
