@@ -5,6 +5,12 @@ window.GobiertoPeople.GencatInterestGroupsController = (function() {
 
   function GencatInterestGroupsController() {}
 
+  GencatInterestGroupsController.prototype.index = function(options) {
+    $(document).on('turbolinks:load', function() {
+      _loadRowchart('#interest_groups_events_rowchart', options.interest_groups_events_rowchart_api_path)
+    });
+  };
+
   GencatInterestGroupsController.prototype.show = function(options) {
     $(document).on('turbolinks:load', function() {
       _loadRowchart('#departments_events_rowchart', options.departments_events_rowchart_api_path)
