@@ -92,7 +92,7 @@ ca:
         index:
           title: Invitacions rebudes per %{person_name}
       navigation:
-        meeting_with: reunion amb
+        meeting_with: reunió amb
         meetings_with: reunions amb
         interest_group: grup d'interès
         interest_groups: grups d'interès
