@@ -4,7 +4,11 @@
     <li class="color-1 <%= class_if('active', controller_name == 'person_events') %>">
       <%= link_to gobierto_people_person_past_events_path(@person.slug, page: false) do %>
         <h1 class="h1"><%= @person.meetings_with_interest_groups.count %></h1>
-        <div><%= t(".meetings_box_text", count: @person.interest_groups_count).html_safe %></div>
+        <div>
+          <strong>
+            <%= simple_pluralize(@person.meetings_with_interest_groups.count, t(".meeting_with"), t(".meetings_with")) %>
+          </strong><br> <%= pluralize(@person.interest_groups_count, t(".interest_group"), t(".interest_groups")) %>
+        </div>
       <% end %>
     </li>
   <% end %>
@@ -13,7 +17,7 @@
     <li class="color-2 <%= class_if('active', controller_name == 'trips') %>">
       <%= link_to gobierto_people_person_trips_path(@person.slug) do %>
         <h1 class="h1"><%= @person.trips.count %></h1>
-        <div><strong><%= t(".trips_box_text") %></strong></div>
+        <div><strong><%= simple_pluralize(@person.trips.count, t(".trip_made"), t(".trips_made")) %></strong></div>
       <% end %>
     </li>
   <% end %>
@@ -22,7 +26,7 @@
     <li class="color-3 <%= class_if('active', controller_name == 'invitations') %>">
       <%= link_to gobierto_people_person_invitations_path(@person.slug) do %>
         <h1 class="h1"><%= @person.invitations.count %></h1>
-        <div><strong><%= t(".invitations_box_text") %></strong></div>
+        <div><strong><%= simple_pluralize(@person.invitations.count, t(".invitation"), t(".invitations")) %></strong></div>
       <% end %>
     </li>
   <% end %>
@@ -31,7 +35,7 @@
     <li class="color-4 <%= class_if('active', controller_name == 'gifts') %>">
       <%= link_to gobierto_people_person_gifts_path(@person.slug) do %>
         <h1 class="h1"><%= @person.received_gifts.count %></h1>
-        <div><strong><%= t(".gifts_box_text") %></strong></div>
+        <div><strong><%= simple_pluralize(@person.received_gifts.count, t(".gift_received"), t(".gifts_received")) %></strong></div>
       <% end %>
     </li>
   <% end %>

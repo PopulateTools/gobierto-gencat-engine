@@ -92,7 +92,13 @@ ca:
         index:
           title: Invitacions rebudes per %{person_name}
       navigation:
-        meetings_box_text: <strong>reunions amb</strong><br> %{count} grups d'interès
-        trips_box_text: viatges realitzats
-        invitations_box_text: invitacions
-        gifts_box_text: obsequis rebuts
+        meeting_with: reunion amb
+        meetings_with: reunions amb
+        interest_group: grup d'interès
+        interest_groups: grups d'interès
+        trip_made: viatge realitzat
+        trips_made: viatges realitzats
+        invitation: invitacion
+        invitations: invitacions
+        gift_received: obsequi rebut
+        gifts_received: obsequis rebuts

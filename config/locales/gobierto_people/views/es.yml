@@ -90,7 +90,13 @@ es:
         index:
           title: Invitaciones recibidas por %{person_name}
       navigation:
-        meetings_box_text: <strong>reuniones con</strong><br> %{count} grupos de interés
-        trips_box_text: viajes realizados
-        invitations_box_text: invitaciones
-        gifts_box_text: obsequios recibidos
+        meeting_with: reunione con
+        meetings_with: reuniones con
+        interest_group: grupo de interés
+        interest_groups: grupos de interés
+        trip_made: viaje realizado
+        trips_made: viajes realizados
+        invitation: invitación
+        invitations: invitaciones
+        gift_received: obsequio recibido
+        gifts_received: obsequios recibidos
