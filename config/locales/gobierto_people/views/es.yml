@@ -16,7 +16,6 @@ es:
         people_by_department: Altos cargos con reuniones por departamento
         people_events: Altos cargos con más reuniones en departamentos
         people_with_events: altos cargos con reuniones registradas
-        view_all: Ver todos
       show:
         people_box_title: altos cargos de este departamento
         people_box_subtitle: con reuniones registradas
@@ -39,7 +38,6 @@ es:
         people_with_events: el número de Altos Cargos con los que se ha reunido este
           grupo
         status: "Situación de inscripción en el registro de grupos de interés: %{status}"
-        view_all: Ver todos
     welcome:
       index:
         title: Consulta con quién se reúne cada alto cargo de la Generalitat, las empresas y organizaciones que solicitan reuniones, y los viajes y obsequios recibidos
@@ -66,7 +64,7 @@ es:
     shared:
       code_of_conduct_link:
         check_it_out: Consúltalo
-      view_all: Ver todo
+      view_all: Ver todos
       view_details: Ver detalles
       view_open_data_portal: Acceder a los datos en el portal de Datos Abiertos
       open_data_portal_links:
@@ -93,12 +91,12 @@ es:
         trips_section_title: Últimos viajes
         invitations_section_title: Últimas invitaciones
         gifts_section_title: Últimos obsequios
-      trip_details:
-        company: Comitiva
-        expenses: Gastos
       trips:
         index:
           title: Viajes realizados por %{person_name}
+        trip:
+          company: Comitiva
+          expenses: Gastos
       gifts:
         index:
           title: Obsequios recibidos por %{person_name}

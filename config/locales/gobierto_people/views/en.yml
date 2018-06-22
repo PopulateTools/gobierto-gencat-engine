@@ -16,7 +16,6 @@ en:
         people_by_department: Officials with events by department
         people_events: Officials with more events
         people_with_events: officials with registered events
-        view_all: View all
       show:
         people_box_title: officials in this department
         people_box_subtitle: with meetings registered
@@ -38,7 +37,6 @@ en:
         explore_people: Explore the agendas of Officials
         people_with_events: the number of Officials with which this group has met
         status: "Inscription status in interest groups registry: %{status}"
-        view_all: View all
     welcome:
       index:
         title: Check with whom meets each Official in the Generalitat, companies and organizations that request meetings, and the trips and gifts received
@@ -86,12 +84,12 @@ en:
         trips_section_title: Last trips
         invitations_section_title: Last invitations
         gifts_section_title: Last gifts
-      trip_details:
-        company: Trip party
-        expenses: Expenses
       trips:
         index:
           title: Trips made by %{person_name}
+        trip:
+          company: Trip party
+          expenses: Expenses
       gifts:
         index:
           title: Gifts received by %{person_name}

@@ -18,7 +18,6 @@ ca:
         people_by_department: Alts càrrecs amb reunions per departaments
         people_events: Alts càrrecs amb més reunions
         people_with_events: alts càrrecs amb reunions registrades
-        view_all: Veure tot
       show:
         people_box_title: alts càrrecs d'aquest departament
         people_box_subtitle: amb reunions registrades
@@ -41,7 +40,6 @@ ca:
         people_with_events: el nombre de Alts Càrrecs amb els quals s'ha reunit aquest
           grup
         status: "Situació inscripció registre grup interès: %{status}"
-        view_all: Veure tot
     welcome:
       index:
         title: Consulta amb qui es reuneix cada alt càrrec de la Generalitat, les empreses i organitzacions que sol·liciten reunions, i els viatges i obsequis rebuts
@@ -91,12 +89,12 @@ ca:
         trips_section_title: Últims viatges
         invitations_section_title: Últimes invitacions
         gifts_section_title: Últims obsequis
-      trip_details:
-        company: Comitiva
-        expenses: Despeses
       trips:
         index:
           title: Viatges realitzats per %{person_name}
+        trip:
+          company: Comitiva
+          expenses: Despeses
       gifts:
         index:
           title: Obsequis rebuts per %{person_name}
