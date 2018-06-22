@@ -97,7 +97,7 @@
 
       <figure>
         <figcaption class="mb_20"><%= t(".last_gifts") %></figcaption>
-        <ul class="color-3 transparent">
+        <ul class="color-4 transparent">
           <% @gifts.each do |gift| %>
             <%= render(
                   "table_item",
@@ -114,7 +114,7 @@
       </figure>
 
       <div class="pd-15">
-        <%= link_to gobierto_people_gifts_path, class: "show-more color-3", data: { turbolinks: false } do %>
+        <%= link_to gobierto_people_gifts_path, class: "show-more color-4", data: { turbolinks: false } do %>
           <small><%= t("gobierto_people.shared.view_all") %></small>
         <% end %>
       </div>

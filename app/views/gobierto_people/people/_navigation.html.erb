@@ -28,7 +28,7 @@
   <% end %>
 
   <% unless @person.received_gifts.count.zero? %>
-    <li class="color-1 <%= class_if('active', controller_name == 'gifts') %>">
+    <li class="color-4 <%= class_if('active', controller_name == 'gifts') %>">
       <%= link_to gobierto_people_person_gifts_path(@person.slug) do %>
         <h1 class="h1"><%= @person.received_gifts.count %></h1>
         <div><strong><%= t(".gifts_box_text") %></strong></div>

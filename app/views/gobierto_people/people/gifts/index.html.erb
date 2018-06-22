@@ -5,7 +5,7 @@
 
       <figcaption class="mb_20"><%= t(".title", person_name: @person.name) %></figcaption>
 
-      <ul class="color-1 transparent">
+      <ul class="color-4 transparent">
         <% cache "site-#{current_site.id}-person-#{@person.id}-gifts" do %>
           <% @person_gifts.each do |gift| %>
             <%= render "gift", gift: gift %>
