@@ -11,11 +11,8 @@ ca:
           la Generalitat.
         events: reunions registrades
         events_by_department: Reunions per departaments
-        events_by_department_and_month: Reunions per departament i mes
         explore_departments: Explora els Departaments i els seus Alts Càrrecs
         explore_people: Consulta les agendes dels Alts Càrrecs
-        open_data_web_portal: Accedeix a les dades al portal de Dades Obertes
-        people_by_department: Alts càrrecs amb reunions per departaments
         people_events: Alts càrrecs amb més reunions
         people_with_events: alts càrrecs amb reunions registrades
       show:
@@ -29,7 +26,6 @@ ca:
         punchcard_title: Reunions per alt càrrec i mes
     interest_groups:
       index:
-        events_by_interest_group: Grups d'interès amb més reunions
         interest_groups: grups d'interès inscrits
       show:
         events: reunions registrades
@@ -68,20 +64,12 @@ ca:
         check_it_out: 'Consulta-ho'
       view_all: Veure tot
       view_details: Veure detalls
-      view_open_data_portal: Accedeix a les dades al portal de Dades Obertes
-      open_data_portal_links:
-        events:
-          dataset: Agenda pública amb grups d'interès
-        gifts:
-          dataset: Obsequis
-        invitations:
-          dataset: Invitacions a viatges, desplaçaments i allotjaments
-        trips:
-          dataset: Viatges oficials
-        interest_groups:
-          dataset: Grups d'Interès
-        events_with_interest_groups:
-          dataset: Agenda pública amb grups d'interès
+      open_data_footer:
+        title: Accedeix a les dades al portal de Dades Obertes
+        meetings: Reunions
+        gifts: Obsequis
+        invitations: Invitacions
+        trips: Viatges
     people:
       show:
         trips_section_title: Viatges realizats per %{person_name}

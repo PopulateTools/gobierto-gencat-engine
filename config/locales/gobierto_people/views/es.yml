@@ -9,11 +9,8 @@ es:
           (empresas, fundaciones, asociaciones…) que se reunen con cargos de la Generalitat.
         events: reuniones registradas
         events_by_department: Reuniones por departamentos
-        events_by_department_and_month: Reuniones por departamento y mes
         explore_departments: Explora los Departamentos y sus Altos Cargos
         explore_people: Consulta las agendas de los Altos Cargos
-        open_data_web_portal: Accede a los datos en el portal de Datos Abiertos
-        people_by_department: Altos cargos con reuniones por departamento
         people_events: Altos cargos con más reuniones en departamentos
         people_with_events: altos cargos con reuniones registradas
       show:
@@ -27,7 +24,6 @@ es:
         punchcard_title: Reuniones por alto cargo y mes
     interest_groups:
       index:
-        events_by_interest_group: Grupos de interés con más reuniones
         interest_groups: grupos de interés inscritos
       show:
         events: reuniones registradas
@@ -66,24 +62,12 @@ es:
         check_it_out: Consúltalo
       view_all: Ver todos
       view_details: Ver detalles
-      view_open_data_portal: Acceder a los datos en el portal de Datos Abiertos
-      open_data_portal_links:
-        events:
-          dataset: Agenda pública con Grupos de Interés
-        gifts:
-          dataset: Obsequios
-        invitations:
-          dataset: Invitaciones a viajes, desplazamientos y alojamiento
-        trips:
-          dataset: Viajes oficiales
-        people:
-          dataset: Altos cargos
-        trips_and_invitations:
-          dataset: Invitaciones viajes, desplazamientos y alojamiento
-        interest_groups:
-          dataset: Grupos de Interés
-        events_with_interest_groups:
-          dataset: Agenda pública con Grupos de Interés
+      open_data_footer:
+        title: Acceder a los datos en el portal de Datos Abiertos
+        meetings: Reuniones
+        gifts: Obsequios
+        invitations: Invitaciones
+        trips: Viajes
     people:
       show:
         trips_section_title: Viajes realizados por %{person_name}

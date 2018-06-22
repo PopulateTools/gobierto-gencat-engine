@@ -9,11 +9,8 @@ en:
           foundations, associations ...) that meet with officials of Generalitat.
         events: registered events
         events_by_department: Events by departments
-        events_by_department_and_month: Events by departments and month
         explore_departments: Explore Departments and Officials
         explore_people: Explore the agendas of Officials
-        open_data_web_portal: Access data from the Open Data web portal
-        people_by_department: Officials with events by department
         people_events: Officials with more events
         people_with_events: officials with registered events
       show:
@@ -27,7 +24,6 @@ en:
         punchcard_title: Meetings per official and month
     interest_groups:
       index:
-        events_by_interest_group: Interest groups with more events
         interest_groups: registered interest groups
       show:
         events: registered events
@@ -65,18 +61,12 @@ en:
         check_it_out: Check it out
       view_all: View all
       view_details: View details
-      view_open_data_portal: Access the data in the Open Data portal
-      open_data_portal_links:
-        events:
-          dataset: Public agenda with Interest Groups
-        gifts:
-          dataset: Gifts
-        invitations:
-          dataset: Attendance invitations, trips and accommodation
-        trips:
-          dataset: Interest groups
-        events_with_interest_groups:
-          dataset: Public agenda with Interest Groups
+      open_data_footer:
+        title: Access the data in the Open Data portal
+        meetings: Meetings
+        gifts: Gifts
+        invitations: Invitations
+        trips: Trips
     people:
       show:
         trips_section_title: Trips made by %{person_name}
