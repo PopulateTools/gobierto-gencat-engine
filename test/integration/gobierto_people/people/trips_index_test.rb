@@ -14,8 +14,12 @@ module GobiertoPeople
       @person ||= gobierto_people_people(:richard)
     end
 
-    def trip
-      @trip ||= gobierto_people_trips(:richard_multiple_destinations)
+    def recent_trip
+      @recent_trip ||= gobierto_people_trips(:richard_multiple_destinations_recent)
+    end
+
+    def old_trip
+      @old_trip ||= gobierto_people_trips(:richard_single_destination_old)
     end
 
     def test_index
@@ -23,7 +27,11 @@ module GobiertoPeople
         visit gobierto_people_person_trips_path(person.slug)
 
         assert has_content? "Trips made by #{person.name}"
-        assert has_content? trip.title
+
+        assert has_content? recent_trip.title
+        assert has_content? old_trip.title
+
+        assert ordered_elements(page, [recent_trip.title, old_trip.title])
       end
     end
 

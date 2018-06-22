@@ -27,7 +27,7 @@ module GobiertoPeople
     end
 
     def invitation
-      @invitation ||= gobierto_people_invitations(:richard_paris_invitation)
+      @invitation ||= gobierto_people_invitations(:richard_paris_invitation_recent)
     end
 
     def setup
