@@ -90,7 +90,7 @@ es:
         index:
           title: Invitaciones recibidas por %{person_name}
       navigation:
-        meeting_with: reunione con
+        meeting_with: reunión con
         meetings_with: reuniones con
         interest_group: grupo de interés
         interest_groups: grupos de interés
