@@ -10,54 +10,61 @@
     <p><%== t(".description") %></p>
   </section>
 
-  <section class="row">
+  <section>
+    <div class="fpca_distribuidora pd-30">
+      <div class="llistat_destacat_text_avancat">
+        <div class="llistat_col-lg-3 nova-altura-dist">
 
-    <div class="col-md-5">
-      <div class="box color-1">
-        <div>
-          <h1><%= number_with_delimiter(@total_events) %></h1>
-          <h5>
-            <div><strong><%= t(".events") %></strong></div>
-          </h5>
-        </div>
-      </div>
+          <div class="corrector-margins col-md-5">
+            <div class="box color-1 distribuidora-nova-3">
 
-      <div class="rowchart-component">
-        <div class="margin_top_xs">
-          <p><%= t(".events_by_department") %></p>
-          <div id="departments_events_rowchart" class="rowchart color-1"></div>
-        </div>
+              <div class="color-decorator">
+                <h1><%= number_with_delimiter(@total_events) %></h1>
+                <h5>
+                  <div><strong><%= t(".events") %></strong></div>
+                </h5>
+              </div>
 
-        <div class="margin_top_xs js-reload-rowchart-wrapper">
-          <p><%= t(".explore_departments") %></p>
-          <%= link_to "#", class: "show-more color-1" do %>
-            <small><%= t("gobierto_people.shared.view_all") %></small>
-          <% end %>
-        </div>
-      </div>
-    </div>
+              <div class="margin_top_xs">
+                <span><%= t(".events_by_department") %></span>
+                <div id="departments_events_rowchart" class="rowchart"></div>
+              </div>
 
-    <div class="col-md-5 col-md-offset-2">
-      <div class="box color-3">
-        <div>
-          <h1><%= number_with_delimiter(@total_people) %></h1>
-          <h5>
-            <div><strong><%= t(".people_with_events") %></strong></div>
-          </h5>
-        </div>
-      </div>
+            </div>
 
-      <div class="rowchart-component">
-        <div class="margin_top_xs">
-          <p><%= t(".people_events") %></p>
-          <div id="people_events_rowchart" class="rowchart color-3"></div>
-        </div>
+            <div class="margin_top_xs js-reload-rowchart-wrapper">
+              <p><%= t(".explore_departments") %></p>
+              <%= link_to "#", class: "show-more color-1" do %>
+                <small><%= t("gobierto_people.shared.view_all") %></small>
+              <% end %>
+            </div>
+          </div>
 
-        <div class="margin_top_xs js-reload-rowchart-wrapper">
-          <p><%= t(".explore_people") %></p>
-          <%= link_to "#", class: "show-more color-3" do %>
-            <small><%= t("gobierto_people.shared.view_all") %></small>
-          <% end %>
+          <div class="corrector-margins col-md-5 col-md-offset-2">
+            <div class="box color-3 distribuidora-nova-3">
+
+              <div class="color-decorator">
+                <h1><%= number_with_delimiter(@total_people) %></h1>
+                <h5>
+                  <div><strong><%= t(".people_with_events") %></strong></div>
+                </h5>
+              </div>
+              <div class="margin_top_xs">
+                <span><%= t(".people_events") %></span>
+                <div id="people_events_rowchart" class="rowchart"></div>
+              </div>
+
+            </div>
+
+            <div class="margin_top_xs js-reload-rowchart-wrapper">
+              <p><%= t(".explore_people") %></p>
+              <%= link_to "#", class: "show-more color-3" do %>
+              <small><%= t("gobierto_people.shared.view_all") %></small>
+              <% end %>
+            </div>
+
+          </div>
+
         </div>
       </div>
     </div>
