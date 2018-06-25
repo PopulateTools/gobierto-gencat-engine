@@ -30,7 +30,9 @@ function _loadPunchcard(container, url, title) {
       data[i].value = data[i].value.filter((i) => moment(i.key).isAfter(moment(mostRecentDate).subtract(18, 'months')))
     }
 
-    punchcard(container, data, opts)
+    // data.reverse to show it as it was received
+    // https://stackoverflow.com/questions/23849680/d3-y-scale-y-vs-height
+    punchcard(container, data.reverse(), opts)
   });
 }
 
