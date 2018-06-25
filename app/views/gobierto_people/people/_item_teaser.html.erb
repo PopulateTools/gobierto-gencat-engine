@@ -10,6 +10,10 @@
       <% end %>
     </div>
 
+    <% if !local_assigns[:item_details_path] %>
+      <div class="col-md-2"></div>
+    <% end %>
+
     <% if meaningful_date_range?(dates, only_date: true) %>
 
       <div class="col-md-4 text-right">
