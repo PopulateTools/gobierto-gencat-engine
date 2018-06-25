@@ -126,6 +126,7 @@
 
     .toggle-container {
       .color-#{$i} {
+        &.active,
         &:hover {
           background-color: color($i);
 
