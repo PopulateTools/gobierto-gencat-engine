@@ -12,9 +12,9 @@ module GobiertoPeople
 
     def test_index
       with_current_site(site) do
-        visit gobierto_people_person_past_events_path(person.slug, page: false)
+        visit gobierto_people_interest_groups_path
 
-        assert has_selector?("h1", text: "Interest groups")
+        assert has_selector?("h3", text: "Interest Groups")
         assert has_content? "Interest groups with most meetings"
       end
     end

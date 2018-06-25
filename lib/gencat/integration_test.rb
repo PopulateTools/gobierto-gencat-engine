@@ -38,6 +38,7 @@ module Gencat
       enable_submodule(reference_site, :gifts)
       enable_submodule(reference_site, :trips)
       enable_submodule(reference_site, :invitations)
+      enable_submodule(reference_site, :interest_groups)
     end
 
   end
