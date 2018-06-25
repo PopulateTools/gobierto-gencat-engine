@@ -165,6 +165,10 @@
     flex-direction: column;
     justify-content: space-between;
 
+    .rowchart {
+      min-height: auto;
+    }
+
     > :first-child {
       padding: 0 20px;
     }
