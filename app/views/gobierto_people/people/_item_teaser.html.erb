@@ -2,7 +2,7 @@
 
   <div class="row">
 
-    <div class="<%= meaningful_date_range?(dates, only_date: true) ? 'col-md-8' : 'col-md-10' %>">
+    <div class="<%= meaningful_date_range?(dates, only_date: true) ? 'col-md-6' : 'col-md-8' %>">
       <p><strong><%= title %></strong></p>
 
       <% if local_assigns[:subtitle] %>
@@ -12,22 +12,22 @@
 
     <% if meaningful_date_range?(dates, only_date: true) %>
 
-      <div class="col-md-4">
+      <div class="col-md-4 text-right">
         <p><%= l(dates.first, format: "%-d/%-m/%Y") %> → <%= l(dates.last, format: "%-d/%-m/%Y") %></p>
       </div>
 
     <% else %>
 
-      <div class="col-md-2">
+      <div class="col-md-2 text-right">
         <p><%= l(dates.is_a?(Array) ? dates.first : dates, format: "%-d/%-m/%Y") %></p>
       </div>
 
     <% end %>
 
     <% if local_assigns[:item_details_path] %>
-      <div class="pull-right">
+      <div class="col-md-2 text-right">
         <%= link_to item_details_path do %>
-          <small><%= t("gobierto_people.shared.view_details") %></small>
+          <u><small><%= t("gobierto_people.shared.view_details") %></small></u>
         <% end %>
       </div>
     <% end %>
