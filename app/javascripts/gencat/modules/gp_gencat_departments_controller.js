@@ -1,4 +1,4 @@
-import { _loadRowchart, _loadPunchcard } from './helpers.js'
+import { _loadRowchart, _loadPunchcard, _reloadRowchart } from './helpers.js'
 
 window.GobiertoPeople.GencatDepartmentsController = (function() {
 
@@ -8,7 +8,11 @@ window.GobiertoPeople.GencatDepartmentsController = (function() {
     $(document).on('turbolinks:load', function() {
       _loadRowchart('#people_events_rowchart', options.people_events_api_path)
       _loadRowchart('#departments_events_rowchart', options.departments_events_api_path)
+
       _loadPunchcard('#department_people_events_punchcard', options.department_people_events_punchcard_api_path)
+
+      _reloadRowchart('#people_events_rowchart', options.people_events_api_path, 10000)
+      _reloadRowchart('#departments_events_rowchart', options.departments_events_api_path, 10000)
 
       // REVIEW: Waiting for render
       setTimeout(function () {
@@ -26,6 +30,9 @@ window.GobiertoPeople.GencatDepartmentsController = (function() {
         options.department_people_events_punchcard_api_path,
         I18n.t('gobierto_people.departments.show.punchcard_title')
       )
+
+      _reloadRowchart('#department_people_events_rowchart', options.department_people_events_rowchart_api_path, 10000)
+      _reloadRowchart('#department_interest_groups_events_rowchart', options.department_interest_groups_rowchart_api_path, 10000)
 
       // REVIEW: Waiting for render
       setTimeout(function () {

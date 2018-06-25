@@ -7,21 +7,29 @@
   </section>
 
   <section>
-    <h3 class="h3 text-left">Grups d'interès</h3>
-    <p>Qualsevol organització que es reuneix amb un alt càrrec ha de registrar com a grup d'interès, i es crea un registre de les trobades. Aprèn més sobre la Normativa de Grups d'Interès. Explora les organitzacions (empreses, fundacions, associacions ...) que es reuneixen amb càrrecs de la Generalitat.</p>
+    <h3 class="h3 text-left"><%= t(".title") %></h3>
+    <p><%= t(".description", link: "https://web.gencat.cat/es/tramits/tramits-temes/registre-grups-interes?vmode=normativa").html_safe %></p>
   </section>
 
   <section>
     MISSING
   </section>
 
-  <section>
-    <p>Grups d'Interès amb més reunions</p>
-    <div id="rowchart-<%= SecureRandom.random_number(100) %>" class="rowchart color-2"></div>
-    <div class="margin_top_xs">
-      <a href="" class="show-more bg-info"><small>Veure tot</small></a>
+  <section class="rowchart-component">
+    <p><strong><%= t(".rowchart_title") %></strong></p>
+    <div id="interest_groups_events_rowchart" class="rowchart color-2"></div>
+    <div class="margin_top_xs js-reload-rowchart-wrapper">
+      <%= link_to "#", class: "show-more bg-info" do %>
+        <small><%= t("gobierto_people.shared.view_all") %></small>
+      <% end %>
     </div>
   </section>
 
   <%= render "gobierto_people/shared/open_data_footer" %>
 </div>
+
+<%= javascript_tag do %>
+  window.GobiertoPeople.gencat_interest_groups_controller.index({
+    interest_groups_events_rowchart_api_path: '<%= gobierto_people_api_v1_interest_groups_path(limit: 20) %>'
+  });
+<% end %>
