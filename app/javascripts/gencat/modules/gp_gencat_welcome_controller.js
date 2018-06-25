@@ -1,4 +1,4 @@
-import { _loadRowchart, _loadPunchcard } from './helpers.js'
+import { _loadRowchart, _loadPunchcard, setTooltipColor } from './helpers.js'
 
 window.GobiertoPeople.GencatWelcomeController = (function() {
 
@@ -20,19 +20,6 @@ window.GobiertoPeople.GencatWelcomeController = (function() {
         setTooltipColor()
       }, 1000);
     });
-
-    function setTooltipColor() {
-      $(".graph-tooltip").each(function (e,r,t,y,u) {
-        // get id chart from tooltip chart
-        const chart = document.getElementById(this.id.split("-tooltip")[0])
-        // look for its color-X dependency through its parents
-        const classElement = chart.closest("[class*=color-]")
-        // get color class name
-        const className = _.toArray(classElement.classList).filter(c => c.includes("color-")).toString()
-        // set it up to the related tooltip
-        $(this).addClass(className)
-      })
-    }
   };
 
   return GencatWelcomeController;

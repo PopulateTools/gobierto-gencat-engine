@@ -9,6 +9,11 @@ window.GobiertoPeople.GencatDepartmentsController = (function() {
       _loadRowchart('#people_events_rowchart', options.people_events_api_path)
       _loadRowchart('#departments_events_rowchart', options.departments_events_api_path)
       _loadPunchcard('#department_people_events_punchcard', options.department_people_events_punchcard_api_path)
+
+      // REVIEW: Waiting for render
+      setTimeout(function () {
+        setTooltipColor()
+      }, 1000);
     });
   }
 
@@ -21,6 +26,11 @@ window.GobiertoPeople.GencatDepartmentsController = (function() {
         options.department_people_events_punchcard_api_path,
         I18n.t('gobierto_people.departments.show.punchcard_title')
       )
+
+      // REVIEW: Waiting for render
+      setTimeout(function () {
+        setTooltipColor()
+      }, 1000);
     });
   };
 

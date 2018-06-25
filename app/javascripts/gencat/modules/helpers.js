@@ -34,4 +34,17 @@ function _loadPunchcard(container, url, title) {
   });
 }
 
-export { _loadRowchart, _loadPunchcard }
+function setTooltipColor() {
+  $(".graph-tooltip").each(function (e,r,t,y,u) {
+    // get id chart from tooltip chart
+    const chart = document.getElementById(this.id.split("-tooltip")[0])
+    // look for its color-X dependency through its parents
+    const classElement = chart.closest("[class*=color-]")
+    // get color class name
+    const className = _.toArray(classElement.classList).filter(c => c.includes("color-")).toString()
+    // set it up to the related tooltip
+    $(this).addClass(className)
+  })
+}
+
+export { _loadRowchart, _loadPunchcard, setTooltipColor }
