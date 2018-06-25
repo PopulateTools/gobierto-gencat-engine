@@ -7,7 +7,7 @@ window.GobiertoPeople.GencatInterestGroupsController = (function() {
   GencatInterestGroupsController.prototype.index = function(options) {
     $(document).on('turbolinks:load', function() {
       _loadRowchart('#interest_groups_events_rowchart', options.interest_groups_events_rowchart_api_path)
-      _reloadRowchart('#interest_groups_events_rowchart', options.interest_groups_events_rowchart_api_path, 10000)
+      _reloadRowchart('#interest_groups_events_rowchart', options.interest_groups_events_rowchart_api_path, 500)
     });
   };
 
