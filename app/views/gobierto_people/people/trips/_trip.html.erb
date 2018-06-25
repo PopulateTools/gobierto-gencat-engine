@@ -6,16 +6,13 @@
       <p><%= trip.purpose %></p>
     </div>
 
-    <div class="col-md-2 <%= class_if('pull-right', !meaningful_date_range?(trip.duration_dates, only_date: true)) %>">
-      <p><%= trip.formatted_start_date %></p>
-    </div>
-
+    <div class="col-md-4 text-right">
     <% if meaningful_date_range?(trip.duration_dates, only_date: true) %>
-      →
-      <div class="col-md-2">
-        <p><%= trip.formatted_end_date %></p>
-      </div>
+      <p><%= trip.formatted_start_date %> → <%= trip.formatted_end_date %></p>
+    <% else %>
+      <p><%= trip.formatted_start_date %></p>
     <% end %>
+  </div>
 
   </div>
 
@@ -48,8 +45,10 @@
           <% trip.expenses.each do |expense| %>
             <% unless expense[:amount].zero? %>
               <div class="row">
-                <div class="col-md-6"><%= expense[:kind] %></div>
-                <div class="col-md-6"><strong><%= number_with_delimiter(expense[:amount]) %></strong></div>
+                <div class="row">
+                  <div class="col-md-6"><%= expense[:kind] %></div>
+                  <div class="col-md-6 text-right"><strong><%= number_with_delimiter(expense[:amount]) %></strong></div>
+                </div>
               </div>
             <% end %>
           <% end %>
