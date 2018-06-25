@@ -13,13 +13,13 @@
     <% if meaningful_date_range?(dates, only_date: true) %>
 
       <div class="col-md-4 text-right">
-        <p><%= l(dates.first, format: "%-d/%-m/%Y") %> → <%= l(dates.last, format: "%-d/%-m/%Y") %></p>
+        <p><strong><%= l(dates.first, format: "%-d/%-m/%Y") %></strong> → <strong><%= l(dates.last, format: "%-d/%-m/%Y") %></strong></p>
       </div>
 
     <% else %>
 
       <div class="col-md-2 text-right">
-        <p><%= l(dates.is_a?(Array) ? dates.first : dates, format: "%-d/%-m/%Y") %></p>
+        <p><strong><%= l(dates.is_a?(Array) ? dates.first : dates, format: "%-d/%-m/%Y") %></strong></p>
       </div>
 
     <% end %>
