@@ -11,9 +11,11 @@
     <p><%= t(".description", link: "https://web.gencat.cat/es/tramits/tramits-temes/registre-grups-interes?vmode=normativa").html_safe %></p>
   </section>
 
-  <section>
-    MISSING
-  </section>
+  <% pending do %>
+    <section>
+      MISSING
+    </section>
+  <% end %>
 
   <section class="rowchart-component">
     <p><strong><%= t(".rowchart_title") %></strong></p>
