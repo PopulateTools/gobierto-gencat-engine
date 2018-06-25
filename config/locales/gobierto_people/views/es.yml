@@ -24,7 +24,9 @@ es:
         punchcard_title: Reuniones por alto cargo y mes
     interest_groups:
       index:
-        interest_groups: grupos de interés inscritos
+        title: Grupos de Interés
+        description: Cualquier organización que se reune con un alto cargo debe registrarse como grupo de interés y se crea un registro de los encuentros. <a href="%{link}">Aprende más sobre la Normativa de Grupos de Interés</a>. Explora las organizaciones (empresas, fundaciones, asociaciones...) que se reunen con cargos de la Generalitat.
+        rowchart_title: Grupos de Interés con más reuniones
       show:
         events: reuniones registradas
         events_by_department: Con qué departamentos se reúne este grupo

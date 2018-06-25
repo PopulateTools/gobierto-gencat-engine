@@ -11,7 +11,7 @@
   </section>
 
   <section class="row">
-    <div class="col-md-5">
+    <div class="col-md-5 rowchart-component">
 
       <div class="box color-1 distribuidora-nova-3">
         <div>
@@ -27,15 +27,15 @@
         </div>
       </div>
 
-      <div class="margin_top_xs">
-        <%= link_to gobierto_people_events_path, class: "show-more bg-danger", data: { turbolinks: false } do %>
+      <div class="margin_top_xs js-reload-rowchart-wrapper">
+        <%= link_to "#", class: "show-more bg-danger" do %>
           <small><%= t("gobierto_people.shared.view_all") %></small>
         <% end %>
       </div>
 
     </div>
 
-    <div class="col-md-5 col-md-offset-2">
+    <div class="col-md-5 col-md-offset-2 rowchart-component">
 
       <div class="box color-3 distribuidora-nova-3">
         <div>
@@ -51,8 +51,8 @@
         </div>
       </div>
 
-      <div class="margin_top_xs">
-        <%= link_to gobierto_people_interest_groups_path, class: "show-more bg-danger", data: { turbolinks: false } do %>
+      <div class="margin_top_xs js-reload-rowchart-wrapper">
+        <%= link_to "#", class: "show-more bg-danger" do %>
           <small><%= t("gobierto_people.shared.view_all") %></small>
         <% end %>
       </div>

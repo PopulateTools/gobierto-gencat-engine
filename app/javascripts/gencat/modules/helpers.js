@@ -47,4 +47,25 @@ function setTooltipColor() {
   })
 }
 
-export { _loadRowchart, _loadPunchcard, setTooltipColor }
+function _reloadRowchart(container, url, maxElements) {
+  var $rowchartWrapper = $(container).closest('.rowchart-component');
+  var container = container;
+
+  // update `limit` URL parameter
+  if (url.indexOf('limit=') > -1) {
+    var url = url.replace(/limit=\d+/, 'limit=' + maxElements);
+  } else if (url.indexOf('?') > -1) {
+    var url = url + '&limit=' + maxElements;
+  } else {
+    var url = url + '?limit=' + maxElements;
+  }
+
+  $rowchartWrapper.find('.js-reload-rowchart-wrapper').find('.show-more').click(function(e) {
+    e.preventDefault();
+    $rowchartWrapper.find('.rowchart').empty();
+    _loadRowchart(container, url);
+    $rowchartWrapper.find('.js-reload-rowchart-wrapper').hide();
+  });
+}
+
+export { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor }

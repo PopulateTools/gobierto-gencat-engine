@@ -22,14 +22,18 @@
         </div>
       </div>
 
-      <div class="margin_top_xs">
-        <p><%= t(".events_by_department") %></p>
-        <div id="departments_events_rowchart" class="rowchart color-1"></div>
-      </div>
+      <div class="rowchart-component">
+        <div class="margin_top_xs">
+          <p><%= t(".events_by_department") %></p>
+          <div id="departments_events_rowchart" class="rowchart color-1"></div>
+        </div>
 
-      <div class="margin_top_xs">
-        <p><%= t(".explore_departments") %></p>
-        <a href="" class="show-more bg-danger"><small><%= t("gobierto_people.shared.view_all") %></small></a>
+        <div class="margin_top_xs js-reload-rowchart-wrapper">
+          <p><%= t(".explore_departments") %></p>
+          <%= link_to "#", class: "show-more bg-danger" do %>
+            <small><%= t("gobierto_people.shared.view_all") %></small>
+          <% end %>
+        </div>
       </div>
     </div>
 
@@ -43,14 +47,18 @@
         </div>
       </div>
 
-      <div class="margin_top_xs">
-        <p><%= t(".people_events") %></p>
-        <div id="people_events_rowchart" class="rowchart color-3"></div>
-      </div>
+      <div class="rowchart-component">
+        <div class="margin_top_xs">
+          <p><%= t(".people_events") %></p>
+          <div id="people_events_rowchart" class="rowchart color-3"></div>
+        </div>
 
-      <div class="margin_top_xs">
-        <p><%= t(".explore_people") %></p>
-        <a href="" class="show-more bg-danger"><small><%= t("gobierto_people.shared.view_all") %></small></a>
+        <div class="margin_top_xs js-reload-rowchart-wrapper">
+          <p><%= t(".explore_people") %></p>
+          <%= link_to "#", class: "show-more bg-danger" do %>
+            <small><%= t("gobierto_people.shared.view_all") %></small>
+          <% end %>
+        </div>
       </div>
     </div>
 
