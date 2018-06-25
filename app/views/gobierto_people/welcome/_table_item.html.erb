@@ -10,8 +10,8 @@
     <% end %>
 
     <div class="<%= dispay_range ? 'col-md-7' : 'col-md-9' %>">
-      <p><strong><%= link_to title, resource_path, data: { turbolinks: false } %></strong></p>
-      <p><%= link_to resource.person.name, resource.person.to_path, data: { turbolinks: false } %></p>
+      <p><strong><%= link_to title, resource_path, data: { turbolinks: false }, class: "no-link" %></strong></p>
+      <p><%= link_to resource.person.name, resource.person.to_path, data: { turbolinks: false }, class: "no-link" %></p>
     </div>
 
     <div class="<%= dispay_range ? 'col-md-5' : 'col-md-3' %> text-right">
