@@ -1,4 +1,4 @@
-import { _loadRowchart, _loadPunchcard, _reloadRowchart } from './helpers.js'
+import { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor } from './helpers.js'
 
 window.GobiertoPeople.GencatInterestGroupsController = (function() {
 
