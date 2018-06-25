@@ -15,11 +15,13 @@
     MISSING
   </section>
 
-  <section>
+  <section class="rowchart-component">
     <p><strong><%= t(".rowchart_title") %></strong></p>
     <div id="interest_groups_events_rowchart" class="rowchart color-2"></div>
-    <div class="margin_top_xs">
-      <a href="" class="show-more bg-info"><small>Veure tot</small></a>
+    <div class="margin_top_xs js-reload-rowchart-wrapper">
+      <%= link_to "#", class: "show-more bg-info" do %>
+        <small><%= t("gobierto_people.shared.view_all") %></small>
+      <% end %>
     </div>
   </section>
 
