@@ -123,6 +123,18 @@
         }
       }
     }
+
+    .toggle-container {
+      .color-#{$i} {
+        &:hover {
+          background-color: color($i);
+
+          h1 {
+            color: $color_main_negative;
+          }
+        }
+      }
+    }
   }
 
   //@component breadcrumb
