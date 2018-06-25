@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
+require "support/gobierto_people/submodules_helper"
+
 module Gencat
   class IntegrationTest < ActionDispatch::IntegrationTest
+
+    include ::GobiertoPeople::SubmodulesHelper
 
     def reference_site
       @reference_site ||= sites(:madrid)
@@ -12,15 +16,9 @@ module Gencat
     end
 
     def setup
-      modified_configuration_data = reference_site.configuration_data.merge(
-        "engine_overrides" => ["gobierto-gencat-engine"]
-      )
-
-      reference_site.update_attribute(
-        :configuration_data,
-        modified_configuration_data
-      )
-
+      enable_submodules!
+      reference_site.configuration.engine_overrides = ["gobierto-gencat-engine"]
+      reference_site.save!
       super
     end
 
@@ -34,6 +32,12 @@ module Gencat
         starts_at: 1.month.ago,
         ends_at: 1.month.ago + 1.hour
       )
+    end
+
+    def enable_submodules!
+      enable_submodule(reference_site, :gifts)
+      enable_submodule(reference_site, :trips)
+      enable_submodule(reference_site, :invitations)
     end
 
   end
