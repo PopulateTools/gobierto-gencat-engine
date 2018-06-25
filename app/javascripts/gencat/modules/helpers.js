@@ -48,7 +48,7 @@ function setTooltipColor() {
 }
 
 function _reloadRowchart(container, url, maxElements) {
-  var $rowchartWrapper = $(container).closest('.rowchart-component');
+  var $rowchartWrapper = $(container).closest('.js-rowchart-component');
   var container = container;
 
   // update `limit` URL parameter
@@ -60,11 +60,12 @@ function _reloadRowchart(container, url, maxElements) {
     var url = url + '?limit=' + maxElements;
   }
 
-  $rowchartWrapper.find('.js-reload-rowchart-wrapper').find('.show-more').click(function(e) {
+  $rowchartWrapper.closest(".box").siblings(".js-reload-rowchart-wrapper").find('.show-more').click(function(e) {
     e.preventDefault();
+    $rowchartWrapper.closest(".box").removeAttr("style")
     $rowchartWrapper.find('.rowchart').empty();
     _loadRowchart(container, url);
-    $rowchartWrapper.find('.js-reload-rowchart-wrapper').hide();
+    $rowchartWrapper.closest(".box").siblings(".js-reload-rowchart-wrapper").hide();
   });
 }
 
