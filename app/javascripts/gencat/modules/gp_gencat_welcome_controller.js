@@ -1,4 +1,4 @@
-import { _loadRowchart, _loadPunchcard, setTooltipColor } from './helpers.js'
+import { _loadRowchart, _loadPunchcard, setTooltipColor, setDatepickerFilters } from './helpers.js'
 
 window.GobiertoPeople.GencatWelcomeController = (function() {
 
@@ -14,6 +14,8 @@ window.GobiertoPeople.GencatWelcomeController = (function() {
         options.department_people_events_punchcard_api_path,
         I18n.t('gobierto_people.welcome.index.punchcard_title')
       );
+
+      setDatepickerFilters()
 
       // REVIEW: Waiting for render
       setTimeout(function () {

@@ -71,4 +71,29 @@ function _reloadRowchart(container, url, maxElements) {
   });
 }
 
-export { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor }
+function setDatepickerFilters() {
+  $('.datepicker-defaults a').click(function () {
+    let filter = this.id
+    let url = document.location.href
+
+    switch (filter) {
+      case '1m':
+        url += `?start_date=${moment().subtract(1, 'month').format('YYYY-MM-DD')}`
+        break;
+      case '3m':
+        url += `?start_date=${moment().subtract(3, 'month').format('YYYY-MM-DD')}`
+        break;
+      case '1y':
+        url += `?start_date=${moment().subtract(1, 'year').format('YYYY-MM-DD')}`
+        break;
+      default:
+
+    }
+
+console.log(url);
+
+    document.location.href = url
+  })
+}
+
+export { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor, setDatepickerFilters }
