@@ -7,7 +7,7 @@
 
       <ul class="color-1 transparent">
 
-        <% cache cache_key_for_request do %>
+        <% cache "#{cache_key_preffix}-events" do %>
           <% @events.each do |event| %>
             <%= render "event", event: event %>
           <% end %>

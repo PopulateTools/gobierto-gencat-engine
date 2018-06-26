@@ -7,7 +7,7 @@
 
       <ul class="color-3 transparent">
 
-        <% cache cache_key_for_request do %>
+        <% cache "#{cache_key_preffix}-invitations" do %>
           <% @person_invitations.each do |invitation| %>
             <%= render "invitation", invitation: invitation %>
           <% end %>
