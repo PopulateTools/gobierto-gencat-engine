@@ -64,7 +64,7 @@ function _reloadRowchart(container, url, maxElements) {
 
   $rowchartWrapper.find('.js-reload-rowchart-wrapper').find('.show-more').click(function(e) {
     e.preventDefault();
-    $rowchartWrapper.closest(".box").removeAttr("style")
+    $rowchartWrapper.find('.box').removeAttr("style")
     $rowchartWrapper.find('.rowchart').empty();
     _loadRowchart(container, url);
     $rowchartWrapper.find('.js-reload-rowchart-wrapper').hide();

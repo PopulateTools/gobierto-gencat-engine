@@ -1,7 +1,7 @@
 <ul class="toggle-container">
 
   <% unless @person.meetings_with_interest_groups.count.zero? %>
-    <li class="color-1 <%= class_if('active', controller_name == 'person_events') %>">
+    <li class="color-1 <%= class_if('active', ['person_events', 'past_person_events'].include?(controller_name)) %>">
       <%= link_to gobierto_people_person_past_events_path(@person.slug, page: false), class: "no-link" do %>
         <h1 class="h1"><%= @person.meetings_with_interest_groups.count %></h1>
         <div>

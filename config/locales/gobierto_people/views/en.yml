@@ -3,6 +3,7 @@ en:
   gobierto_people:
     departments:
       index:
+        title: Departments
         description: Any organization that meets with an official must register as
           an interest group, and a record of the meetings is created. <a href="https://web.gencat.cat/en/tramits/tramits-temes/registre-grups-interes">Learn
           more about Interest Groups Policies</a>. Explore organizations (companies,
@@ -37,7 +38,8 @@ en:
         status: "Inscription status in interest groups registry: %{status}"
     welcome:
       index:
-        title: Check with whom meets each Official in the Generalitat, companies and organizations that request meetings, and the trips and gifts received
+        title: Public agenda
+        description: Check with whom meets each Official in the Generalitat, companies and organizations that request meetings, and the trips and gifts received
         meetings_box_title: Meetings registered
         departments_rowchart_title: Departments with most meetings
         interest_groups_box_title: Interest groups inscribed

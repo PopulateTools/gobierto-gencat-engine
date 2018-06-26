@@ -3,6 +3,7 @@ es:
   gobierto_people:
     departments:
       index:
+        title: Departamentos
         description: Cualquier organización que se reune con un alto cargo debe registrarse
           como grupo de interés, y se crea un registro de los encuentros. <a href="https://web.gencat.cat/es/tramits/tramits-temes/registre-grups-interes">Aprende
           más sobre la Normativa de Grupos de Interés</a>. Explora las organizaciones
@@ -38,7 +39,8 @@ es:
         status: "Situación de inscripción en el registro de grupos de interés: %{status}"
     welcome:
       index:
-        title: Consulta con quién se reúne cada alto cargo de la Generalitat, las empresas y organizaciones que solicitan reuniones, y los viajes y obsequios recibidos
+        title: Agenda pública
+        description: Consulta con quién se reúne cada alto cargo de la Generalitat, las empresas y organizaciones que solicitan reuniones, y los viajes y obsequios recibidos
         meetings_box_title: Reuniones registradas
         departments_rowchart_title: Departamentos con más reuniones
         interest_groups_box_title: Grupos de Interés inscritos
