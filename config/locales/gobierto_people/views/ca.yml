@@ -3,6 +3,7 @@ ca:
   gobierto_people:
     departments:
       index:
+        title: Departaments
         description: Qualsevol organització que es reuneix amb un alt càrrec ha de
           registrar com a grup d'interès, i es crea un registre de les trobades. <a
           href="https://web.gencat.cat/es/tramits/tramits-temes/registre-grups-interes">Aprèn
@@ -40,7 +41,8 @@ ca:
         status: "Situació inscripció registre grup interès: %{status}"
     welcome:
       index:
-        title: Consulta amb qui es reuneix cada alt càrrec de la Generalitat, les empreses i organitzacions que sol·liciten reunions, i els viatges i obsequis rebuts
+        title: Agenda pública
+        description: Consulta amb qui es reuneix cada alt càrrec de la Generalitat, les empreses i organitzacions que sol·liciten reunions, i els viatges i obsequis rebuts
         meetings_box_title: Reunions registrades
         departments_rowchart_title: Departaments amb més reunions
         interest_groups_box_title: Grups d'interès inscrits
