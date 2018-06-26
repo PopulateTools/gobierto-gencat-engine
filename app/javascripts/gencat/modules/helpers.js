@@ -17,7 +17,7 @@ function _loadPunchcard(container, url, title) {
     var intervalLength = 3
     let opts = {
       title: title,
-      tooltipContainer: "theme-gencat",
+      tooltipContainer: ".theme-gencat",
       xTickFormat: (d, i, arr) => {
         let distanceFromEnd = arr.length - i - 1
         return ((distanceFromEnd % intervalLength) === 0) ? d3.timeFormat("%b %y")(d) : null

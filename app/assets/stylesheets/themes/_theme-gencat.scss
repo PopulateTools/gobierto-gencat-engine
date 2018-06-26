@@ -139,6 +139,7 @@
   }
 
   //@component breadcrumb
+  //DEPRECATED
   .section-breadcrumb {
     display: inline-block;
 
@@ -261,7 +262,7 @@
 
   //@component table item
   .table-item {
-    padding: 20px 0;
+    padding: 10px 0;
 
     > div:nth-child(3) {
       font-size: $f8;
@@ -273,7 +274,7 @@
     }
   }
 
-  //@component map // TODO: IMCOMPLETE
+  //@component map
   #map {
     height: 500px;
     width: 66%;

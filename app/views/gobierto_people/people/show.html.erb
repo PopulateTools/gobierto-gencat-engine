@@ -24,17 +24,15 @@
           <div class="col-md-12">
             <figure>
               <figcaption class="mb_20"><%= t(".events_section_title") %></figcaption>
-              <ul class="color-1 transparent">
+              <ul class="color-1 transparent mb_20">
                 <% @last_events.each do |event| %>
                   <%= render "gobierto_people/people/person_events/event", event: event, teaser: true %>
                 <% end %>
               </ul>
 
-              <div class="pd-15">
-                <%= link_to gobierto_people_person_past_events_path(@person.slug, page: false), class: "show-more color-1" do %>
-                  <small><%= t("gobierto_people.shared.view_all") %></small>
-                <% end %>
-              </div>
+              <%= link_to gobierto_people_person_past_events_path(@person.slug, page: false), class: "show-more color-1" do %>
+              <small><%= t("gobierto_people.shared.view_all") %></small>
+              <% end %>
             </figure>
           </div>
         </div>
@@ -45,7 +43,7 @@
           <div class="col-md-12">
             <figure>
               <figcaption class="mb_20"><%= t(".trips_section_title", person_name: @person.name) %></figcaption>
-              <ul class="color-2 transparent">
+              <ul class="color-2 transparent mb_20">
                 <% @last_trips.each do |trip| %>
                   <%= render(
                         "item_teaser",
@@ -56,11 +54,9 @@
                 <% end %>
               </ul>
 
-              <div class="pd-15">
-                <%= link_to gobierto_people_person_trips_path(@person.slug), class: "show-more color-2" do %>
-                  <small><%= t("gobierto_people.shared.view_all") %></small>
-                <% end %>
-              </div>
+              <%= link_to gobierto_people_person_trips_path(@person.slug), class: "show-more color-2" do %>
+              <small><%= t("gobierto_people.shared.view_all") %></small>
+              <% end %>
             </figure>
           </div>
         </div>
@@ -71,17 +67,15 @@
           <div class="col-md-12">
             <figure>
               <figcaption class="mb_20"><%= t(".invitations_section_title") %></figcaption>
-              <ul class="color-3 transparent">
+              <ul class="color-3 transparent mb_20">
                 <% @last_invitations.each do |invitation| %>
                   <%= render "gobierto_people/people/invitations/invitation", invitation: invitation, teaser: true %>
                 <% end %>
               </ul>
 
-              <div class="pd-15">
-                <%= link_to gobierto_people_person_invitations_path(@person.slug), class: "show-more color-3" do %>
-                  <small><%= t("gobierto_people.shared.view_all") %></small>
-                <% end %>
-              </div>
+              <%= link_to gobierto_people_person_invitations_path(@person.slug), class: "show-more color-3" do %>
+              <small><%= t("gobierto_people.shared.view_all") %></small>
+              <% end %>
             </figure>
           </div>
         </div>
@@ -92,17 +86,15 @@
           <div class="col-md-12">
             <figure>
               <figcaption class="mb_20"><%= t(".gifts_section_title") %></figcaption>
-              <ul class="color-4 transparent">
+              <ul class="color-4 transparent mb_20">
                 <% @last_gifts.each do |gift| %>
                   <%= render "gobierto_people/people/gifts/gift", gift: gift, teaser: true %>
                 <% end %>
               </ul>
 
-              <div class="pd-15">
-                <%= link_to gobierto_people_person_gifts_path(@person.slug), class: "show-more color-4" do %>
-                  <small><%= t("gobierto_people.shared.view_all") %></small>
-                <% end %>
-              </div>
+              <%= link_to gobierto_people_person_gifts_path(@person.slug), class: "show-more color-4" do %>
+              <small><%= t("gobierto_people.shared.view_all") %></small>
+              <% end %>
             </figure>
           </div>
         </div>
