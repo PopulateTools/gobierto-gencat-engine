@@ -16,7 +16,6 @@ window.GobiertoPeople.GencatWelcomeController = (function() {
       );
 
       setDatepickerFilters()
-      window.onload = appendFiltersEverywhere
 
       // REVIEW: Waiting for render
       setTimeout(function () {

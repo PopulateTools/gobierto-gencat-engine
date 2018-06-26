@@ -72,6 +72,12 @@ function _reloadRowchart(container, url, maxElements) {
 }
 
 function setDatepickerFilters() {
+  window.onload = function () {
+    if (localStorage.getItem('filter-selected')) {
+      $('.datepicker-container input').val(localStorage.getItem('filter-selected'))
+    }
+  }
+
   $('.datepicker-defaults a').click(function () {
     let url = window.location.href
     let date = undefined
@@ -88,6 +94,9 @@ function setDatepickerFilters() {
         break;
       default:
     }
+
+    $('.datepicker-container input').val($(this).text())
+    localStorage.setItem('filter-selected', $(this).text());
 
     if (date) {
       // format
@@ -107,48 +116,48 @@ function setDatepickerFilters() {
   })
 }
 
-const getParams = query => {
-  if (!query) {
-    return { };
-  }
+// const getParams = query => {
+//   if (!query) {
+//     return { };
+//   }
+//
+//   return (/^[?#]/.test(query) ? query.slice(1) : query)
+//     .split('&')
+//     .reduce((params, param) => {
+//       let [ key, value ] = param.split('=');
+//       params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
+//       return params;
+//     }, { });
+// };
+//
+// const updateAllLinks = (who, what) => {
+//   $('a').each(function() {
+//     let href = $(this).attr('href')
+//
+//     if (href && href.startsWith("/")) {
+//     // if ((href) && (href.startsWith("/") || href.includes(window.location.host))) {
+//       if (href.indexOf(`${who}=`) > -1) {
+//         href += href.replace(/start_date=\d+/, `${who}=${what}`)
+//       } else if (href.indexOf('?') > -1) {
+//         href += `&${who}=${what}`
+//       } else {
+//         href += `?${who}=${what}`
+//       }
+//
+//       $(this).attr('href', href);
+//     }
+//   });
+// }
+//
+// function appendFiltersEverywhere(who, what) {
+//   // update all links
+//   let q = window.location.search
+//   if (q) {
+//     let qs = getParams(q)
+//     for (var param in qs) {
+//       updateAllLinks(param, qs[param])
+//     }
+//   }
+// }
 
-  return (/^[?#]/.test(query) ? query.slice(1) : query)
-    .split('&')
-    .reduce((params, param) => {
-      let [ key, value ] = param.split('=');
-      params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
-      return params;
-    }, { });
-};
-
-const updateAllLinks = (who, what) => {
-  $('a').each(function() {
-    let href = $(this).attr('href')
-
-    if (href && href.startsWith("/")) {
-    // if ((href) && (href.startsWith("/") || href.includes(window.location.host))) {
-      if (href.indexOf(`${who}=`) > -1) {
-        href += href.replace(/start_date=\d+/, `${who}=${what}`)
-      } else if (href.indexOf('?') > -1) {
-        href += `&${who}=${what}`
-      } else {
-        href += `?${who}=${what}`
-      }
-
-      $(this).attr('href', href);
-    }
-  });
-}
-
-function appendFiltersEverywhere(who, what) {
-  // update all links
-  let q = window.location.search
-  if (q) {
-    let qs = getParams(q)
-    for (var param in qs) {
-      updateAllLinks(param, qs[param])
-    }
-  }
-}
-
-export { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor, setDatepickerFilters, appendFiltersEverywhere }
+export { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor, setDatepickerFilters }

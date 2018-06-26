@@ -21,7 +21,6 @@ window.GobiertoPeople.GencatInterestGroupsController = (function() {
       _loadPunchcard('#interest_group_people_events_punchcard', options.interest_group_people_events_punchcard_api_path)
 
       setDatepickerFilters()
-      window.onload = appendFiltersEverywhere
 
       // REVIEW: Waiting for render
       setTimeout(function () {

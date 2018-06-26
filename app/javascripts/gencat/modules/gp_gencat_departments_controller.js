@@ -14,7 +14,6 @@ window.GobiertoPeople.GencatDepartmentsController = (function() {
       _reloadRowchart('#departments_events_rowchart', options.departments_events_api_path, 10000)
 
       setDatepickerFilters()
-      window.onload = appendFiltersEverywhere
 
       // REVIEW: Waiting for render
       setTimeout(function () {
