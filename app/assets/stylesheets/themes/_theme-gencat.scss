@@ -66,8 +66,8 @@
         }
       }
 
-      rect:not(.bar) {
-        &:nth-of-type(odd) {
+      g.row:nth-of-type(odd) {
+        rect:not(.bar) {
           fill: rgba(color($i), .2);
         }
       }
