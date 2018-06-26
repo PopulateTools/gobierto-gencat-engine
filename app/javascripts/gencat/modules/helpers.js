@@ -73,27 +73,82 @@ function _reloadRowchart(container, url, maxElements) {
 
 function setDatepickerFilters() {
   $('.datepicker-defaults a').click(function () {
-    let filter = this.id
-    let url = document.location.href
+    let url = window.location.href
+    let date = undefined
 
-    switch (filter) {
+    switch (this.id) {
       case '1m':
-        url += `?start_date=${moment().subtract(1, 'month').format('YYYY-MM-DD')}`
+        date = moment().subtract(1, 'month')
         break;
       case '3m':
-        url += `?start_date=${moment().subtract(3, 'month').format('YYYY-MM-DD')}`
+        date = moment().subtract(3, 'month')
         break;
       case '1y':
-        url += `?start_date=${moment().subtract(1, 'year').format('YYYY-MM-DD')}`
+        date = moment().subtract(1, 'year')
         break;
       default:
-
     }
 
-console.log(url);
+    if (date) {
+      // format
+      date = date.format('YYYY-MM-DD')
 
-    document.location.href = url
+      // update `start_date` URL parameter
+      if (url.indexOf('start_date=') > -1) {
+        url += url.replace(/start_date=\d+/, `start_date=${date}`);
+      } else if (url.indexOf('?') > -1) {
+        url += `&start_date=${date}`;
+      } else {
+        url += `?start_date=${date}`;
+      }
+    }
+
+    window.location.href = url
   })
 }
 
-export { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor, setDatepickerFilters }
+const getParams = query => {
+  if (!query) {
+    return { };
+  }
+
+  return (/^[?#]/.test(query) ? query.slice(1) : query)
+    .split('&')
+    .reduce((params, param) => {
+      let [ key, value ] = param.split('=');
+      params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
+      return params;
+    }, { });
+};
+
+const updateAllLinks = (who, what) => {
+  $('a').each(function() {
+    let href = $(this).attr('href')
+
+    if (href && href.startsWith("/")) {
+    // if ((href) && (href.startsWith("/") || href.includes(window.location.host))) {
+      if (href.indexOf(`${who}=`) > -1) {
+        href += href.replace(/start_date=\d+/, `${who}=${what}`)
+      } else if (href.indexOf('?') > -1) {
+        href += `&${who}=${what}`
+      } else {
+        href += `?${who}=${what}`
+      }
+
+      $(this).attr('href', href);
+    }
+  });
+}
+
+function appendFiltersEverywhere(who, what) {
+  // update all links
+  let q = window.location.search
+  if (q) {
+    let qs = getParams(q)
+    for (var param in qs) {
+      updateAllLinks(param, qs[param])
+    }
+  }
+}
+
+export { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor, setDatepickerFilters, appendFiltersEverywhere }

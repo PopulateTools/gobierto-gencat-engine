@@ -1,4 +1,4 @@
-import { _loadRowchart, _loadPunchcard, setTooltipColor, setDatepickerFilters } from './helpers.js'
+import { _loadRowchart, _loadPunchcard, setTooltipColor, setDatepickerFilters, appendFiltersEverywhere } from './helpers.js'
 
 window.GobiertoPeople.GencatWelcomeController = (function() {
 
@@ -16,6 +16,7 @@ window.GobiertoPeople.GencatWelcomeController = (function() {
       );
 
       setDatepickerFilters()
+      window.onload = appendFiltersEverywhere
 
       // REVIEW: Waiting for render
       setTimeout(function () {
