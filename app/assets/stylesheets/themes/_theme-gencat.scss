@@ -197,6 +197,10 @@
   .datepicker-container {
     position: relative;
 
+    > :first-child {
+      position: relative;
+    }
+
     .air-datepicker {
       padding: 0.4em;
       font-size: 0.938em;
@@ -218,6 +222,40 @@
       position: absolute;
       top: 50%;
       right: calc(10px + 15px); // column padding
+    }
+
+    .datepicker-defaults {
+      position: absolute;
+      width: 100%;
+      border: 1px solid $color_separator;
+      border-top-width: 0;
+      background-color: $color_neutral_soft;
+      max-height: 0;
+      overflow: hidden;
+      margin-top: -1px;
+      transition: max-height .3s;
+      z-index: 100;
+
+      li {
+        cursor: pointer;
+
+        a {
+          padding: 5px 10px;
+          display: block;
+          color: $text_soft;
+          font-size: $f7;
+          text-decoration: underline;
+        }
+
+        &:hover {
+          background-color: lighten($color_neutral_soft, 10%)
+        }
+      }
+    }
+
+    &:hover .datepicker-defaults {
+      max-height: 500px;
+      border-top-width: 1px;
     }
   }
 
