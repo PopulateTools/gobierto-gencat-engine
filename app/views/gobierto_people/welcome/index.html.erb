@@ -13,7 +13,7 @@
         <div class="llistat_col-lg-3 nova-altura-dist">
 
           <div class="col-xs-12 corrector-margins col-sm-4" id="departments-box">
-            <div class="box color-1 distribuidora-nova-3">
+            <div class="box color-1 distribuidora-nova-3 mb_20">
 
               <div class="color-decorator">
                 <h1><%= number_with_delimiter @home_statistics[:total_events] %></h1>
@@ -29,10 +29,14 @@
               </div>
 
             </div>
+
+            <%= link_to gobierto_people_departments_path, class: "show-more color-1", data: { turbolinks: false } do %>
+            <small><%= t("gobierto_people.shared.view_all") %></small>
+            <% end %>
           </div>
 
           <div class="col-xs-12 corrector-margins col-sm-4" id="interest-groups-box">
-            <div class="box color-2 distribuidora-nova-3">
+            <div class="box color-2 distribuidora-nova-3 mb_20">
 
               <div class="color-decorator">
                 <h1><%= number_with_delimiter @home_statistics[:total_interest_groups] %></h1>
@@ -48,10 +52,14 @@
               </div>
 
             </div>
+
+            <%= link_to gobierto_people_interest_groups_path, class: "show-more color-2", data: { turbolinks: false } do %>
+            <small><%= t("gobierto_people.shared.view_all") %></small>
+            <% end %>
           </div>
 
           <div class="col-xs-12 corrector-margins col-sm-4" id="people-box">
-            <div class="box color-3 distribuidora-nova-3">
+            <div class="box color-3 distribuidora-nova-3 mb_20">
 
               <div class="color-decorator">
                 <h1><%= number_with_delimiter @home_statistics[:total_people_with_attendances] %></h1>
@@ -67,6 +75,10 @@
               </div>
 
             </div>
+
+            <%= link_to gobierto_people_people_path, class: "show-more color-3", data: { turbolinks: false } do %>
+            <small><%= t("gobierto_people.shared.view_all") %></small>
+            <% end %>
           </div>
 
         </div>
