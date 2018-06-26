@@ -7,7 +7,7 @@
 
       <ul class="color-1 transparent">
 
-        <% cache "site-#{current_site.id}-person-#{@person.id}-events" do %>
+        <% cache cache_key_for_request do %>
           <% @events.each do |event| %>
             <%= render "event", event: event %>
           <% end %>
