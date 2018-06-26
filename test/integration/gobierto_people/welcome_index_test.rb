@@ -11,7 +11,7 @@ module GobiertoPeople
     end
 
     def departments_box_counter
-      site.event_attendances.count
+      site.event_attendances.joins(:event).where("#{GobiertoCalendars::Event.table_name}.department_id is not null").count
     end
 
     def interest_groups_counter
@@ -19,7 +19,7 @@ module GobiertoPeople
     end
 
     def people_box_counter
-      site.event_attendances.select(:person_id).distinct.count
+      site.event_attendances.joins(:event).where("#{GobiertoCalendars::Event.table_name}.department_id is not null").select(:person_id).distinct.count
     end
 
     def gift
