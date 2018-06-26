@@ -97,7 +97,7 @@
 
       <figure>
         <figcaption class="mb_20"><%= t(".last_gifts") %></figcaption>
-        <ul class="color-4 transparent">
+        <ul class="color-4 transparent mb_20">
           <% @gifts.each do |gift| %>
             <%= render(
                   "table_item",
@@ -113,11 +113,9 @@
         </ul>
       </figure>
 
-      <div class="pd-15">
-        <%= link_to gobierto_people_gifts_path, class: "show-more color-4", data: { turbolinks: false } do %>
-          <small><%= t("gobierto_people.shared.view_all") %></small>
-        <% end %>
-      </div>
+      <%= link_to gobierto_people_gifts_path, class: "show-more color-4", data: { turbolinks: false } do %>
+      <small><%= t("gobierto_people.shared.view_all") %></small>
+      <% end %>
     </div>
 
     <div class="col-md-6" id="invitations-wrapper">
@@ -131,7 +129,7 @@
 
       <figure>
         <figcaption class="mb_20"><%= t(".last_invitations") %></figcaption>
-        <ul class="color-3 transparent">
+        <ul class="color-3 transparent mb_20 mb_20">
           <% @invitations.each do |invitation| %>
             <%= render(
                   "table_item",
@@ -147,11 +145,9 @@
         </ul>
       </figure>
 
-      <div class="pd-15">
-        <%= link_to gobierto_people_invitations_path, class: "show-more color-3", data: { turbolinks: false } do %>
-          <small><%= t("gobierto_people.shared.view_all") %></small>
-        <% end %>
-      </div>
+      <%= link_to gobierto_people_invitations_path, class: "show-more color-3", data: { turbolinks: false } do %>
+      <small><%= t("gobierto_people.shared.view_all") %></small>
+      <% end %>
     </div>
 
   </section>
