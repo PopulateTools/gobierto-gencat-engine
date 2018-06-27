@@ -128,7 +128,7 @@ function setDatepickerFilters() {
         date = moment().subtract(1, 'year')
         break;
       case 'all':
-        date = false
+        date = undefined
         break;
       default:
     }
@@ -143,7 +143,7 @@ function setDatepickerFilters() {
 
     if (URLSearchParams) {
       const params = new URLSearchParams(location.search);
-      params.set('start_date', date);
+      (date) ? params.set('start_date', date) : params.delete('start_date')
       params.delete('end_date');
       window.history.replaceState({}, '', `${location.pathname}?${params}`);
     } else {
