@@ -72,12 +72,14 @@ function _reloadRowchart(container, url, maxElements) {
 }
 
 function setDatepickerFilters() {
+  // test if there is previous filter selected
   window.onload = function () {
     if (localStorage.getItem('filter-selected')) {
       $('.datepicker-container input').val(localStorage.getItem('filter-selected'))
     }
   }
 
+  // onClick for default filters
   $('.datepicker-defaults a').click(function () {
     let params = window.location.search
     let date = undefined
@@ -115,7 +117,6 @@ function setDatepickerFilters() {
       params = `?start_date=${date}`;
     }
 
-    // window.location.href = url
     window.location.search = params
   })
 }
