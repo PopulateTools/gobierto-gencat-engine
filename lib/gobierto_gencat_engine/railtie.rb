@@ -11,7 +11,7 @@ else
         conf.assets.paths += [File.join(base_path, "app/assets/stylesheets")]
         conf.i18n.load_path += Dir[File.join(base_path, 'config', 'locales', '**', '*.{rb,yml}')]
         conf.engine_sass_config_overrides += ["themes/conf/_theme-gencat-conf"]
-        conf.engine_sass_theme_dependencies += ["themes/_theme-gencat"]
+        conf.engine_sass_theme_dependencies += ["themes/_theme-gencat", "themes/_reset"]
       end
     end
   end
