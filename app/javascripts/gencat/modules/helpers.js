@@ -78,12 +78,39 @@ function _reloadRowchart(container, url, maxElements) {
 }
 
 function setDatepickerFilters() {
+  const $datepicker = $('#datepicker')
+
   // test if there is previous filter selected
   window.onload = function () {
     if (localStorage.getItem('filter-selected')) {
-      $('.datepicker-container input').val(localStorage.getItem('filter-selected'))
+      $datepicker.val(localStorage.getItem('filter-selected'))
     }
   }
+
+  $datepicker.datepicker({
+    onSelect: function onSelect(fd, date) {
+      // Update only if there's a range
+      if (date.length !== 2) return
+
+      let dates = date.map((i) => moment(i).format('YYYY-MM-DD'))
+
+      if (URLSearchParams) {
+        const params = new URLSearchParams(location.search);
+        params.set('start_date', dates[0]);
+        params.set('end_date', dates[1]);
+        window.history.replaceState({}, '', `${location.pathname}?${params}`);
+      } else {
+        // IE 10+
+        updateQueryStringParam('start_date', dates[0])
+        updateQueryStringParam('end_date', dates[1])
+      }
+
+      localStorage.setItem('filter-selected', $datepicker.val());
+
+      // Load new params
+      location.assign(location.href)
+    }
+  })
 
   // onClick for default filters
   $('.datepicker-defaults a').click(function () {
@@ -106,7 +133,7 @@ function setDatepickerFilters() {
       default:
     }
 
-    $('.datepicker-container input').val($(this).text())
+    $datepicker.val($(this).text())
     localStorage.setItem('filter-selected', $(this).text());
 
     // format
@@ -114,18 +141,52 @@ function setDatepickerFilters() {
       date = date.format('YYYY-MM-DD')
     }
 
-    // update `start_date` URL parameter
-    if (params.indexOf('start_date=') > -1) {
-      params = params.replace(/start_date=[^\&]+/, `start_date=${date}`);
-    } else if (params.indexOf('?') > -1) {
-      params = `&start_date=${date}`;
+    if (URLSearchParams) {
+      const params = new URLSearchParams(location.search);
+      params.set('start_date', date);
+      params.delete('end_date');
+      window.history.replaceState({}, '', `${location.pathname}?${params}`);
     } else {
-      params = `?start_date=${date}`;
+      // IE 10+
+      updateQueryStringParam("start_date", date)
+      updateQueryStringParam("end_date", undefined)
     }
 
-    window.location.search = params
+    // Load new params
+    location.assign(location.href)
   })
 }
+
+// Fallback IE
+const updateQueryStringParam = (key, value) => {
+
+    let baseUrl = [location.protocol, '//', location.host, location.pathname].join('')
+    let urlQueryString = document.location.search
+    let newParam = key + '=' + value
+    let params = '?' + newParam
+
+    // If the "search" string exists, then build params from it
+    if (urlQueryString) {
+        var updateRegex = new RegExp('([\?&])' + key + '[^&]*');
+        var removeRegex = new RegExp('([\?&])' + key + '=[^&;]+[&;]?');
+
+        if( typeof value == 'undefined' || value == null || value == '' ) { // Remove param if value is empty
+            params = urlQueryString.replace(removeRegex, "$1");
+            params = params.replace( /[&;]$/, "" );
+
+        } else if (urlQueryString.match(updateRegex) !== null) { // If param exists already, update it
+            params = urlQueryString.replace(updateRegex, "$1" + newParam);
+
+        } else { // Otherwise, add it to end of query string
+            params = urlQueryString + '&' + newParam;
+        }
+    }
+
+    // no parameter was set so we don't need the question mark
+    params = params == '?' ? '' : params;
+
+    window.history.replaceState({}, "", baseUrl + params);
+};
 
 // const getParams = query => {
 //   if (!query) {
