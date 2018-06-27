@@ -4,7 +4,10 @@ import { d3, moment } from 'shared'
 function _loadRowchart(container, url) {
   $.getJSON(url, (data) => {
     let opts = {
-      tooltipContainer: ".theme-gencat"
+      tooltipContainer: ".theme-gencat",
+      tooltipContent: {
+        eval: "d.value.toLocaleString() + ' " + I18n.t('gobierto_people.shared.open_data_footer.meetings') + "'"
+      },
     }
 
     data.sort((a, b) => a.value - b.value)
@@ -18,6 +21,9 @@ function _loadPunchcard(container, url, title) {
     let opts = {
       title: title,
       tooltipContainer: ".theme-gencat",
+      tooltipContent: {
+        eval: "d.value.toLocaleString() + ' " + I18n.t('gobierto_people.shared.open_data_footer.meetings') + "'"
+      },
       xTickFormat: (d, i, arr) => {
         let distanceFromEnd = arr.length - i - 1
         return ((distanceFromEnd % intervalLength) === 0) ? d3.timeFormat("%b %y")(d) : null
