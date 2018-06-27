@@ -79,7 +79,7 @@ function setDatepickerFilters() {
   }
 
   $('.datepicker-defaults a').click(function () {
-    let url = window.location.href
+    let params = window.location.search
     let date = undefined
 
     switch (this.id) {
@@ -92,27 +92,31 @@ function setDatepickerFilters() {
       case '1y':
         date = moment().subtract(1, 'year')
         break;
+      case 'all':
+        date = false
+        break;
       default:
     }
 
     $('.datepicker-container input').val($(this).text())
     localStorage.setItem('filter-selected', $(this).text());
 
+    // format
     if (date) {
-      // format
       date = date.format('YYYY-MM-DD')
-
-      // update `start_date` URL parameter
-      if (url.indexOf('start_date=') > -1) {
-        url += url.replace(/start_date=\d+/, `start_date=${date}`);
-      } else if (url.indexOf('?') > -1) {
-        url += `&start_date=${date}`;
-      } else {
-        url += `?start_date=${date}`;
-      }
     }
 
-    window.location.href = url
+    // update `start_date` URL parameter
+    if (params.indexOf('start_date=') > -1) {
+      params = params.replace(/start_date=[^\&]+/, `start_date=${date}`);
+    } else if (params.indexOf('?') > -1) {
+      params = `&start_date=${date}`;
+    } else {
+      params = `?start_date=${date}`;
+    }
+
+    // window.location.href = url
+    window.location.search = params
   })
 }
 

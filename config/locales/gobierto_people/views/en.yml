@@ -71,6 +71,11 @@ en:
         gifts: Gifts
         invitations: Invitations
         trips: Trips
+      datepicker:
+        1y: Last year
+        1m: Last month
+        3m: Last three months
+        all: Everything
     people:
       show:
         trips_section_title: Trips made by %{person_name}

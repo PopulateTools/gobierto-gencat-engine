@@ -72,6 +72,11 @@ es:
         gifts: Obsequios
         invitations: Invitaciones
         trips: Viajes
+      datepicker:
+        1y: Último año
+        1m: Último mes
+        3m: Últimos tres meses
+        all: Todo
     people:
       show:
         trips_section_title: Viajes realizados por %{person_name}

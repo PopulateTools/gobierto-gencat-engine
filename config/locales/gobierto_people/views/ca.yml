@@ -74,6 +74,11 @@ ca:
         gifts: Obsequis
         invitations: Invitacions
         trips: Viatges
+      datepicker:
+        1y: Últim any
+        1m: Últim mes
+        3m: Últims tres mesos
+        all: Tot
     people:
       show:
         trips_section_title: Viatges realizats per %{person_name}
