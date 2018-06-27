@@ -11,7 +11,7 @@
 
     <div class="<%= dispay_range ? 'col-md-7' : 'col-md-9' %>">
       <strong><%= link_to title, resource_path, data: { turbolinks: false }, class: "no-link" %></strong>
-      <div><%= link_to resource.person.name, resource.person.to_path, data: { turbolinks: false }, class: "no-link" %></div>
+      <div><%= link_to resource.person.name, "#{ resource.person.to_path }#{ "?#{ date_range_params.to_query }" if date_range_params.present? }", data: { turbolinks: false }, class: "no-link" %></div>
     </div>
 
     <div class="<%= dispay_range ? 'col-md-5' : 'col-md-3' %> text-right">

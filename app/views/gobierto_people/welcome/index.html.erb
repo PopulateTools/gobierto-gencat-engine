@@ -30,7 +30,7 @@
 
           </div>
 
-          <%= link_to gobierto_people_departments_path, class: "show-more color-1", data: { turbolinks: false } do %>
+          <%= link_to gobierto_people_departments_path(date_range_params), class: "show-more color-1", data: { turbolinks: false } do %>
           <small><%= t("gobierto_people.shared.view_all") %></small>
           <% end %>
         </div>
@@ -53,7 +53,7 @@
 
           </div>
 
-          <%= link_to gobierto_people_interest_groups_path, class: "show-more color-2", data: { turbolinks: false } do %>
+          <%= link_to gobierto_people_interest_groups_path(date_range_params), class: "show-more color-2", data: { turbolinks: false } do %>
           <small><%= t("gobierto_people.shared.view_all") %></small>
           <% end %>
         </div>
@@ -76,7 +76,7 @@
 
           </div>
 
-          <%= link_to gobierto_people_people_path, class: "show-more color-3", data: { turbolinks: false } do %>
+          <%= link_to gobierto_people_people_path(date_range_params), class: "show-more color-3", data: { turbolinks: false } do %>
           <small><%= t("gobierto_people.shared.view_all") %></small>
           <% end %>
         </div>
@@ -117,6 +117,7 @@
                 resource: gift,
                 resource_path: gobierto_people_person_gifts_path(
                   gift.person.slug,
+                  date_range_params,
                   anchor: gift.to_anchor
                 ),
                 display_date: gift.date
@@ -125,7 +126,7 @@
       </ul>
     </figure>
 
-    <%= link_to gobierto_people_gifts_path, class: "show-more color-4", data: { turbolinks: false } do %>
+    <%= link_to gobierto_people_gifts_path(date_range_params), class: "show-more color-4", data: { turbolinks: false } do %>
     <small><%= t("gobierto_people.shared.view_all") %></small>
     <% end %>
   </div>
@@ -149,6 +150,7 @@
                 resource: invitation,
                 resource_path: gobierto_people_person_invitations_path(
                   invitation.person.slug,
+                  date_range_params,
                   anchor: invitation.to_anchor
                 ),
                 display_date_range: [invitation.start_date, invitation.end_date]
@@ -157,7 +159,7 @@
       </ul>
     </figure>
 
-    <%= link_to gobierto_people_invitations_path, class: "show-more color-3", data: { turbolinks: false } do %>
+    <%= link_to gobierto_people_invitations_path(date_range_params), class: "show-more color-3", data: { turbolinks: false } do %>
     <small><%= t("gobierto_people.shared.view_all") %></small>
     <% end %>
   </div>

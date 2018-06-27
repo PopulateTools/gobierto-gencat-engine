@@ -28,7 +28,7 @@
               <% end %>
             </ul>
 
-            <%= link_to gobierto_people_person_past_events_path(@person.slug, page: false), class: "show-more color-1" do %>
+            <%= link_to gobierto_people_person_past_events_path(@person.slug, date_range_params.merge(page: false)), class: "show-more color-1" do %>
             <small><%= t("gobierto_people.shared.view_all") %></small>
             <% end %>
           </figure>
@@ -46,13 +46,13 @@
                 <%= render(
                       "item_teaser",
                       title: trip.original_destinations_attribute,
-                      item_details_path: gobierto_people_person_trips_path(@person.slug, anchor: "trip-#{trip.id}"),
+                      item_details_path: gobierto_people_person_trips_path(@person.slug, date_range_params, anchor: "trip-#{trip.id}"),
                       dates: [trip.start_date, trip.end_date]
                   ) %>
               <% end %>
             </ul>
 
-            <%= link_to gobierto_people_person_trips_path(@person.slug), class: "show-more color-2" do %>
+            <%= link_to gobierto_people_person_trips_path(@person.slug, date_range_params), class: "show-more color-2" do %>
             <small><%= t("gobierto_people.shared.view_all") %></small>
             <% end %>
           </figure>
@@ -71,7 +71,7 @@
               <% end %>
             </ul>
 
-            <%= link_to gobierto_people_person_invitations_path(@person.slug), class: "show-more color-3" do %>
+            <%= link_to gobierto_people_person_invitations_path(@person.slug, date_range_params), class: "show-more color-3" do %>
             <small><%= t("gobierto_people.shared.view_all") %></small>
             <% end %>
           </figure>
@@ -90,7 +90,7 @@
               <% end %>
             </ul>
 
-            <%= link_to gobierto_people_person_gifts_path(@person.slug), class: "show-more color-4" do %>
+            <%= link_to gobierto_people_person_gifts_path(@person.slug, date_range_params), class: "show-more color-4" do %>
             <small><%= t("gobierto_people.shared.view_all") %></small>
             <% end %>
           </figure>
