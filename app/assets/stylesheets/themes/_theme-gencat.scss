@@ -318,6 +318,11 @@
     width: 66%;
   }
 
+  // hide subcription box (from gobierto)
+  .subscribable-box {
+    display: none;
+  }
+
   // footer box
   .open-data-footer {
     background-color: $color_neutral_soft;
