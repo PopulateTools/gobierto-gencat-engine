@@ -10,8 +10,12 @@ module GobiertoPeople
       @site ||= sites(:madrid)
     end
 
+    def site_attendances_to_events_with_department
+      site.event_attendances.where(event: site.events.with_department)
+    end
+
     def departments_box_counter
-      site.event_attendances.count
+      site_attendances_to_events_with_department.count
     end
 
     def interest_groups_counter
@@ -19,7 +23,7 @@ module GobiertoPeople
     end
 
     def people_box_counter
-      site.event_attendances.select(:person_id).distinct.count
+      site_attendances_to_events_with_department.select(:person_id).distinct.count
     end
 
     def gift
