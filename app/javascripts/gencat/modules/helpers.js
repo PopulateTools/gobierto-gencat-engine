@@ -78,6 +78,7 @@ function _reloadRowchart(container, url, maxElements) {
 }
 
 function setDatepickerFilters(minDate) {
+  const $container = $('.js-datepicker-container')
   const $datepicker = $('#datepicker')
 
   // test if there is previous filter selected
@@ -87,7 +88,7 @@ function setDatepickerFilters(minDate) {
     }
   }
 
-  $datepicker.datepicker({
+  const dp = $datepicker.datepicker({
     showEvent: 'none',
     onSelect: function(fd, date) {
       // Update only if there's a range
@@ -111,19 +112,18 @@ function setDatepickerFilters(minDate) {
       // Load new params
       location.assign(location.href)
     }
-  })
+  }).data('datepicker')
 
   $datepicker.click(function () {
-    $(this).closest('.js-datepicker-container').toggleClass('is-shown')
+    $container.toggleClass('is-shown')
   })
 
   // onClick to display datepicker
   $('.datepicker-defaults a#range').click(function () {
-
-    $datepicker.show()
-    $datepicker.datepicker({showEvent: 'focus'})
+    dp.show()
     $datepicker.focus()
     $datepicker.val('')
+    $container.toggleClass('is-shown')
   })
 
   // onClick for default filters
