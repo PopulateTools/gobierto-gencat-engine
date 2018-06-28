@@ -259,7 +259,7 @@
       }
     }
 
-    &:hover .datepicker-defaults {
+    &.is-shown .datepicker-defaults {
       max-height: 500px;
       border-top-width: 1px;
     }

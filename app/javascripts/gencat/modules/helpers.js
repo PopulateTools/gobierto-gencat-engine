@@ -88,10 +88,7 @@ function setDatepickerFilters(minDate) {
   }
 
   $datepicker.datepicker({
-    onShow: function() {
-      console.log('hide');
-  		$datepicker.hide()
-  	},
+    showEvent: 'none',
     onSelect: function(fd, date) {
       // Update only if there's a range
       if (date.length !== 2) return
@@ -116,8 +113,21 @@ function setDatepickerFilters(minDate) {
     }
   })
 
+  $datepicker.click(function () {
+    $(this).closest('.js-datepicker-container').toggleClass('is-shown')
+  })
+
+  // onClick to display datepicker
+  $('.datepicker-defaults a#range').click(function () {
+
+    $datepicker.show()
+    $datepicker.datepicker({showEvent: 'focus'})
+    $datepicker.focus()
+    $datepicker.val('')
+  })
+
   // onClick for default filters
-  $('.datepicker-defaults a').click(function () {
+  $('.datepicker-defaults a:not(#range)').click(function () {
     let params = window.location.search
     let date = undefined
 
