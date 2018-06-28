@@ -1,4 +1,4 @@
-import { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor, setDatepickerFilters } from './helpers.js'
+import { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor } from './helpers.js'
 
 window.GobiertoPeople.GencatInterestGroupsController = (function() {
 
@@ -9,7 +9,6 @@ window.GobiertoPeople.GencatInterestGroupsController = (function() {
       _loadRowchart('#interest_groups_events_rowchart', options.interest_groups_events_rowchart_api_path)
       _reloadRowchart('#interest_groups_events_rowchart', options.interest_groups_events_rowchart_api_path, 500)
 
-      setDatepickerFilters()
       window.onload = appendFiltersEverywhere
     });
   };
@@ -19,8 +18,6 @@ window.GobiertoPeople.GencatInterestGroupsController = (function() {
       _loadRowchart('#departments_events_rowchart', options.departments_events_rowchart_api_path)
       _loadRowchart('#people_events_rowchart', options.people_events_rowchart_api_path)
       _loadPunchcard('#interest_group_people_events_punchcard', options.interest_group_people_events_punchcard_api_path)
-
-      setDatepickerFilters()
 
       // REVIEW: Waiting for render
       setTimeout(function () {
