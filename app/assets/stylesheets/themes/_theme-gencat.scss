@@ -21,6 +21,12 @@
     padding: 0;
   }
 
+  .column {
+    width: inherit;
+    max-width: inherit;
+    margin: inherit;
+  }
+
   figure:only-child {
     margin-bottom: 60px;
   }
