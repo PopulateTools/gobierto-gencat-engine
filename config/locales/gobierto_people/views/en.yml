@@ -76,6 +76,7 @@ en:
         1m: Last month
         3m: Last three months
         all: Everything
+        range: Custom range
     people:
       show:
         trips_section_title: Trips made by %{person_name}

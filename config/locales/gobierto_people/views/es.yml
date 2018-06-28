@@ -77,6 +77,7 @@ es:
         1m: Último mes
         3m: Últimos tres meses
         all: Todo
+        range: Rango personalizado
     people:
       show:
         trips_section_title: Viajes realizados por %{person_name}

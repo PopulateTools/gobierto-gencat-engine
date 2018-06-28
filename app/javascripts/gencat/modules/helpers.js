@@ -88,7 +88,11 @@ function setDatepickerFilters() {
   }
 
   $datepicker.datepicker({
-    onSelect: function onSelect(fd, date) {
+    onShow: function() {
+      console.log('hide');
+  		$datepicker.hide()
+  	},
+    onSelect: function(fd, date) {
       // Update only if there's a range
       if (date.length !== 2) return
 

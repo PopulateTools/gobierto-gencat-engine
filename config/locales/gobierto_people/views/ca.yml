@@ -79,6 +79,7 @@ ca:
         1m: Últim mes
         3m: Últims tres mesos
         all: Tot
+        range: Rang personalitzat
     people:
       show:
         trips_section_title: Viatges realizats per %{person_name}
