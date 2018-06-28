@@ -46,7 +46,7 @@
                 <%= render(
                       "item_teaser",
                       title: trip.original_destinations_attribute,
-                      item_details_path: gobierto_people_person_trips_path(@person.slug, date_range_params, anchor: "trip-#{trip.id}"),
+                      item_details_path: gobierto_people_person_trips_path(@person.slug, { anchor: "trip-#{trip.id}" }.merge(date_range_params)),
                       dates: [trip.start_date, trip.end_date]
                   ) %>
               <% end %>
