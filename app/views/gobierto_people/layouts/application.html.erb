@@ -11,3 +11,7 @@
 <% end %>
 
 <%= render template: "layouts/application" %>
+
+<%= javascript_tag do %>
+  window.GobiertoPeople.gencat_common_controller.load();
+<% end %>

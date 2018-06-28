@@ -1,4 +1,4 @@
-import { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor, setDatepickerFilters } from './helpers.js'
+import { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor } from './helpers.js'
 
 window.GobiertoPeople.GencatDepartmentsController = (function() {
 
@@ -12,8 +12,6 @@ window.GobiertoPeople.GencatDepartmentsController = (function() {
       _loadPunchcard('#department_people_events_punchcard', options.department_people_events_punchcard_api_path)
 
       _reloadRowchart('#departments_events_rowchart', options.departments_events_api_path, 10000)
-
-      setDatepickerFilters()
 
       // REVIEW: Waiting for render
       setTimeout(function () {
@@ -35,7 +33,6 @@ window.GobiertoPeople.GencatDepartmentsController = (function() {
       _reloadRowchart('#department_people_events_rowchart', options.department_people_events_rowchart_api_path, 10000)
       _reloadRowchart('#department_interest_groups_events_rowchart', options.department_interest_groups_rowchart_api_path, 10000)
 
-      setDatepickerFilters()
       window.onload = appendFiltersEverywhere
 
       // REVIEW: Waiting for render
