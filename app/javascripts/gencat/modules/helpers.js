@@ -83,8 +83,8 @@ function setDatepickerFilters(minDate) {
 
   // test if there is previous filter selected
   window.onload = function () {
-    if (localStorage.getItem('filter-selected')) {
-      $datepicker.val(localStorage.getItem('filter-selected'))
+    if (sessionStorage.getItem('filter-selected')) {
+      $datepicker.val(sessionStorage.getItem('filter-selected'))
     }
   }
 
@@ -107,7 +107,7 @@ function setDatepickerFilters(minDate) {
         updateQueryStringParam('end_date', dates[1])
       }
 
-      localStorage.setItem('filter-selected', $datepicker.val());
+      sessionStorage.setItem('filter-selected', $datepicker.val());
 
       // Load new params
       location.assign(location.href)
@@ -148,7 +148,7 @@ function setDatepickerFilters(minDate) {
     }
 
     $datepicker.val($(this).text())
-    localStorage.setItem('filter-selected', $(this).text());
+    sessionStorage.setItem('filter-selected', $(this).text());
 
     // format
     if (date) {
