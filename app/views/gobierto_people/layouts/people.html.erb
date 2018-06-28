@@ -8,7 +8,7 @@
 
   <section>
     <h3 class="h3 text-left">
-      <%= link_to @person.name, gobierto_people_person_path(@person.slug) %>
+      <%= link_to @person.name, gobierto_people_person_path(@person.slug, date_range_params) %>
     </h3>
     <p><%= @person.charge %></p>
   </section>

@@ -68,7 +68,7 @@
   <%= render "gobierto_people/shared/map" %>
 
   <div class="margin_top_xs">
-    <%= link_to gobierto_people_trips_path, class: "show-more color-2", data: { turbolinks: false } do %>
+    <%= link_to gobierto_people_trips_path(date_range_params), class: "show-more color-2", data: { turbolinks: false } do %>
       <small><%= t("gobierto_people.shared.view_all") %></small>
     <% end %>
   </div>
