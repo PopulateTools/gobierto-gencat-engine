@@ -1,73 +1,72 @@
-<div class="theme-gencat">
-  <section class="row">
-    <div class="col-md-3 pull-right">
-      <%= render "gobierto_people/shared/datepicker" %>
-    </div>
-  </section>
+<section class="row">
+  <div class="col-md-3 pull-right">
+    <%= render "gobierto_people/shared/datepicker" %>
+  </div>
+</section>
 
-  <section>
-    <h3 class="h3 text-left"><%= title @interest_group.name %></h3>
-    <p><%= t(".status", status: @interest_group.status) %></p>
-  </section>
+<section>
+  <h3 class="h3 text-left"><%= title @interest_group.name %></h3>
+  <p><%= t(".status", status: @interest_group.status) %></p>
+</section>
 
-  <section>
-    <div class="fpca_distribuidora pd-30">
-      <div class="llistat_destacat_text_avancat">
-        <div class="llistat_col-lg-3 nova-altura-dist">
-          <div class="corrector-margins col-md-6">
-            <div class="box color-1 distribuidora-nova-3">
+<section>
+  <div class="fpca_distribuidora pd-30">
+    <div class="llistat_destacat_text_avancat">
+      <div class="llistat_col-lg-3 nova-altura-dist">
+        <div class="corrector-margins col-md-6">
+          <div class="box color-1 distribuidora-nova-3">
 
-              <div class="color-decorator">
-                <h1><%= number_with_delimiter(@total_events) %></h1>
-                <h5>
-                  <div><strong><%= t(".events") %></strong></div>
-                </h5>
-              </div>
-
-              <div class="margin_top_xs js-rowchart-component">
-                <span><%= t(".events_by_department") %></span>
-                <div id="departments_events_rowchart" class="rowchart"></div>
-              </div>
-
+            <div class="color-decorator">
+              <h1><%= number_with_delimiter(@total_events) %></h1>
+              <h5>
+                <div><strong><%= t(".events") %></strong></div>
+              </h5>
             </div>
-            <div class="margin_top_xs js-reload-rowchart-wrapper">
-              <p><%= t(".explore_departments") %></p>
-              <%= link_to gobierto_people_departments_path, class: "show-more color-1", data: { turbolinks: false } do %>
-                <small><%= t("gobierto_people.shared.view_all") %></small>
-              <% end %>
+
+            <div class="margin_top_xs js-rowchart-component">
+              <span><%= t(".events_by_department") %></span>
+              <div id="departments_events_rowchart" class="rowchart"></div>
+            </div>
+
+          </div>
+          <div class="margin_top_xs js-reload-rowchart-wrapper">
+            <p><%= t(".explore_departments") %></p>
+            <%= link_to gobierto_people_departments_path, class: "show-more color-1", data: { turbolinks: false } do %>
+              <small><%= t("gobierto_people.shared.view_all") %></small>
+            <% end %>
+          </div>
+        </div>
+        <div class="corrector-margins col-md-6">
+          <div class="box color-3 distribuidora-nova-3">
+            <div class="color-decorator">
+              <h1><%= number_with_delimiter(@total_people) %></h1>
+              <h5>
+                <div><strong><%= t(".people_with_events") %></strong></div>
+              </h5>
+            </div>
+            <div class="margin_top_xs js-rowchart-component">
+              <span><%= t(".events_by_person") %></span>
+              <div id="people_events_rowchart" class="rowchart"></div>
             </div>
           </div>
-          <div class="corrector-margins col-md-6">
-            <div class="box color-3 distribuidora-nova-3">
-              <div class="color-decorator">
-                <h1><%= number_with_delimiter(@total_people) %></h1>
-                <h5>
-                  <div><strong><%= t(".people_with_events") %></strong></div>
-                </h5>
-              </div>
-              <div class="margin_top_xs js-rowchart-component">
-                <span><%= t(".events_by_person") %></span>
-                <div id="people_events_rowchart" class="rowchart"></div>
-              </div>
-            </div>
-            <div class="margin_top_xs">
-              <p><%= t(".explore_people") %></p>
-              <%= link_to gobierto_people_events_path, class: "show-more color-3", data: { turbolinks: false } do %>
-                <small><%= t("gobierto_people.shared.view_all") %></small>
-              <% end %>
-            </div>
+          <div class="margin_top_xs">
+            <p><%= t(".explore_people") %></p>
+            <%= link_to gobierto_people_events_path, class: "show-more color-3", data: { turbolinks: false } do %>
+              <small><%= t("gobierto_people.shared.view_all") %></small>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
-    <div id="interest_group_people_events_punchcard" class="punchcard color-2 transparent"></div>
-  </section>
+<section>
+  <div id="interest_group_people_events_punchcard" class="punchcard color-2 transparent"></div>
+</section>
 
-  <%= render "gobierto_people/shared/open_data_footer" %>
-</div>
+<%= render "gobierto_people/shared/open_data_footer" %>
+
 <%= javascript_tag do %>
   window.GobiertoPeople.gencat_interest_groups_controller.show({
     departments_events_rowchart_api_path: '<%= gobierto_people_api_v1_departments_path(interest_group_id: @interest_group.id) %>',

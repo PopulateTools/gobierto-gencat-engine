@@ -1,87 +1,84 @@
 <% title @department.short_name %>
 
-<div class="theme-gencat">
+<section class="row">
+  <div class="col-md-3 pull-right">
+    <%= render "gobierto_people/shared/datepicker" %>
+  </div>
+</section>
 
-  <section class="row">
-    <div class="col-md-3 pull-right">
-      <%= render "gobierto_people/shared/datepicker" %>
-    </div>
-  </section>
+<section>
+  <h3 class="h3 text-left"><%= @department.name %></h3>
+</section>
 
-  <section>
-    <h3 class="h3 text-left"><%= @department.name %></h3>
-  </section>
+<section>
+  <div class="fpca_distribuidora pd-30">
+    <div class="llistat_destacat_text_avancat">
+      <div class="llistat_col-lg-3 nova-altura-dist">
+        <div class="corrector-margins col-md-6">
+          <div class="box color-1 distribuidora-nova-3">
 
-  <section>
-    <div class="fpca_distribuidora pd-30">
-      <div class="llistat_destacat_text_avancat">
-        <div class="llistat_col-lg-3 nova-altura-dist">
-          <div class="corrector-margins col-md-6">
-            <div class="box color-1 distribuidora-nova-3">
-
-              <div class="color-decorator">
-                <h1><%= @department_stats[:total_people_with_attendances] %></h1>
-                <h5>
-                  <p><strong><%= t(".people_box_title") %></strong></p>
-                  <p><%= t(".people_box_subtitle") %></p>
-                </h5>
-              </div>
-
-              <div class="margin_top_xs js-rowchart-component">
-                <span><%= t(".people_rowchart_title") %></span>
-                <div id="department_people_events_rowchart" class="rowchart"></div>
-              </div>
-
+            <div class="color-decorator">
+              <h1><%= @department_stats[:total_people_with_attendances] %></h1>
+              <h5>
+                <p><strong><%= t(".people_box_title") %></strong></p>
+                <p><%= t(".people_box_subtitle") %></p>
+              </h5>
             </div>
-            <div class="margin_top_xs js-reload-rowchart-wrapper">
-              <%= link_to gobierto_people_department_people_path(@department), class: "show-more color-1", data: { turbolinks: false } do %>
-                <small><%= t("gobierto_people.shared.view_all") %></small>
-              <% end %>
+
+            <div class="margin_top_xs js-rowchart-component">
+              <span><%= t(".people_rowchart_title") %></span>
+              <div id="department_people_events_rowchart" class="rowchart"></div>
+            </div>
+
+          </div>
+          <div class="margin_top_xs js-reload-rowchart-wrapper">
+            <%= link_to gobierto_people_department_people_path(@department), class: "show-more color-1", data: { turbolinks: false } do %>
+              <small><%= t("gobierto_people.shared.view_all") %></small>
+            <% end %>
+          </div>
+        </div>
+        <div class="corrector-margins col-md-6">
+          <div class="box color-3 distribuidora-nova-3">
+            <div class="color-decorator">
+              <h1><%= @department_stats[:unique_interest_groups] %></h1>
+              <h5>
+                <p><strong><%= t(".interest_groups_box_title") %></strong></p>
+                <p><%= t(".interest_groups_box_subtitle") %></p>
+              </h5>
+            </div>
+            <div class="margin_top_xs js-rowchart-component">
+              <span><%= t(".interest_groups_rowchart_title") %></span>
+              <div id="department_interest_groups_events_rowchart" class="rowchart"></div>
             </div>
           </div>
-          <div class="corrector-margins col-md-6">
-            <div class="box color-3 distribuidora-nova-3">
-              <div class="color-decorator">
-                <h1><%= @department_stats[:unique_interest_groups] %></h1>
-                <h5>
-                  <p><strong><%= t(".interest_groups_box_title") %></strong></p>
-                  <p><%= t(".interest_groups_box_subtitle") %></p>
-                </h5>
-              </div>
-              <div class="margin_top_xs js-rowchart-component">
-                <span><%= t(".interest_groups_rowchart_title") %></span>
-                <div id="department_interest_groups_events_rowchart" class="rowchart"></div>
-              </div>
-            </div>
-            <div class="margin_top_xs">
-              <%= link_to gobierto_people_interest_groups_path, class: "show-more color-3", data: { turbolinks: false } do %>
-                <small><%= t("gobierto_people.shared.view_all") %></small>
-              <% end %>
-            </div>
+          <div class="margin_top_xs">
+            <%= link_to gobierto_people_interest_groups_path, class: "show-more color-3", data: { turbolinks: false } do %>
+              <small><%= t("gobierto_people.shared.view_all") %></small>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="map-chart">
-    <p><strong><%= t(".map_title") %></strong></p>
+<section id="map-chart">
+  <p><strong><%= t(".map_title") %></strong></p>
 
-    <%= render "gobierto_people/shared/map" %>
+  <%= render "gobierto_people/shared/map" %>
 
-    <div class="margin_top_xs">
-      <%= link_to gobierto_people_trips_path, class: "show-more color-2", data: { turbolinks: false } do %>
-        <small><%= t("gobierto_people.shared.view_all") %></small>
-      <% end %>
-    </div>
-  </section>
+  <div class="margin_top_xs">
+    <%= link_to gobierto_people_trips_path, class: "show-more color-2", data: { turbolinks: false } do %>
+      <small><%= t("gobierto_people.shared.view_all") %></small>
+    <% end %>
+  </div>
+</section>
 
-  <section>
-    <div id="department_people_events_punchcard" class="punchcard color-2 transparent"></div>
-  </section>
+<section>
+  <div id="department_people_events_punchcard" class="punchcard color-2 transparent"></div>
+</section>
 
-  <%= render "gobierto_people/shared/open_data_footer" %>
-</div>
+<%= render "gobierto_people/shared/open_data_footer" %>
 
 <%= javascript_tag do %>
   window.GobiertoPeople.gencat_departments_controller.show({
