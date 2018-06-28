@@ -77,7 +77,7 @@ function _reloadRowchart(container, url, maxElements) {
   });
 }
 
-function setDatepickerFilters() {
+function setDatepickerFilters(minDate) {
   const $datepicker = $('#datepicker')
 
   // test if there is previous filter selected
@@ -132,7 +132,7 @@ function setDatepickerFilters() {
         date = moment().subtract(1, 'year')
         break;
       case 'all':
-        date = undefined
+        date = moment(minDate)
         break;
       default:
     }

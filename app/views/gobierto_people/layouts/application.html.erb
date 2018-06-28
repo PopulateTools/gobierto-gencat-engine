@@ -13,5 +13,7 @@
 <%= render template: "layouts/application" %>
 
 <%= javascript_tag do %>
-  window.GobiertoPeople.gencat_common_controller.load();
+  window.GobiertoPeople.gencat_common_controller.load({
+    people_events_first_date: '<%= PEOPLE_EVENTS_FIRST_DATE %>'
+  });
 <% end %>
