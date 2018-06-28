@@ -1,34 +1,31 @@
-<div class="theme-gencat">
+<section class="row">
+  <div class="col-md-3">
+    <%= render "gobierto_people/shared/datepicker" %>
+  </div>
+</section>
 
-  <section class="row">
-    <div class="col-md-3">
-      <%= render "gobierto_people/shared/datepicker" %>
-    </div>
-  </section>
+<section>
+  <h3 class="h3 text-left"><%= title t(".title") %></h3>
+  <p><%= t(".description", link: "https://web.gencat.cat/es/tramits/tramits-temes/registre-grups-interes?vmode=normativa").html_safe %></p>
+</section>
 
+<% pending do %>
   <section>
-    <h3 class="h3 text-left"><%= title t(".title") %></h3>
-    <p><%= t(".description", link: "https://web.gencat.cat/es/tramits/tramits-temes/registre-grups-interes?vmode=normativa").html_safe %></p>
+    MISSING
   </section>
+<% end %>
 
-  <% pending do %>
-    <section>
-      MISSING
-    </section>
-  <% end %>
+<section class="js-rowchart-component">
+  <p><strong><%= t(".rowchart_title") %></strong></p>
+  <div id="interest_groups_events_rowchart" class="rowchart color-2"></div>
+  <div class="margin_top_xs js-reload-rowchart-wrapper">
+    <%= link_to "#", class: "show-more bg-info" do %>
+      <small><%= t("gobierto_people.shared.view_all") %></small>
+    <% end %>
+  </div>
+</section>
 
-  <section class="js-rowchart-component">
-    <p><strong><%= t(".rowchart_title") %></strong></p>
-    <div id="interest_groups_events_rowchart" class="rowchart color-2"></div>
-    <div class="margin_top_xs js-reload-rowchart-wrapper">
-      <%= link_to "#", class: "show-more bg-info" do %>
-        <small><%= t("gobierto_people.shared.view_all") %></small>
-      <% end %>
-    </div>
-  </section>
-
-  <%= render "gobierto_people/shared/open_data_footer" %>
-</div>
+<%= render "gobierto_people/shared/open_data_footer" %>
 
 <%= javascript_tag do %>
   window.GobiertoPeople.gencat_interest_groups_controller.index({

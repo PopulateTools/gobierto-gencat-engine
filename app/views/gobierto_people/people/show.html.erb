@@ -1,109 +1,105 @@
-<div class="theme-gencat">
+<section class="row">
+  <div class="col-md-3 pull-right">
+    <%= render "gobierto_people/shared/datepicker" %>
+  </div>
+</section>
 
-  <section class="row">
-    <div class="col-md-3 pull-right">
-      <%= render "gobierto_people/shared/datepicker" %>
-    </div>
-  </section>
+<section>
+  <h3 class="h3 text-left"><%= title @person.name %></h3>
+  <p><%= @person.charge %></p>
+</section>
 
-  <section>
-    <h3 class="h3 text-left"><%= title @person.name %></h3>
-    <p><%= @person.charge %></p>
-  </section>
+<section class="row">
 
-  <section class="row">
+  <div class="col-md-4">
+    <%= render "navigation" %>
+  </div>
 
-    <div class="col-md-4">
-      <%= render "navigation" %>
-    </div>
+  <div class="col-md-8">
 
-    <div class="col-md-8">
-
-      <% if @last_events.any? %>
-        <div class="row">
-          <div class="col-md-12">
-            <figure>
-              <figcaption class="mb_20"><%= t(".events_section_title") %></figcaption>
-              <ul class="color-1 transparent mb_20">
-                <% @last_events.each do |event| %>
-                  <%= render "gobierto_people/people/person_events/event", event: event, teaser: true %>
-                <% end %>
-              </ul>
-
-              <%= link_to gobierto_people_person_past_events_path(@person.slug, page: false), class: "show-more color-1" do %>
-              <small><%= t("gobierto_people.shared.view_all") %></small>
+    <% if @last_events.any? %>
+      <div class="row">
+        <div class="col-md-12">
+          <figure>
+            <figcaption class="mb_20"><%= t(".events_section_title") %></figcaption>
+            <ul class="color-1 transparent mb_20">
+              <% @last_events.each do |event| %>
+                <%= render "gobierto_people/people/person_events/event", event: event, teaser: true %>
               <% end %>
-            </figure>
-          </div>
+            </ul>
+
+            <%= link_to gobierto_people_person_past_events_path(@person.slug, page: false), class: "show-more color-1" do %>
+            <small><%= t("gobierto_people.shared.view_all") %></small>
+            <% end %>
+          </figure>
         </div>
-      <% end %>
+      </div>
+    <% end %>
 
-      <% if @last_trips.any? %>
-        <div class="row">
-          <div class="col-md-12">
-            <figure>
-              <figcaption class="mb_20"><%= t(".trips_section_title", person_name: @person.name) %></figcaption>
-              <ul class="color-2 transparent mb_20">
-                <% @last_trips.each do |trip| %>
-                  <%= render(
-                        "item_teaser",
-                        title: trip.original_destinations_attribute,
-                        item_details_path: gobierto_people_person_trips_path(@person.slug, anchor: "trip-#{trip.id}"),
-                        dates: [trip.start_date, trip.end_date]
-                    ) %>
-                <% end %>
-              </ul>
-
-              <%= link_to gobierto_people_person_trips_path(@person.slug), class: "show-more color-2" do %>
-              <small><%= t("gobierto_people.shared.view_all") %></small>
+    <% if @last_trips.any? %>
+      <div class="row">
+        <div class="col-md-12">
+          <figure>
+            <figcaption class="mb_20"><%= t(".trips_section_title", person_name: @person.name) %></figcaption>
+            <ul class="color-2 transparent mb_20">
+              <% @last_trips.each do |trip| %>
+                <%= render(
+                      "item_teaser",
+                      title: trip.original_destinations_attribute,
+                      item_details_path: gobierto_people_person_trips_path(@person.slug, anchor: "trip-#{trip.id}"),
+                      dates: [trip.start_date, trip.end_date]
+                  ) %>
               <% end %>
-            </figure>
-          </div>
+            </ul>
+
+            <%= link_to gobierto_people_person_trips_path(@person.slug), class: "show-more color-2" do %>
+            <small><%= t("gobierto_people.shared.view_all") %></small>
+            <% end %>
+          </figure>
         </div>
-      <% end %>
+      </div>
+    <% end %>
 
-      <% if @last_invitations.any? %>
-        <div class="row">
-          <div class="col-md-12">
-            <figure>
-              <figcaption class="mb_20"><%= t(".invitations_section_title") %></figcaption>
-              <ul class="color-3 transparent mb_20">
-                <% @last_invitations.each do |invitation| %>
-                  <%= render "gobierto_people/people/invitations/invitation", invitation: invitation, teaser: true %>
-                <% end %>
-              </ul>
-
-              <%= link_to gobierto_people_person_invitations_path(@person.slug), class: "show-more color-3" do %>
-              <small><%= t("gobierto_people.shared.view_all") %></small>
+    <% if @last_invitations.any? %>
+      <div class="row">
+        <div class="col-md-12">
+          <figure>
+            <figcaption class="mb_20"><%= t(".invitations_section_title") %></figcaption>
+            <ul class="color-3 transparent mb_20">
+              <% @last_invitations.each do |invitation| %>
+                <%= render "gobierto_people/people/invitations/invitation", invitation: invitation, teaser: true %>
               <% end %>
-            </figure>
-          </div>
+            </ul>
+
+            <%= link_to gobierto_people_person_invitations_path(@person.slug), class: "show-more color-3" do %>
+            <small><%= t("gobierto_people.shared.view_all") %></small>
+            <% end %>
+          </figure>
         </div>
-      <% end %>
+      </div>
+    <% end %>
 
-      <% if @last_gifts.any? %>
-        <div class="row">
-          <div class="col-md-12">
-            <figure>
-              <figcaption class="mb_20"><%= t(".gifts_section_title") %></figcaption>
-              <ul class="color-4 transparent mb_20">
-                <% @last_gifts.each do |gift| %>
-                  <%= render "gobierto_people/people/gifts/gift", gift: gift, teaser: true %>
-                <% end %>
-              </ul>
-
-              <%= link_to gobierto_people_person_gifts_path(@person.slug), class: "show-more color-4" do %>
-              <small><%= t("gobierto_people.shared.view_all") %></small>
+    <% if @last_gifts.any? %>
+      <div class="row">
+        <div class="col-md-12">
+          <figure>
+            <figcaption class="mb_20"><%= t(".gifts_section_title") %></figcaption>
+            <ul class="color-4 transparent mb_20">
+              <% @last_gifts.each do |gift| %>
+                <%= render "gobierto_people/people/gifts/gift", gift: gift, teaser: true %>
               <% end %>
-            </figure>
-          </div>
+            </ul>
+
+            <%= link_to gobierto_people_person_gifts_path(@person.slug), class: "show-more color-4" do %>
+            <small><%= t("gobierto_people.shared.view_all") %></small>
+            <% end %>
+          </figure>
         </div>
-      <% end %>
+      </div>
+    <% end %>
 
-    </div>
+  </div>
 
-  </section>
+</section>
 
-  <%= render "gobierto_people/shared/open_data_footer" %>
-
-</div>
+<%= render "gobierto_people/shared/open_data_footer" %>
