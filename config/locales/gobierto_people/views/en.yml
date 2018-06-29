@@ -13,6 +13,7 @@ en:
         explore_departments: Explore Departments and Officials
         explore_people: Explore the agendas of Officials
         people_events: Officials with more events
+        punchcard_title: Meetings per departments and month
         people_with_events: officials with registered events
       show:
         people_box_title: officials in this department
@@ -35,6 +36,7 @@ en:
         explore_departments: Explore Departments and Officials
         explore_people: Explore the agendas of Officials
         people_with_events: the number of Officials with which this group has met
+        punchcard_title: Meetings per official and month
         status: "Inscription status in interest groups registry: %{status}"
     welcome:
       index:

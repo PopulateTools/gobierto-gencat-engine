@@ -9,7 +9,7 @@ window.GobiertoPeople.GencatDepartmentsController = (function() {
       _loadRowchart('#people_events_rowchart', options.people_events_api_path)
       _loadRowchart('#departments_events_rowchart', options.departments_events_api_path)
 
-      _loadPunchcard('#department_people_events_punchcard', options.department_people_events_punchcard_api_path)
+      _loadPunchcard('#department_people_events_punchcard', options.department_people_events_punchcard_api_path, I18n.t('gobierto_people.departments.index.punchcard_title'))
 
       _reloadRowchart('#departments_events_rowchart', options.departments_events_api_path, 10000)
 
