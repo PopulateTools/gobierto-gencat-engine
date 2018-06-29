@@ -77,11 +77,19 @@ function _reloadRowchart(container, url, maxElements) {
   });
 }
 
-function setDatepickerFilters(minDate) {
+function setDatepickerFilters(opts) {
+  // parse opts
+  const minDate = opts.people_events_first_date
+  const startDate = opts.people_events_filter_start_date
+  const endDate = opts.people_events_filter_end_date || new Date()
+
   const $container = $('.js-datepicker-container')
   const $datepicker = $('#datepicker')
   const dp = $datepicker.datepicker({
     showEvent: 'none',
+    onShow: function () {
+      console.log(startDate, endDate);
+    },
     onSelect: function(fd, date) {
       // Update only if there's a range
       if (date.length !== 2) return
@@ -103,6 +111,11 @@ function setDatepickerFilters(minDate) {
       location.assign(location.href)
     }
   }).data('datepicker')
+
+  // init dates
+  if (!$datepicker.val()) {
+    dp.selectDate(moment(startDate))
+  }
 
   $datepicker.click(function () {
     $container.toggleClass('is-shown')

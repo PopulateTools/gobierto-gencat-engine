@@ -6,7 +6,7 @@ window.GobiertoPeople.GencatCommonController = (function() {
 
   GencatCommonController.prototype.load = function(options) {
     $(document).on('turbolinks:load', function() {
-      setDatepickerFilters(options.people_events_first_date);
+      setDatepickerFilters(options);
     });
   };
 
