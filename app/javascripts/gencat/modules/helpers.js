@@ -1,5 +1,5 @@
 import { rowchart, punchcard } from 'visualizations'
-import { d3, moment } from 'shared'
+import { d3, moment, d3locale } from 'shared'
 
 function _loadRowchart(container, url) {
   $.getJSON(url, (data) => {
@@ -17,7 +17,6 @@ function _loadRowchart(container, url) {
 
 function _loadPunchcard(container, url, title) {
   $.getJSON(url, (data) => {
-    var intervalLength = 3
     let opts = {
       title: title,
       tooltipContainer: ".theme-gencat",
@@ -25,7 +24,10 @@ function _loadPunchcard(container, url, title) {
         eval: "d.value.toLocaleString() + ' " + I18n.t('gobierto_people.shared.open_data_footer.meetings') + "'"
       },
       xTickFormat: (d, i, arr) => {
+        let intervalLength = (arr.length > 12) ? 3 : (arr.length > 5) ? 2 : 1
         let distanceFromEnd = arr.length - i - 1
+
+        d3.timeFormatDefaultLocale(d3locale[I18n.locale])
         return ((distanceFromEnd % intervalLength) === 0) ? d3.timeFormat("%b %y")(d) : null
       }
     }
@@ -42,6 +44,7 @@ function _loadPunchcard(container, url, title) {
   });
 }
 
+// issues
 function setTooltipColor() {
   $(".graph-tooltip").each(function (e,r,t,y,u) {
     // get id chart from tooltip chart
