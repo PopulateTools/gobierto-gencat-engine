@@ -81,7 +81,7 @@ function setDatepickerFilters(opts) {
   // parse opts
   const minDate = opts.people_events_first_date
   const startDate = opts.people_events_filter_start_date
-  const endDate = opts.people_events_filter_end_date || new Date()
+  const endDate = opts.people_events_filter_end_date
 
   // Set locale to language site
   moment.locale(I18n.locale)
@@ -119,10 +119,16 @@ function setDatepickerFilters(opts) {
 
   // init dates
   // TODO: no inicializar si hay params en la queryString
-  $datepicker.val(`${moment(startDate).format('D MMM YYYY')} · ${moment(endDate).format('D MMM YYYY')}`)
+  $datepicker.val(`${moment(startDate).format('D MMM YYYY')} · ${(endDate) ? moment(endDate).format('D MMM YYYY') : moment().calendar().split(' ')[0]}`)
 
-  $datepicker.click(function () {
+  $datepicker.click(function (e) {
     $container.toggleClass('is-shown')
+    e.stopPropagation()
+  })
+  $(window).click(function (e) {
+    if ($container.hasClass('is-shown')) {
+      $container.removeClass('is-shown')
+    }
   })
 
   // onClick to display datepicker
