@@ -19,6 +19,6 @@
   });
 
   window.GobiertoPeople.gencat_common_controller.updatePageHeader({
-    pageTitle: '<%= j @meta_tags["title"] %>'
+    pageTitle: "<%= raw @meta_tags["title"] %>"
   });
 <% end %>
