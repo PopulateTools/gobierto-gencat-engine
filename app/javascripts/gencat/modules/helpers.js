@@ -80,14 +80,6 @@ function _reloadRowchart(container, url, maxElements) {
 function setDatepickerFilters(minDate) {
   const $container = $('.js-datepicker-container')
   const $datepicker = $('#datepicker')
-
-  // test if there is previous filter selected
-  window.onload = function () {
-    if (sessionStorage.getItem('filter-selected')) {
-      $datepicker.val(sessionStorage.getItem('filter-selected'))
-    }
-  }
-
   const dp = $datepicker.datepicker({
     showEvent: 'none',
     onSelect: function(fd, date) {
@@ -106,8 +98,6 @@ function setDatepickerFilters(minDate) {
         updateQueryStringParam('start_date', dates[0])
         updateQueryStringParam('end_date', dates[1])
       }
-
-      sessionStorage.setItem('filter-selected', $datepicker.val());
 
       // Load new params
       location.assign(location.href)
@@ -148,7 +138,6 @@ function setDatepickerFilters(minDate) {
     }
 
     $datepicker.val($(this).text())
-    sessionStorage.setItem('filter-selected', $(this).text());
 
     // format
     if (date) {
@@ -201,49 +190,5 @@ const updateQueryStringParam = (key, value) => {
 
     window.history.replaceState({}, "", baseUrl + params);
 };
-
-// const getParams = query => {
-//   if (!query) {
-//     return { };
-//   }
-//
-//   return (/^[?#]/.test(query) ? query.slice(1) : query)
-//     .split('&')
-//     .reduce((params, param) => {
-//       let [ key, value ] = param.split('=');
-//       params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
-//       return params;
-//     }, { });
-// };
-//
-// const updateAllLinks = (who, what) => {
-//   $('a').each(function() {
-//     let href = $(this).attr('href')
-//
-//     if (href && href.startsWith("/")) {
-//     // if ((href) && (href.startsWith("/") || href.includes(window.location.host))) {
-//       if (href.indexOf(`${who}=`) > -1) {
-//         href += href.replace(/start_date=\d+/, `${who}=${what}`)
-//       } else if (href.indexOf('?') > -1) {
-//         href += `&${who}=${what}`
-//       } else {
-//         href += `?${who}=${what}`
-//       }
-//
-//       $(this).attr('href', href);
-//     }
-//   });
-// }
-//
-// function appendFiltersEverywhere(who, what) {
-//   // update all links
-//   let q = window.location.search
-//   if (q) {
-//     let qs = getParams(q)
-//     for (var param in qs) {
-//       updateAllLinks(param, qs[param])
-//     }
-//   }
-// }
 
 export { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor, setDatepickerFilters }
