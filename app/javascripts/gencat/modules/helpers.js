@@ -87,9 +87,11 @@ function setDatepickerFilters(opts) {
   const $datepicker = $('#datepicker')
   const dp = $datepicker.datepicker({
     showEvent: 'none',
-    onShow: function () {
-      console.log(startDate, endDate);
-    },
+    multipleDatesSeparator: ' · ',
+    range: true,
+    language: 'ca',
+    dateFormat: 'd M yyyy',
+    autoClose: true,
     onSelect: function(fd, date) {
       // Update only if there's a range
       if (date.length !== 2) return
@@ -113,8 +115,8 @@ function setDatepickerFilters(opts) {
   }).data('datepicker')
 
   // init dates
+  $datepicker.val(`${moment(startDate).format('D MMM YYYY')} · ${moment(endDate).format('D MMM YYYY')}`)
   if (!$datepicker.val()) {
-    dp.selectDate(moment(startDate))
   }
 
   $datepicker.click(function () {
