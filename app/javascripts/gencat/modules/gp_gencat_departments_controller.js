@@ -33,8 +33,6 @@ window.GobiertoPeople.GencatDepartmentsController = (function() {
       _reloadRowchart('#department_people_events_rowchart', options.department_people_events_rowchart_api_path, 10000)
       _reloadRowchart('#department_interest_groups_events_rowchart', options.department_interest_groups_rowchart_api_path, 10000)
 
-      window.onload = appendFiltersEverywhere
-
       // REVIEW: Waiting for render
       setTimeout(function () {
         setTooltipColor()

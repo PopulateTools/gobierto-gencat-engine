@@ -8,8 +8,6 @@ window.GobiertoPeople.GencatInterestGroupsController = (function() {
     $(document).on('turbolinks:load', function() {
       _loadRowchart('#interest_groups_events_rowchart', options.interest_groups_events_rowchart_api_path)
       _reloadRowchart('#interest_groups_events_rowchart', options.interest_groups_events_rowchart_api_path, 500)
-
-      window.onload = appendFiltersEverywhere
     });
   };
 
