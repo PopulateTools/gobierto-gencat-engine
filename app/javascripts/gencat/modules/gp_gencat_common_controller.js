@@ -10,6 +10,10 @@ window.GobiertoPeople.GencatCommonController = (function() {
     });
   };
 
+  GencatCommonController.prototype.setPageTitle = function(options) {
+    $("#impacteContainer h1").text(options.pageTitle);
+  };
+
   return GencatCommonController;
 })();
 

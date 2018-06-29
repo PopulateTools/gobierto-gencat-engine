@@ -18,4 +18,8 @@
     people_events_filter_start_date: '<%= filter_start_date.try(:iso8601) %>',
     people_events_filter_end_date: '<%= filter_end_date.try(:iso8601) %>'
   });
+
+  window.GobiertoPeople.gencat_common_controller.setPageTitle({
+    pageTitle: '<%= j @meta_tags["title"] %>'
+  });
 <% end %>
