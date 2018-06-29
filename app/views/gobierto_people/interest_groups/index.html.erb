@@ -1,12 +1,10 @@
 <section class="row">
-  <div class="col-md-3">
+  <div class="col-md-9">
+    <p><%= t(".description", link: "https://web.gencat.cat/es/tramits/tramits-temes/registre-grups-interes?vmode=normativa").html_safe %></p>
+  </div>
+  <div class="col-md-3 pull-right">
     <%= render "gobierto_people/shared/datepicker" %>
   </div>
-</section>
-
-<section>
-  <h3 class="h3 text-left"><%= title t(".title") %></h3>
-  <p><%= t(".description", link: "https://web.gencat.cat/es/tramits/tramits-temes/registre-grups-interes?vmode=normativa").html_safe %></p>
 </section>
 
 <% pending do %>

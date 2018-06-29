@@ -1,12 +1,10 @@
 <section class="row">
+  <div class="col-md-9">
+    <p><%= t(".status", status: @interest_group.status) %></p>
+  </div>
   <div class="col-md-3 pull-right">
     <%= render "gobierto_people/shared/datepicker" %>
   </div>
-</section>
-
-<section>
-  <h3 class="h3 text-left"><%= title @interest_group.name %></h3>
-  <p><%= t(".status", status: @interest_group.status) %></p>
 </section>
 
 <section>

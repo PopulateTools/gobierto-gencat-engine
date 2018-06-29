@@ -15,6 +15,7 @@ ca:
         explore_departments: Explora els Departaments i els seus Alts Càrrecs
         explore_people: Consulta les agendes dels Alts Càrrecs
         people_events: Alts càrrecs amb més reunions
+        punchcard_title: Reunions per departament i mes
         people_with_events: alts càrrecs amb reunions registrades
       show:
         people_box_title: alts càrrecs d'aquest departament
@@ -38,6 +39,7 @@ ca:
         explore_people: Consulta les agendes dels Alts Càrrecs
         people_with_events: el nombre de Alts Càrrecs amb els quals s'ha reunit aquest
           grup
+        punchcard_title: Reunions per alt càrrec i mes
         status: "Situació inscripció registre grup interès: %{status}"
     welcome:
       index:

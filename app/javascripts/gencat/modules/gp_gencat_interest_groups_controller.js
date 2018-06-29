@@ -15,7 +15,7 @@ window.GobiertoPeople.GencatInterestGroupsController = (function() {
     $(document).on('turbolinks:load', function() {
       _loadRowchart('#departments_events_rowchart', options.departments_events_rowchart_api_path)
       _loadRowchart('#people_events_rowchart', options.people_events_rowchart_api_path)
-      _loadPunchcard('#interest_group_people_events_punchcard', options.interest_group_people_events_punchcard_api_path)
+      _loadPunchcard('#interest_group_people_events_punchcard', options.interest_group_people_events_punchcard_api_path, I18n.t('gobierto_people.interest_groups.show.punchcard_title'))
 
       // REVIEW: Waiting for render
       setTimeout(function () {
