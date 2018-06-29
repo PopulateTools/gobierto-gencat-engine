@@ -1,3 +1,8 @@
+<% content_for :breadcrumb do %>
+  <li><%= link_to t("gobierto_people.interest_groups.index.title"), gobierto_people_interest_groups_path(date_range_params) %></li>
+  <li><%= @interest_group.name %></li>
+<% end %>
+
 <section class="row">
   <div class="col-md-9">
     <p><%= t(".status", status: @interest_group.status) %></p>

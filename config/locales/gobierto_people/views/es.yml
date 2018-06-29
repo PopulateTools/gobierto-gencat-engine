@@ -112,3 +112,5 @@ es:
         invitations: invitaciones
         gift_received: obsequio recibido
         gifts_received: obsequios recibidos
+      content_for_module_breadcrumb:
+        officials: Altos Cargos
