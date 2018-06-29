@@ -193,7 +193,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
 
     .rowchart {
       min-height: auto;
