@@ -120,8 +120,6 @@ function setDatepickerFilters(opts) {
   // init dates
   // TODO: no inicializar si hay params en la queryString
   $datepicker.val(`${moment(startDate).format('D MMM YYYY')} · ${moment(endDate).format('D MMM YYYY')}`)
-  if (!$datepicker.val()) {
-  }
 
   $datepicker.click(function () {
     $container.toggleClass('is-shown')
@@ -155,8 +153,6 @@ function setDatepickerFilters(opts) {
         break;
       default:
     }
-
-    $datepicker.val($(this).text())
 
     // format
     if (date) {
