@@ -16,4 +16,8 @@
   window.GobiertoPeople.gencat_common_controller.load({
     people_events_first_date: '<%= all_start_date.try(:iso8601) %>'
   });
+
+  window.GobiertoPeople.gencat_common_controller.setPageTitle({
+    pageTitle: '<%= j @meta_tags["title"] %>'
+  });
 <% end %>
