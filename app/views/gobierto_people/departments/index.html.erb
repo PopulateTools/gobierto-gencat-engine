@@ -1,14 +1,12 @@
 <% title t(".title") %>
 
 <section class="row">
+  <div class="col-md-9">
+    <p><%== t(".description") %></p>
+  </div>
   <div class="col-md-3 pull-right">
     <%= render "gobierto_people/shared/datepicker" %>
   </div>
-</section>
-
-<section>
-  <h3 class="h3 text-left"><%= t("gobierto_people.layouts.menu_subsections.departments") %></h3>
-  <p><%== t(".description") %></p>
 </section>
 
 <section>
