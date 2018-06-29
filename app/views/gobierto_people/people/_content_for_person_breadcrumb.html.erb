@@ -1,0 +1,6 @@
+<%= render "gobierto_people/people/content_for_module_breadcrumb" %>
+<li><%= link_to_unless(
+          controller_path.include?("gobierto_people/people"),
+          @person.name,
+          gobierto_people_person_path(@person.slug, date_range_params)
+        ) %></li>

@@ -112,3 +112,5 @@ ca:
         invitations: invitacions
         gift_received: obsequi rebut
         gifts_received: obsequis rebuts
+      content_for_module_breadcrumb:
+        officials: Alts Càrrecs

@@ -109,3 +109,5 @@ en:
         invitations: invitations
         gift_received: gift received
         gifts_received: gifts received
+      content_for_module_breadcrumb:
+        officials: Officials
