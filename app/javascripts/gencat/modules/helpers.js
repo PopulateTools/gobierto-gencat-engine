@@ -83,13 +83,16 @@ function setDatepickerFilters(opts) {
   const startDate = opts.people_events_filter_start_date
   const endDate = opts.people_events_filter_end_date || new Date()
 
+  // Set locale to language site
+  moment.locale(I18n.locale)
+
   const $container = $('.js-datepicker-container')
   const $datepicker = $('#datepicker')
   const dp = $datepicker.datepicker({
     showEvent: 'none',
     multipleDatesSeparator: ' · ',
     range: true,
-    language: 'ca',
+    language: I18n.locale,
     dateFormat: 'd M yyyy',
     autoClose: true,
     onSelect: function(fd, date) {
@@ -115,6 +118,7 @@ function setDatepickerFilters(opts) {
   }).data('datepicker')
 
   // init dates
+  // TODO: no inicializar si hay params en la queryString
   $datepicker.val(`${moment(startDate).format('D MMM YYYY')} · ${moment(endDate).format('D MMM YYYY')}`)
   if (!$datepicker.val()) {
   }
