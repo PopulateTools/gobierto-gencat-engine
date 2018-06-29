@@ -42,6 +42,7 @@ function _loadPunchcard(container, url, title) {
   });
 }
 
+// issues
 function setTooltipColor() {
   $(".graph-tooltip").each(function (e,r,t,y,u) {
     // get id chart from tooltip chart
