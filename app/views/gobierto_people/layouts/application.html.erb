@@ -11,11 +11,16 @@
 <% end %>
 
 <%= render template: "layouts/application" %>
+<%= render "gobierto_people/shared/breadcrumb" %>
 
 <%= javascript_tag do %>
   window.GobiertoPeople.gencat_common_controller.load({
     people_events_first_date: '<%= all_start_date.try(:iso8601) %>',
     people_events_filter_start_date: '<%= filter_start_date.try(:iso8601) %>',
     people_events_filter_end_date: '<%= filter_end_date.try(:iso8601) %>'
+  });
+
+  window.GobiertoPeople.gencat_common_controller.updatePageHeader({
+    pageTitle: "<%= raw @meta_tags["title"] %>"
   });
 <% end %>
