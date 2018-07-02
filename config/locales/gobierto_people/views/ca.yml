@@ -63,6 +63,8 @@ ca:
         invitations_coc: El Codi de Conducta regula què invitacions es poden acceptar.
         last_invitations: Últimes invitacions
         punchcard_title: Reunions per alt càrrec i mes
+        no_invitations: No s'han registrat invitacions en aquest període
+        no_gifts: No s'han registrat obsequis en aquest període
       table_item:
         view_details: Veure detalls
     shared:

@@ -61,6 +61,8 @@ es:
         invitations_coc: El Código de Conducta regula qué invitaciones se pueden aceptar.
         last_invitations: Últimas invitaciones
         punchcard_title: Reuniones por alto cargo y mes
+        no_invitations: No se han registrado invitaciones en este periodo
+        no_gifts: No se han registrado obsequios en este periodo
       table_item:
         view_details: Ver detalles
     shared:
