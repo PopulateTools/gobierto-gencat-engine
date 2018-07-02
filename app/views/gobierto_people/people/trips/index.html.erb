@@ -1,13 +1,16 @@
 <% content_for :breadcrumb do %>
   <%= render "gobierto_people/people/content_for_person_breadcrumb" %>
+  <li><%= t(".trips") %></li>
 <% end %>
+
+<% title @person.name %>
 
 <div class="row">
   <div class="col-md-12">
 
     <figure>
 
-      <figcaption class="mb_20"><%= title t(".title", person_name: @person.name) %></figcaption>
+      <figcaption class="mb_20"><%= t(".title", person_name: @person.name) %></figcaption>
 
       <ul class="color-2 transparent">
 
