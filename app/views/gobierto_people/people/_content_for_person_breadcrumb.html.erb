@@ -2,5 +2,6 @@
 <li><%= link_to_unless(
           controller_path.include?("gobierto_people/people"),
           @person.name,
-          gobierto_people_person_path(@person.slug, date_range_params)
+          gobierto_people_person_path(@person.slug, date_range_params),
+          data: { turbolinks: false }
         ) %></li>
