@@ -40,7 +40,7 @@ en:
         status: "Inscription status in interest groups registry: %{status}"
     welcome:
       index:
-        title: Public agenda
+        title: Agendas
         description: Check with whom meets each Official in the Generalitat, companies and organizations that request meetings, and the trips and gifts received
         meetings_box_title: Meetings registered
         departments_rowchart_title: Departments with most meetings

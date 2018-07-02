@@ -41,7 +41,7 @@ es:
         status: "Situación de inscripción en el registro de grupos de interés: %{status}"
     welcome:
       index:
-        title: Agenda pública
+        title: Agendas
         description: Consulta con quién se reúne cada alto cargo de la Generalitat, las empresas y organizaciones que solicitan reuniones, y los viajes y obsequios recibidos
         meetings_box_title: Reuniones registradas
         departments_rowchart_title: Departamentos con más reuniones
