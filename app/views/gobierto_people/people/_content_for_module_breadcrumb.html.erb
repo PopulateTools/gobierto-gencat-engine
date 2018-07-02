@@ -1,1 +1,5 @@
-<li><%= link_to_unless_current t(".officials"), gobierto_people_people_path(date_range_params) %></li>
+<li><%= link_to_unless_current(
+          t(".officials"),
+          gobierto_people_people_path(date_range_params),
+          data: { turbolinks: false }
+        ) %></li>

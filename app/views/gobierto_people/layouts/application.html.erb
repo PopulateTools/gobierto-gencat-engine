@@ -14,6 +14,8 @@
 
   <%= yield %>
 
+  <%= render "gobierto_people/shared/breadcrumb" %>
+
   <%= javascript_tag do %>
     window.GobiertoPeople.gencat_common_controller.load({
       people_events_first_date: '<%= all_start_date.try(:iso8601) %>'
@@ -23,8 +25,6 @@
       pageTitle: "<%= raw @meta_tags["title"] %>"
     });
   <% end %>
-
-  <%= render "gobierto_people/shared/breadcrumb" %>
 
 <% end %>
 
