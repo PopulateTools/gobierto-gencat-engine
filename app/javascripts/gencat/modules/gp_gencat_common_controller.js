@@ -37,7 +37,9 @@ function loadBreadcrumb() {
 
   var $rootBreadcrumbItemAnchor = $($rootBreadcrumbItem.find("a")[0]);
 
-  if (document.location.href == $rootBreadcrumbItemAnchor.attr("href")) {
+  var currentUrl = document.location.href.replace(/(\?|&)locale=(en|es|ca)/, "");
+
+  if (currentUrl == $rootBreadcrumbItemAnchor.attr("href")) {
     $rootBreadcrumbItem.replaceWith("<li>" + $rootBreadcrumbItemAnchor.text() + "</li>");
   }
 }
