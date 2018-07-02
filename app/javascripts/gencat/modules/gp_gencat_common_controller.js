@@ -29,7 +29,7 @@ function loadBreadcrumb() {
   $breadcrumbItems.appendTo($breadcrumb);
 
   // remove link from root element if it's the current page
-  var rootElementRegex = new RegExp("Agendas");
+  var rootElementRegex = new RegExp("Agendas|Agendes");
 
   var $rootBreadcrumbItem = $breadcrumb.children().filter(function() {
     return rootElementRegex.test(this.innerHTML);
