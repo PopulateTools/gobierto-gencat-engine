@@ -1,9 +1,7 @@
 <% content_for :breadcrumb do %>
   <li><%= link_to t("gobierto_people.departments.index.title"), gobierto_people_departments_path(date_range_params) %></li>
-  <li><%= @department.name %></li>
+  <li><%= title @department.name %></li>
 <% end %>
-
-<% title @department.name %>
 
 <section class="row">
   <div class="col-md-3 pull-right">
