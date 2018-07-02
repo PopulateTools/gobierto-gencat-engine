@@ -10,15 +10,22 @@
   <% end %>
 <% end %>
 
-<%= render template: "layouts/application" %>
-<%= render "gobierto_people/shared/breadcrumb" %>
+<% content_for :content do %>
 
-<%= javascript_tag do %>
-  window.GobiertoPeople.gencat_common_controller.load({
-    people_events_first_date: '<%= all_start_date.try(:iso8601) %>'
-  });
+  <%= yield %>
 
-  window.GobiertoPeople.gencat_common_controller.updatePageHeader({
-    pageTitle: "<%= raw @meta_tags["title"] %>"
-  });
+  <%= javascript_tag do %>
+    window.GobiertoPeople.gencat_common_controller.load({
+      people_events_first_date: '<%= all_start_date.try(:iso8601) %>'
+    });
+
+    window.GobiertoPeople.gencat_common_controller.updatePageHeader({
+      pageTitle: "<%= raw @meta_tags["title"] %>"
+    });
+  <% end %>
+
+  <%= render "gobierto_people/shared/breadcrumb" %>
+
 <% end %>
+
+<%= render template: "layouts/application" %>
