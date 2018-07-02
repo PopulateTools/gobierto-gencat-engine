@@ -1,5 +1,13 @@
 <% content_for :breadcrumb do %>
   <%= render "gobierto_people/people/content_for_module_breadcrumb" %>
+
+  <% if try(:current_department) %>
+    <li><%= link_to_unless_current(
+              current_department.name,
+              gobierto_people_department_people_path({ department_slug: current_department.slug }.merge(date_range_params)),
+              data: { turbolinks: false }
+            ) %></li>
+  <% end %>
 <% end %>
 
 <% content_for :custom_top_content do %>
@@ -15,3 +23,12 @@
 <% end %>
 
 <%= render "gobierto_people/people/index" %>
+
+<!-- Set title after rendering default template so it gets overriden -->
+<% if [controller_path == "controller_people/people", controller_name == "people" , action_name == "index"].all?  %>
+  <% title t(".title") %>
+<% elsif try(:current_department) %>
+  <% title t(".department_officials", department_name: current_department.name) %>
+<% else %>
+  <% title t(".officials") %>
+<% end %>

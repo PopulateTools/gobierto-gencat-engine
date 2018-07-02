@@ -83,6 +83,9 @@ es:
         all: Todo
         range: Rango personalizado
     people:
+      index:
+        officials: Altos Cargos
+        department_officials: Altos Cargos en %{department_name}
       show:
         trips_section_title: Viajes realizados por %{person_name}
         events_section_title: Últimas reuniones
@@ -92,17 +95,23 @@ es:
       trips:
         index:
           title: Viajes realizados por %{person_name}
+          trips: Viajes
         trip:
           company: Comitiva
           expenses: Gastos
       gifts:
         index:
           title: Obsequios recibidos por %{person_name}
+          gifts: Obsequios
         gift:
           from: de
       invitations:
         index:
           title: Invitaciones recibidas por %{person_name}
+          invitations: Invitaciones
+      person_events:
+        index:
+          agenda: Agenda
       navigation:
         meeting_with: reunión con
         meetings_with: reuniones con
@@ -114,5 +123,3 @@ es:
         invitations: invitaciones
         gift_received: obsequio recibido
         gifts_received: obsequios recibidos
-      content_for_module_breadcrumb:
-        officials: Altos Cargos

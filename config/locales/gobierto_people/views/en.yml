@@ -82,6 +82,9 @@ en:
         all: Everything
         range: Custom range
     people:
+      index:
+        officials: Officials
+        department_officials: Officials in %{department_name}
       show:
         trips_section_title: Trips made by %{person_name}
         events_section_title: Last meetings
@@ -91,17 +94,23 @@ en:
       trips:
         index:
           title: Trips made by %{person_name}
+          trips: Trips
         trip:
           company: Trip party
           expenses: Expenses
       gifts:
         index:
           title: Gifts received by %{person_name}
+          gifts: Gifts
         gift:
           from: from
       invitations:
         index:
           title: Invitations received by %{person_name}
+          invitations: Invitations
+      person_events:
+        index:
+          agenda: Agenda
       navigation:
         meeting_with: meeting with
         meetings_with: meetings with
@@ -113,5 +122,3 @@ en:
         invitations: invitations
         gift_received: gift received
         gifts_received: gifts received
-      content_for_module_breadcrumb:
-        officials: Officials

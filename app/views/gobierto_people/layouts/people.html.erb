@@ -1,16 +1,12 @@
 <% content_for :content do %>
 
   <section class="row">
+    <div class="col-md-9">
+      <p><%= @person.charge %></p>
+    </div>
     <div class="col-md-3 pull-right">
       <%= render "gobierto_people/shared/datepicker" %>
     </div>
-  </section>
-
-  <section>
-    <h3 class="h3 text-left">
-      <%= link_to @person.name, gobierto_people_person_path(@person.slug, date_range_params) %>
-    </h3>
-    <p><%= @person.charge %></p>
   </section>
 
   <section class="row">

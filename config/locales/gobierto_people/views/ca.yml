@@ -85,6 +85,9 @@ ca:
         all: Tot
         range: Rang personalitzat
     people:
+      index:
+        officials: Alts Càrrecs
+        department_officials: Alts Càrrecs en %{department_name}
       show:
         trips_section_title: Viatges realizats per %{person_name}
         events_section_title: Últimes reunions
@@ -94,17 +97,23 @@ ca:
       trips:
         index:
           title: Viatges realitzats per %{person_name}
+          trips: Viatges
         trip:
           company: Comitiva
           expenses: Despeses
       gifts:
         index:
           title: Obsequis rebuts per %{person_name}
+          gifts: Obsequis
         gift:
           from: de
       invitations:
         index:
           title: Invitacions rebudes per %{person_name}
+          invitations: Invitacions
+      person_events:
+        index:
+          agenda: Agenda
       navigation:
         meeting_with: reunió amb
         meetings_with: reunions amb
@@ -116,5 +125,3 @@ ca:
         invitations: invitacions
         gift_received: obsequi rebut
         gifts_received: obsequis rebuts
-      content_for_module_breadcrumb:
-        officials: Alts Càrrecs
