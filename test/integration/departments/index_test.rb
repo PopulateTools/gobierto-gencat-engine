@@ -15,7 +15,7 @@ module GobiertoPeople
         with_current_site(site) do
           visit gobierto_people_departments_path
 
-          assert has_selector?("h3", text: "Departments")
+          assert has_content? "Any organization that meets with an official must register as an interest group"
         end
       end
 
