@@ -14,7 +14,7 @@ module GobiertoPeople
       with_current_site(site) do
         visit gobierto_people_interest_groups_path
 
-        assert has_selector?("h3", text: "Interest Groups")
+        assert has_content? "Any organization that meets"
         assert has_content? "Interest groups with most meetings"
       end
     end

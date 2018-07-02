@@ -107,26 +107,30 @@
       </div>
     </section>
 
-    <figure>
-      <figcaption class="mb_20"><%= t(".last_gifts") %></figcaption>
-      <ul class="color-4 transparent mb_20">
-        <% @gifts.each do |gift| %>
-          <%= render(
-                "table_item",
-                title: gift.name,
-                resource: gift,
-                resource_path: gobierto_people_person_gifts_path(
-                  gift.person.slug,
-                  { anchor: gift.to_anchor }.merge(date_range_params)
-                ),
-                display_date: gift.date
-              ) %>
-        <% end %>
-      </ul>
-    </figure>
+    <% if @gifts.any? %>
+      <figure>
+        <figcaption class="mb_20"><%= t(".last_gifts") %></figcaption>
+        <ul class="color-4 transparent mb_20">
+          <% @gifts.each do |gift| %>
+            <%= render(
+                  "table_item",
+                  title: gift.name,
+                  resource: gift,
+                  resource_path: gobierto_people_person_gifts_path(
+                    gift.person.slug,
+                    { anchor: gift.to_anchor }.merge(date_range_params)
+                  ),
+                  display_date: gift.date
+                ) %>
+          <% end %>
+        </ul>
+      </figure>
 
-    <%= link_to gobierto_people_gifts_path(date_range_params), class: "show-more color-4", data: { turbolinks: false } do %>
-    <small><%= t("gobierto_people.shared.view_all") %></small>
+      <%= link_to gobierto_people_gifts_path(date_range_params), class: "show-more color-4", data: { turbolinks: false } do %>
+        <small><%= t("gobierto_people.shared.view_all") %></small>
+      <% end %>
+    <% else %>
+      <em><%= t(".no_gifts") %></em>
     <% end %>
   </div>
 
@@ -139,26 +143,30 @@
       </div>
     </section>
 
-    <figure>
-      <figcaption class="mb_20"><%= t(".last_invitations") %></figcaption>
-      <ul class="color-3 transparent mb_20 mb_20">
-        <% @invitations.each do |invitation| %>
-          <%= render(
-                "table_item",
-                title: invitation.title,
-                resource: invitation,
-                resource_path: gobierto_people_person_invitations_path(
-                  invitation.person.slug,
-                  { anchor: invitation.to_anchor }.merge(date_range_params)
-                ),
-                display_date_range: [invitation.start_date, invitation.end_date]
-              ) %>
-        <% end %>
-      </ul>
-    </figure>
+    <% if @invitations.any? %>
+      <figure>
+        <figcaption class="mb_20"><%= t(".last_invitations") %></figcaption>
+        <ul class="color-3 transparent mb_20 mb_20">
+          <% @invitations.each do |invitation| %>
+            <%= render(
+                  "table_item",
+                  title: invitation.title,
+                  resource: invitation,
+                  resource_path: gobierto_people_person_invitations_path(
+                    invitation.person.slug,
+                    { anchor: invitation.to_anchor }.merge(date_range_params)
+                  ),
+                  display_date_range: [invitation.start_date, invitation.end_date]
+                ) %>
+          <% end %>
+        </ul>
+      </figure>
 
-    <%= link_to gobierto_people_invitations_path(date_range_params), class: "show-more color-3", data: { turbolinks: false } do %>
-    <small><%= t("gobierto_people.shared.view_all") %></small>
+      <%= link_to gobierto_people_invitations_path(date_range_params), class: "show-more color-3", data: { turbolinks: false } do %>
+        <small><%= t("gobierto_people.shared.view_all") %></small>
+      <% end %>
+    <% else %>
+      <em><%= t(".no_invitations") %></em>
     <% end %>
   </div>
 

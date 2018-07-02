@@ -19,7 +19,7 @@ module GobiertoPeople
         with_current_site(site) do
           visit gobierto_people_interest_group_path(interest_group)
 
-          assert has_selector?("h3", text: interest_group.name)
+          assert has_content? "Inscription status in interest groups registry: #{interest_group.status}"
         end
       end
 

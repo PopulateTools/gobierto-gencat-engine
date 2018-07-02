@@ -60,6 +60,8 @@ en:
         invitations_coc: The Code of Conduct regulates which invitations can be accepted.
         last_invitations: Last invitations
         punchcard_title: Meetings per official and month
+        no_invitations: No invitations have been registered in this period
+        no_gifts: No gifts have been registered in this period
       table_item:
         view_details: View details
     shared:
