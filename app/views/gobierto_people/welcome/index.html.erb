@@ -16,7 +16,11 @@
           <div class="box color-1 distribuidora-nova-3 mb_20">
 
             <div class="color-decorator">
-              <h1><%= number_with_delimiter @home_statistics[:total_events] %></h1>
+              <h1>
+                <%= link_to gobierto_people_departments_path(date_range_params), data: { turbolinks: false }, class: "no-link" do %>
+                  <%= number_with_delimiter @home_statistics[:total_events] %>
+                <% end %>
+              </h1>
               <h5>
                 <div><strong></strong></div>
                 <div><strong><%= t(".meetings_box_title") %></strong></div>
@@ -39,7 +43,11 @@
           <div class="box color-2 distribuidora-nova-3 mb_20">
 
             <div class="color-decorator">
-              <h1><%= number_with_delimiter @home_statistics[:total_interest_groups] %></h1>
+              <h1>
+                <%= link_to gobierto_people_interest_groups_path(date_range_params), data: { turbolinks: false }, class: "no-link"  do %>
+                  <%= number_with_delimiter @home_statistics[:total_interest_groups] %>
+                <% end %>
+              </h1>
               <h5>
                 <div><strong><%= t(".interest_groups_box_title") %></strong></div>
                 <span><%= t(".interest_groups_box_subtitle") %></span>
@@ -62,7 +70,11 @@
           <div class="box color-3 distribuidora-nova-3 mb_20">
 
             <div class="color-decorator">
-              <h1><%= number_with_delimiter @home_statistics[:total_people_with_attendances] %></h1>
+              <h1>
+                <%= link_to gobierto_people_people_path(date_range_params), data: { turbolinks: false }, class: "no-link"  do %>
+                  <%= number_with_delimiter @home_statistics[:total_people_with_attendances] %>
+                <% end %>
+              </h1>
               <h5>
                 <div><strong><%= t(".people_box_title") %></strong></div>
                 <span><%= t(".people_box_subtitle") %></span>
