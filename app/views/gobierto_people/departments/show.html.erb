@@ -20,11 +20,9 @@
           <div class="box color-1 distribuidora-nova-3">
 
             <div class="color-decorator">
-              <h1>
-                <%= link_to gobierto_people_department_people_path(@department, date_range_params), data: { turbolinks: false }, class: "no-link" do %>
-                  <%= @department_stats[:total_people_with_attendances] %>
-                <% end %>
-              </h1>
+              <%= link_to gobierto_people_department_people_path(@department, date_range_params), data: { turbolinks: false }, class: "no-link" do %>
+                <h1><%= @department_stats[:total_people_with_attendances] %></h1>
+              <% end %>
               <h5>
                 <p><strong><%= t(".people_box_title") %></strong></p>
                 <p><%= t(".people_box_subtitle") %></p>
