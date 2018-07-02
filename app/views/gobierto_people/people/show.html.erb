@@ -1,16 +1,16 @@
+<% title @person.name %>
+
 <% content_for :breadcrumb do %>
   <%= render "content_for_person_breadcrumb" %>
 <% end %>
 
 <section class="row">
+  <div class="col-md-9">
+    <p><%= @person.charge %></p>
+  </div>
   <div class="col-md-3 pull-right">
     <%= render "gobierto_people/shared/datepicker" %>
   </div>
-</section>
-
-<section>
-  <h3 class="h3 text-left"><%= title @person.name %></h3>
-  <p><%= @person.charge %></p>
 </section>
 
 <section class="row">
