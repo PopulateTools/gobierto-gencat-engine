@@ -4,7 +4,7 @@ require "test_helper"
 require "#{Rails.root}/vendor/gobierto_engines/gobierto-gencat-engine/lib/gencat/integration_test"
 
 module GobiertoPeople
-  class WelcomeIndexTest < ::Gencat::IntegrationTest
+  class Gencat::WelcomeIndexTest < ::Gencat::IntegrationTest
 
     def site
       @site ||= sites(:madrid)

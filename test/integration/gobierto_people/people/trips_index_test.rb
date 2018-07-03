@@ -4,52 +4,54 @@ require "test_helper"
 require "#{Rails.root}/vendor/gobierto_engines/gobierto-gencat-engine/lib/gencat/integration_test"
 
 module GobiertoPeople
-  class TripsIndexTest < ::Gencat::IntegrationTest
+  module People
+    class Gencat::TripsIndexTest < ::Gencat::IntegrationTest
 
-    def site
-      @site ||= sites(:madrid)
-    end
-
-    def person
-      @person ||= gobierto_people_people(:richard)
-    end
-
-    def recent_trip
-      @recent_trip ||= gobierto_people_trips(:richard_multiple_destinations_recent)
-    end
-
-    def old_trip
-      @old_trip ||= gobierto_people_trips(:richard_single_destination_old)
-    end
-
-    def page_title
-      person.name
-    end
-
-    def test_index
-      with_current_site(site) do
-        visit gobierto_people_person_trips_path(person.slug)
-
-        assert title.include? page_title
-        assert has_content? "Trips made by #{person.name}"
-
-        assert has_content? recent_trip.title
-        assert has_content? old_trip.title
-
-        assert ordered_elements(page, [recent_trip.title, old_trip.title])
+      def site
+        @site ||= sites(:madrid)
       end
-    end
 
-    def test_index_when_no_trips
-      person.trips.destroy_all
-
-      with_current_site(site) do
-        visit gobierto_people_person_trips_path(person.slug)
-
-        assert title.include? page_title
-        assert has_content? "There are no trips in the given dates"
+      def person
+        @person ||= gobierto_people_people(:richard)
       end
-    end
 
+      def recent_trip
+        @recent_trip ||= gobierto_people_trips(:richard_multiple_destinations_recent)
+      end
+
+      def old_trip
+        @old_trip ||= gobierto_people_trips(:richard_single_destination_old)
+      end
+
+      def page_title
+        person.name
+      end
+
+      def test_index
+        with_current_site(site) do
+          visit gobierto_people_person_trips_path(person.slug)
+
+          assert title.include? page_title
+          assert has_content? "Trips made by #{person.name}"
+
+          assert has_content? recent_trip.title
+          assert has_content? old_trip.title
+
+          assert ordered_elements(page, [recent_trip.title, old_trip.title])
+        end
+      end
+
+      def test_index_when_no_trips
+        person.trips.destroy_all
+
+        with_current_site(site) do
+          visit gobierto_people_person_trips_path(person.slug)
+
+          assert title.include? page_title
+          assert has_content? "There are no trips in the given dates"
+        end
+      end
+
+    end
   end
 end

@@ -5,7 +5,7 @@ require "#{Rails.root}/vendor/gobierto_engines/gobierto-gencat-engine/lib/gencat
 
 module GobiertoPeople
   module Departments
-    class IndexTest < ::Gencat::IntegrationTest
+    class Gencat::IndexTest < ::Gencat::IntegrationTest
 
       def site
         @site ||= sites(:madrid)
