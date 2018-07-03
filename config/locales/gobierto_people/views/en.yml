@@ -91,6 +91,7 @@ en:
         trips_section_title: Last trips
         invitations_section_title: Last invitations
         gifts_section_title: Last gifts
+        no_data: There is no data in the given dates
       trips:
         index:
           title: Trips made by %{person_name}

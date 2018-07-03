@@ -92,6 +92,7 @@ es:
         trips_section_title: Últimos viajes
         invitations_section_title: Últimas invitaciones
         gifts_section_title: Últimos obsequios
+        no_data: No hay datos en las fechas seleccionadas
       trips:
         index:
           title: Viajes realizados por %{person_name}
