@@ -21,8 +21,12 @@ module GobiertoPeople
       person.name
     end
 
-    def test_index
+    def setup
       person.events.destroy_all
+      super
+    end
+
+    def test_index
       event_1 = create_event(title: "Old", starts_at: 1.month.ago, interest_group: true)
       event_2 = create_event(title: "Very old", starts_at: 1.year.ago, interest_group: true)
 
@@ -36,6 +40,15 @@ module GobiertoPeople
         assert has_content? event_2.title
 
         assert ordered_elements(page, [event_1.title, event_2.title])
+      end
+    end
+
+    def test_index_when_no_events
+      with_current_site(site) do
+        visit gobierto_people_person_past_events_path(person.slug, page: false)
+
+        assert title.include? page_title
+        assert has_content? "There are no meetings in the given dates"
       end
     end
 

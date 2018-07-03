@@ -40,5 +40,16 @@ module GobiertoPeople
       end
     end
 
+    def test_index_when_no_invitations
+      person.invitations.destroy_all
+
+      with_current_site(site) do
+        visit gobierto_people_person_invitations_path(person.slug)
+
+        assert title.include? page_title
+        assert has_content? "There are no invitations in the given dates"
+      end
+    end
+
   end
 end

@@ -12,15 +12,21 @@
 
       <figcaption class="mb_20"><%= t(".title", person_name: @person.name) %></figcaption>
 
-      <ul class="color-2 transparent">
+      <% if @person_trips.any? %>
 
-        <% cache "#{cache_key_preffix}-trips" do %>
-          <% @person_trips.each do |trip| %>
-            <%= render "trip", trip: trip %>
+        <ul class="color-2 transparent">
+          <% cache "#{cache_key_preffix}-trips" do %>
+            <% @person_trips.each do |trip| %>
+              <%= render "trip", trip: trip %>
+            <% end %>
           <% end %>
-        <% end %>
+        </ul>
 
-      </ul>
+      <% else %>
+
+        <em><%= t(".no_trips") %></em>
+
+      <% end %>
 
     </figure>
 

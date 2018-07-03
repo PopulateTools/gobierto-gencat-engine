@@ -95,6 +95,7 @@ en:
         index:
           title: Trips made by %{person_name}
           trips: Trips
+          no_trips: There are no trips in the given dates
         trip:
           company: Trip party
           expenses: Expenses
@@ -102,15 +103,18 @@ en:
         index:
           title: Gifts received by %{person_name}
           gifts: Gifts
+          no_gifts: There are no gifts in the given dates
         gift:
           from: from
       invitations:
         index:
           title: Invitations received by %{person_name}
           invitations: Invitations
+          no_invitations: There are no invitations in the given dates
       person_events:
         index:
           agenda: Agenda
+          no_events: There are no meetings in the given dates
       navigation:
         meeting_with: meeting with
         meetings_with: meetings with
