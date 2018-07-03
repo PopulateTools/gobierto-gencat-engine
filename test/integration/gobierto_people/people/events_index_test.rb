@@ -17,6 +17,10 @@ module GobiertoPeople
       @person ||= gobierto_people_people(:richard)
     end
 
+    def page_title
+      person.name
+    end
+
     def test_index
       person.events.destroy_all
       event_1 = create_event(title: "Old", starts_at: 1.month.ago, interest_group: true)
@@ -25,6 +29,7 @@ module GobiertoPeople
       with_current_site(site) do
         visit gobierto_people_person_past_events_path(person.slug, page: false)
 
+        assert title.include? page_title
         assert has_content? "#{person.name}'s agenda"
 
         assert has_content? event_1.title

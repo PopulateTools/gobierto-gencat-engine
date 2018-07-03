@@ -11,11 +11,15 @@ module GobiertoPeople
         @site ||= sites(:madrid)
       end
 
+      def page_title
+        "Departments"
+      end
+
       def test_index
         with_current_site(site) do
           visit gobierto_people_departments_path
 
-          assert has_content? "Any organization that meets with an official must register as an interest group"
+          assert title.include? page_title
         end
       end
 

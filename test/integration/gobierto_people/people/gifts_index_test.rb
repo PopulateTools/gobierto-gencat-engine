@@ -22,10 +22,15 @@ module GobiertoPeople
       @old_gift ||= gobierto_people_gifts(:concert_ticket_old)
     end
 
+    def page_title
+      person.name
+    end
+
     def test_index
       with_current_site(site) do
         visit gobierto_people_person_gifts_path(person.slug)
 
+        assert title.include? page_title
         assert has_content? "Gifts received by #{person.name}"
 
         assert has_content? recent_gift.name

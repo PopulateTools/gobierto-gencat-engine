@@ -34,6 +34,10 @@ module GobiertoPeople
       @invitation ||= gobierto_people_invitations(:richard_paris_invitation_recent)
     end
 
+    def page_title
+      "Agendas"
+    end
+
     def setup
       update_fixtures_to_match_gencat_data!
       super
@@ -42,6 +46,8 @@ module GobiertoPeople
     def test_welcome_index
       with_current_site(site) do
         visit gobierto_people_root_path
+
+        assert title.include? page_title
 
         within "#departments-box" do
           assert has_content? departments_box_counter

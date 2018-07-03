@@ -22,10 +22,15 @@ module GobiertoPeople
       @old_invitation ||= gobierto_people_invitations(:richard_paris_invitation_old)
     end
 
+    def page_title
+      person.name
+    end
+
     def test_index
       with_current_site(site) do
         visit gobierto_people_person_invitations_path(person.slug)
 
+        assert title.include? page_title
         assert has_content? "Invitations received by #{person.name}"
 
         assert has_content? recent_invitation.title
