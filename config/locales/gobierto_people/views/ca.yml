@@ -94,6 +94,7 @@ ca:
         trips_section_title: Últims viatges
         invitations_section_title: Últimes invitacions
         gifts_section_title: Últims obsequis
+        no_data: No hi ha dades en les dates seleccionades
       trips:
         index:
           title: Viatges realitzats per %{person_name}

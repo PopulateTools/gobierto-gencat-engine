@@ -102,6 +102,9 @@
       </div>
     <% end %>
 
+    <% if [@last_events, @last_trips, @last_invitations, @last_gifts].all?(&:empty?) %>
+      <em><%= t(".no_data") %></em>
+    <% end %>
   </div>
 
 </section>
