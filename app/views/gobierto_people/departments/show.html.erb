@@ -17,7 +17,7 @@
           <div class="box color-1 distribuidora-nova-3">
 
             <div class="color-decorator">
-              <%= link_to gobierto_people_department_people_path(@department, date_range_params), data: { turbolinks: false }, class: "no-link" do %>
+              <%= link_to gobierto_people_department_people_path(@department, date_range_params), class: "no-link" do %>
                 <h1><%= @department_stats[:total_people_with_attendances] %></h1>
               <% end %>
               <h5>
@@ -33,7 +33,7 @@
 
           </div>
           <div class="margin_top_xs js-reload-rowchart-wrapper">
-            <%= link_to gobierto_people_department_people_path(@department, date_range_params), class: "show-more color-1", data: { turbolinks: false } do %>
+            <%= link_to gobierto_people_department_people_path(@department, date_range_params), class: "show-more color-1" do %>
               <small><%= t("gobierto_people.shared.view_all") %></small>
             <% end %>
           </div>
@@ -53,7 +53,7 @@
             </div>
           </div>
           <div class="margin_top_xs">
-            <%= link_to gobierto_people_interest_groups_path(date_range_params), class: "show-more color-3", data: { turbolinks: false } do %>
+            <%= link_to gobierto_people_interest_groups_path(date_range_params), class: "show-more color-3" do %>
               <small><%= t("gobierto_people.shared.view_all") %></small>
             <% end %>
           </div>
@@ -69,7 +69,7 @@
   <%= render "gobierto_people/shared/map" %>
 
   <div class="margin_top_xs">
-    <%= link_to gobierto_people_trips_path(date_range_params), class: "show-more color-2", data: { turbolinks: false } do %>
+    <%= link_to gobierto_people_trips_path(date_range_params), class: "show-more color-2" do %>
       <small><%= t("gobierto_people.shared.view_all") %></small>
     <% end %>
   </div>

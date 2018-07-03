@@ -42,7 +42,7 @@
         <div class="corrector-margins col-md-6">
           <div class="box color-3 distribuidora-nova-3">
             <div class="color-decorator">
-              <%= link_to gobierto_people_people_path(date_range_params), data: { turbolinks: false }, class: "no-link" do %>
+              <%= link_to gobierto_people_people_path(date_range_params), class: "no-link" do %>
                 <h1><%= number_with_delimiter(@total_people) %></h1>
               <% end %>
               <h5>
@@ -56,7 +56,7 @@
           </div>
           <div class="margin_top_xs">
             <p><%= t(".explore_people") %></p>
-            <%= link_to gobierto_people_people_path(date_range_params), class: "show-more color-3", data: { turbolinks: false } do %>
+            <%= link_to gobierto_people_people_path(date_range_params), class: "show-more color-3" do %>
             <small><%= t("gobierto_people.shared.view_all") %></small>
             <% end %>
           </div>
