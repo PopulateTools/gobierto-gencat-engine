@@ -3,7 +3,9 @@
   <div class="row">
 
     <div class="<%= meaningful_date_range?(dates, only_date: true) ? 'col-md-6' : 'col-md-8' %>">
-      <strong><%= title %></strong>
+      <% if local_assigns[:title] %>
+        <strong><%= title %></strong>
+      <% end %>
 
       <% if local_assigns[:subtitle] %>
         <div><%= subtitle %></div>
