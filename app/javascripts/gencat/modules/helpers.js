@@ -108,7 +108,7 @@ function setDatepickerFilters(opts) {
         const params = new URLSearchParams(location.search);
         params.set('start_date', dates[0]);
         params.set('end_date', dates[1]);
-        window.history.replaceState({}, '', `${location.pathname}?${params}`);
+        window.history.pushState({}, '', `${location.pathname}?${params}`);
       } else {
         // IE 10+
         updateQueryStringParam('start_date', dates[0])
@@ -172,7 +172,7 @@ function setDatepickerFilters(opts) {
       const params = new URLSearchParams(location.search);
       (date) ? params.set('start_date', date) : params.delete('start_date')
       params.delete('end_date');
-      window.history.replaceState({}, '', `${location.pathname}?${params}`);
+      window.history.pushState({}, '', `${location.pathname}?${params}`);
     } else {
       // IE 10+
       updateQueryStringParam("start_date", date)
@@ -212,7 +212,7 @@ const updateQueryStringParam = (key, value) => {
     // no parameter was set so we don't need the question mark
     params = params == '?' ? '' : params;
 
-    window.history.replaceState({}, "", baseUrl + params);
+    window.history.pushState({}, "", baseUrl + params);
 };
 
 export { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor, setDatepickerFilters }
