@@ -96,6 +96,7 @@ es:
         index:
           title: Viajes realizados por %{person_name}
           trips: Viajes
+          no_trips: No hay viajes en las fechas seleccionadas
         trip:
           company: Comitiva
           expenses: Gastos
@@ -103,15 +104,18 @@ es:
         index:
           title: Obsequios recibidos por %{person_name}
           gifts: Obsequios
+          no_gifts: No hay obsequios en las fechas seleccionadas
         gift:
           from: de
       invitations:
         index:
           title: Invitaciones recibidas por %{person_name}
           invitations: Invitaciones
+          no_invitations: No hay invitaciones en las fechas seleccionadas
       person_events:
         index:
           agenda: Agenda
+          no_events: No hay reuniones en las fechas seleccionadas
       navigation:
         meeting_with: reunión con
         meetings_with: reuniones con

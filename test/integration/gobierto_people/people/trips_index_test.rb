@@ -40,5 +40,16 @@ module GobiertoPeople
       end
     end
 
+    def test_index_when_no_trips
+      person.trips.destroy_all
+
+      with_current_site(site) do
+        visit gobierto_people_person_trips_path(person.slug)
+
+        assert title.include? page_title
+        assert has_content? "There are no trips in the given dates"
+      end
+    end
+
   end
 end

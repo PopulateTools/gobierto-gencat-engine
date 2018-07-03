@@ -12,13 +12,21 @@
 
       <figcaption class="mb_20"><%= t(".title", person_name: @person.name) %></figcaption>
 
-      <ul class="color-4 transparent">
-        <% cache "#{cache_key_preffix}-gifts" do %>
-          <% @person_gifts.each do |gift| %>
-            <%= render "gift", gift: gift %>
+      <% if @person_gifts.any? %>
+
+        <ul class="color-4 transparent">
+          <% cache "#{cache_key_preffix}-gifts" do %>
+            <% @person_gifts.each do |gift| %>
+              <%= render "gift", gift: gift %>
+            <% end %>
           <% end %>
-        <% end %>
-      </ul>
+        </ul>
+
+      <% else %>
+
+        <em><%= t(".no_gifts") %></em>
+
+      <% end %>
 
     </figure>
 

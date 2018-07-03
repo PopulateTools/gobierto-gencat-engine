@@ -12,15 +12,21 @@
 
       <figcaption class="mb_20"><%= t(".title", person_name: @person.name) %></figcaption>
 
-      <ul class="color-1 transparent">
+      <% if @events.any? %>
 
-        <% cache "#{cache_key_preffix}-events" do %>
-          <% @events.each do |event| %>
-            <%= render "event", event: event %>
+        <ul class="color-1 transparent">
+          <% cache "#{cache_key_preffix}-events" do %>
+            <% @events.each do |event| %>
+              <%= render "event", event: event %>
+            <% end %>
           <% end %>
-        <% end %>
+        </ul>
 
-      </ul>
+      <% else %>
+
+        <em><%= t(".no_events") %></em>
+
+      <% end %>
 
     </figure>
 

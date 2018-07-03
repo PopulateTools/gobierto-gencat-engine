@@ -98,6 +98,7 @@ ca:
         index:
           title: Viatges realitzats per %{person_name}
           trips: Viatges
+          no_trips: No hi ha viatges en les dates seleccionades
         trip:
           company: Comitiva
           expenses: Despeses
@@ -105,15 +106,18 @@ ca:
         index:
           title: Obsequis rebuts per %{person_name}
           gifts: Obsequis
+          no_gifts: No hi ha obsequis en les dates seleccionades
         gift:
           from: de
       invitations:
         index:
           title: Invitacions rebudes per %{person_name}
           invitations: Invitacions
+          no_invitations: No hi ha invitacions a les dates seleccionades
       person_events:
         index:
           agenda: Agenda
+          no_events: No hi ha reunions en les dates seleccionades
       navigation:
         meeting_with: reunió amb
         meetings_with: reunions amb
