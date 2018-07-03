@@ -15,10 +15,15 @@ module GobiertoPeople
         @interest_group ||= gobierto_people_interest_groups(:google)
       end
 
+      def page_title
+        interest_group.name
+      end
+
       def test_show
         with_current_site(site) do
           visit gobierto_people_interest_group_path(interest_group)
 
+          assert title.include? page_title
           assert has_content? "Inscription status in interest groups registry: #{interest_group.status}"
         end
       end

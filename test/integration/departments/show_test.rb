@@ -15,11 +15,15 @@ module GobiertoPeople
         @department ||= gobierto_people_departments(:justice_department)
       end
 
+      def page_title
+        department.name
+      end
+
       def test_show
         with_current_site(site) do
           visit gobierto_people_department_path(department)
 
-          assert has_selector?("h3", text: department.name)
+          assert title.include? page_title
         end
       end
 

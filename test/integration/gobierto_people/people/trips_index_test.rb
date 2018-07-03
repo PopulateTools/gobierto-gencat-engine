@@ -22,10 +22,15 @@ module GobiertoPeople
       @old_trip ||= gobierto_people_trips(:richard_single_destination_old)
     end
 
+    def page_title
+      person.name
+    end
+
     def test_index
       with_current_site(site) do
         visit gobierto_people_person_trips_path(person.slug)
 
+        assert title.include? page_title
         assert has_content? "Trips made by #{person.name}"
 
         assert has_content? recent_trip.title
