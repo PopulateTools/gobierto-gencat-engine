@@ -66,6 +66,7 @@ es:
       table_item:
         view_details: Ver detalles
     shared:
+      app_title: Agendas
       code_of_conduct_link:
         check_it_out: Consúltalo
       view_all: Ver todos

@@ -29,19 +29,21 @@ function loadBreadcrumb() {
   $breadcrumbItems.appendTo($breadcrumb);
 
   // locate root element in breadcrumb and build its content
-  var rootElementRegex = new RegExp("Agendas|Agendes");
+  var appTitles = ['es', 'en', 'ca'].map(function(x) {
+    return I18n.t("gobierto_people.shared.app_title", { locale: x })
+  });
+  var rootElementRegex = new RegExp(appTitles.join('|'));
   var $rootBreadcrumbItem = $breadcrumb.children().filter(function() {
     return rootElementRegex.test(this.innerHTML);
   });
   var rootBreadcrumbItemUrl = document.location.origin + '/cargos-y-agendas';
   var currentUrl = document.location.href.replace(/(\?|&)locale=(en|es|ca)/, '');
-  var rootBreadcrumbItemText = $rootBreadcrumbItem[0].innerHTML;
 
   // insert link within breadcrumb root element only if we're on another page
   if (currentUrl.replace(/(\?|&)(start_date|end_date)=\d{4}-\d{2}-\d{2}/g, '') == rootBreadcrumbItemUrl) {
-    $rootBreadcrumbItem.replaceWith('<li>' + rootBreadcrumbItemText + '</li>');
+    $rootBreadcrumbItem.replaceWith('<li>' + I18n.t("gobierto_people.shared.app_title") + '</li>');
   } else {
-    $rootBreadcrumbItem.replaceWith("<li><a href=\"" + rootUrlWithDateRange(rootBreadcrumbItemUrl, currentUrl) + "\" data-turbolinks=\"false\">" + rootBreadcrumbItemText + "</a></li>");
+    $rootBreadcrumbItem.replaceWith("<li><a href=\"" + rootUrlWithDateRange(rootBreadcrumbItemUrl, currentUrl) + "\" data-turbolinks=\"false\">" + I18n.t("gobierto_people.shared.app_title") + "</a></li>");
   }
 }
 
