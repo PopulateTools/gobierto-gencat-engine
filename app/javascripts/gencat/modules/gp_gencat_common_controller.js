@@ -13,6 +13,7 @@ window.GobiertoPeople.GencatCommonController = (function() {
   GencatCommonController.prototype.updatePageHeader = function(options) {
     setPageTitle(options.pageTitle);
     loadBreadcrumb();
+    appendDateRangeToLocaleLinks();
   };
 
   return GencatCommonController;
@@ -43,8 +44,14 @@ function loadBreadcrumb() {
   if (currentUrl.replace(/(\?|&)(start_date|end_date)=\d{4}-\d{2}-\d{2}/g, '') == rootBreadcrumbItemUrl) {
     $rootBreadcrumbItem.replaceWith('<li>' + I18n.t("gobierto_people.shared.app_title") + '</li>');
   } else {
-    $rootBreadcrumbItem.replaceWith("<li><a href=\"" + rootUrlWithDateRange(rootBreadcrumbItemUrl, currentUrl) + "\" data-turbolinks=\"false\">" + I18n.t("gobierto_people.shared.app_title") + "</a></li>");
+    $rootBreadcrumbItem.replaceWith("<li><a href=\"" + appendDateRangeParamsToUrl(rootBreadcrumbItemUrl, currentUrl) + "\" data-turbolinks=\"false\">" + I18n.t("gobierto_people.shared.app_title") + "</a></li>");
   }
+}
+
+function appendDateRangeToLocaleLinks() {
+  $(".idioma li a").each(function(index) {
+    this.href = appendDateRangeParamsToUrl(this.href, document.location.href);
+  });
 }
 
 function getParameterByName(name, url) {
@@ -57,20 +64,24 @@ function getParameterByName(name, url) {
   return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-function rootUrlWithDateRange(baseUrl, currentUrl) {
+function appendDateRangeParamsToUrl(baseUrl, currentUrl) {
   var startDate = getParameterByName('start_date', currentUrl);
   var endDate = getParameterByName('end_date', currentUrl);
   var urlWithParams = baseUrl;
 
-  if (startDate && endDate) {
-    urlWithParams += ('?end_date=' + endDate + '&start_date=' + startDate);
-  } else if (startDate) {
-    urlWithParams += ('?start_date=' + startDate);
-  } else if (endDate) {
-    urlWithParams += ('?end_date=' + endDate);
+  if (startDate) {
+    urlWithParams = appendUrlParam(urlWithParams, "start_date", startDate);
+  }
+  if (endDate) {
+    urlWithParams = appendUrlParam(urlWithParams, "end_date", endDate);
   }
 
   return urlWithParams;
+}
+
+function appendUrlParam(url, paramName, paramValue) {
+  var separator = (url.indexOf('?') > -1) ? '&' : '?';
+  return (url + separator + paramName + '=' + paramValue);
 }
 
 window.GobiertoPeople.gencat_common_controller = new GobiertoPeople.GencatCommonController;
