@@ -3,6 +3,10 @@
   <li><%= title @interest_group.name %></li>
 <% end %>
 
+<% content_for :disable_turbolinks_hook do %>
+  <meta name="turbolinks-visit-control" content="reload">
+<% end %>
+
 <section class="row">
   <div class="col-md-9">
     <p><%= t(".status", status: @interest_group.status) %></p>
