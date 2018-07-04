@@ -68,6 +68,7 @@ ca:
       table_item:
         view_details: Veure detalls
     shared:
+      app_title: Agendes
       code_of_conduct_link:
         check_it_out: 'Consulta-ho'
       view_all: Veure tot

@@ -22,7 +22,7 @@
     });
 
     window.GobiertoPeople.gencat_common_controller.updatePageHeader({
-      pageTitle: "<%= raw @meta_tags["title"] %>"
+      pageTitle: "<%= raw (@meta_tags ? @meta_tags["title"] : nil) %>"
     });
   <% end %>
 

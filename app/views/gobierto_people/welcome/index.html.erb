@@ -1,4 +1,4 @@
-<% title(t(".title")) %>
+<% title(t("gobierto_people.shared.app_title")) %>
 
 <section class="row">
   <p class="col-md-9"><%= t(".description") %></p>
@@ -132,7 +132,7 @@
         </ul>
       </figure>
 
-      <%= link_to gobierto_people_gifts_path(date_range_params), class: "show-more color-4" do %>
+      <%= link_to "#", class: "show-more color-4" do %>
         <small><%= t("gobierto_people.shared.view_all") %></small>
       <% end %>
     <% else %>
@@ -168,7 +168,7 @@
         </ul>
       </figure>
 
-      <%= link_to gobierto_people_invitations_path(date_range_params), class: "show-more color-3" do %>
+      <%= link_to "#", class: "show-more color-3" do %>
         <small><%= t("gobierto_people.shared.view_all") %></small>
       <% end %>
     <% else %>
