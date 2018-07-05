@@ -23,12 +23,20 @@
 
 <section class="js-rowchart-component">
   <p><strong><%= t(".rowchart_title") %></strong></p>
-  <div id="interest_groups_events_rowchart" class="rowchart color-2"></div>
-  <div class="margin_top_xs js-reload-rowchart-wrapper">
-    <%= link_to gobierto_people_interest_groups_path(date_range_params), class: "show-more bg-info" do %>
-      <small><%= t("gobierto_people.shared.view_all") %></small>
-    <% end %>
-  </div>
+
+  <% if @interest_groups.any? %>
+    <div id="interest_groups_events_rowchart" class="rowchart color-2"></div>
+
+    <div class="margin_top_xs js-reload-rowchart-wrapper">
+      <%= link_to gobierto_people_interest_groups_path(date_range_params), class: "show-more bg-info" do %>
+        <small><%= t("gobierto_people.shared.view_all") %></small>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="alert alert-warning">
+      <small><%= t(".no_data") %></small>
+    </div>
+  <% end %>
 </section>
 
 <%= render "gobierto_people/shared/open_data_footer" %>

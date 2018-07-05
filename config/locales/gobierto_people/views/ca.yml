@@ -31,6 +31,7 @@ ca:
         title: Grups d'interès
         description: Qualsevol organització que es reuneix amb un alt càrrec ha de registrar com a grup d'interès, i es crea un registre de les trobades. <a href="%{link}">Aprèn més sobre la Normativa de Grups d'Interès</a>. Explora les organitzacions (empreses, fundacions, associacions ...) que es reuneixen amb càrrecs de la Generalitat
         rowchart_title: Grups d'Interès amb més reunions
+        no_data: No hi ha dades per a les dates seleccionades
       show:
         events: reunions registrades
         events_by_department: Amb quins departaments es reuneix aquest grup
