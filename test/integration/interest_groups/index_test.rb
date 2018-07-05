@@ -21,6 +21,18 @@ module Gencat
             visit gobierto_people_interest_groups_path
 
             assert title.include? page_title
+            assert has_no_content? "There is no data for the selected dates"
+          end
+        end
+
+        def test_index_when_no_data
+          site.events.destroy_all
+
+          with_current_site(site) do
+            visit gobierto_people_interest_groups_path
+
+            assert title.include? page_title
+            assert has_content? "There is no data for the selected dates"
           end
         end
 
