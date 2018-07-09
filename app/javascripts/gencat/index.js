@@ -9,6 +9,7 @@ var map = new L.Map('map', {
   center: [40.416775, -3.703790],
   zoom: 3
 });
+map.scrollWheelZoom.disable();
 
 var cloroplethCSS = "\
 #gobierto_gencat_trips{ polygon-fill: #FFFFB2; polygon-opacity: 0.8; line-color: #FFF; line-width: 1; line-opacity: 0.5; }\
@@ -43,35 +44,55 @@ cartodb.createLayer(map, {
   sublayers: [{
     sql: cloroplethSQL,
     cartocss: cloroplethCSS
+  },
+  {
+    sql: bubbleSQL,
+    cartocss: bubbleCSS
   }]
 })
-.addTo(map) // add the layer to our map which already contains 1 sublayer
+.addTo(map)
 .done(function(layer) {
+  layer.getSubLayer(1).hide();
+  layer.getSubLayer(0).show();
+  layer.getSubLayer(0).setInteraction(true);
+
   cartodb.vis.Vis.addInfowindow(map, layer.getSubLayer(0), ['country', 'country_name', 'count'],{
     infowindowTemplate: $('#infowindow_template').html(),
     templateType: 'mustache'
   });
+  cartodb.vis.Vis.addInfowindow(map, layer.getSubLayer(1), ['city_name', 'country_name', 'count'],{
+    infowindowTemplate: $('#infowindow_template_bubble').html(),
+    templateType: 'mustache'
+  });
+
+  // TODO: replace infowindows by overlays
+  // layer.leafletMap.viz.addOverlay({
+  //   type: 'tooltip',
+  //   layer: layer.getSubLayer(0),
+  //   template: '{{country_name}}',
+  //   position: 'bottom|right',
+  //   fields: [{ country_name: 'country_name' }]
+  // });
+
+  // layer.leafletMap.viz.addOverlay({
+  //   type: 'tooltip',
+  //   layer: layer.getSubLayer(1),
+  //   template: '{{city_name}}',
+  //   position: 'bottom|right',
+  //   fields: [{ city_name: 'city_name' }]
+  // });
 
   map.on('zoomend', function() {
     if(map.getZoom() >= 4 && clorplethActive) {
       clorplethActive = false;
-      layer.getSubLayer(0).setCartoCSS(bubbleCSS);
-      layer.getSubLayer(0).setSQL(bubbleSQL);
-
-      cartodb.vis.Vis.addInfowindow(map, layer.getSubLayer(0), ['city_name', 'country_name', 'count'],{
-        infowindowTemplate: $('#infowindow_template_bubble').html(),
-        templateType: 'mustache'
-      });
-
+      layer.getSubLayer(0).hide();
+      layer.getSubLayer(1).show();
+      layer.getSubLayer(1).setInteraction(true);
     } else if(map.getZoom() <= 4 && !clorplethActive) {
       clorplethActive = true;
-      layer.getSubLayer(0).setCartoCSS(cloroplethCSS);
-      layer.getSubLayer(0).setSQL(cloroplethSQL);
-
-      cartodb.vis.Vis.addInfowindow(map, layer.getSubLayer(0), ['country', 'count'],{
-        infowindowTemplate: $('#infowindow_template').html(),
-        templateType: 'mustache'
-      });
+      layer.getSubLayer(1).hide();
+      layer.getSubLayer(0).show();
+      layer.getSubLayer(0).setInteraction(true);
     }
   });
 });
