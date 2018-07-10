@@ -100,6 +100,14 @@ en:
           trips: Trips
           no_trips: There are no trips in the given dates
         trip:
+          by: by
+          in: in
+          meeting_name:
+            one: meeting
+            other: meetings
+          person_name:
+            one: person
+            other: people
           company: Trip party
           expenses: Expenses
       gifts:

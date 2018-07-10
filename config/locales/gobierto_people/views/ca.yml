@@ -103,6 +103,14 @@ ca:
           trips: Viatges
           no_trips: No hi ha viatges en les dates seleccionades
         trip:
+          by: per
+          in: en
+          meeting_name:
+            one: reunió
+            other: reunions
+            person_name:
+              one: persona
+              other: persones
           company: Comitiva
           expenses: Despeses
       gifts:
