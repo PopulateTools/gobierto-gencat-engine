@@ -56,9 +56,6 @@ GROUP BY city_name, country_name, the_geom, the_geom_webmercator
 ORDER by count DESC
 `;
 
-console.log(choroplethSQL);
-console.log(bubbleSQL);
-
       let clorplethActive = true;
 
       L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',{
