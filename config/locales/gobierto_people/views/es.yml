@@ -103,6 +103,14 @@ es:
         trip:
           company: Comitiva
           expenses: Gastos
+          by: por
+          in: en
+          meeting_name:
+            one: reunión
+            other: reuniones
+          person_name:
+            one: persona
+            other: personas
       gifts:
         index:
           title: Obsequios recibidos por %{person_name}

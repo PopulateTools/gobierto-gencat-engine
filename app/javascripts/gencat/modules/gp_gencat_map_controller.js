@@ -34,8 +34,8 @@ window.GobiertoPeople.GencatMapController = (function() {
 #gobierto_gencat_trips [ count > 18] { marker-width: 48; }
 #gobierto_gencat_trips [ count < 18] { marker-width: 40; }
 #gobierto_gencat_trips [ count < 12] { marker-width: 31; }
-#gobierto_gencat_trips [ count < 8]  { marker-width: 23; }
-#gobierto_gencat_trips [ count < 4]  { marker-width: 15; }
+#gobierto_gencat_trips [ count < 8]  { marker-width: 20; }
+#gobierto_gencat_trips [ count < 4]  { marker-width: 10; }
 `;
 
       let choroplethSQL = `
@@ -98,7 +98,7 @@ console.log(bubbleSQL);
             $inputHtml.find('[data-person-slugs]').html('');
             let count = $inputHtml.find('[data-count]').data('count');
             let countryName = $inputHtml.find('[data-country-name]').data('country-name');
-            $inputHtml.find('p').html(`${count} ${I18n.t('gobierto_people.people.trips.meeting_name', {count: count})} ${I18n.t('gobierto_people.people.trips.in')} ${I18n.t('countries.'+countryName)} ${I18n.t('gobierto_people.people.trips.by')}:`);
+            $inputHtml.find('p').html(`${count} ${I18n.t('gobierto_people.people.trips.trip.meeting_name', {count: count})} ${I18n.t('gobierto_people.people.trips.trip.in')} ${I18n.t('countries.'+countryName)} ${I18n.t('gobierto_people.people.trips.trip.by')}:`);
             return `<div class="cartodb-popup">${$inputHtml.html()}</div>`;
           }
         });
@@ -120,7 +120,7 @@ console.log(bubbleSQL);
             $inputHtml.find('[data-person-slugs]').html('');
             let count = $inputHtml.find('[data-count]').data('count');
             let cityName = $inputHtml.find('[data-city-name]').data('city-name');
-            $inputHtml.find('p').html(`${count} ${I18n.t('gobierto_people.people.trips.meeting_name', {count: count})} ${I18n.t('gobierto_people.people.trips.in')} ${cityName} ${I18n.t('gobierto_people.people.trips.by')}:`);
+            $inputHtml.find('p').html(`${count} ${I18n.t('gobierto_people.people.trips.trip.meeting_name', {count: count})} ${I18n.t('gobierto_people.people.trips.trip.in')} ${cityName} ${I18n.t('gobierto_people.people.trips.trip.by')}:`);
             return `<div class="cartodb-popup">${$inputHtml.html()}</div>`;
           }
         });
