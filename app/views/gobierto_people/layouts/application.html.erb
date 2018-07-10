@@ -18,7 +18,7 @@
   <%= render "gobierto_people/shared/breadcrumb" %>
 
   <%= javascript_tag do %>
-$(document).on('turbolinks:load', function() {
+$(document).ready(function(){
   window.GobiertoPeople.gencat_common_controller.load({
     people_events_first_date: '<%= all_start_date.try(:iso8601) %>',
     people_events_filter_start_date: '<%= filter_start_date.try(:iso8601) %>',
