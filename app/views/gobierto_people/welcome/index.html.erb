@@ -185,6 +185,7 @@
 <%= render "gobierto_people/shared/open_data_footer" %>
 
 <%= javascript_tag do %>
+  window.GobiertoPeople.gencat_map_controller.index();
   window.GobiertoPeople.gencat_welcome_controller.index({
     departments_events_rowchart_api_path: '<%= gobierto_people_api_v1_departments_path(from_date: filter_start_date, to_date: filter_end_date) %>',
     interest_groups_events_rowchart_api_path: '<%= gobierto_people_api_v1_interest_groups_path(from_date: filter_start_date, to_date: filter_end_date) %>',
