@@ -31,11 +31,11 @@ window.GobiertoPeople.GencatMapController = (function() {
 
       let bubbleCSS = `
 #gobierto_gencat_trips { marker-fill: #EE4D5A; marker-fill-opacity: 0.9; marker-allow-overlap: true; marker-line-width: 1; marker-line-color: #FFFFFF; marker-line-opacity: 1; }
-#gobierto_gencat_trips [ count > 18] { marker-width: 30; }
-#gobierto_gencat_trips [ count < 18] { marker-width: 25; }
-#gobierto_gencat_trips [ count < 12] { marker-width: 20; }
-#gobierto_gencat_trips [ count < 8]  { marker-width: 15; }
-#gobierto_gencat_trips [ count < 4]  { marker-width: 10; }
+#gobierto_gencat_trips [ count > 18] { marker-width: 48; }
+#gobierto_gencat_trips [ count < 18] { marker-width: 40; }
+#gobierto_gencat_trips [ count < 12] { marker-width: 31; }
+#gobierto_gencat_trips [ count < 8]  { marker-width: 23; }
+#gobierto_gencat_trips [ count < 4]  { marker-width: 15; }
 `;
 
       let choroplethSQL = `
