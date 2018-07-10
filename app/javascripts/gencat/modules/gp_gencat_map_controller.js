@@ -19,7 +19,7 @@ window.GobiertoPeople.GencatMapController = (function() {
       });
       map.scrollWheelZoom.disable();
 
-      let coroplethCSS = `
+      let choroplethCSS = `
 #gobierto_gencat_trips { polygon-fill: #FFFFB2; polygon-opacity: 0.8; line-color: #FFF; line-width: 1; line-opacity: 0.5; }
 #gobierto_gencat_trips [ count <= 28] { polygon-fill: #B10026; }
 #gobierto_gencat_trips [ count <= 24] { polygon-fill: #E31A1C; }
@@ -38,8 +38,9 @@ window.GobiertoPeople.GencatMapController = (function() {
 #gobierto_gencat_trips [ count < 4]  { marker-width: 10; }
 `;
 
-      let coroplethSQL = `
-SELECT country, country_name, count(*) as count, world_borders.the_geom as the_geom, world_borders.the_geom_webmercator
+      let choroplethSQL = `
+SELECT country, country_name, count(*) as count, world_borders.the_geom as the_geom, world_borders.the_geom_webmercator,
+array_to_string(array_agg(DISTINCT person_name), ',') as person_names, array_to_string(array_agg(DISTINCT person_slug), ',') as person_slugs
 FROM gobierto_gencat_trips
 INNER JOIN world_borders ON world_borders.iso2 = country
 WHERE country is not null ${dateRangeConditions}
@@ -47,14 +48,15 @@ GROUP BY country, country_name, world_borders.the_geom, world_borders.the_geom_w
 `;
 
       let bubbleSQL = `
-SELECT count(*) as count, city_name, country_name, the_geom, the_geom_webmercator
+SELECT count(*) as count, city_name, country_name, the_geom, the_geom_webmercator, array_to_string(array_agg(DISTINCT person_name), ',') as person_names,
+array_to_string(array_agg(DISTINCT person_slug), ',') as person_slugs, array_to_string(array_agg(DISTINCT destination_name), ',') as destination_names
 FROM gobierto_gencat_trips
 WHERE country is not null ${dateRangeConditions}
 GROUP BY city_name, country_name, the_geom, the_geom_webmercator
 ORDER by count DESC
 `;
 
-console.log(coroplethSQL);
+console.log(choroplethSQL);
 console.log(bubbleSQL);
 
       let clorplethActive = true;
@@ -63,15 +65,13 @@ console.log(bubbleSQL);
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
       }).addTo(map);
 
-
       cartodb.createLayer(map, {
         user_name: 'furilo',
         type: 'cartodb',
         sublayers: [{
-          sql: coroplethSQL,
-          cartocss: coroplethCSS
-        },
-        {
+          sql: choroplethSQL,
+          cartocss: choroplethCSS
+        }, {
           sql: bubbleSQL,
           cartocss: bubbleCSS
         }]
@@ -80,15 +80,49 @@ console.log(bubbleSQL);
       .done(function(layer) {
         layer.getSubLayer(1).hide();
         layer.getSubLayer(0).show();
-        layer.getSubLayer(0).setInteraction(true);
 
-        cartodb.vis.Vis.addInfowindow(map, layer.getSubLayer(0), ['country', 'country_name', 'count'],{
-          infowindowTemplate: $('#infowindow_template').html(),
-          templateType: 'mustache'
+        cartodb.vis.Vis.addInfowindow(map, layer.getSubLayer(0), ['country', 'country_name', 'count', 'person_names', 'person_slugs'],{
+          infowindowTemplate: $('#infowindow_template_choroplethe').html(),
+          templateType: 'mustache',
+        }).model.set({
+          sanitizeTemplate: function(inputHtml) {
+            let $inputHtml = $(inputHtml);
+            let names = $inputHtml.find('[data-person-names]').html().split(',');
+            let slugs = $inputHtml.find('[data-person-slugs]').html().split(',');
+            let html = "";
+            names.forEach((name, i) => {
+              html += `<li><a href="/personas/${slugs[i]}/viajes-y-desplazamientos?start_date=${fromDate}">${name}</a></li>`
+            });
+
+            $inputHtml.find('[data-person-names]').html(html);
+            $inputHtml.find('[data-person-slugs]').html('');
+            let count = $inputHtml.find('[data-count]').data('count');
+            let countryName = $inputHtml.find('[data-country-name]').data('country-name');
+            $inputHtml.find('p').html(`${count} ${I18n.t('gobierto_people.people.trips.meeting_name', {count: count})} ${I18n.t('gobierto_people.people.trips.in')} ${I18n.t('countries.'+countryName)} ${I18n.t('gobierto_people.people.trips.by')}:`);
+            return `<div class="cartodb-popup">${$inputHtml.html()}</div>`;
+          }
         });
-        cartodb.vis.Vis.addInfowindow(map, layer.getSubLayer(1), ['city_name', 'country_name', 'count'],{
+
+        cartodb.vis.Vis.addInfowindow(map, layer.getSubLayer(1), ['destination_names', 'country_name', 'count', 'person_names', 'person_slugs'],{
           infowindowTemplate: $('#infowindow_template_bubble').html(),
-          templateType: 'mustache'
+          templateType: 'mustache',
+        }).model.set({
+          sanitizeTemplate: function(inputHtml) {
+            let $inputHtml = $(inputHtml);
+            let names = $inputHtml.find('[data-person-names]').html().split(',');
+            let slugs = $inputHtml.find('[data-person-slugs]').html().split(',');
+            let html = "";
+            names.forEach((name, i) => {
+              html += `<li><a href="/personas/${slugs[i]}/viajes-y-desplazamientos?start_date=${fromDate}">${name}</a></li>`
+            });
+
+            $inputHtml.find('[data-person-names]').html(html);
+            $inputHtml.find('[data-person-slugs]').html('');
+            let count = $inputHtml.find('[data-count]').data('count');
+            let cityName = $inputHtml.find('[data-city-name]').data('city-name');
+            $inputHtml.find('p').html(`${count} ${I18n.t('gobierto_people.people.trips.meeting_name', {count: count})} ${I18n.t('gobierto_people.people.trips.in')} ${cityName} ${I18n.t('gobierto_people.people.trips.by')}:`);
+            return `<div class="cartodb-popup">${$inputHtml.html()}</div>`;
+          }
         });
 
         map.on('zoomend', function() {
@@ -96,12 +130,10 @@ console.log(bubbleSQL);
             clorplethActive = false;
             layer.getSubLayer(0).hide();
             layer.getSubLayer(1).show();
-            layer.getSubLayer(1).setInteraction(true);
           } else if(map.getZoom() <= 4 && !clorplethActive) {
             clorplethActive = true;
             layer.getSubLayer(1).hide();
             layer.getSubLayer(0).show();
-            layer.getSubLayer(0).setInteraction(true);
           }
         });
       });

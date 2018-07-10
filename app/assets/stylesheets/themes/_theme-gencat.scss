@@ -351,6 +351,12 @@
     width: 100%;
   }
 
+  // Carto popup
+  div.cartodb-popup div.cartodb-popup-content-wrapper {
+    width: 226px;
+    max-width: 226px;
+  }
+
   // hide subcription box (from gobierto)
   .subscribable-box {
     display: none;
