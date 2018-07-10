@@ -1,19 +1,28 @@
-<script type="infowindow/html" id="infowindow_template">
+<script type="infowindow/html" id="infowindow_template_choroplethe">
 <div class="cartodb-popup">
   <a href="#close" class="cartodb-popup-close-button close">x</a>
 
   <div class="cartodb-popup-content-wrapper">
-    <div class="cartodb-popup-content">{{count}} viajes a {{country_name}}</div>
+    <div class="cartodb-popup-content" data-count="{{count}}" data-country-name="{{country}}">
+      <p></p>
+      <ul data-person-names>{{person_names}}</ul>
+      <ul data-person-slugs>{{person_slugs}}</ul>
+    </div>
   </div>
   <div class="cartodb-popup-tip-container"></div>
 </div>
 </script>
+
 <script type="infowindow/html" id="infowindow_template_bubble">
 <div class="cartodb-popup">
   <a href="#close" class="cartodb-popup-close-button close">x</a>
 
   <div class="cartodb-popup-content-wrapper">
-    <div class="cartodb-popup-content">{{count} viajes a {{city_name}} ({{country_name}})</div>
+    <div class="cartodb-popup-content" data-count="{{count}}" data-country-name="{{country_name}}" data-city-name="{{destination_names}}">
+      <p></p>
+      <ul data-person-names>{{person_names}}</ul>
+      <ul data-person-slugs>{{person_slugs}}</ul>
+    </div>
   </div>
   <div class="cartodb-popup-tip-container"></div>
 </div>
