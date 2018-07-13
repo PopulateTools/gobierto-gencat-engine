@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="{% i18n_locale %}">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    {% render_partial 'layouts/gobierto_head' %}
+
+    <script src="http://governobert.gencat.cat/web/resources/fwkResponsives/common/js/jquery.min.js" type="text/javascript"></script>
+  </head>
+
+  <body class="{% body_css_classes %}" {% yield body_attributes %}>
+
+    <section class="padding-xs padding-sm padding-md colorSectionOdd">
+      <article class="container fullcontainer-xs theme-gencat">
+        {% render_partial "user/shared/flash_messages" %}
+        {{ content_for_layout }}
+      </article>
+    </section>
+
+    {% render_partial 'layouts/analytics_footer_site' %}
+    {% render_partial 'layouts/javascript_hook' %}
+
+  </body>
+
+</html>

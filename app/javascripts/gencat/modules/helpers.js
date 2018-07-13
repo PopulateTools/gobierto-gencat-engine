@@ -46,6 +46,8 @@ function _loadPunchcard(container, url, title) {
 
 // issues
 function setTooltipColor() {
+  if (phantomJsDetected()) { return; }
+
   $(".graph-tooltip").each(function (e,r,t,y,u) {
     // get id chart from tooltip chart
     const chart = document.getElementById(this.id.split("-tooltip")[0])
@@ -168,13 +170,13 @@ function setDatepickerFilters(opts) {
       date = date.format('YYYY-MM-DD')
     }
 
-    if (URLSearchParams) {
+    if (!phantomJsDetected() && URLSearchParams) {
       const params = new URLSearchParams(location.search);
       (date) ? params.set('start_date', date) : params.delete('start_date')
       params.delete('end_date');
       window.history.pushState({}, '', `${location.pathname}?${params}`);
     } else {
-      // IE 10+
+      // IE 10+ || PhantomJS
       updateQueryStringParam("start_date", date)
       updateQueryStringParam("end_date", undefined)
     }
@@ -214,5 +216,9 @@ const updateQueryStringParam = (key, value) => {
 
     window.history.pushState({}, "", baseUrl + params);
 };
+
+function phantomJsDetected() {
+  return (window.callPhantom || window._phantom);
+}
 
 export { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor, setDatepickerFilters }

@@ -16,6 +16,20 @@ module Gencat
     end
 
     def setup
+      markup = File.read(Rails.root.join(
+        "vendor",
+        "gobierto_engines",
+        "gobierto-gencat-engine",
+        "test",
+        "seeds",
+        "application_layout.html.erb"
+      ))
+
+      reference_site.site_templates.create!(
+        template_id: ActiveRecord::FixtureSet.identify(:application_layout),
+        markup: markup
+      )
+
       enable_submodules!
       reference_site.configuration.engine_overrides = ["gobierto-gencat-engine"]
       reference_site.save!

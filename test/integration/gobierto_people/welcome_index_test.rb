@@ -45,36 +45,51 @@ module Gencat
       end
 
       def test_welcome_index
-        with_current_site(site) do
-          visit gobierto_people_root_path
+        with_javascript do
+          with_current_site(site) do
+            visit gobierto_people_root_path
 
-          assert title.include? page_title
+            assert title.include? page_title
 
-          within "#departments-box" do
-            assert has_content? departments_box_counter
-            assert has_content? "Departments with most meetings"
-          end
+            within "#departments-box" do
+              assert has_content? departments_box_counter
+              assert has_content? "Departments with most meetings"
+            end
 
-          within "#interest-groups-box" do
-            assert has_content? interest_groups_counter
-            assert has_content? "Interest groups with most meetings"
-          end
+            within "#interest-groups-box" do
+              assert has_content? interest_groups_counter
+              assert has_content? "Interest groups with most meetings"
+            end
 
-          within "#people-box" do
-            assert has_content? people_box_counter
-            assert has_content? "Officials with most meetings"
-          end
+            within "#people-box" do
+              assert has_content? people_box_counter
+              assert has_content? "Officials with most meetings"
+            end
 
-          within "#gifts-wrapper" do
-            assert_equal "Gifts", find("section strong").text
-            assert has_link? gift.name
-            assert has_link? gift.person.name
-          end
+            within "#gifts-wrapper" do
+              assert_equal "Gifts", find("#gifts-wrapper section strong").text
+              assert has_link? gift.name
+              assert has_link? gift.person.name
+            end
 
-          within "#invitations-wrapper" do
-            assert_equal "Invitations", find("section strong").text
-            assert has_link? invitation.title
-            assert has_link? invitation.person.name
+            within "#invitations-wrapper" do
+              assert_equal "Invitations", find("#invitations-wrapper section strong").text
+              assert has_link? invitation.title
+              assert has_link? invitation.person.name
+            end
+
+            # ensure datepicker is working
+            assert find(".datepicker-container")["class"].exclude? "is-shown"
+
+            find("#datepicker").click
+
+            assert find(".datepicker-container")["class"].include? "is-shown"
+
+            all(".js-datepicker-container a").find { |a| a.text == "Last month" }.click
+
+            expected_path = gobierto_people_root_path(start_date: 1.month.ago.strftime("%F"))
+
+            assert current_url.include? expected_path
           end
         end
       end
