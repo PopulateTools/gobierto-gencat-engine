@@ -44,6 +44,18 @@ module Gencat
         super
       end
 
+      def department
+        @department = gobierto_people_departments(:justice_department)
+      end
+
+      def interest_group
+        @interest_group ||= gobierto_people_interest_groups(:google)
+      end
+
+      def person
+        @person ||= gobierto_people_people(:richard)
+      end
+
       def test_welcome_index
         with_javascript do
           with_current_site(site) do
@@ -54,16 +66,19 @@ module Gencat
             within "#departments-box" do
               assert has_content? departments_box_counter
               assert has_content? "Departments with most meetings"
+              assert has_svg_link?(department.to_url)
             end
 
             within "#interest-groups-box" do
               assert has_content? interest_groups_counter
               assert has_content? "Interest groups with most meetings"
+              assert has_svg_link?(interest_group.to_url)
             end
 
             within "#people-box" do
               assert has_content? people_box_counter
               assert has_content? "Officials with most meetings"
+              assert has_svg_link?(person.to_url)
             end
 
             within "#gifts-wrapper" do
