@@ -70,16 +70,16 @@
   </div>
 </section>
 
-  <section>
-    <div id="department_people_events_punchcard" class="punchcard color-2 transparent"></div>
-  </section>
+<section>
+  <div id="department_people_events_punchcard" class="punchcard color-2 transparent"></div>
+</section>
 
-  <%= render "gobierto_people/shared/open_data_footer" %>
-  <%= javascript_tag do %>
-    window.GobiertoPeople.gencat_departments_controller.index({
+<%= render "gobierto_people/shared/open_data_footer" %>
+
+<%= javascript_tag do %>
+  departmentsIndexArgs = {
     people_events_api_path: '<%= gobierto_people_api_v1_people_path(from_date: filter_start_date, to_date: filter_end_date) %>',
     department_people_events_punchcard_api_path: '<%= gobierto_people_api_v1_departments_path(from_date: filter_start_date, to_date: filter_end_date, include_history: true, limit: 14) %>',
     departments_events_api_path: '<%= gobierto_people_api_v1_departments_path(from_date: filter_start_date, to_date: filter_end_date) %>'
-    });
-  <% end %>
-</div>
+  }
+<% end %>
