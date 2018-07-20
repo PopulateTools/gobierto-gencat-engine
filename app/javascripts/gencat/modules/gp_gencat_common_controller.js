@@ -5,9 +5,7 @@ window.GobiertoPeople.GencatCommonController = (function() {
   function GencatCommonController() {}
 
   GencatCommonController.prototype.load = function(options) {
-    $(document).on('turbolinks:load', function() {
-      setDatepickerFilters(options);
-    });
+    setDatepickerFilters(options);
   };
 
   GencatCommonController.prototype.updatePageHeader = function(options) {
