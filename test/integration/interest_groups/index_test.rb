@@ -17,11 +17,15 @@ module Gencat
         end
 
         def test_index
-          with_current_site(site) do
-            visit gobierto_people_interest_groups_path
+          with_javascript do
+            with_current_site(site) do
+              visit gobierto_people_interest_groups_path
 
-            assert title.include? page_title
-            assert has_no_content? "There is no data for the selected dates"
+              assert_equal page_title, header_title
+              assert_equal page_title, breadcrumb_last_item_text
+
+              assert has_no_content? "There is no data for the selected dates"
+            end
           end
         end
 

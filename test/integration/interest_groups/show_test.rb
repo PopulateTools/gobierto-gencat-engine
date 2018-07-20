@@ -21,11 +21,14 @@ module Gencat
         end
 
         def test_show
-          with_current_site(site) do
-            visit gobierto_people_interest_group_path(interest_group)
+          with_javascript do
+            with_current_site(site) do
+              visit gobierto_people_interest_group_path(interest_group)
 
-            assert title.include? page_title
-            assert has_content? "Inscription status in interest groups registry: #{interest_group.status}"
+              assert_equal page_title, header_title
+              assert_equal page_title, breadcrumb_last_item_text
+              assert has_content? "Inscription status in interest groups registry: #{interest_group.status}"
+            end
           end
         end
 

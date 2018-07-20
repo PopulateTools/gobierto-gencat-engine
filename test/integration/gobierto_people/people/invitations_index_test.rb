@@ -28,28 +28,38 @@ module Gencat
           person.name
         end
 
+        def breadcrumb_current_item
+          "Invitations"
+        end
+
         def test_index
-          with_current_site(site) do
-            visit gobierto_people_person_invitations_path(person.slug)
+          with_javascript do
+            with_current_site(site) do
+              visit gobierto_people_person_invitations_path(person.slug)
 
-            assert title.include? page_title
-            assert has_content? "Invitations received by #{person.name}"
+              assert_equal page_title, header_title
+              assert_equal breadcrumb_current_item, breadcrumb_last_item_text
+              assert has_content? "Invitations received by #{person.name}"
 
-            assert has_content? recent_invitation.title
-            assert has_content? old_invitation.title
+              assert has_content? recent_invitation.title
+              assert has_content? old_invitation.title
 
-            assert ordered_elements(page, [recent_invitation.title, old_invitation.title])
+              assert ordered_elements(page, [recent_invitation.title, old_invitation.title])
+            end
           end
         end
 
         def test_index_when_no_invitations
           person.invitations.destroy_all
 
-          with_current_site(site) do
-            visit gobierto_people_person_invitations_path(person.slug)
+          with_javascript do
+            with_current_site(site) do
+              visit gobierto_people_person_invitations_path(person.slug)
 
-            assert title.include? page_title
-            assert has_content? "There are no invitations in the given dates"
+              assert_equal page_title, header_title
+              assert_equal breadcrumb_current_item, breadcrumb_last_item_text
+              assert has_content? "There are no invitations in the given dates"
+            end
           end
         end
 

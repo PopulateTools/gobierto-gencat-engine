@@ -90,6 +90,9 @@ module Gencat
             expected_path = gobierto_people_root_path(start_date: 1.month.ago.strftime("%F"))
 
             assert current_url.include? expected_path
+
+            assert_equal page_title, header_title
+            assert_equal page_title, breadcrumb_last_item_text
           end
         end
       end

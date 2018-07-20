@@ -55,5 +55,13 @@ module Gencat
       enable_submodule(reference_site, :interest_groups)
     end
 
+    def breadcrumb_last_item_text
+      all(".breadcrumb li").last.text
+    end
+
+    def header_title
+      find("#impacteContainer h1").text
+    end
+
   end
 end
