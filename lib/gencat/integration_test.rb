@@ -64,6 +64,7 @@ module Gencat
     end
 
     def has_svg_link?(link_href)
+      sleep 2
       all("svg a").map { |node| node[:href] }.include?(link_href)
     end
 
