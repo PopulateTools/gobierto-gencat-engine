@@ -55,5 +55,18 @@ module Gencat
       enable_submodule(reference_site, :interest_groups)
     end
 
+    def breadcrumb_last_item_text
+      all(".breadcrumb li").last.text
+    end
+
+    def header_title
+      find("#impacteContainer h1").text
+    end
+
+    def has_svg_link?(link_href)
+      sleep 2
+      all("svg a").map { |node| node[:href] }.include?(link_href)
+    end
+
   end
 end

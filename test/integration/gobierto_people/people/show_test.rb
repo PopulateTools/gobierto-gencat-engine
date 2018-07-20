@@ -40,39 +40,45 @@ module Gencat
           update_fixtures_to_match_gencat_data!
           event.update_attributes!(starts_at: 1.minute.ago)
 
-          with_current_site(site) do
-            visit gobierto_people_person_path(person.slug)
+          with_javascript do
+            with_current_site(site) do
+              visit gobierto_people_person_path(person.slug)
 
-            assert title.include? page_title
+              assert_equal page_title, header_title
+              assert_equal page_title, breadcrumb_last_item_text
 
-            assert has_content? "Last meetings"
-            assert has_content? event.title
+              assert has_content? "Last meetings"
+              assert has_content? event.title
 
-            assert has_content? "Last trips"
-            assert has_content? trip.original_destinations_attribute
+              assert has_content? "Last trips"
+              assert has_content? trip.original_destinations_attribute
 
-            assert has_content? "Last invitations"
-            assert has_content? invitation.title
+              assert has_content? "Last invitations"
+              assert has_content? invitation.title
 
-            assert has_content? "Last gifts"
-            assert has_content? gift.name
+              assert has_content? "Last gifts"
+              assert has_content? gift.name
+            end
           end
         end
 
         def test_show_when_no_data
           [person.events, person.trips, person.invitations, person.received_gifts].each(&:destroy_all)
 
-          with_current_site(site) do
-            visit gobierto_people_person_path(person.slug)
+          with_javascript do
+            with_current_site(site) do
+              visit gobierto_people_person_path(person.slug)
 
-            assert title.include? page_title
+              assert_equal page_title, header_title
+              assert_equal page_title, breadcrumb_last_item_text
 
-            assert has_no_content? "Last meetings"
-            assert has_no_content? "Last trips"
-            assert has_no_content? "Last invitations"
-            assert has_no_content? "Last gifts"
+              assert has_no_content? "Last meetings"
+              assert has_no_content? "Last trips"
+              assert has_no_content? "Last invitations"
+              assert has_no_content? "Last gifts"
 
-            assert has_content? "There is no data in the given dates"
+              assert has_content? "There is no data in the given dates"
+            end
           end
         end
 

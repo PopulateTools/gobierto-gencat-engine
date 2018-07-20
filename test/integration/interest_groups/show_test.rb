@@ -16,16 +16,30 @@ module Gencat
           @interest_group ||= gobierto_people_interest_groups(:google)
         end
 
+        def department
+          @department = gobierto_people_departments(:culture_department)
+        end
+
+        def person
+          @person ||= gobierto_people_people(:richard)
+        end
+
         def page_title
           interest_group.name
         end
 
         def test_show
-          with_current_site(site) do
-            visit gobierto_people_interest_group_path(interest_group)
+          with_javascript do
+            with_current_site(site) do
+              visit gobierto_people_interest_group_path(interest_group)
 
-            assert title.include? page_title
-            assert has_content? "Inscription status in interest groups registry: #{interest_group.status}"
+              assert_equal page_title, header_title
+              assert_equal page_title, breadcrumb_last_item_text
+
+              assert has_svg_link?(department.to_url)
+              assert has_svg_link?(person.to_url)
+              assert has_content? "Inscription status in interest groups registry: #{interest_group.status}"
+            end
           end
         end
 
