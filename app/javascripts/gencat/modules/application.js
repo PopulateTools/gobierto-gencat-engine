@@ -1,5 +1,5 @@
-function currentLocationMatches(suffix) {
-  return $('#gobierto_people_' + suffix).length > 0
+function currentLocationMatches(controller_action) {
+  return $("body.gobierto_people." + controller_action).length > 0
 }
 
 $(document).on('turbolinks:load', function() {

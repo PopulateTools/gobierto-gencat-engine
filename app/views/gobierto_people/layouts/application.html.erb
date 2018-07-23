@@ -1,8 +1,21 @@
-<% content_for :javascript_module_link do %>
-  <!-- load module javascript specifics -->
+<% content_for :gobierto_head_content do %>
   <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
   <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
 
+  <%= javascript_tag do %>
+    commonControllerLoadArgs = {
+      people_events_first_date: '<%= all_start_date.try(:iso8601) %>',
+      people_events_filter_start_date: '<%= filter_start_date.try(:iso8601) %>',
+      people_events_filter_end_date: '<%= filter_end_date.try(:iso8601) %>'
+    }
+
+    commonControllerUpdatePageHeaderArgs = {
+      pageTitle: "<%= raw (@meta_tags ? @meta_tags['title'] : nil) %>"
+    }
+  <% end %>
+<% end %>
+
+<% content_for :javascript_module_link do %>
   <%= javascript_pack_tag 'people', 'data-turbolinks-track': true, defer: true %>
   <%= javascript_pack_tag 'gencat', 'data-turbolinks-track': true, defer: true %>
 <% end %>
@@ -13,20 +26,8 @@
   <% end %>
 <% end %>
 
-<%= javascript_tag do %>
-
-  commonControllerLoadArgs = {
-    people_events_first_date: '<%= all_start_date.try(:iso8601) %>',
-    people_events_filter_start_date: '<%= filter_start_date.try(:iso8601) %>',
-    people_events_filter_end_date: '<%= filter_end_date.try(:iso8601) %>'
-  }
-
-  commonControllerUpdatePageHeaderArgs = {
-    pageTitle: "<%= raw (@meta_tags ? @meta_tags['title'] : nil) %>"
-  }
-
+<% content_for :gobierto_footer_content do %>
+  <%= render "gobierto_people/shared/breadcrumb" %>
 <% end %>
-
-<%= render "gobierto_people/shared/breadcrumb" %>
 
 <%= render template: "layouts/application" %>
