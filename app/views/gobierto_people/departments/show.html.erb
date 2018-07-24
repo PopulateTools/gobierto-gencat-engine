@@ -71,12 +71,6 @@
   <p><strong><%= t(".map_title") %></strong></p>
 
   <%= render "gobierto_people/shared/map" %>
-
-  <div class="margin_top_xs">
-    <%= link_to gobierto_people_trips_path(date_range_params), class: "show-more color-2" do %>
-      <small><%= t("gobierto_people.shared.view_all") %></small>
-    <% end %>
-  </div>
 </section>
 
 <section>
@@ -86,6 +80,12 @@
 <%= render "gobierto_people/shared/open_data_footer" %>
 
 <%= javascript_tag do %>
+  mapControllerIndexParams = {
+    fromDate: '<%= filter_start_date.try(:iso8601) %>',
+    toDate: '<%= filter_end_date.try(:iso8601) %>',
+    departmentId: '<%= @department.id %>'
+  }
+
   departmentsShowArgs = {
     department_people_events_rowchart_api_path: '<%= gobierto_people_api_v1_people_path(from_date: filter_start_date, to_date: filter_end_date, department_id: @department.id) %>',
     department_interest_groups_rowchart_api_path: '<%= gobierto_people_api_v1_interest_groups_path(from_date: filter_start_date, to_date: filter_end_date, department_id: @department.id) %>',
