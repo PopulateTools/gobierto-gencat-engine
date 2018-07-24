@@ -52,6 +52,8 @@ module Gencat
 
               assert has_content? "Last trips"
               assert has_content? trip.original_destinations_attribute
+              assert has_content? trip.description
+              assert has_content? trip.company
 
               assert has_content? "Last invitations"
               assert has_content? invitation.title

@@ -136,8 +136,8 @@
         </ul>
       </figure>
 
-      <%= link_to "#", class: "show-more color-4" do %>
-        <small><%= t("gobierto_people.shared.view_all") %></small>
+      <%= link_to gobierto_people_people_path, class: "show-more color-4" do %>
+        <small><%= t(".view_officials") %></small>
       <% end %>
     <% else %>
       <em><%= t(".no_gifts") %></em>
@@ -172,8 +172,8 @@
         </ul>
       </figure>
 
-      <%= link_to "#", class: "show-more color-3" do %>
-        <small><%= t("gobierto_people.shared.view_all") %></small>
+      <%= link_to gobierto_people_people_path, class: "show-more color-3" do %>
+        <small><%= t(".view_officials") %></small>
       <% end %>
     <% else %>
       <em><%= t(".no_invitations") %></em>

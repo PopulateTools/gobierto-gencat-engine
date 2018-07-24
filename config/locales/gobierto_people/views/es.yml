@@ -64,6 +64,7 @@ es:
         punchcard_title: Reuniones por alto cargo y mes
         no_invitations: No se han registrado invitaciones en este periodo
         no_gifts: No se han registrado obsequios en este periodo
+        view_officials: Ver Altos Cargos
       table_item:
         view_details: Ver detalles
     shared:

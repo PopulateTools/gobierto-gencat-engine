@@ -63,6 +63,7 @@ en:
         punchcard_title: Meetings per official and month
         no_invitations: No invitations have been registered in this period
         no_gifts: No gifts have been registered in this period
+        view_officials: View Officials
       table_item:
         view_details: View details
     shared:
