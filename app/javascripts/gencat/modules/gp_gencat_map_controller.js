@@ -4,6 +4,7 @@ window.GobiertoPeople.GencatMapController = (function() {
   GencatMapController.prototype.index = function(options) {
     let fromDate = options.fromDate;
     let toDate = options.toDate;
+    let departmentCondition = options.departmentId || "";
     let dateRangeConditions = [];
     if(fromDate !== "")
       dateRangeConditions.push(`start_date >= '${fromDate}'`)
@@ -11,6 +12,8 @@ window.GobiertoPeople.GencatMapController = (function() {
       dateRangeConditions.push(`end_date <= '${toDate}'`)
     if(dateRangeConditions.length)
       dateRangeConditions = ` AND ${dateRangeConditions.join(' AND ')}`;
+    if(departmentCondition !== "")
+      departmentCondition = ` AND department_id = ${options.departmentId}`;
 
     $(document).ready(function() {
       let map = new L.Map('map', {
@@ -43,7 +46,9 @@ SELECT country, country_name, count(*) as count, world_borders.the_geom as the_g
 array_to_string(array_agg(DISTINCT person_name), ',') as person_names, array_to_string(array_agg(DISTINCT person_slug), ',') as person_slugs
 FROM gobierto_gencat_trips
 INNER JOIN world_borders ON world_borders.iso2 = country
-WHERE country is not null ${dateRangeConditions}
+WHERE country is not null
+${dateRangeConditions}
+${departmentCondition}
 GROUP BY country, country_name, world_borders.the_geom, world_borders.the_geom_webmercator
 `;
 
@@ -51,7 +56,9 @@ GROUP BY country, country_name, world_borders.the_geom, world_borders.the_geom_w
 SELECT count(*) as count, city_name, country_name, the_geom, the_geom_webmercator, array_to_string(array_agg(DISTINCT person_name), ',') as person_names,
 array_to_string(array_agg(DISTINCT person_slug), ',') as person_slugs, array_to_string(array_agg(DISTINCT destination_name), ',') as destination_names
 FROM gobierto_gencat_trips
-WHERE country is not null ${dateRangeConditions}
+WHERE country is not null
+${dateRangeConditions}
+${departmentCondition}
 GROUP BY city_name, country_name, the_geom, the_geom_webmercator
 ORDER by count DESC
 `;
