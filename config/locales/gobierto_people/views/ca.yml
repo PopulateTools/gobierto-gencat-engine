@@ -66,6 +66,7 @@ ca:
         punchcard_title: Reunions per alt càrrec i mes
         no_invitations: No s'han registrat invitacions en aquest període
         no_gifts: No s'han registrat obsequis en aquest període
+        view_officials: Veure Alts Càrrecs
       table_item:
         view_details: Veure detalls
     shared:
