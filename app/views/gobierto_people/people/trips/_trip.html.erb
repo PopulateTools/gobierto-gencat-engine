@@ -2,17 +2,19 @@
 
   <div class="row">
     <div class="col-md-8">
-      <p><%= trip.original_destinations_attribute %></p>
+      <strong><p><%= trip.original_destinations_attribute %></p></strong>
       <p><%= trip.purpose %></p>
     </div>
 
     <div class="col-md-4 text-right">
-    <% if meaningful_date_range?(trip.duration_dates, only_date: true) %>
-      <p><%= trip.formatted_start_date %> → <%= trip.formatted_end_date %></p>
-    <% else %>
-      <p><%= trip.formatted_start_date %></p>
-    <% end %>
-  </div>
+      <strong>
+        <% if meaningful_date_range?(trip.duration_dates, only_date: true) %>
+          <p><%= trip.formatted_start_date %> → <%= trip.formatted_end_date %></p>
+        <% else %>
+          <p><%= trip.formatted_start_date %></p>
+        <% end %>
+      </strong>
+    </div>
 
   </div>
 

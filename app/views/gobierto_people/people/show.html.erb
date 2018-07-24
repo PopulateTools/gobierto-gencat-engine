@@ -28,7 +28,7 @@
             <figcaption class="mb_20"><%= t(".events_section_title") %></figcaption>
             <ul class="color-1 transparent mb_20">
               <% @last_events.each do |event| %>
-                <%= render "gobierto_people/people/person_events/event", event: event, teaser: true %>
+                <%= render "gobierto_people/people/person_events/event", event: event, teaser: false %>
               <% end %>
             </ul>
 
@@ -47,12 +47,7 @@
             <figcaption class="mb_20"><%= t(".trips_section_title", person_name: @person.name) %></figcaption>
             <ul class="color-2 transparent mb_20">
               <% @last_trips.each do |trip| %>
-                <%= render(
-                      "item_teaser",
-                      title: trip.original_destinations_attribute,
-                      item_details_path: gobierto_people_person_trips_path(@person.slug, { anchor: "trip-#{trip.id}" }.merge(date_range_params)),
-                      dates: [trip.start_date, trip.end_date]
-                  ) %>
+                <%= render "gobierto_people/people/trips/trip", trip: trip %>
               <% end %>
             </ul>
 
@@ -71,7 +66,7 @@
             <figcaption class="mb_20"><%= t(".invitations_section_title") %></figcaption>
             <ul class="color-3 transparent mb_20">
               <% @last_invitations.each do |invitation| %>
-                <%= render "gobierto_people/people/invitations/invitation", invitation: invitation, teaser: true %>
+                <%= render "gobierto_people/people/invitations/invitation", invitation: invitation, teaser: false %>
               <% end %>
             </ul>
 
@@ -90,7 +85,7 @@
             <figcaption class="mb_20"><%= t(".gifts_section_title") %></figcaption>
             <ul class="color-4 transparent mb_20">
               <% @last_gifts.each do |gift| %>
-                <%= render "gobierto_people/people/gifts/gift", gift: gift, teaser: true %>
+                <%= render "gobierto_people/people/gifts/gift", gift: gift, teaser: false %>
               <% end %>
             </ul>
 
