@@ -20,6 +20,7 @@ $(document).on('turbolinks:load', function() {
   } else if (currentLocationMatches('departments_index')) {
     window.GobiertoPeople.gencat_departments_controller.index(departmentsIndexArgs);
   } else if (currentLocationMatches('departments_show')) {
+    window.GobiertoPeople.gencat_map_controller.index(mapControllerIndexParams);
     window.GobiertoPeople.gencat_departments_controller.show(departmentsShowArgs);
   }
 
