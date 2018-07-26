@@ -28,7 +28,7 @@ module Gencat
               assert_equal page_title, header_title
               assert_equal page_title, breadcrumb_last_item_text
 
-              assert has_svg_link?(interest_group.to_url)
+              assert has_svg_link?(interest_group.to_url(start_date: DEFAULT_DATE_FILTER_START))
               assert has_no_content? "There is no data for the selected dates"
             end
           end

@@ -7,6 +7,8 @@ module Gencat
 
     include ::GobiertoPeople::SubmodulesHelper
 
+    DEFAULT_DATE_FILTER_START = "2003-06-20".freeze
+
     def reference_site
       @reference_site ||= sites(:madrid)
     end
@@ -32,6 +34,9 @@ module Gencat
 
       enable_submodules!
       reference_site.configuration.engine_overrides = ["gobierto-gencat-engine"]
+      reference_site.configuration.raw_configuration_variables = <<-YAML
+gobierto_people_default_filter_start_date: "#{DEFAULT_DATE_FILTER_START}"
+YAML
       reference_site.save!
       super
     end
