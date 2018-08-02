@@ -24,6 +24,10 @@ module Gencat
           @event ||= gobierto_calendars_events(:richard_published)
         end
 
+        def draft_event
+          @draft_event ||= gobierto_calendars_events(:richard_pending)
+        end
+
         def trip
           @trip ||= gobierto_people_trips(:richard_multiple_destinations_recent)
         end
@@ -49,6 +53,7 @@ module Gencat
 
               assert has_content? "Last meetings"
               assert has_content? event.title
+              assert has_no_content? draft_event.title
 
               assert has_content? "Last trips"
               assert has_content? trip.original_destinations_attribute

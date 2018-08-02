@@ -66,19 +66,19 @@ module Gencat
             within "#departments-box" do
               assert has_content? departments_box_counter
               assert has_content? "Departments with most meetings"
-              assert has_svg_link?(department.to_url)
+              assert has_svg_link?(department.to_url(start_date: DEFAULT_DATE_FILTER_START))
             end
 
             within "#interest-groups-box" do
               assert has_content? interest_groups_counter
               assert has_content? "Interest groups with most meetings"
-              assert has_svg_link?(interest_group.to_url)
+              assert has_svg_link?(interest_group.to_url(start_date: DEFAULT_DATE_FILTER_START))
             end
 
             within "#people-box" do
               assert has_content? people_box_counter
               assert has_content? "Officials with most meetings"
-              assert has_svg_link?(person.to_url)
+              assert has_svg_link?(person.to_url(start_date: DEFAULT_DATE_FILTER_START))
             end
 
             within "#gifts-wrapper" do
