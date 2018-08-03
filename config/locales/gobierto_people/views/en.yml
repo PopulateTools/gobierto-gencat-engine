@@ -3,7 +3,6 @@ en:
   gobierto_people:
     departments:
       index:
-        title: Departments
         description: Any organization that meets with an official must register as
           an interest group, and a record of the meetings is created. <a href="https://web.gencat.cat/en/tramits/tramits-temes/registre-grups-interes">Learn
           more about Interest Groups Policies</a>. Explore organizations (companies,
@@ -13,23 +12,28 @@ en:
         explore_departments: Explore Departments and Officials
         explore_people: Explore the agendas of Officials
         people_events: Officials with more events
-        punchcard_title: Meetings per departments and month
         people_with_events: officials with registered events
+        punchcard_title: Meetings per departments and month
+        title: Departments
       show:
-        people_box_title: officials in this department
-        people_box_subtitle: with meetings registered
-        people_rowchart_title: Officials of this department with most meetings
-        interest_groups_box_title: interest groups
         interest_groups_box_subtitle: have met with this department
-        interest_groups_rowchart_title: Interest groups with most meetings with this department
+        interest_groups_box_title: interest groups
+        interest_groups_rowchart_title: Interest groups with most meetings with this
+          department
         map_title: Where do officials travel?
+        people_box_subtitle: with meetings registered
+        people_box_title: officials in this department
+        people_rowchart_title: Officials of this department with most meetings
         punchcard_title: Meetings per official and month
     interest_groups:
       index:
-        title: Interest Groups
-        description: Any organization that meets with an official must register as an interest group and a record of the meetings is created. <a href="%{link}">Learn more about the Interest Groups Regulations</a>. Explore organizations (companies, foundations, associations ...) that meet with officials of the Generalitat
-        rowchart_title: Interest groups with most meetings
+        description: Any organization that meets with an official must register as
+          an interest group and a record of the meetings is created. <a href="%{link}">Learn
+          more about the Interest Groups Regulations</a>. Explore organizations (companies,
+          foundations, associations ...) that meet with officials of the Generalitat
         no_data: There is no data for the selected dates
+        rowchart_title: Interest groups with most meetings
+        title: Interest Groups
       show:
         events: registered events
         events_by_department: With which departments does this group meet?
@@ -38,70 +42,53 @@ en:
         explore_people: Explore the agendas of Officials
         people_with_events: the number of Officials with which this group has met
         punchcard_title: Meetings per official and month
-        status: "Inscription status in interest groups registry: %{status}"
-    welcome:
-      index:
-        title: Agendas
-        description: Check with whom meets each Official in the Generalitat, companies and organizations that request meetings, and the trips and gifts received
-        meetings_box_title: Meetings registered
-        departments_rowchart_title: Departments with most meetings
-        interest_groups_box_title: Interest groups inscribed
-        interest_groups_box_subtitle: or in registration process
-        interest_groups_rowchart_title: Interest groups with most meetings
-        people_rowchart_title: Officials with most meetings
-        people_box_title: Officials
-        people_box_subtitle: with meetings registered
-        map_title: Where do officials travel?
-        gifts: Gifts
-        gifts_description: Officials receive gifts as a courtesy from organizations with which they meet. Here is the inventory of what has been received
-        gifts_coc: The Code of Conduct regulates what gifts can be received.
-        last_gifts: Last gifts
-        invitations: Invitations
-        invitations_description: Officials receive invitations to events, to make visits, give lectures... Here is a list of accepted invitations.
-        invitations_coc: The Code of Conduct regulates which invitations can be accepted.
-        last_invitations: Last invitations
-        punchcard_title: Meetings per official and month
-        no_invitations: No invitations have been registered in this period
-        no_gifts: No gifts have been registered in this period
-        view_officials: View Officials
-      table_item:
-        view_details: View details
-    shared:
-      app_title: Agendas
-      code_of_conduct_link:
-        check_it_out: Check it out
-      view_all: View all
-      view_details: View details
-      open_data_footer:
-        title: Access the data in the Open Data portal
-        meetings: Meetings
-        gifts: Gifts
-        invitations: Invitations
-        trips: Trips
-      datepicker:
-        1y: Last year
-        1m: Last month
-        3m: Last three months
-        all: Everything
-        range: Custom range
+        status: 'Inscription status in interest groups registry: %{status}'
     people:
+      gifts:
+        gift:
+          from: from
+        index:
+          gifts: Gifts
+          no_gifts: There are no gifts in the given dates
+          title: Gifts received by %{person_name}
       index:
-        officials: Officials
         department_officials: Officials in %{department_name}
+        officials: Officials
+      invitations:
+        index:
+          invitations: Invitations
+          no_invitations: There are no invitations in the given dates
+          title: Invitations received by %{person_name}
+      navigation:
+        gift_received: gift received
+        gifts_received: gifts received
+        interest_group: interest group
+        interest_groups: interest groups
+        invitation: invitation
+        invitations: invitations
+        meeting_with: meeting with
+        meetings_with: meetings with
+        trip_made: trip made
+        trips_made: trips made
+      person_events:
+        index:
+          agenda: Agenda
+          no_events: There are no meetings in the given dates
       show:
-        trips_section_title: Trips made by %{person_name}
         events_section_title: Last meetings
-        trips_section_title: Last trips
-        invitations_section_title: Last invitations
         gifts_section_title: Last gifts
+        invitations_section_title: Last invitations
         no_data: There is no data in the given dates
+        trips_section_title: Last trips
       trips:
         index:
+          no_trips: There are no trips in the given dates
           title: Trips made by %{person_name}
           trips: Trips
-          no_trips: There are no trips in the given dates
         trip:
           by: by
+          company: Trip party
+          expenses: Expenses
           in: in
           meeting_name:
             one: meeting
@@ -109,32 +96,51 @@ en:
           person_name:
             one: person
             other: people
-          company: Trip party
-          expenses: Expenses
-      gifts:
-        index:
-          title: Gifts received by %{person_name}
-          gifts: Gifts
-          no_gifts: There are no gifts in the given dates
-        gift:
-          from: from
-      invitations:
-        index:
-          title: Invitations received by %{person_name}
-          invitations: Invitations
-          no_invitations: There are no invitations in the given dates
-      person_events:
-        index:
-          agenda: Agenda
-          no_events: There are no meetings in the given dates
-      navigation:
-        meeting_with: meeting with
-        meetings_with: meetings with
-        interest_group: interest group
-        interest_groups: interest groups
-        trip_made: trip made
-        trips_made: trips made
-        invitation: invitation
-        invitations: invitations
-        gift_received: gift received
-        gifts_received: gifts received
+    shared:
+      app_title: Agendas
+      code_of_conduct_link:
+        check_it_out: Check it out
+      datepicker:
+        1m: Last month
+        1y: Last year
+        3m: Last three months
+        all: Everything
+        range: Custom range
+      open_data_footer:
+        gifts: Gifts
+        invitations: Invitations
+        meetings: Meetings
+        title: Access the data in the Open Data portal
+        trips: Trips
+      view_all: View all
+      view_details: View details
+    welcome:
+      index:
+        departments_rowchart_title: Departments with most meetings
+        description: Check with whom meets each Official in the Generalitat, companies
+          and organizations that request meetings, and the trips and gifts received
+        gifts: Gifts
+        gifts_coc: The Code of Conduct regulates what gifts can be received.
+        gifts_description: Officials receive gifts as a courtesy from organizations
+          with which they meet. Here is the inventory of what has been received
+        interest_groups_box_subtitle: or in registration process
+        interest_groups_box_title: Interest groups inscribed
+        interest_groups_rowchart_title: Interest groups with most meetings
+        invitations: Invitations
+        invitations_coc: The Code of Conduct regulates which invitations can be accepted.
+        invitations_description: Officials receive invitations to events, to make
+          visits, give lectures... Here is a list of accepted invitations.
+        last_gifts: Last gifts
+        last_invitations: Last invitations
+        map_title: Where do officials travel?
+        meetings_box_title: Meetings registered
+        no_gifts: No gifts have been registered in this period
+        no_invitations: No invitations have been registered in this period
+        people_box_subtitle: with meetings registered
+        people_box_title: Officials
+        people_rowchart_title: Officials with most meetings
+        punchcard_title: Meetings per official and month
+        title: Agendas
+        view_officials: View Officials
+      table_item:
+        view_details: View details

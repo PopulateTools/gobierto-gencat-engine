@@ -1,0 +1,21 @@
+base_locale: es
+locales: [en, es, ca]
+
+data:
+  read:
+    - config/locales/**/%{locale}.yml
+    - config/locales/**/*/%{locale}.yml
+search:
+  paths:
+    - app/
+  relative_roots:
+    - app/controllers
+    - app/helpers
+    - app/mailers
+    - app/presenters
+    - app/views
+ignore_missing:
+  - 'countries.*'
+
+ignore_unused:
+  - 'countries.*'
