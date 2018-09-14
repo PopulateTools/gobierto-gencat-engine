@@ -3,108 +3,93 @@ es:
   gobierto_people:
     departments:
       index:
-        title: Departamentos
-        description: Cualquier organización que se reune con un alto cargo debe registrarse
-          como grupo de interés, y se crea un registro de los encuentros. <a href="https://web.gencat.cat/es/tramits/tramits-temes/registre-grups-interes">Aprende
-          más sobre la Normativa de Grupos de Interés</a>. Explora las organizaciones
-          (empresas, fundaciones, asociaciones…) que se reunen con cargos de la Generalitat.
-        events: reuniones registradas
+        description: Cualquier organización que se reúne con un alto cargo debe registrarse
+          como grupo de interés, y se crea un registro de los encuentros. <a href="https://web.gencat.cat/es/tramits/tramits-temes/registre-grups-interes">Más
+          información sobre la normativa de grupos de interés</a>. Explore las organizaciones
+          (empresas, fundaciones, asociaciones…) que se reúnen con cargos de la Generalidad.
+        events: Reuniones registradas
         events_by_department: Reuniones por departamentos
-        explore_departments: Explora los Departamentos y sus Altos Cargos
-        explore_people: Consulta las agendas de los Altos Cargos
+        explore_departments: Explore los departamentos y sus altos cargos
+        explore_people: Consulte las agendas de los altos cargos
         people_events: Altos cargos con más reuniones en departamentos
+        people_with_events: Altos cargos con reuniones registradas
         punchcard_title: Reuniones por departamento y mes
-        people_with_events: altos cargos con reuniones registradas
+        title: Departamentos
       show:
-        people_box_title: altos cargos de este departamento
-        people_box_subtitle: con reuniones registradas
+        interest_groups_box_subtitle: Que se han reunido con este departamento
+        interest_groups_box_title: Grupos de interés
+        interest_groups_rowchart_title: Grupos de interés con más reuniones con este
+          departamento
+        map_title: "¿A dónde viajan los altos cargos?"
+        people_box_subtitle: Con reuniones registradas
+        people_box_title: Altos cargos de este departamento
         people_rowchart_title: Altos cargos de este departamento con más reuniones
-        interest_groups_box_title: grupos de interés
-        interest_groups_box_subtitle: que se han reunido con este departamento
-        interest_groups_rowchart_title: Grupos de Interés con más reuniones con este departamento
-        map_title: ¿A dónde viajan los altos cargos?
         punchcard_title: Reuniones por alto cargo y mes
     interest_groups:
       index:
-        title: Grupos de Interés
-        description: Cualquier organización que se reune con un alto cargo debe registrarse como grupo de interés y se crea un registro de los encuentros. <a href="%{link}">Aprende más sobre la Normativa de Grupos de Interés</a>. Explora las organizaciones (empresas, fundaciones, asociaciones...) que se reunen con cargos de la Generalitat.
-        rowchart_title: Grupos de Interés con más reuniones
+        description: Cualquier organización que se reúne con un alto cargo debe registrarse
+          como grupo de interés, y se crea un registro de los encuentros. <a href="https://web.gencat.cat/es/tramits/tramits-temes/registre-grups-interes">Más
+          información sobre la normativa de grupos de interés</a>. Explore las organizaciones
+          (empresas, fundaciones, asociaciones…) que se reúnen con cargos de la Generalidad.
         no_data: No hay datos para las fechas seleccionadas
+        rowchart_title: Grupos de interés con más reuniones
+        title: Grupos de interés
       show:
-        events: reuniones registradas
+        events: Reuniones registradas
         events_by_department: Con qué departamentos se reúne este grupo
         events_by_person: Altos cargos con los que se ha reunido este grupo
-        explore_departments: Explora los Departamentos y sus Altos Cargos
-        explore_people: Consulta las agendas de los Altos Cargos
-        people_with_events: el número de Altos Cargos con los que se ha reunido este
+        explore_departments: Explore los departamentos y sus altos cargos
+        explore_people: Consulte las agendas de los altos cargos
+        people_with_events: El número de altos cargos con los que se ha reunido este
           grupo
         punchcard_title: Reuniones por alto cargo y mes
-        status: "Situación de inscripción en el registro de grupos de interés: %{status}"
-    welcome:
-      index:
-        title: Agendas
-        description: Consulta con quién se reúne cada alto cargo de la Generalitat, las empresas y organizaciones que solicitan reuniones, y los viajes y obsequios recibidos
-        meetings_box_title: Reuniones registradas
-        departments_rowchart_title: Departamentos con más reuniones
-        interest_groups_box_title: Grupos de Interés inscritos
-        interest_groups_box_subtitle: o en proceso de inscripción
-        interest_groups_rowchart_title: Grupos de Interés con más reuniones
-        people_rowchart_title: Altos cargos con más reuniones
-        people_box_title: Altos cargos
-        people_box_subtitle: con reuniones registradas
-        map_title: ¿A dónde viajan los Altos cargos?
-        gifts: Obsequios
-        gifts_description: Los Altos cargos reciben obsequios como cortesia de organizaciones con las que se reunen. Aquí tienes el inventario de lo que se ha recibido
-        gifts_coc: El Código de Conducta regula qué regalos se pueden recibir.
-        last_gifts: Últimos obsequios
-        invitations: Invitaciones
-        invitations_description: Los Altos cargos reciben invitaciones a eventos, para realizar visitas, dar conferencias... Aquí tienes una relación de las invitaciones aceptadas.
-        invitations_coc: El Código de Conducta regula qué invitaciones se pueden aceptar.
-        last_invitations: Últimas invitaciones
-        punchcard_title: Reuniones por alto cargo y mes
-        no_invitations: No se han registrado invitaciones en este periodo
-        no_gifts: No se han registrado obsequios en este periodo
-        view_officials: Ver Altos Cargos
-      table_item:
-        view_details: Ver detalles
-    shared:
-      app_title: Agendas
-      code_of_conduct_link:
-        check_it_out: Consúltalo
-      view_all: Ver todos
-      view_details: Ver detalles
-      open_data_footer:
-        title: Acceder a los datos en el portal de Datos Abiertos
-        meetings: Reuniones
-        gifts: Obsequios
-        invitations: Invitaciones
-        trips: Viajes
-      datepicker:
-        1y: Último año
-        1m: Último mes
-        3m: Últimos tres meses
-        all: Todo
-        range: Rango personalizado
+        status: 'Situación de inscripción en el registro de grupos de interés: %{status}'
     people:
+      gifts:
+        gift:
+          from: de
+        index:
+          gifts: Obsequios
+          no_gifts: No hay obsequios en las fechas seleccionadas
+          title: Obsequios recibidos por %{person_name}
       index:
-        officials: Altos Cargos
-        department_officials: Altos Cargos en %{department_name}
+        department_officials: Altos cargos en %{department_name}
+        officials: Altos cargos
+      invitations:
+        index:
+          invitations: Invitaciones
+          no_invitations: No hay invitaciones en las fechas seleccionadas
+          title: Invitaciones recibidas por %{person_name}
+      navigation:
+        gift_received: Obsequio recibido
+        gifts_received: Obsequios recibidos
+        interest_group: Grupo de interés
+        interest_groups: Grupos de interés
+        invitation: Invitación
+        invitations: Invitaciones
+        meeting_with: Reunión con
+        meetings_with: Reuniones con
+        trip_made: Viaje realizado
+        trips_made: Viajes realizados
+      person_events:
+        index:
+          agenda: Agenda
+          no_events: No hay reuniones en las fechas seleccionadas
       show:
-        trips_section_title: Viajes realizados por %{person_name}
         events_section_title: Últimas reuniones
-        trips_section_title: Últimos viajes
-        invitations_section_title: Últimas invitaciones
         gifts_section_title: Últimos obsequios
+        invitations_section_title: Últimas invitaciones
         no_data: No hay datos en las fechas seleccionadas
+        trips_section_title: Últimos viajes
       trips:
         index:
+          no_trips: No hay viajes en las fechas seleccionadas
           title: Viajes realizados por %{person_name}
           trips: Viajes
-          no_trips: No hay viajes en las fechas seleccionadas
         trip:
+          by: por
           company: Comitiva
           expenses: Gastos
-          by: por
           in: en
           meeting_name:
             one: reunión
@@ -112,30 +97,53 @@ es:
           person_name:
             one: persona
             other: personas
-      gifts:
-        index:
-          title: Obsequios recibidos por %{person_name}
-          gifts: Obsequios
-          no_gifts: No hay obsequios en las fechas seleccionadas
-        gift:
-          from: de
-      invitations:
-        index:
-          title: Invitaciones recibidas por %{person_name}
-          invitations: Invitaciones
-          no_invitations: No hay invitaciones en las fechas seleccionadas
-      person_events:
-        index:
-          agenda: Agenda
-          no_events: No hay reuniones en las fechas seleccionadas
-      navigation:
-        meeting_with: reunión con
-        meetings_with: reuniones con
-        interest_group: grupo de interés
-        interest_groups: grupos de interés
-        trip_made: viaje realizado
-        trips_made: viajes realizados
-        invitation: invitación
-        invitations: invitaciones
-        gift_received: obsequio recibido
-        gifts_received: obsequios recibidos
+    shared:
+      app_title: Agendas
+      code_of_conduct_link:
+        check_it_out: Consúltelo
+      datepicker:
+        1m: Último mes
+        1y: Último año
+        3m: Últimos tres meses
+        all: Todo
+        range: Rango personalizado
+      open_data_footer:
+        gifts: Obsequios
+        invitations: Invitaciones
+        meetings: Reuniones
+        title: Acceder a los datos en el Portal de datos abiertos
+        trips: Viajes
+      view_all: Ver todos
+      view_details: Ver detalles
+    welcome:
+      index:
+        departments_rowchart_title: Departamentos con más reuniones
+        description: Consulte con quién se reúne cada alto cargo de la Generalidad,
+          las empresas y organizaciones que solicitan reuniones, y los viajes y obsequios
+          recibidos
+        gifts: Obsequios
+        gifts_coc: El Código de conducta regula qué regalos se pueden recibir.
+        gifts_description: Los altos cargos reciben obsequios como cortesía de organizaciones
+          con las que se reúnen. Aquí tiene el inventario de lo que se ha recibido.
+        interest_groups_box_subtitle: o en proceso de inscripción
+        interest_groups_box_title: Grupos de interés inscritos
+        interest_groups_rowchart_title: Grupos de interés con más reuniones
+        invitations: Invitaciones
+        invitations_coc: El Código de conducta regula qué invitaciones se pueden aceptar.
+        invitations_description: Los altos cargos reciben invitaciones a eventos,
+          para realizar visitas, dar conferencias... Aquí tiene una relación de las
+          invitaciones aceptadas.
+        last_gifts: Últimos obsequios
+        last_invitations: Últimas invitaciones
+        map_title: "¿A dónde viajan los altos cargos?"
+        meetings_box_title: Reuniones registradas
+        no_gifts: No se han registrado obsequios en este periodo
+        no_invitations: No se han registrado invitaciones en este periodo
+        people_box_subtitle: con reuniones registradas
+        people_box_title: Altos cargos
+        people_rowchart_title: Altos cargos con más reuniones
+        punchcard_title: Reuniones por alto cargo y mes
+        title: Agendas
+        view_officials: Ver altos cargos
+      table_item:
+        view_details: Ver detalles

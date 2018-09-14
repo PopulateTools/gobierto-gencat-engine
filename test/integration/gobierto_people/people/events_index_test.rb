@@ -35,6 +35,7 @@ module Gencat
         def test_index
           event_1 = create_event(title: "Old", starts_at: 1.month.ago, interest_group: true)
           event_2 = create_event(title: "Very old", starts_at: 1.year.ago, interest_group: true)
+          event_3 = create_event(title: "Pending", starts_at: 1.year.ago, interest_group: true, state: :pending)
 
           with_javascript do
             with_current_site(site) do
@@ -46,6 +47,7 @@ module Gencat
 
               assert has_content? event_1.title
               assert has_content? event_2.title
+              assert has_no_content? event_3.title
 
               assert ordered_elements(page, [event_1.title, event_2.title])
             end
