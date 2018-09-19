@@ -76,7 +76,7 @@ function _reloadRowchart(container, url, maxElements) {
     var url = url + '?limit=' + maxElements;
   }
 
-  $rowchartWrapper.find('.js-reload-rowchart-wrapper').find('.show-more').click(function(e) {
+  $rowchartWrapper.find('.js-reload-rowchart-wrapper').find('a').click(function(e) {
     e.preventDefault();
     $rowchartWrapper.find('.box').removeAttr("style")
     $rowchartWrapper.find('.rowchart').empty();
@@ -124,6 +124,9 @@ function setDatepickerFilters(opts) {
       location.assign(location.href)
     }
   }).data('datepicker')
+
+  // Hack datepicker position
+  $('#datepickers-container').appendTo('.theme-gencat')
 
   // init dates
   // TODO: no inicializar si hay params en la queryString
