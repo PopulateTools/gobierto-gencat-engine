@@ -271,6 +271,73 @@
     }
   }
 
+  // Gencat tuning
+  .datepickers-container {
+    .datepicker--nav {
+      border-bottom: 0;
+    }
+
+    .datepicker--content {
+      font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
+
+      .datepicker--body {
+        font-size: .9em;
+      }
+
+      .datepicker--days-names {
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        margin: 0;
+      }
+
+      .datepicker--day-name {
+        text-transform: capitalize;
+        color: $color_text;
+        font-size: 13px;
+        padding: .7em .3em;
+      }
+
+      .datepicker--cell-day {
+        height: auto;
+        padding: 4px 1px;
+        font-weight: 600;
+
+        &.-other-month- {
+          visibility: hidden;
+        }
+
+        &.-current- {
+          color: #fff;
+          background: #BD0000;
+          border-radius: 0;
+
+          &:hover {
+            background: #BD0000;
+          }
+        }
+
+        &.-focus- {
+          background: transparent;
+          text-decoration: underline;
+        }
+
+        &.-selected- {
+          background: #bbb;
+          color: $color_text;
+        }
+
+        &.-range-from-,
+        &.-range-to- {
+          border-radius: 0;
+        }
+      }
+
+      .-weekend- + .-weekend- {
+        color: #BD0000;
+      }
+    }
+  }
+
   //@component toggle
   .toggle-container {
     &,
