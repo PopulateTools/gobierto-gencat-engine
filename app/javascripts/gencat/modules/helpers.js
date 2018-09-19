@@ -41,6 +41,9 @@ function _loadPunchcard(container, url, title) {
     // data.reverse to show it as it was received
     // https://stackoverflow.com/questions/23849680/d3-y-scale-y-vs-height
     punchcard(container, data.reverse(), opts)
+
+    // tweak axis
+    $(container).find(".axis").removeAttr("font-size").removeAttr("font-family")
   });
 }
 
