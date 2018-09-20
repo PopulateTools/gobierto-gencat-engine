@@ -103,6 +103,10 @@ function setDatepickerFilters(opts) {
     language: I18n.locale,
     dateFormat: 'd M yyyy',
     autoClose: true,
+    showOtherMonths: false,
+    offset: 0,
+    prevHtml: '<span class="ui-icon-circle-triangle-w"></span>',
+    nextHtml: '<span class="ui-icon-circle-triangle-e"></span>',
     onSelect: function(fd, date) {
       // Update only if there's a range
       if (date.length !== 2) return

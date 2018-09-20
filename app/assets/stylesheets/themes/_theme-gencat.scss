@@ -275,7 +275,26 @@
   .datepickers-container {
     .datepicker--nav {
       border-bottom: 0;
+
+      .datepicker--nav-action:hover {
+        background: #fff;
+      }
+
+      .ui-icon-circle-triangle-w,
+      .ui-icon-circle-triangle-e {
+        width: 100%;
+        height: 100%;
+      }
+
+      .ui-icon-circle-triangle-w {
+        background: url(image_path("NG_ico_mes_consultat.png")) no-repeat 50%;
+      }
+
+      .ui-icon-circle-triangle-e {
+        background: url(image_path("NG_ico_mes_consultat_tancar.png")) no-repeat 50%;
+      }
     }
+
 
     .datepicker--content {
       font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
@@ -301,10 +320,6 @@
         height: auto;
         padding: 4px 1px;
         font-weight: 600;
-
-        &.-other-month- {
-          visibility: hidden;
-        }
 
         &.-current- {
           color: #fff;
