@@ -171,26 +171,6 @@
     }
   }
 
-  //@component breadcrumb
-  //DEPRECATED
-  .section-breadcrumb {
-    display: inline-block;
-
-    > * {
-      display: inline-block;
-
-      span {
-        text-decoration: underline;
-        text-transform: capitalize;
-      }
-
-      &:not(:last-child)::after {
-        content: ' > ';
-        color: $text_soft;
-      }
-    }
-  }
-
   //@component box
   .box {
     border-radius: 0;
@@ -246,7 +226,7 @@
 
       &:focus {
         box-shadow: none;
-        border: 1px solid #bcbcbc;
+        border: 1px solid $color_separator;
       }
     }
 
@@ -277,7 +257,6 @@
           display: block;
           color: $text_soft;
           font-size: $f7;
-          text-decoration: underline;
         }
 
         &:hover {
@@ -292,9 +271,101 @@
     }
   }
 
-  //@component show-more
-  .show-more {
-    padding: 2.5px 30px;
+  // Gencat tuning
+  .datepickers-container {
+    .datepicker {
+      border-radius: 0;
+      box-shadow: 0 8px 8px -8px $color_separator;
+    }
+
+    .datepicker--pointer {
+      display: none;
+    }
+
+    .datepicker--nav {
+      border-bottom: 0;
+
+      .datepicker--nav-action:hover {
+        background: $color_neutral_soft;
+      }
+
+      .datepicker--nav-title i {
+        color: $color_text;
+      }
+
+      .ui-icon-circle-triangle-w,
+      .ui-icon-circle-triangle-e {
+        width: 100%;
+        height: 100%;
+      }
+
+      .ui-icon-circle-triangle-w {
+        background: url(image_path("NG_ico_mes_consultat.png")) no-repeat 50%;
+      }
+
+      .ui-icon-circle-triangle-e {
+        background: url(image_path("NG_ico_mes_consultat_tancar.png")) no-repeat 50%;
+      }
+    }
+
+
+    .datepicker--content {
+      padding: 0;
+      margin: 0 0 0.4em;
+      font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
+
+      .datepicker--body {
+        font-size: .9em;
+      }
+
+      .datepicker--days-names {
+        border-top: 1px solid $color_separator;
+        border-bottom: 1px solid $color_separator;
+        margin: 0;
+      }
+
+      .datepicker--day-name {
+        text-transform: capitalize;
+        color: $color_text;
+        font-size: 13px;
+        padding: .7em .3em;
+      }
+
+      .datepicker--cell-day {
+        height: auto;
+        padding: 4px 1px;
+        font-weight: 600;
+
+        &.-current- {
+          color: $color_neutral_soft;
+          background: $color_link;
+          border-radius: 0;
+
+          &:hover {
+            background: $color_link;
+          }
+        }
+
+        &.-focus- {
+          background: transparent;
+          text-decoration: underline;
+        }
+
+        &.-selected- {
+          background: #bbb;
+          color: $color_text;
+        }
+
+        &.-range-from-,
+        &.-range-to- {
+          border-radius: 0;
+        }
+      }
+
+      .-weekend- + .-weekend- {
+        color: $color_link;
+      }
+    }
   }
 
   //@component toggle

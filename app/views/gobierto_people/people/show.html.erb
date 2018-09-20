@@ -32,7 +32,7 @@
               <% end %>
             </ul>
 
-            <%= link_to gobierto_people_person_past_events_path(@person.slug, date_range_params.merge(page: false)), class: "show-more color-1" do %>
+            <%= link_to gobierto_people_person_past_events_path(@person.slug, date_range_params.merge(page: false)) do %>
             <small><%= t("gobierto_people.shared.view_all") %></small>
             <% end %>
           </figure>
@@ -51,7 +51,7 @@
               <% end %>
             </ul>
 
-            <%= link_to gobierto_people_person_trips_path(@person.slug, date_range_params), class: "show-more color-2" do %>
+            <%= link_to gobierto_people_person_trips_path(@person.slug, date_range_params) do %>
             <small><%= t("gobierto_people.shared.view_all") %></small>
             <% end %>
           </figure>
@@ -70,7 +70,7 @@
               <% end %>
             </ul>
 
-            <%= link_to gobierto_people_person_invitations_path(@person.slug, date_range_params), class: "show-more color-3" do %>
+            <%= link_to gobierto_people_person_invitations_path(@person.slug, date_range_params) do %>
             <small><%= t("gobierto_people.shared.view_all") %></small>
             <% end %>
           </figure>
@@ -89,7 +89,7 @@
               <% end %>
             </ul>
 
-            <%= link_to gobierto_people_person_gifts_path(@person.slug, date_range_params), class: "show-more color-4" do %>
+            <%= link_to gobierto_people_person_gifts_path(@person.slug, date_range_params) do %>
             <small><%= t("gobierto_people.shared.view_all") %></small>
             <% end %>
           </figure>
