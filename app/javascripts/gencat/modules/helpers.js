@@ -104,7 +104,7 @@ function setDatepickerFilters(opts) {
     dateFormat: 'd M yyyy',
     autoClose: true,
     showOtherMonths: false,
-    offset: 0,
+    offset: -1,
     prevHtml: '<span class="ui-icon-circle-triangle-w"></span>',
     nextHtml: '<span class="ui-icon-circle-triangle-e"></span>',
     onSelect: function(fd, date) {

@@ -226,7 +226,7 @@
 
       &:focus {
         box-shadow: none;
-        border: 1px solid #bcbcbc;
+        border: 1px solid $color_separator;
       }
     }
 
@@ -273,11 +273,24 @@
 
   // Gencat tuning
   .datepickers-container {
+    .datepicker {
+      border-radius: 0;
+      box-shadow: 0 8px 8px -8px $color_separator;
+    }
+
+    .datepicker--pointer {
+      display: none;
+    }
+
     .datepicker--nav {
       border-bottom: 0;
 
       .datepicker--nav-action:hover {
-        background: #fff;
+        background: $color_neutral_soft;
+      }
+
+      .datepicker--nav-title i {
+        color: $color_text;
       }
 
       .ui-icon-circle-triangle-w,
@@ -297,6 +310,8 @@
 
 
     .datepicker--content {
+      padding: 0;
+      margin: 0 0 0.4em;
       font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
 
       .datepicker--body {
@@ -304,8 +319,8 @@
       }
 
       .datepicker--days-names {
-        border-top: 1px solid #ddd;
-        border-bottom: 1px solid #ddd;
+        border-top: 1px solid $color_separator;
+        border-bottom: 1px solid $color_separator;
         margin: 0;
       }
 
@@ -322,12 +337,12 @@
         font-weight: 600;
 
         &.-current- {
-          color: #fff;
-          background: #BD0000;
+          color: $color_neutral_soft;
+          background: $color_link;
           border-radius: 0;
 
           &:hover {
-            background: #BD0000;
+            background: $color_link;
           }
         }
 
@@ -348,7 +363,7 @@
       }
 
       .-weekend- + .-weekend- {
-        color: #BD0000;
+        color: $color_link;
       }
     }
   }
