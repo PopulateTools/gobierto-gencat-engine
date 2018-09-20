@@ -130,7 +130,9 @@ function setDatepickerFilters(opts) {
   }).data('datepicker')
 
   // Hack datepicker position
-  $('#datepickers-container').appendTo('.theme-gencat')
+  const $datepickerwidget = $('#datepickers-container')
+  $datepickerwidget.appendTo('.theme-gencat')
+  $datepickerwidget.find('.datepicker').width($container.width() - 2)
 
   // init dates
   // TODO: no inicializar si hay params en la queryString
