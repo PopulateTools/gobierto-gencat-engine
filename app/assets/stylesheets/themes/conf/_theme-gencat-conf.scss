@@ -5,5 +5,31 @@ $color_meta_text: $color_text;
 $color_link: #c00000;
 $color_neutral_soft: #f8f8f8;
 
-// Theme variables
-$color_people: #febf00 #5bc8d5 #fc4c00 #71a137;
+// Theme variables - http://guiaweb.gencat.cat/ca/disseny/colors/ (Altres colors)
+// default - main extra colors
+// light - lighter as 25%
+// lightest - lighter as 75%
+$cYellows: (
+  default: #febf00,
+  light: #fecf41,
+  lightest: #ffefbe
+);
+$cBlues: (
+  default: #5bc8d5,
+  light: #84d6e1,
+  lightest: #d5f1f4
+);
+$cReds: (
+  default: #fc4c00,
+  light: #fe7940,
+  lightest: #ffd2bf
+);
+$cGreens: (
+  default: #71a137,
+  light: #96b969,
+  lightest: #dbe8ce
+);
+
+$color_people: map-get($cYellows, default) map-get($cBlues, default) map-get($cReds, default) map-get($cGreens, default);
+$color_people_light: map-get($cYellows, light) map-get($cBlues, light) map-get($cReds, light) map-get($cGreens, light);
+$color_people_lightest: map-get($cYellows, lightest) map-get($cBlues, lightest) map-get($cReds, lightest) map-get($cGreens, lightest);

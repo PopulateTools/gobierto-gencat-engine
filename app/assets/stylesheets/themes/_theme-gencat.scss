@@ -2,9 +2,11 @@
 
   // If $color_people var is not defined, get default one
   $colors: if(variable_exists(color_people), $color_people, $color_main);
+  $colors_light: if(variable_exists(color_people_light), $color_people_light, $color_main);
+  $colors_lightest: if(variable_exists(color_people_lightest), $color_people_lightest, $color_main);
   // functions
-  @function color($i: 1) {
-    @return if($i > length($colors), nth($colors, 1), nth($colors, $i));
+  @function color($i: 1, $set: $colors) {
+    @return if($i > length($set), nth($set, 1), nth($set, $i));
   }
 
   // defaults
@@ -65,7 +67,7 @@
   //@component color
   @for $i from 1 through max(length($colors), 3) {
     .color-#{$i} {
-      background-color: rgba(color($i), .2);
+      background-color: color($i, $colors_lightest);
 
       // commons
       &.transparent,
@@ -86,7 +88,7 @@
         fill: color($i);
 
         &:hover {
-          fill: lighten(color($i), 10%);
+          fill: color($i, $colors_light);
         }
       }
 
@@ -95,29 +97,29 @@
         fill: color($i);
 
         &:hover {
-          fill: lighten(color($i), 10%);
+          fill: color($i, $colors_light);
         }
       }
 
       g.row:nth-of-type(odd) {
         rect:not(.bar) {
-          fill: rgba(color($i), .2);
+          fill: color($i, $colors_lightest);
         }
       }
 
       // table-list
       li {
-        border-top: 3px solid rgba(color($i), .2);
+        border-top: 3px solid color($i, $colors_lightest);
       }
 
       // tooltips
       .tooltip-content {
-        background: lighten(color($i), 10%);
+        background: color($i, $colors_light);
         border: 1px solid color($i);
 
         &.left {
           &::after {
-            border-right-color: lighten(color($i), 10%);
+            border-right-color: color($i, $colors_light);
           }
 
           &::before {
@@ -127,7 +129,7 @@
 
         &.bottom {
           &::after {
-            border-top-color: lighten(color($i), 10%);
+            border-top-color: color($i, $colors_light);
           }
 
           &::before {
@@ -137,7 +139,7 @@
 
         &.right {
           &::after {
-            border-left-color: lighten(color($i), 10%);
+            border-left-color: color($i, $colors_light);
           }
 
           &::before {
@@ -147,7 +149,7 @@
 
         &.top {
           &::after {
-            border-bottom-color: lighten(color($i), 10%);
+            border-bottom-color: color($i, $colors_light);
           }
 
           &::before {
@@ -194,7 +196,7 @@
     > :last-child {
       span {
         padding: 0 20px;
-        color: $text_soft;
+        color: $color_meta_text;
         font-size: $f8;
       }
     }
