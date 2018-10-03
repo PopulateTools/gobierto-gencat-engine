@@ -43,6 +43,9 @@ function _loadPunchcard(container, url, title) {
     // data.reverse to show it as it was received
     // https://stackoverflow.com/questions/23849680/d3-y-scale-y-vs-height
     punchcard(container, data.reverse(), opts)
+
+    // tweak axis
+    $(container).find(".axis").removeAttr("font-size").removeAttr("font-family")
   });
 }
 
@@ -75,7 +78,7 @@ function _reloadRowchart(container, url, maxElements) {
     var url = url + '?limit=' + maxElements;
   }
 
-  $rowchartWrapper.find('.js-reload-rowchart-wrapper').find('.show-more').click(function(e) {
+  $rowchartWrapper.find('.js-reload-rowchart-wrapper').find('a').click(function(e) {
     e.preventDefault();
     $rowchartWrapper.find('.box').removeAttr("style")
     $rowchartWrapper.find('.rowchart').empty();
@@ -102,6 +105,10 @@ function setDatepickerFilters(opts) {
     language: I18n.locale,
     dateFormat: 'd M yyyy',
     autoClose: true,
+    showOtherMonths: false,
+    offset: -1,
+    prevHtml: '<span class="ui-icon-circle-triangle-w"></span>',
+    nextHtml: '<span class="ui-icon-circle-triangle-e"></span>',
     onSelect: function(fd, date) {
       // Update only if there's a range
       if (date.length !== 2) return
@@ -123,6 +130,11 @@ function setDatepickerFilters(opts) {
       location.assign(location.href)
     }
   }).data('datepicker')
+
+  // Hack datepicker position
+  const $datepickerwidget = $('#datepickers-container')
+  $datepickerwidget.appendTo('.theme-gencat')
+  $datepickerwidget.find('.datepicker').width($container.width() - 2)
 
   // init dates
   // TODO: no inicializar si hay params en la queryString

@@ -36,7 +36,7 @@
 
           </div>
 
-          <%= link_to gobierto_people_departments_path(date_range_params), class: "show-more color-1" do %>
+          <%= link_to gobierto_people_departments_path(date_range_params) do %>
           <small><%= t("gobierto_people.shared.view_all") %></small>
           <% end %>
         </div>
@@ -61,7 +61,7 @@
 
           </div>
 
-          <%= link_to gobierto_people_interest_groups_path(date_range_params), class: "show-more color-2" do %>
+          <%= link_to gobierto_people_interest_groups_path(date_range_params) do %>
           <small><%= t("gobierto_people.shared.view_all") %></small>
           <% end %>
         </div>
@@ -86,7 +86,7 @@
 
           </div>
 
-          <%= link_to gobierto_people_people_path(date_range_params), class: "show-more color-3" do %>
+          <%= link_to gobierto_people_people_path(date_range_params) do %>
           <small><%= t("gobierto_people.shared.view_all") %></small>
           <% end %>
         </div>
@@ -136,7 +136,7 @@
         </ul>
       </figure>
 
-      <%= link_to gobierto_people_people_path, class: "show-more color-4" do %>
+      <%= link_to gobierto_people_people_path do %>
         <small><%= t(".view_officials") %></small>
       <% end %>
     <% else %>
@@ -172,7 +172,7 @@
         </ul>
       </figure>
 
-      <%= link_to gobierto_people_people_path, class: "show-more color-3" do %>
+      <%= link_to gobierto_people_people_path do %>
         <small><%= t(".view_officials") %></small>
       <% end %>
     <% else %>

@@ -37,7 +37,7 @@
 
           </div>
           <div class="margin_top_xs js-reload-rowchart-wrapper">
-            <%= link_to gobierto_people_department_people_path(@department, date_range_params), class: "show-more color-1" do %>
+            <%= link_to gobierto_people_department_people_path(@department, date_range_params) do %>
               <small><%= t("gobierto_people.shared.view_all") %></small>
             <% end %>
           </div>
@@ -57,7 +57,7 @@
             </div>
           </div>
           <div class="margin_top_xs">
-            <%= link_to gobierto_people_interest_groups_path(date_range_params), class: "show-more color-3" do %>
+            <%= link_to gobierto_people_interest_groups_path(date_range_params) do %>
               <small><%= t("gobierto_people.shared.view_all") %></small>
             <% end %>
           </div>
