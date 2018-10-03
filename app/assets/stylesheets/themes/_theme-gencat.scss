@@ -183,6 +183,10 @@
 
     .rowchart {
       min-height: auto;
+
+      .y.axis text {
+        fill: #242424; // Due to contrast. WCAG AA
+      }
     }
 
     > :first-child {

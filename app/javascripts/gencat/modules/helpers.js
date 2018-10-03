@@ -14,6 +14,9 @@ function _loadRowchart(container, url) {
 
     data.sort((a, b) => a.value - b.value)
     rowchart(container, data, opts);
+
+    // tweak axis
+    $(container).find(".axis").removeAttr("font-size").removeAttr("font-family")
   });
 }
 
