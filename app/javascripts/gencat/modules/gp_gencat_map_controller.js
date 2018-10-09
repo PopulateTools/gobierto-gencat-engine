@@ -72,6 +72,7 @@ ORDER by count DESC
       cartodb.createLayer(map, {
         user_name: 'furilo',
         type: 'cartodb',
+        https: true,
         sublayers: [{
           sql: choroplethSQL,
           cartocss: choroplethCSS
