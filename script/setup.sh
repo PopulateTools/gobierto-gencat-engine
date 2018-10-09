@@ -24,7 +24,7 @@ else
   echo "executing ln -s $source_path $engines_path"
   ln -s $source_path $engines_path
 
-  #$source_path/script/create_webpacker_symlinks.sh -d $gobierto_dir
+  $source_path/script/create_webpacker_symlinks.sh -d $gobierto_dir
 
   echo "executing ln -s $source_path/node_modules $gobierto_dir"
   ln -s $source_path/node_modules $gobierto_dir
