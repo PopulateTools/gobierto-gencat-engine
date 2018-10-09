@@ -25,10 +25,10 @@ else
   echo "    Creating webpacker symlinks..."
 
   echo "    executing ln -s $source_path/$engine_webpack_entry_path $gobierto_webpack_entry_path"
-  ln -s $source_path/$engine_webpack_entry_path $gobierto_webpack_entry_path
+  #ln -s $source_path/$engine_webpack_entry_path $gobierto_webpack_entry_path
 
   echo "    executing ln -s $source_path/$engine_webpack_source_path $gobierto_webpack_source_path"
-  ln -s $source_path/$engine_webpack_source_path $gobierto_webpack_source_path
+  #ln -s $source_path/$engine_webpack_source_path $gobierto_webpack_source_path
 
   echo "    [OK]"
 fi
