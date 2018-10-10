@@ -1,7 +1,7 @@
-import { rowchart, punchcard } from 'visualizations'
 import * as d3 from 'd3'
 import moment from 'moment'
-import { d3locale } from 'shared'
+import { d3locale } from 'lib/shared'
+import { rowchart, punchcard } from 'lib/visualizations'
 
 function _loadRowchart(container, url) {
   $.getJSON(url, (data) => {

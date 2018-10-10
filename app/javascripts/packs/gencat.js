@@ -7,7 +7,6 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-import 'commons'
-import 'visualizations'
+import 'lib/commons'
 import 'gencat'
-import 'i18n'
+import 'lib/i18n'
