@@ -2,6 +2,8 @@ window.GobiertoPeople.GencatMapController = (function() {
   function GencatMapController() {}
 
   GencatMapController.prototype.index = function(options) {
+    if ($('#map').length === 0) return;
+
     let fromDate = options.fromDate;
     let toDate = options.toDate;
     let departmentCondition = options.departmentId || "";
