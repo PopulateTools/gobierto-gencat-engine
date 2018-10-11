@@ -41,16 +41,35 @@ YAML
       super
     end
 
-    def update_fixtures_to_match_gencat_data!
-      # events always have an interest group associated
+    def link_events_to_interest_groups
       ::GobiertoCalendars::Event.where(interest_group: nil).update_all(
         interest_group_id: reference_interest_group.id
       )
-      # events are always past
+    end
+
+    def make_all_events_past
       ::GobiertoCalendars::Event.upcoming.update_all(
         starts_at: 1.month.ago,
         ends_at: 1.month.ago + 1.hour
       )
+    end
+
+    def clear_political_groups
+      reference_site.people.update_all(political_group_id: nil)
+      political_groups_vocabulary = ::GobiertoCommon::Vocabulary.find(
+                                      reference_site.gobierto_people_settings
+                                      .political_groups_vocabulary_id
+                                    )
+      political_groups_vocabulary.destroy!
+      gp_settings = reference_site.gobierto_people_settings
+      gp_settings.political_groups_vocabulary_id = nil
+      gp_settings.save!
+    end
+
+    def update_fixtures_to_match_gencat_data!
+      link_events_to_interest_groups
+      make_all_events_past
+      clear_political_groups
     end
 
     def enable_submodules!
