@@ -13,7 +13,7 @@
     </li>
   <% end %>
 
-  <% unless @person.trips.between_dates(filter_start_date, filter_end_date).count.zero? %>
+  <% unless @person.trips.between_dates(filter_start_date, filter_end_date).count.zero? || !trips_submodule_active? %>
     <li class="color-2 <%= class_if('active', controller_name == 'trips') %>">
       <%= link_to gobierto_people_person_trips_path(@person.slug, date_range_params), class: "no-link" do %>
         <h1 class="h1"><%= @person.trips.between_dates(filter_start_date, filter_end_date).count %></h1>

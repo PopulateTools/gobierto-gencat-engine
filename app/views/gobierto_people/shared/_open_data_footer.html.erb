@@ -1,4 +1,4 @@
-<section>
+<section class="row">
   <div class="col-md-12 open-data-footer">
 
     <%= t(".title") %>:
@@ -17,12 +17,15 @@
       t(".invitations"),
       "https://analisi.transparenciacatalunya.cat/Sector-P-blic/Codi-de-conducta-dels-alts-c-rrecs-Invitacions-a-v/sdnv-univ",
       target: "_blank"
-    ) %> -
-    <%= link_to(
-      t(".trips"),
-      "#",
-      target: "_blank"
     ) %>
+
+    <% if trips_submodule_active? %>
+      - <%= link_to(
+        t(".trips"),
+        "#",
+        target: "_blank"
+      ) %>
+    <% end %>
 
   </div>
 </section>

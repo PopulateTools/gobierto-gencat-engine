@@ -13,7 +13,7 @@
   </div>
 </section>
 
-<section>
+<section class="row">
   <div class="fpca_distribuidora pd-30">
     <div class="llistat_destacat_text_avancat">
       <div class="llistat_col-lg-3 nova-altura-dist">
@@ -67,13 +67,15 @@
   </div>
 </section>
 
-<section id="map-chart">
-  <p><strong><%= t(".map_title") %></strong></p>
+<% if trips_submodule_active? %>
+  <section id="map-chart" class="row">
+    <p><strong><%= t(".map_title") %></strong></p>
 
-  <%= render "gobierto_people/shared/map" %>
-</section>
+    <%= render "gobierto_people/shared/map" %>
+  </section>
+<% end %>
 
-<section>
+<section class="row">
   <div id="department_people_events_punchcard" class="punchcard color-2 transparent"></div>
 </section>
 
