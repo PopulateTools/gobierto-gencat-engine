@@ -98,9 +98,16 @@
 
 <hr>
 
-<section id="map-chart">
-  <p><strong><%= t(".map_title") %></strong></p>
-  <%= render "gobierto_people/shared/map" %>
+<% if trips_submodule_active? %>
+  <section id="map-chart">
+    <p><strong><%= t(".map_title") %></strong></p>
+    <%= render "gobierto_people/shared/map" %>
+  </section>
+
+  <hr>
+<% end %>
+
+<section class="row">
   <div id="people_events_punchcard" class="punchcard color-2 transparent"></div>
 </section>
 
