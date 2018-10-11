@@ -40,7 +40,7 @@
       </div>
     <% end %>
 
-    <% if @last_trips.any? %>
+    <% if @last_trips.any? && trips_submodule_active? %>
       <div class="row">
         <div class="col-md-12">
           <figure>

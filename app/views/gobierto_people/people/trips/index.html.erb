@@ -12,7 +12,7 @@
 
       <figcaption class="mb_20"><%= t(".title", person_name: @person.name) %></figcaption>
 
-      <% if @person_trips.any? %>
+      <% if @person_trips.any? && trips_submodule_active? %>
 
         <ul class="color-2 transparent">
           <% cache "#{cache_key_preffix}-trips" do %>
