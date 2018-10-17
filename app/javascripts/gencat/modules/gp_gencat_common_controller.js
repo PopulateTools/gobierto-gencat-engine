@@ -22,9 +22,13 @@ function setPageTitle(pageTitle) {
 }
 
 function loadBreadcrumb() {
-  // put custom breadcrumb items in place
-  var $breadcrumbItems = $("#custom-breadcrumb-items").children();
+  var appTitle = I18n.t("gobierto_people.shared.app_title");
   var $breadcrumb = $("#impacteContainer .breadcrumb");
+  var $rootItemHTML = $("<li><a title=\"Torna: " + appTitle + "\" href=\"/\">" + appTitle + "</a></li>");
+  var $breadcrumbItems = $("#custom-breadcrumb-items").children();
+
+  // put custom breadcrumb items in place
+  $rootItemHTML.appendTo($breadcrumb);
   $breadcrumbItems.appendTo($breadcrumb);
 
   // locate root element in breadcrumb and build its content
@@ -40,9 +44,9 @@ function loadBreadcrumb() {
 
   // insert link within breadcrumb root element only if we're on another page
   if (currentUrl.replace(/(\?|&)(start_date|end_date)=\d{4}-\d{2}-\d{2}/g, '') == rootBreadcrumbItemUrl) {
-    $rootBreadcrumbItem.replaceWith('<li>' + I18n.t("gobierto_people.shared.app_title") + '</li>');
+    $rootBreadcrumbItem.replaceWith('<li>' + appTitle + '</li>');
   } else {
-    $rootBreadcrumbItem.replaceWith("<li><a href=\"" + appendDateRangeParamsToUrl(rootBreadcrumbItemUrl, currentUrl) + "\" data-turbolinks=\"false\">" + I18n.t("gobierto_people.shared.app_title") + "</a></li>");
+    $rootBreadcrumbItem.replaceWith("<li><a href=\"" + appendDateRangeParamsToUrl(rootBreadcrumbItemUrl, currentUrl) + "\" data-turbolinks=\"false\">" + appTitle + "</a></li>");
   }
 }
 

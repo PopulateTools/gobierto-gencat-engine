@@ -36,7 +36,7 @@ module Gencat
       end
 
       def page_title
-        "Agendas"
+        "Administration activity viewer"
       end
 
       def setup
