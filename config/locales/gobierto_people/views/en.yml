@@ -97,7 +97,7 @@ en:
             one: person
             other: people
     shared:
-      app_title: Agendas
+      app_title: Administration activity viewer
       code_of_conduct_link:
         check_it_out: Check it out
       datepicker:

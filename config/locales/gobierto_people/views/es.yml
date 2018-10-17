@@ -98,7 +98,7 @@ es:
             one: persona
             other: personas
     shared:
-      app_title: Agendas
+      app_title: Visor de actividad directiva
       code_of_conduct_link:
         check_it_out: Consúltelo
       datepicker:
