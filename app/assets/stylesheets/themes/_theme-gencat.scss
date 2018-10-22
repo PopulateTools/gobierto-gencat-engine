@@ -43,6 +43,19 @@
     margin: inherit;
   }
 
+  // Forces all rowcharts to have the same height
+  .same-height-wrapper {
+    align-items: stretch;
+    display: flex;
+    > * {
+      display: flex;
+      flex-direction: column;
+      > :first-child {
+        flex: 1;
+      }
+    }
+  }
+
   .main_people_content > .column {
     width: auto;
 
