@@ -105,7 +105,7 @@ ca:
             one: persona
             other: persones
     shared:
-      app_title: Visor d'activitat directiva
+      app_title: Visor de l'activitat directiva
       code_of_conduct_link:
         check_it_out: Consulteu-ho
       datepicker:

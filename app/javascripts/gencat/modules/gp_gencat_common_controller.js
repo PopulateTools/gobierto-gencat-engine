@@ -24,11 +24,9 @@ function setPageTitle(pageTitle) {
 function loadBreadcrumb() {
   var appTitle = I18n.t("gobierto_people.shared.app_title");
   var $breadcrumb = $("#impacteContainer .breadcrumb");
-  var $rootItemHTML = $("<li><a title=\"Torna: " + appTitle + "\" href=\"/\">" + appTitle + "</a></li>");
   var $breadcrumbItems = $("#custom-breadcrumb-items").children();
 
   // put custom breadcrumb items in place
-  $rootItemHTML.appendTo($breadcrumb);
   $breadcrumbItems.appendTo($breadcrumb);
 
   // locate root element in breadcrumb and build its content
@@ -37,7 +35,7 @@ function loadBreadcrumb() {
   });
   var rootElementRegex = new RegExp(appTitles.join('|'));
   var $rootBreadcrumbItem = $breadcrumb.children().filter(function() {
-    return rootElementRegex.test(this.innerHTML);
+    return rootElementRegex.test(this.innerHTML.replace("’", "'"));
   });
   var rootBreadcrumbItemUrl = document.location.origin + '/cargos-y-agendas';
   var currentUrl = document.location.href.replace(/(\?|&)locale=(en|es|ca)/, '');
