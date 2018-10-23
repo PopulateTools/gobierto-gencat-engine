@@ -24,7 +24,7 @@ module Gencat
         "gobierto-gencat-engine",
         "test",
         "seeds",
-        "application_layout.html.erb"
+        "application_layout.liquid"
       ))
 
       reference_site.site_templates.create!(
