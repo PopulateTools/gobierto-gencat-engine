@@ -24,4 +24,7 @@ $(document).on('turbolinks:load', function() {
     window.GobiertoPeople.gencat_departments_controller.show(departmentsShowArgs);
   }
 
+  $(".llistat_xarxes_socials a").click(function(e) {
+    e.preventDefault();
+  });
 });
