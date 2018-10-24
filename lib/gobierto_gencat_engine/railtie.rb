@@ -13,6 +13,7 @@ else
         conf.engine_sass_config_overrides += ["themes/conf/_theme-gencat-conf"]
         conf.engine_sass_theme_dependencies += ["themes/_theme-gencat"]
       end
+      Webpacker::Compiler.watched_paths << "app/javascript/gencat/**/*.js"
     end
   end
 end
