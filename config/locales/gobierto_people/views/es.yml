@@ -16,12 +16,12 @@ es:
         punchcard_title: Reuniones por departamento y mes
         title: Departamentos
       show:
-        interest_groups_box_subtitle: Que se han reunido con este departamento
+        interest_groups_box_subtitle: que se han reunido con este departamento
         interest_groups_box_title: Grupos de interés
         interest_groups_rowchart_title: Grupos de interés con más reuniones con este
           departamento
         map_title: "¿A dónde viajan los altos cargos?"
-        people_box_subtitle: Con reuniones registradas
+        people_box_subtitle: con reuniones registradas
         people_box_title: Altos cargos de este departamento
         people_rowchart_title: Altos cargos de este departamento con más reuniones
         punchcard_title: Reuniones por alto cargo y mes
@@ -61,16 +61,16 @@ es:
           no_invitations: No hay invitaciones en las fechas seleccionadas
           title: Invitaciones recibidas por %{person_name}
       navigation:
-        gift_received: Obsequio recibido
-        gifts_received: Obsequios recibidos
-        interest_group: Grupo de interés
-        interest_groups: Grupos de interés
-        invitation: Invitación
-        invitations: Invitaciones
-        meeting_with: Reunión con
-        meetings_with: Reuniones con
-        trip_made: Viaje realizado
-        trips_made: Viajes realizados
+        gift_received: obsequio recibido
+        gifts_received: obsequios recibidos
+        interest_group: grupo de interés
+        interest_groups: grupos de interés
+        invitation: invitación
+        invitations: invitaciones
+        meeting_with: reunión con
+        meetings_with: reuniones con
+        trip_made: viaje realizado
+        trips_made: viajes realizados
       person_events:
         index:
           agenda: Agenda
@@ -107,6 +107,10 @@ es:
         3m: Últimos tres meses
         all: Todo
         range: Rango personalizado
+      meetings_punchcard:
+        tooltip: reuniones
+      meetings_rowchart:
+        tooltip: reuniones
       open_data_footer:
         gifts: Obsequios
         invitations: Invitaciones

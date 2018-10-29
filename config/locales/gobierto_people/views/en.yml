@@ -106,6 +106,10 @@ en:
         3m: Last three months
         all: Everything
         range: Custom range
+      meetings_punchcard:
+        tooltip: meetings
+      meetings_rowchart:
+        tooltip: meetings
       open_data_footer:
         gifts: Gifts
         invitations: Invitations
