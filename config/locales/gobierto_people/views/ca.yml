@@ -18,12 +18,12 @@ ca:
         punchcard_title: Reunions per departament i mes
         title: Departaments
       show:
-        interest_groups_box_subtitle: Que s'han reunit amb aquest departament
+        interest_groups_box_subtitle: que s'han reunit amb aquest departament
         interest_groups_box_title: Grups d'interès
         interest_groups_rowchart_title: Grups d'interès amb més reunions amb aquest
           departament
         map_title: On viatgen els alts carrècs?
-        people_box_subtitle: Amb reunions registrades
+        people_box_subtitle: amb reunions registrades
         people_box_title: Alts càrrecs d'aquest departament
         people_rowchart_title: Alts càrrec d'aquest departament amb més reunions
         punchcard_title: Reunions per alt càrrec i mes
@@ -65,16 +65,16 @@ ca:
           no_invitations: No hi ha invitacions en les dates seleccionades
           title: Invitacions rebudes per %{person_name}
       navigation:
-        gift_received: Obsequi rebut
-        gifts_received: Obsequis rebuts
+        gift_received: obsequi rebut
+        gifts_received: obsequis rebuts
         interest_group: Grup d'interès
         interest_groups: Grups d'interès
-        invitation: Invitació
-        invitations: Invitacions
-        meeting_with: Reunió amb
-        meetings_with: Reunions amb
-        trip_made: Viatge realitzat
-        trips_made: Viatges realitzats
+        invitation: invitació
+        invitations: invitacions
+        meeting_with: reunió amb
+        meetings_with: reunions amb
+        trip_made: viatge realitzat
+        trips_made: viatges realitzats
       person_events:
         index:
           agenda: Agenda
@@ -94,7 +94,7 @@ ca:
           by: per
           company: Comitiva
           expenses: Despeses
-          in: en
+          in: a
           meeting_name:
             one: reunió
             other: reunions
@@ -114,6 +114,10 @@ ca:
         3m: Darrers tres mesos
         all: Tot
         range: Rang personalitzat
+      meetings_punchcard:
+        tooltip: reunions
+      meetings_rowchart:
+        tooltip: reunions
       open_data_footer:
         gifts: Obsequis
         invitations: Invitacions
