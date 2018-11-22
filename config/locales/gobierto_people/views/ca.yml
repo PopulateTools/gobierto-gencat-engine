@@ -134,16 +134,20 @@ ca:
           obsequis rebuts
         gifts: Obsequis
         gifts_coc: El Codi de conducta regula quins obsequis es poden rebre.
-        gifts_description: Els alts càrrecs reben obsequis com a cortesia de les organitzacions
-          amb les quals es reuneixen. Aquí hi ha l'inventari del que s'ha rebut.
+        gifts_description: Els alts càrrecs han d’abstenir-se d'acceptar regals i
+          donacions de particulars i d'entitats públiques o privades a excepció feta
+          de les mostres no venals de cortesia i objectes commemoratius, oficials
+          o protocol·laris que li puguin ser lliurats per raó del seu càrrec.
         interest_groups_box_subtitle: o en procés d'inscripció
         interest_groups_box_title: Grups d'interès inscrits
         interest_groups_rowchart_title: Grups d'interès amb més reunions
         invitations: Invitacions
         invitations_coc: El Codi de conducta regula quines invitacions es poden acceptar.
-        invitations_description: Els alts càrrecs reben invitacions a esdeveniments,
-          per a realitzar visites, donar conferències... Aquí teniu una relació de
-          les invitacions acceptades.
+        invitations_description: Els alts càrrecs han d’acceptar només el pagament
+          de viatges, desplaçaments i allotjaments per part d'altres administracions
+          públiques o d'entitats públiques dependents d'aquestes, universitats o entitats
+          sense ànim de lucre, quan hagi d'assistir convidat oficialment per raó del
+          càrrec a una activitat relacionada amb les seves responsabilitats.
         last_gifts: Darrers obsequis
         last_invitations: Darreres invitacions
         map_title: On viatgen els alts carrècs?

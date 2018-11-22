@@ -127,16 +127,20 @@ es:
           recibidos
         gifts: Obsequios
         gifts_coc: El Código de conducta regula qué regalos se pueden recibir.
-        gifts_description: Los altos cargos reciben obsequios como cortesía de organizaciones
-          con las que se reúnen. Aquí tiene el inventario de lo que se ha recibido.
+        gifts_description: Los altos cargos deben abstenerse de aceptar regalos y
+          donaciones de particulares y de entidades públicas o privadas a excepción
+          hecha de las muestras no venales de cortesía y objetos conmemorativos, oficiales
+          o protocolarios que le puedan ser entregados por razón de su cargo.
         interest_groups_box_subtitle: o en proceso de inscripción
         interest_groups_box_title: Grupos de interés inscritos
         interest_groups_rowchart_title: Grupos de interés con más reuniones
         invitations: Invitaciones
         invitations_coc: El Código de conducta regula qué invitaciones se pueden aceptar.
-        invitations_description: Los altos cargos reciben invitaciones a eventos,
-          para realizar visitas, dar conferencias... Aquí tiene una relación de las
-          invitaciones aceptadas.
+        invitations_description: Los altos cargos deben aceptar sólo el pago de viajes,
+          desplazamientos y alojamientos por parte de otras administraciones públicas
+          o de entidades públicas dependientes de éstas, universidades o entidades
+          sin ánimo de lucro, cuando tenga que asistir invitado oficialmente por razón
+          del cargo a una actividad relacionada con sus responsabilidades.
         last_gifts: Últimos obsequios
         last_invitations: Últimas invitaciones
         map_title: "¿A dónde viajan los altos cargos?"
