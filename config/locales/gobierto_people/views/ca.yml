@@ -132,8 +132,8 @@ ca:
         description: Consulteu amb qui es reuneix cada alt càrrec de la Generalitat,
           les empreses i organitzacions que sol·liciten reunions, i els viatges i
           obsequis rebuts
-        gifts: Regals
-        gifts_coc: El Codi de conducta regula quins regals es poden rebre.
+        gifts: Obsequis
+        gifts_coc: El Codi de conducta regula quins obsequis es poden rebre.
         gifts_description: Els alts càrrecs reben obsequis com a cortesia de les organitzacions
           amb les quals es reuneixen. Aquí hi ha l'inventari del que s'ha rebut.
         interest_groups_box_subtitle: o en procés d'inscripció
