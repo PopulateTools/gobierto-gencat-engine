@@ -12,6 +12,7 @@ else
         conf.i18n.load_path += Dir[File.join(base_path, 'config', 'locales', '**', '*.{rb,yml}')]
         conf.engine_sass_config_overrides += ["themes/conf/_theme-gencat-conf"]
         conf.engine_sass_theme_dependencies += ["themes/_theme-gencat"]
+        config.gobierto_engines_themes["gobierto-gencat-engine"] = "theme-gencat"
       end
       Webpacker::Compiler.watched_paths << "app/javascript/gencat/**/*.js"
     end
