@@ -3,7 +3,7 @@
 engine_name="gobierto-gencat-engine"
 
 echo "Running setup script for $engine_name"
-while getopts “:d:” opt; do
+while getopts ":d:" opt; do
   case $opt in
     d) opt_dir=$OPTARG ;;
   esac

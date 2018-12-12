@@ -5,7 +5,7 @@ engine_webpack_source_path="app/javascripts/gencat"
 
 echo "Running webpacker setup"
 
-while getopts “:d:” opt; do
+while getopts ":d:" opt; do
   case $opt in
     d) opt_dir=$OPTARG ;;
   esac
