@@ -6,7 +6,7 @@ window.GobiertoPeople.GencatInterestGroupsController = (function() {
 
   GencatInterestGroupsController.prototype.index = function(options) {
     _loadRowchart('#interest_groups_events_rowchart', options.interest_groups_events_rowchart_api_path)
-    _reloadRowchart('#interest_groups_events_rowchart', options.interest_groups_events_rowchart_api_path, 2000)
+    _reloadRowchart('#interest_groups_events_rowchart', options.interest_groups_events_rowchart_api_path, 5000)
   };
 
   GencatInterestGroupsController.prototype.show = function(options) {
