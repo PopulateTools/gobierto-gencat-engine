@@ -5,30 +5,25 @@
 
 <% title @person.name %>
 
-<div class="row">
-  <div class="col-md-12">
+<figure>
 
-    <figure>
+  <figcaption class="mb_20"><%= t(".title", person_name: @person.name) %></figcaption>
 
-      <figcaption class="mb_20"><%= t(".title", person_name: @person.name) %></figcaption>
+  <% if @person_gifts.any? %>
 
-      <% if @person_gifts.any? %>
-
-        <ul class="color-4 transparent">
-          <% cache "#{cache_key_preffix}-gifts" do %>
-            <% @person_gifts.each do |gift| %>
-              <%= render "gift", gift: gift %>
-            <% end %>
-          <% end %>
-        </ul>
-
-      <% else %>
-
-        <em><%= t(".no_gifts") %></em>
-
+    <ul class="color-4 transparent">
+      <% cache "#{cache_key_preffix}-gifts" do %>
+        <% @person_gifts.each do |gift| %>
+          <%= render "gift", gift: gift %>
+        <% end %>
       <% end %>
+    </ul>
 
-    </figure>
+  <% else %>
 
-  </div>
-</div>
+    <em><%= t(".no_gifts") %></em>
+
+  <% end %>
+
+</figure>
+

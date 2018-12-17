@@ -5,30 +5,24 @@
 
 <% title @person.name %>
 
-<div class="row">
-  <div class="col-md-12">
+<figure>
 
-    <figure>
+  <figcaption class="mb_20"><%= t(".title", person_name: @person.name) %></figcaption>
 
-      <figcaption class="mb_20"><%= t(".title", person_name: @person.name) %></figcaption>
+  <% if @person_invitations.any? %>
 
-      <% if @person_invitations.any? %>
-
-        <ul class="color-3 transparent">
-          <% cache "#{cache_key_preffix}-invitations" do %>
-            <% @person_invitations.each do |invitation| %>
-              <%= render "invitation", invitation: invitation %>
-            <% end %>
-          <% end %>
-        </ul>
-
-      <% else %>
-
-        <em><%= t(".no_invitations") %></em>
-
+    <ul class="color-3 transparent">
+      <% cache "#{cache_key_preffix}-invitations" do %>
+        <% @person_invitations.each do |invitation| %>
+          <%= render "invitation", invitation: invitation %>
+        <% end %>
       <% end %>
+    </ul>
 
-    </figure>
+  <% else %>
 
-  </div>
-</div>
+    <em><%= t(".no_invitations") %></em>
+
+  <% end %>
+
+</figure>
