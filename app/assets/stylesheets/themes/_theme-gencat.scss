@@ -58,11 +58,21 @@
     }
   }
 
-  .main_people_content > .column {
-    width: auto;
+  .main_people_content {
+    > .column {
+      width: auto;
+  
+      > .block {
+        display: none;
+      }
+    }
 
-    > .block {
-      display: none;
+    @media(max-width:767px) {
+      padding: 0;
+
+      .people-grid .person-item {
+        margin-right: 0;
+      }
     }
   }
 
