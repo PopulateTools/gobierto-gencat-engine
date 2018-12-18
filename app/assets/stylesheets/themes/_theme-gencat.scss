@@ -7,6 +7,13 @@
     }
   }
 
+  // Hack punchard on mobiles
+  @media (max-width: 568px) {
+    .punchcard {
+      overflow-x: scroll;
+    }
+  }
+
   // If $color_people var is not defined, get default one
   $colors: if(variable_exists(color_people), $color_people, $color_main);
   $colors_light: if(variable_exists(color_people_light), $color_people_light, $color_main);
