@@ -37,6 +37,12 @@ function _loadPunchcard(container, url, title) {
       }
     }
 
+    // tweak on small devices
+    const breakpoint = 568
+    if(window.matchMedia(`(max-width: ${breakpoint}px)`).matches || document.documentElement.clientWidth < breakpoint) {
+      opts = { ...opts, width: breakpoint, gutter: 10 }
+    }
+
     // filter data up to 18m back
     let mostRecentDate = _.max(_.map(_.flatten(_.concat(_.map(data, 'value'))), 'key'))
     for (var i = 0; i < data.length; i++) {
