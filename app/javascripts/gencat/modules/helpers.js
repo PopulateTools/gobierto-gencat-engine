@@ -31,7 +31,7 @@ function _loadPunchcard(container, url, title) {
       xTickFormat: (d, i, arr) => {
         let intervalLength = (arr.length > 12) ? 3 : (arr.length > 5) ? 2 : 1
         let distanceFromEnd = arr.length - i - 1
-
+        
         d3.timeFormatDefaultLocale(d3locale[I18n.locale])
         return ((distanceFromEnd % intervalLength) === 0) ? d3.timeFormat("%b %y")(d) : null
       }
@@ -40,7 +40,7 @@ function _loadPunchcard(container, url, title) {
     // tweak on small devices
     const breakpoint = 568
     if(window.matchMedia(`(max-width: ${breakpoint}px)`).matches || document.documentElement.clientWidth < breakpoint) {
-      opts = { ...opts, width: breakpoint, gutter: 10 }
+      opts = { ...opts, width: breakpoint, gutter: 15 }
     }
 
     // filter data up to 18m back
