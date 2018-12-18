@@ -1,5 +1,12 @@
 .theme-gencat {
 
+  @media (max-width : 47.938em) {
+    &.no-fullcontainer-xs {
+      padding: 0 15px;
+      overflow: visible;
+    }
+  }
+
   // If $color_people var is not defined, get default one
   $colors: if(variable_exists(color_people), $color_people, $color_main);
   $colors_light: if(variable_exists(color_people_light), $color_people_light, $color_main);
