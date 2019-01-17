@@ -10,16 +10,16 @@
   <div class="col-md-9">
     <p><%== t(".description") %></p>
   </div>
-  <div class="col-md-3 pull-right">
+  <div class="col-md-3">
     <%= render "gobierto_people/shared/datepicker" %>
   </div>
 </section>
 
 <section class="row">
-  <div class="fpca_distribuidora pd-30">
+  <div class="fpca_distribuidora">
     <div class="llistat_destacat_text_avancat">
       <div class="llistat_col-lg-3 nova-altura-dist same-height-wrapper">
-        <div class="corrector-margins col-md-6 js-rowchart-component">
+        <div class="corrector-margins col-xs-12 col-md-6 js-rowchart-component">
           <div class="box color-1 distribuidora-nova-3">
 
             <div class="color-decorator">
@@ -43,7 +43,7 @@
             <% end %>
           </div>
         </div>
-        <div class="corrector-margins col-md-6">
+        <div class="corrector-margins col-xs-12 col-md-6">
           <div class="box color-3 distribuidora-nova-3">
             <div class="color-decorator">
               <%= link_to gobierto_people_people_path(date_range_params), class: "no-link" do %>
@@ -70,7 +70,7 @@
   </div>
 </section>
 
-<section class="row">
+<section>
   <div id="department_people_events_punchcard" class="punchcard color-2 transparent"></div>
 </section>
 

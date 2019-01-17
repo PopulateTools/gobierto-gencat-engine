@@ -1,5 +1,19 @@
 .theme-gencat {
 
+  @media (max-width: 47.938em) {
+    &.no-fullcontainer-xs {
+      padding: 0 15px;
+      overflow: visible;
+    }
+  }
+
+  // Hack punchard on mobiles
+  @media (max-width: 568px) {
+    .punchcard {
+      overflow-x: scroll;
+    }
+  }
+
   // If $color_people var is not defined, get default one
   $colors: if(variable_exists(color_people), $color_people, $color_main);
   $colors_light: if(variable_exists(color_people_light), $color_people_light, $color_main);
@@ -47,6 +61,8 @@
   .same-height-wrapper {
     align-items: stretch;
     display: flex;
+    flex-wrap: wrap;
+
     > * {
       display: flex;
       flex-direction: column;
@@ -56,11 +72,21 @@
     }
   }
 
-  .main_people_content > .column {
-    width: auto;
+  .main_people_content {
+    > .column {
+      width: auto;
+  
+      > .block {
+        display: none;
+      }
+    }
 
-    > .block {
-      display: none;
+    @media(max-width:767px) {
+      padding: 0;
+
+      .people-grid .person-item {
+        margin-right: 0;
+      }
     }
   }
 
