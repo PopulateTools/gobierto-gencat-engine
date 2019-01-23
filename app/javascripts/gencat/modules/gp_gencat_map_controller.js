@@ -46,7 +46,7 @@ window.GobiertoPeople.GencatMapController = (function() {
       let choroplethSQL = `
 SELECT country, country_name, count(*) as count, world_borders.the_geom as the_geom, world_borders.the_geom_webmercator,
 array_to_string(array_agg(DISTINCT person_name), ',') as person_names, array_to_string(array_agg(DISTINCT person_slug), ',') as person_slugs
-FROM gobierto_gencat_trips
+FROM gencat_trips_staging
 INNER JOIN world_borders ON world_borders.iso2 = country
 WHERE country is not null
 ${dateRangeConditions}
@@ -57,7 +57,7 @@ GROUP BY country, country_name, world_borders.the_geom, world_borders.the_geom_w
       let bubbleSQL = `
 SELECT count(*) as count, city_name, country_name, the_geom, the_geom_webmercator, array_to_string(array_agg(DISTINCT person_name), ',') as person_names,
 array_to_string(array_agg(DISTINCT person_slug), ',') as person_slugs, array_to_string(array_agg(DISTINCT destination_name), ',') as destination_names
-FROM gobierto_gencat_trips
+FROM gencat_trips_staging
 WHERE country is not null
 ${dateRangeConditions}
 ${departmentCondition}
@@ -72,7 +72,7 @@ ORDER by count DESC
       }).addTo(map);
 
       cartodb.createLayer(map, {
-        user_name: 'furilo',
+        user_name: 'gobierto',
         type: 'cartodb',
         https: true,
         sublayers: [{
