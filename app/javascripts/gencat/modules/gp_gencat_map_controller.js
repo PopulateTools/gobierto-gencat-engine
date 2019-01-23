@@ -20,7 +20,8 @@ window.GobiertoPeople.GencatMapController = (function() {
     $(document).ready(function() {
       let map = new L.Map('map', {
         center: [40.416775, -3.703790],
-        zoom: 3
+        zoom: 3,
+        cartodb_logo: false
       });
       map.scrollWheelZoom.disable();
 
@@ -75,6 +76,7 @@ ORDER by count DESC
         user_name: 'gobierto',
         type: 'cartodb',
         https: true,
+        cartodb_logo: false,
         sublayers: [{
           sql: choroplethSQL,
           cartocss: choroplethCSS
