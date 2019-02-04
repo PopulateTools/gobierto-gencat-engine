@@ -6,9 +6,9 @@ $(document).on('turbolinks:load', function() {
 
   window.GobiertoPeople.gencat_common_controller.load(commonControllerLoadArgs);
 
-  window.GobiertoPeople.gencat_common_controller.updatePageHeader(
-    commonControllerUpdatePageHeaderArgs
-  );
+  window.GobiertoPeople.gencat_common_controller.updatePageHeader({
+    pageTitle: $("meta[name='page_title']").attr("content")
+  });
 
   if (currentLocationMatches('welcome_index')) {
     window.GobiertoPeople.gencat_map_controller.index(mapControllerIndexParams);
