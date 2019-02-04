@@ -2,6 +2,8 @@
   <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
   <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
 
+  <meta name="page_title" content="<%= raw (@meta_tags ? @meta_tags['title'] : nil) %>">
+
   <%= javascript_tag do %>
     commonControllerLoadArgs = {
       people_events_first_date: '<%= all_start_date.try(:iso8601) %>',
@@ -9,9 +11,6 @@
       people_events_filter_end_date: '<%= filter_end_date.try(:iso8601) %>'
     }
 
-    commonControllerUpdatePageHeaderArgs = {
-      pageTitle: "<%= raw (@meta_tags ? @meta_tags['title'] : nil) %>"
-    }
   <% end %>
 <% end %>
 
