@@ -87,7 +87,7 @@ ORDER by count DESC
           sql: bubbleSQL,
           cartocss: bubbleCSS
         }]
-      })
+      }, { https: true })
       .addTo(map)
       .done(function(layer) {
         layer.getSubLayer(1).hide();
