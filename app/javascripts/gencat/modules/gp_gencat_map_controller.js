@@ -21,6 +21,7 @@ window.GobiertoPeople.GencatMapController = (function() {
       let map = new L.Map('map', {
         center: [40.416775, -3.703790],
         zoom: 3,
+        https: true,
         cartodb_logo: false
       });
       map.scrollWheelZoom.disable();
