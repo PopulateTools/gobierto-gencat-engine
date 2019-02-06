@@ -22,6 +22,7 @@ window.GobiertoPeople.GencatMapController = (function() {
         center: [40.416775, -3.703790],
         zoom: 3,
         https: true,
+        sql_api_template: 'https://gobierto.carto.com',
         cartodb_logo: false
       });
       map.scrollWheelZoom.disable();
@@ -78,6 +79,7 @@ ORDER by count DESC
         type: 'cartodb',
         https: true,
         cartodb_logo: false,
+        sql_api_template: 'https://gobierto.carto.com',
         sublayers: [{
           sql: choroplethSQL,
           cartocss: choroplethCSS
