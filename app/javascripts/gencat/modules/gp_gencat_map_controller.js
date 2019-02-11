@@ -29,7 +29,7 @@ window.GobiertoPeople.GencatMapController = (function() {
 
       let choroplethCSS = `
 #gobierto_gencat_trips { polygon-fill: #FFFFB2; polygon-opacity: 0.8; line-color: #FFF; line-width: 1; line-opacity: 0.5; }
-#gobierto_gencat_trips [ count <= 28] { polygon-fill: #B10026; }
+#gobierto_gencat_trips [ count > 24]  { polygon-fill: #B10026; }
 #gobierto_gencat_trips [ count <= 24] { polygon-fill: #E31A1C; }
 #gobierto_gencat_trips [ count <= 15] { polygon-fill: #FC4E2A; }
 #gobierto_gencat_trips [ count <= 10] { polygon-fill: #FD8D3C; }
