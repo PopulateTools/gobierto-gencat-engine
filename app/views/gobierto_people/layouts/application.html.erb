@@ -15,8 +15,7 @@
 <% end %>
 
 <% content_for :javascript_module_link do %>
-  <%= javascript_pack_tag 'people', 'data-turbolinks-track': true %>
-  <%= javascript_pack_tag 'gencat', 'data-turbolinks-track': true %>
+  <%= javascript_packs_with_chunks_tag 'people', 'gencat', 'data-turbolinks-track': true %>
 <% end %>
 
 <% content_for(:current_submodule_link) do %>
