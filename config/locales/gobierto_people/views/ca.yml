@@ -18,16 +18,25 @@ ca:
         punchcard_title: Reunions per departament i mes
         title: Departaments
       show:
-        meetings_box_title: Reunions registrades amb grups d'interès
         interest_groups_box_subtitle: que s'han reunit amb aquest departament
         interest_groups_box_title: Grups d'interès
         interest_groups_rowchart_title: Grups d'interès amb més reunions amb aquest
           departament
         map_title: On viatgen els alts carrècs?
+        meetings_box_title: Reunions registrades amb grups d'interès
         people_box_subtitle: amb reunions registrades
         people_box_title: Alts càrrecs d'aquest departament
         people_rowchart_title: Alts càrrec d'aquest departament amb més reunions
         punchcard_title: Reunions per alt càrrec i mes
+    gifts:
+      coc: El Codi de conducta regula quins obsequis es poden rebre.
+      description: Els alts càrrecs han d’abstenir-se d'acceptar regals i donacions
+        de particulars i d'entitats públiques o privades a excepció feta de les mostres
+        no venals de cortesia i objectes commemoratius, oficials o protocol·laris
+        que li puguin ser lliurats per raó del seu càrrec.
+      last: Darrers obsequis
+      none: No s'han registrat obsequis en aquest període
+      title: Obsequis
     interest_groups:
       index:
         description: Qualsevol organització que es reuneix amb un alt càrrec ha de
@@ -49,6 +58,16 @@ ca:
           grup
         punchcard_title: Reunions per alt càrrec i mes
         status: 'Situació d''inscripció al registre de grups d''interès: %{status}'
+    invitations:
+      coc: El Codi de conducta regula quines invitacions es poden acceptar.
+      description: Els alts càrrecs han d’acceptar només el pagament de viatges, desplaçaments
+        i allotjaments per part d'altres administracions públiques o d'entitats públiques
+        dependents d'aquestes, universitats o entitats sense ànim de lucre, quan hagi
+        d'assistir convidat oficialment per raó del càrrec a una activitat relacionada
+        amb les seves responsabilitats.
+      last: Darreres invitacions
+      none: No s'han registrat invitacions en aquest període
+      title: Invitacions
     people:
       gifts:
         gift:
@@ -107,6 +126,7 @@ ca:
             other: persones
     shared:
       app_title: Visor de l'activitat directiva
+      check_it_out: Consulteu-ho
       datepicker:
         1m: Darrer mes
         1y: Darrer any
@@ -123,12 +143,11 @@ ca:
         meetings: Reunions
         title: Accediu a les dades al Portal de dades obertes
         trips: Viatges
-      view_all: Veure-ho tot
-      view_details: Veure detalls
       table_item:
         view_details: Veure detalls
+      view_all: Veure-ho tot
+      view_details: Veure detalls
       view_officials: Veure alts càrrecs
-      check_it_out: Consulteu-ho
     welcome:
       index:
         departments_rowchart_title: Departaments amb més reunions
@@ -145,22 +164,3 @@ ca:
         people_rowchart_title: Alts càrrecs amb més reunions
         punchcard_title: Reunions per alt càrrec i mes
         title: Agendes
-    gifts:
-      title: Obsequis
-      coc: El Codi de conducta regula quins obsequis es poden rebre.
-      description: Els alts càrrecs han d’abstenir-se d'acceptar regals i
-        donacions de particulars i d'entitats públiques o privades a excepció feta
-        de les mostres no venals de cortesia i objectes commemoratius, oficials
-        o protocol·laris que li puguin ser lliurats per raó del seu càrrec.
-      last: Darrers obsequis
-      none: No s'han registrat obsequis en aquest període
-    invitations:
-      title: Invitacions
-      coc: El Codi de conducta regula quines invitacions es poden acceptar.
-      description: Els alts càrrecs han d’acceptar només el pagament
-        de viatges, desplaçaments i allotjaments per part d'altres administracions
-        públiques o d'entitats públiques dependents d'aquestes, universitats o entitats
-        sense ànim de lucre, quan hagi d'assistir convidat oficialment per raó del
-        càrrec a una activitat relacionada amb les seves responsabilitats.
-      last: Darreres invitacions
-      none: No s'han registrat invitacions en aquest període

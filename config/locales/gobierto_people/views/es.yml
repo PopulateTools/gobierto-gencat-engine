@@ -16,16 +16,25 @@ es:
         punchcard_title: Reuniones por departamento y mes
         title: Departamentos
       show:
-        meetings_box_title: Reuniones registradas con grupos de interés
         interest_groups_box_subtitle: que se han reunido con este departamento
         interest_groups_box_title: Grupos de interés
         interest_groups_rowchart_title: Grupos de interés con más reuniones con este
           departamento
         map_title: "¿A dónde viajan los altos cargos?"
+        meetings_box_title: Reuniones registradas con grupos de interés
         people_box_subtitle: con reuniones registradas
         people_box_title: Altos cargos de este departamento
         people_rowchart_title: Altos cargos de este departamento con más reuniones
         punchcard_title: Reuniones por alto cargo y mes
+    gifts:
+      coc: El Código de conducta regula qué obsequios se pueden recibir.
+      description: Los altos cargos deben abstenerse de aceptar regalos y donaciones
+        de particulares y de entidades públicas o privadas a excepción hecha de las
+        muestras no venales de cortesía y objetos conmemorativos, oficiales o protocolarios
+        que le puedan ser entregados por razón de su cargo.
+      last: Últimos obsequios
+      none: No se han registrado obsequios en este periodo
+      title: Obsequios
     interest_groups:
       index:
         description: Cualquier organización que se reúne con un alto cargo debe registrarse
@@ -45,6 +54,16 @@ es:
           grupo
         punchcard_title: Reuniones por alto cargo y mes
         status: 'Situación de inscripción en el registro de grupos de interés: %{status}'
+    invitations:
+      coc: El Código de conducta regula qué invitaciones se pueden aceptar.
+      description: Los altos cargos deben aceptar sólo el pago de viajes, desplazamientos
+        y alojamientos por parte de otras administraciones públicas o de entidades
+        públicas dependientes de éstas, universidades o entidades sin ánimo de lucro,
+        cuando tenga que asistir invitado oficialmente por razón del cargo a una actividad
+        relacionada con sus responsabilidades.
+      last: Últimas invitaciones
+      none: No se han registrado invitaciones en este periodo
+      title: Invitaciones
     people:
       gifts:
         gift:
@@ -100,6 +119,7 @@ es:
             other: personas
     shared:
       app_title: Visor de la actividad directiva
+      check_it_out: Consúltelo
       datepicker:
         1m: Último mes
         1y: Último año
@@ -116,12 +136,11 @@ es:
         meetings: Reuniones
         title: Acceder a los datos en el Portal de datos abiertos
         trips: Viajes
-      view_all: Ver todos
-      view_details: Ver detalles
       table_item:
         view_details: Ver detalles
+      view_all: Ver todos
+      view_details: Ver detalles
       view_officials: Ver altos cargos
-      check_it_out: Consúltelo
     welcome:
       index:
         departments_rowchart_title: Departamentos con más reuniones
@@ -138,22 +157,3 @@ es:
         people_rowchart_title: Altos cargos con más reuniones
         punchcard_title: Reuniones por alto cargo y mes
         title: Agendas
-    gifts:
-      title: Obsequios
-      coc: El Código de conducta regula qué obsequios se pueden recibir.
-      description: Los altos cargos deben abstenerse de aceptar regalos y
-        donaciones de particulares y de entidades públicas o privadas a excepción
-        hecha de las muestras no venales de cortesía y objetos conmemorativos, oficiales
-        o protocolarios que le puedan ser entregados por razón de su cargo.
-      last: Últimos obsequios
-      none: No se han registrado obsequios en este periodo
-    invitations:
-      title: Invitaciones
-      coc: El Código de conducta regula qué invitaciones se pueden aceptar.
-      description: Los altos cargos deben aceptar sólo el pago de viajes,
-        desplazamientos y alojamientos por parte de otras administraciones públicas
-        o de entidades públicas dependientes de éstas, universidades o entidades
-        sin ánimo de lucro, cuando tenga que asistir invitado oficialmente por razón
-        del cargo a una actividad relacionada con sus responsabilidades.
-      last: Últimas invitaciones
-      none: No se han registrado invitaciones en este periodo
