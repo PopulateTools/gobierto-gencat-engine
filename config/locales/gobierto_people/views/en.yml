@@ -16,6 +16,7 @@ en:
         punchcard_title: Meetings per departments and month
         title: Departments
       show:
+        meetings_box_title: Registered meetings with interest groups
         interest_groups_box_subtitle: have met with this department
         interest_groups_box_title: interest groups
         interest_groups_rowchart_title: Interest groups with most meetings with this

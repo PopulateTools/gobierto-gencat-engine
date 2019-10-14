@@ -17,9 +17,32 @@
   <div class="fpca_distribuidora">
     <div class="llistat_destacat_text_avancat">
       <div class="llistat_col-lg-3 nova-altura-dist same-height-wrapper">
-        <div class="corrector-margins col-xs-12 col-md-6">
-          <div class="box color-1 distribuidora-nova-3">
 
+        <div class="corrector-margins col-xs-12 col-md-4">
+          <div class="box color-1 distribuidora-nova-3">
+            <div class="color-decorator">
+              <h1><%= @department_stats[:total_meetings] %></h1>
+              <h5>
+                <p><strong><%= t(".meetings_box_title") %></strong></p>
+              </h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="corrector-margins col-xs-12 col-md-4">
+          <div class="box color-2 distribuidora-nova-3">
+            <div class="color-decorator">
+              <h1><%= @department_stats[:unique_interest_groups] %></h1>
+              <h5>
+                <p><strong><%= t(".interest_groups_box_title") %></strong></p>
+                <p><%= t(".interest_groups_box_subtitle") %></p>
+              </h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="corrector-margins col-xs-12 col-md-4">
+          <div class="box color-3 distribuidora-nova-3">
             <div class="color-decorator">
               <%= link_to gobierto_people_department_people_path(@department, date_range_params), class: "no-link" do %>
                 <h1><%= @department_stats[:total_people_with_attendances] %></h1>
@@ -29,37 +52,6 @@
                 <p><%= t(".people_box_subtitle") %></p>
               </h5>
             </div>
-
-            <div class="margin_top_xs js-rowchart-component">
-              <span><%= t(".people_rowchart_title") %></span>
-              <div id="department_people_events_rowchart" class="rowchart"></div>
-            </div>
-
-          </div>
-          <div class="margin_top_xs js-reload-rowchart-wrapper">
-            <%= link_to gobierto_people_department_people_path(@department, date_range_params) do %>
-              <small><%= t("gobierto_people.shared.view_all") %></small>
-            <% end %>
-          </div>
-        </div>
-        <div class="corrector-margins col-xs-12 col-md-6">
-          <div class="box color-3 distribuidora-nova-3">
-            <div class="color-decorator">
-              <h1><%= @department_stats[:unique_interest_groups] %></h1>
-              <h5>
-                <p><strong><%= t(".interest_groups_box_title") %></strong></p>
-                <p><%= t(".interest_groups_box_subtitle") %></p>
-              </h5>
-            </div>
-            <div class="margin_top_xs js-rowchart-component">
-              <span><%= t(".interest_groups_rowchart_title") %></span>
-              <div id="department_interest_groups_events_rowchart" class="rowchart"></div>
-            </div>
-          </div>
-          <div class="margin_top_xs">
-            <%= link_to gobierto_people_interest_groups_path(date_range_params) do %>
-              <small><%= t("gobierto_people.shared.view_all") %></small>
-            <% end %>
           </div>
         </div>
       </div>

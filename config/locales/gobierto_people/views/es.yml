@@ -16,6 +16,7 @@ es:
         punchcard_title: Reuniones por departamento y mes
         title: Departamentos
       show:
+        meetings_box_title: Reuniones registradas con grupos de interés
         interest_groups_box_subtitle: que se han reunido con este departamento
         interest_groups_box_title: Grupos de interés
         interest_groups_rowchart_title: Grupos de interés con más reuniones con este

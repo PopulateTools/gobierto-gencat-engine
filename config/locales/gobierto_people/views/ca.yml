@@ -18,6 +18,7 @@ ca:
         punchcard_title: Reunions per departament i mes
         title: Departaments
       show:
+        meetings_box_title: Reunions registrades amb grups d'interès
         interest_groups_box_subtitle: que s'han reunit amb aquest departament
         interest_groups_box_title: Grups d'interès
         interest_groups_rowchart_title: Grups d'interès amb més reunions amb aquest
