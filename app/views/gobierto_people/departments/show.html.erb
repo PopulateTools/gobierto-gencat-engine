@@ -75,8 +75,80 @@
   </section>
 <% end %>
 
-<section>
-  <div id="department_people_events_punchcard" class="punchcard color-2 transparent"></div>
+<section class="row">
+
+  <div class="col-md-6" id="gifts-wrapper">
+    <section>
+      <p><strong><%= t(".gifts") %></strong></p>
+      <p><%= t(".gifts_description") %></p>
+      <div class="alert alert-warning">
+        <small><%= t(".gifts_coc") %> <%= render 'gobierto_people/shared/code_of_conduct_link' %></small>
+      </div>
+    </section>
+
+    <% if @department.gifts.any? %>
+      <figure>
+        <figcaption class="mb_20"><%= t(".last_gifts") %></figcaption>
+        <ul class="color-4 transparent mb_20">
+          <% @department.gifts.each do |gift| %>
+            <%= render(
+                  "gobierto_people/welcome/table_item",
+                  title: gift.name,
+                  resource: gift,
+                  resource_path: gobierto_people_person_gifts_path(
+                    gift.person.slug,
+                    { anchor: gift.to_anchor }.merge(date_range_params)
+                  ),
+                  display_date: gift.date
+                ) %>
+          <% end %>
+        </ul>
+      </figure>
+
+      <%= link_to gobierto_people_people_path do %>
+        <small><%= t(".view_officials") %></small>
+      <% end %>
+    <% else %>
+      <em><%= t(".no_gifts") %></em>
+    <% end %>
+  </div>
+
+  <div class="col-md-6" id="invitations-wrapper">
+    <section>
+      <p><strong><%= t(".invitations") %></strong></p>
+      <p><%= t(".invitations_description") %></p>
+      <div class="alert alert-warning">
+        <small><%= t(".invitations_coc") %> <%= render 'gobierto_people/shared/code_of_conduct_link' %></small>
+      </div>
+    </section>
+
+    <% if @department.invitations.any? %>
+      <figure>
+        <figcaption class="mb_20"><%= t(".last_invitations") %></figcaption>
+        <ul class="color-3 transparent mb_20 mb_20">
+          <% @department.invitations.each do |invitation| %>
+            <%= render(
+                  "gobierto_people/welcome/table_item",
+                  title: invitation.title,
+                  resource: invitation,
+                  resource_path: gobierto_people_person_invitations_path(
+                    invitation.person.slug,
+                    { anchor: invitation.to_anchor }.merge(date_range_params)
+                  ),
+                  display_date_range: [invitation.start_date, invitation.end_date]
+                ) %>
+          <% end %>
+        </ul>
+      </figure>
+
+      <%= link_to gobierto_people_people_path do %>
+        <small><%= t(".view_officials") %></small>
+      <% end %>
+    <% else %>
+      <em><%= t(".no_invitations") %></em>
+    <% end %>
+  </div>
+
 </section>
 
 <%= render "gobierto_people/shared/open_data_footer" %>
