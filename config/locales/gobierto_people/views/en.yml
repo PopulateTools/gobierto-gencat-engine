@@ -99,8 +99,6 @@ en:
             other: people
     shared:
       app_title: Administration activity viewer
-      code_of_conduct_link:
-        check_it_out: Check it out
       datepicker:
         1m: Last month
         1y: Last year
@@ -119,33 +117,36 @@ en:
         trips: Trips
       view_all: View all
       view_details: View details
+      table_item:
+        view_details: View details
+      view_officials: View Officials
+      check_it_out: Check it out
     welcome:
       index:
         departments_rowchart_title: Departments with most meetings
         description: Check with whom meets each Official in the Generalitat, companies
           and organizations that request meetings, and the trips and gifts received
-        gifts: Gifts
-        gifts_coc: The Code of Conduct regulates what gifts can be received.
-        gifts_description: Officials receive gifts as a courtesy from organizations
-          with which they meet. Here is the inventory of what has been received
         interest_groups_box_subtitle: or in registration process
         interest_groups_box_title: Interest groups inscribed
         interest_groups_rowchart_title: Interest groups with most meetings
-        invitations: Invitations
-        invitations_coc: The Code of Conduct regulates which invitations can be accepted.
-        invitations_description: Officials receive invitations to events, to make
-          visits, give lectures... Here is a list of accepted invitations.
-        last_gifts: Last gifts
-        last_invitations: Last invitations
         map_title: Where do officials travel?
         meetings_box_title: Meetings registered
-        no_gifts: No gifts have been registered in this period
-        no_invitations: No invitations have been registered in this period
         people_box_subtitle: with meetings registered
         people_box_title: Officials
         people_rowchart_title: Officials with most meetings
         punchcard_title: Meetings per official and month
         title: Agendas
-        view_officials: View Officials
-      table_item:
-        view_details: View details
+    invitations:
+      title: Invitations
+      coc: The Code of Conduct regulates which invitations can be accepted.
+      description: Officials receive invitations to events, to make
+        visits, give lectures... Here is a list of accepted invitations.
+      last: Last invitations
+      none: No invitations have been registered in this period
+    gifts:
+      title: Gifts
+      coc: The Code of Conduct regulates what gifts can be received.
+      description: Officials receive gifts as a courtesy from organizations
+        with which they meet. Here is the inventory of what has been received
+      last: Last gifts
+      none: No gifts have been registered in this period
