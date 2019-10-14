@@ -99,6 +99,9 @@
 <hr>
 
 <% if trips_submodule_active? %>
+  Desplazamientos: <%= @home_statistics[:total_trips] %>
+  Destinos: <%= @home_statistics[:total_unique_destinations] %>
+
   <section id="map-chart">
     <p><strong><%= t(".map_title") %></strong></p>
     <%= render "gobierto_people/shared/map" %>
