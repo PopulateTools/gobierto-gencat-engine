@@ -154,11 +154,12 @@ ca:
         description: Consulteu amb qui es reuneix cada alt càrrec de la Generalitat,
           les empreses i organitzacions que sol·liciten reunions, i els viatges i
           obsequis rebuts
-        interest_groups_box_subtitle: o en procés d'inscripció
-        interest_groups_box_title: Grups d'interès inscrits
+        interest_groups_box_subtitle: amb reunions en el període
+        interest_groups_box_title: Grups d'interès
         interest_groups_rowchart_title: Grups d'interès amb més reunions
         map_title: On viatgen els alts carrècs?
         meetings_box_title: Reunions registrades
+        meetings_box_subtitle: amb grups d'interès
         people_box_subtitle: amb reunions registrades
         people_box_title: Alts càrrecs
         people_rowchart_title: Alts càrrecs amb més reunions

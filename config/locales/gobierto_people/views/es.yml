@@ -147,11 +147,12 @@ es:
         description: Consulte con quién se reúne cada alto cargo de la Generalidad,
           las empresas y organizaciones que solicitan reuniones, y los viajes y obsequios
           recibidos
-        interest_groups_box_subtitle: o en proceso de inscripción
-        interest_groups_box_title: Grupos de interés inscritos
+        interest_groups_box_subtitle: con reuniones en el periodo
+        interest_groups_box_title: Grupos de interés
         interest_groups_rowchart_title: Grupos de interés con más reuniones
         map_title: "¿A dónde viajan los altos cargos?"
         meetings_box_title: Reuniones registradas
+        meetings_box_subtitle: con grupos de interés
         people_box_subtitle: con reuniones registradas
         people_box_title: Altos cargos
         people_rowchart_title: Altos cargos con más reuniones

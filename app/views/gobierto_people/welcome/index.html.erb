@@ -12,87 +12,58 @@
 </section>
 
 <section class="row">
-  <div class="fpca_distribuidora">
-    <div class="llistat_destacat_text_avancat">
-      <div class="llistat_col-lg-3 nova-altura-dist same-height-wrapper">
+  <div class="col-xs-12 col-sm-6" id="meetings-box">
 
-        <div class="col-xs-12 corrector-margins col-sm-4" id="meetings-box">
-          <div class="box color-1 distribuidora-nova-3 mb_20">
-
-            <div class="color-decorator">
-              <%= link_to gobierto_people_departments_path(date_range_params), class: "no-link" do %>
-                <h1><%= number_with_delimiter @home_statistics[:total_events] %></h1>
-              <% end %>
-              <h5>
-                <div><strong></strong></div>
-                <div><strong><%= t(".meetings_box_title") %></strong></div>
-              </h5>
+      <div class="box color-1">
+        <div class="color-decorator">
+          <div class="box--content">
+            <h1><%= number_with_delimiter @home_statistics[:total_events] %></h1>
+            <div>
+              <div><strong><%= t(".meetings_box_title") %></strong></div>
+              <div class="opacity-5"><%= t(".meetings_box_subtitle") %></div>
             </div>
-
-            <div class="margin_top_xs">
-              <span><%= t(".departments_rowchart_title") %></span>
-              <div id="departments_events_rowchart" class="rowchart"></div>
-            </div>
-
           </div>
-
-          <%= link_to gobierto_people_departments_path(date_range_params) do %>
-          <small><%= t("gobierto_people.shared.view_all") %></small>
-          <% end %>
         </div>
-
-        <div class="col-xs-12 corrector-margins col-sm-4" id="interest-groups-box">
-          <div class="box color-2 distribuidora-nova-3 mb_20">
-
-            <div class="color-decorator">
-              <%= link_to gobierto_people_interest_groups_path(date_range_params), class: "no-link"  do %>
-                <h1><%= number_with_delimiter @home_statistics[:total_interest_groups] %></h1>
-              <% end %>
-              <h5>
-                <div><strong><%= t(".interest_groups_box_title") %></strong></div>
-                <span><%= t(".interest_groups_box_subtitle") %></span>
-              </h5>
-            </div>
-
-            <div class="margin_top_xs">
-              <span><%= t(".interest_groups_rowchart_title") %></span>
-              <div id="interest_groups_events_rowchart" class="rowchart"></div>
-            </div>
-
-          </div>
-
-          <%= link_to gobierto_people_interest_groups_path(date_range_params) do %>
-          <small><%= t("gobierto_people.shared.view_all") %></small>
-          <% end %>
-        </div>
-
-        <div class="col-xs-12 corrector-margins col-sm-4" id="people-box">
-          <div class="box color-3 distribuidora-nova-3 mb_20">
-
-            <div class="color-decorator">
-              <%= link_to gobierto_people_people_path(date_range_params), class: "no-link"  do %>
-                <h1><%= number_with_delimiter @home_statistics[:total_people_with_attendances] %></h1>
-              <% end %>
-              <h5>
-                <div><strong><%= t(".people_box_title") %></strong></div>
-                <span><%= t(".people_box_subtitle") %></span>
-              </h5>
-            </div>
-
-            <div class="margin_top_xs">
-              <span><%= t(".people_rowchart_title") %></span>
-              <div id="people_events_rowchart" class="rowchart"></div>
-            </div>
-
-          </div>
-
-          <%= link_to gobierto_people_people_path(date_range_params) do %>
-          <small><%= t("gobierto_people.shared.view_all") %></small>
-          <% end %>
-        </div>
-
       </div>
-    </div>
+
+  </div>
+
+  <div class="col-xs-12 col-sm-6" id="interest-groups-box">
+    <%= link_to gobierto_people_interest_groups_path(date_range_params), class: "no-link"  do %>
+
+      <div class="box color-2">
+        <div class="color-decorator">
+          <div class="box--content">
+            <h1><%= number_with_delimiter @home_statistics[:total_interest_groups] %></h1>
+            <div>
+              <div><strong><%= t(".interest_groups_box_title") %></strong></div>
+              <div class="opacity-5"><%= t(".interest_groups_box_subtitle") %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+
+  <div class="col-xs-12" id="people-box" style="margin-top: 30px;">
+
+      <div class="box color-3 mb_20">
+        <div class="color-decorator">
+          <div class="box--content">
+            <h1><%= number_with_delimiter @home_statistics[:total_people_with_attendances] %></h1>
+            <div>
+              <div><strong><%= t(".people_box_title") %></strong></div>
+              <div class="opacity-5"><%= t(".people_box_subtitle") %></div>
+            </div>
+            <div class="box--searchbox">
+              <input type="text" placeholder="Busca un cargo">
+              <button>Buscar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
   </div>
 </section>
 
@@ -116,12 +87,6 @@
 
   <hr>
 <% end %>
-
-<section>
-  <div id="people_events_punchcard" class="punchcard color-2 transparent"></div>
-</section>
-
-<hr>
 
 <%= render(
       "gobierto_people/shared/invitations_and_gifts",

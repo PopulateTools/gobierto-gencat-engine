@@ -1,9 +1,8 @@
 .theme-gencat {
-
   @media (max-width: 47.938em) {
     &.no-fullcontainer-xs {
-      padding: 0 15px;
       overflow: visible;
+      padding: 0 15px;
     }
   }
 
@@ -32,8 +31,12 @@
     }
   }
 
-  a.no-link:hover {
-    text-decoration: none !important;
+  a.no-link {
+    color: inherit;
+
+    &:hover {
+      text-decoration: none !important;
+    }
   }
 
   ul {
@@ -48,7 +51,6 @@
   .alert {
     padding: 5px 10px;
   }
-
 
   // Hacks gencat-people
   .column {
@@ -75,13 +77,13 @@
   .main_people_content {
     > .column {
       width: auto;
-  
+
       > .block {
         display: none;
       }
     }
 
-    @media(max-width:767px) {
+    @media (max-width: 767px) {
       padding: 0;
 
       .people-grid .person-item {
@@ -215,10 +217,37 @@
   //@component box
   .box {
     border-radius: 0;
-    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    position: relative;
+    user-select: none;
+
+    .box--content {
+      align-items: center;
+      display: flex;
+      flex-wrap: nowrap;
+
+      > :not(:first-child) {
+        margin-left: 25px;
+      }
+    }
+
+    .box--searchbox {
+      display: flex;
+      flex: 1;
+      height: 58px;
+      margin-right: 25px;
+      position: relative;
+
+      > input {
+        flex: 0 0 70%;
+      }
+
+      > button {
+        flex: 0 0 30%;
+      }
+    }
 
     .rowchart {
       min-height: auto;
@@ -238,15 +267,16 @@
 
     > :last-child {
       span {
-        padding: 0 20px;
         color: $color_meta_text;
         font-size: $f8;
+        padding: 0 20px;
       }
     }
 
     h1 {
       font-size: 60px;
       font-weight: 600;
+      line-height: 77px;
       text-align: left;
     }
   }
@@ -291,7 +321,7 @@
       max-height: 0;
       overflow: hidden;
       margin-top: -1px;
-      transition: max-height .3s;
+      transition: max-height 0.3s;
       z-index: 100;
 
       li {
@@ -305,7 +335,7 @@
         }
 
         &:hover {
-          background-color: lighten($color_neutral_soft, 10%)
+          background-color: lighten($color_neutral_soft, 10%);
         }
       }
     }
@@ -353,38 +383,37 @@
       }
     }
 
-
     .datepicker--content {
+      font-family: 'OpenSansRegular', Helvetica, Arial, sans-serif;
+      margin: 0 0 .4em;
       padding: 0;
-      margin: 0 0 0.4em;
-      font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
 
       .datepicker--body {
         font-size: .9em;
       }
 
       .datepicker--days-names {
-        border-top: 1px solid $color_separator;
         border-bottom: 1px solid $color_separator;
+        border-top: 1px solid $color_separator;
         margin: 0;
       }
 
       .datepicker--day-name {
-        text-transform: capitalize;
         color: $color_text;
         font-size: 13px;
         padding: .7em .3em;
+        text-transform: capitalize;
       }
 
       .datepicker--cell-day {
+        font-weight: 600;
         height: auto;
         padding: 4px 1px;
-        font-weight: 600;
 
         &.-current- {
-          color: $color_neutral_soft;
           background: $color_link;
           border-radius: 0;
+          color: $color_neutral_soft;
 
           &:hover {
             background: $color_link;
@@ -435,10 +464,10 @@
       }
 
       > :first-child {
+        display: inline;
         flex-basis: 25%;
         flex-shrink: 0;
         text-align: right;
-        display: inline;
       }
 
       > :last-child {
@@ -457,7 +486,7 @@
 
     > div:nth-child(3),
     > div:nth-child(2) {
-      opacity: 0.5;
+      opacity: .5;
     }
   }
 
@@ -468,9 +497,9 @@
   }
 
   // Carto popup
-  div.cartodb-popup div.cartodb-popup-content-wrapper {
-    width: 226px;
+  .cartodb-popup .cartodb-popup-content-wrapper {
     max-width: 226px;
+    width: 226px;
   }
 
   // hide subcription box (from gobierto)
@@ -481,8 +510,8 @@
   // footer box
   .open-data-footer {
     background-color: $color_neutral_soft;
-    padding: 34px 44px;
     margin-top: 100px;
+    padding: 34px 44px;
   }
 
   // Layouts / pages
@@ -493,7 +522,7 @@
       margin-bottom: 60px;
     }
 
-    > &:last-of-type {
+    > &:last-of-type  {
       margin-bottom: 100px;
     }
   }
@@ -513,5 +542,10 @@
         }
       }
     }
+  }
+
+  // helpers
+  .opacity-5 {
+    opacity: .5;
   }
 }
