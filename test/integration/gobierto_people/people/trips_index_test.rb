@@ -33,33 +33,29 @@ module Gencat
         end
 
         def test_index
-          with_javascript do
-            with_current_site(site) do
-              visit gobierto_people_person_trips_path(person.slug)
+          with(js: true, site: site) do
+            visit gobierto_people_person_trips_path(person.slug)
 
-              assert_equal page_title, header_title
-              assert_equal breadcrumb_current_item, breadcrumb_last_item_text
-              assert has_content? "Trips made by #{person.name}"
+            assert_equal page_title, header_title
+            assert_equal breadcrumb_current_item, breadcrumb_last_item_text
+            assert has_content? "Trips made by #{person.name}"
 
-              assert has_content? recent_trip.title
-              assert has_content? old_trip.title
+            assert has_content? recent_trip.title
+            assert has_content? old_trip.title
 
-              assert ordered_elements(page, [recent_trip.title, old_trip.title])
-            end
+            assert ordered_elements(page, [recent_trip.title, old_trip.title])
           end
         end
 
         def test_index_when_no_trips
           person.trips.destroy_all
 
-          with_javascript do
-            with_current_site(site) do
-              visit gobierto_people_person_trips_path(person.slug)
+          with(js: true, site: site) do
+            visit gobierto_people_person_trips_path(person.slug)
 
-              assert_equal page_title, header_title
-              assert_equal breadcrumb_current_item, breadcrumb_last_item_text
-              assert has_content? "There are no trips in the given dates"
-            end
+            assert_equal page_title, header_title
+            assert_equal breadcrumb_current_item, breadcrumb_last_item_text
+            assert has_content? "There are no trips in the given dates"
           end
         end
 

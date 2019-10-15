@@ -8,20 +8,19 @@ module Gencat
     module InterestGroups
       class ShowTest < ::Gencat::IntegrationTest
 
-        def site
-          @site ||= sites(:madrid)
-        end
+        attr_accessor(
+          :site,
+          :interest_group,
+          :department,
+          :person
+        )
 
-        def interest_group
-          @interest_group ||= gobierto_people_interest_groups(:google)
-        end
-
-        def department
+        def setup
+          super
+          @site = sites(:madrid)
+          @interest_group = gobierto_people_interest_groups(:google)
           @department = gobierto_people_departments(:culture_department)
-        end
-
-        def person
-          @person ||= gobierto_people_people(:richard)
+          @person = gobierto_people_people(:richard)
         end
 
         def page_title
@@ -29,17 +28,15 @@ module Gencat
         end
 
         def test_show
-          with_javascript do
-            with_current_site(site) do
-              visit gobierto_people_interest_group_path(interest_group)
+          with(js: true, site: site) do
+            visit gobierto_people_interest_group_path(interest_group)
 
-              assert_equal page_title, header_title
-              assert_equal page_title, breadcrumb_last_item_text
+            assert_equal page_title, header_title
+            assert_equal page_title, breadcrumb_last_item_text
 
-              assert has_svg_link?(department.to_url(start_date: DEFAULT_DATE_FILTER_START))
-              assert has_svg_link?(person.to_url(start_date: DEFAULT_DATE_FILTER_START))
-              assert has_content? "Inscription status in interest groups registry: #{interest_group.status}"
-            end
+            assert has_svg_link?(department.to_url(start_date: DEFAULT_DATE_FILTER_START))
+            assert has_svg_link?(person.to_url(start_date: DEFAULT_DATE_FILTER_START))
+            assert has_content? "Inscription status in interest groups registry: #{interest_group.status}"
           end
         end
 
