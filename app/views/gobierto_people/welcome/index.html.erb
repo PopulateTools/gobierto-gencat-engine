@@ -70,6 +70,23 @@
 
 <hr>
 
+<section class="row">
+
+  <div class="col-md-12">
+    <p><strong>Departamentos</strong></p>
+  </div>
+
+  <div class="col-md-12">
+    <div class="square--container js-department-squares">
+      <% 23.times do %>
+
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<hr>
+
 <% if trips_submodule_active? %>
   Desplazamientos: <%= @home_statistics[:total_trips] %>
   Destinos: <%= @home_statistics[:total_unique_destinations] %>
