@@ -54,9 +54,9 @@
 
   // Hacks gencat-people
   .column {
-    width: inherit;
-    max-width: inherit;
     margin: inherit;
+    max-width: inherit;
+    width: inherit;
   }
 
   // Forces all rowcharts to have the same height
@@ -124,6 +124,14 @@
         color: color($i);
       }
 
+      input:focus {
+        border-color: color($i);
+      }
+
+      button {
+        background-color: color($i);
+      }
+
       // rowchart
       .bar {
         fill: color($i);
@@ -149,7 +157,7 @@
       }
 
       // table-list
-      li {
+      .table-item {
         border-top: 3px solid color($i, $colors_lightest);
       }
 
@@ -212,6 +220,10 @@
         }
       }
     }
+
+    .box--result strong {
+      color: color($i);
+    }
   }
 
   //@component box
@@ -229,7 +241,7 @@
       flex-wrap: nowrap;
 
       > :not(:first-child) {
-        margin-left: 25px;
+        margin: 0 25px;
       }
     }
 
@@ -245,7 +257,64 @@
       }
 
       > button {
+        color: $color_main_negative;
         flex: 0 0 30%;
+        font-size: 14px;
+      }
+    }
+
+    .box--results {
+      background-color: $color_main_negative;
+      border: 1px solid $color_separator;
+      box-shadow: 0 0 8px 0 rgba(0, 0, 0, .5);
+      display: none;
+      max-height: 50vh;
+      overflow-y: auto;
+      position: absolute;
+      top: calc(100% - 1px);
+      width: calc(100% - 1px);
+      z-index: -1;
+
+      &.is-active {
+        display: block;
+      }
+    }
+
+    .box--result {
+      border: 0;
+      cursor: pointer;
+      padding: 12px 24px;
+
+      &.is-active,
+      &:hover {
+        background-color: #f4f4f4;
+      }
+
+      strong {
+        display: block;
+        font-size: 19px;
+        font-weight: 700;
+        line-height: 23px;
+        margin-bottom: .25em;
+        pointer-events: none;
+
+        &::first-letter {
+          text-transform: uppercase;
+        }
+      }
+
+      span {
+        color: inherit;
+        display: block;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 17px;
+        padding: 0;
+        pointer-events: none;
+
+        &::first-letter {
+          text-transform: uppercase;
+        }
       }
     }
 
@@ -265,14 +334,6 @@
       padding: 20px;
     }
 
-    > :last-child {
-      span {
-        color: $color_meta_text;
-        font-size: $f8;
-        padding: 0 20px;
-      }
-    }
-
     h1 {
       font-size: 60px;
       font-weight: 600;
@@ -290,48 +351,48 @@
     }
 
     .air-datepicker {
-      padding: 0.4em;
-      font-size: 0.938em;
-      border-radius: 0;
       border: 1px solid $color_separator;
-      width: 100%;
-      height: 2.667em;
+      border-radius: 0;
       box-shadow: none;
       cursor: pointer;
+      font-size: .938em;
+      height: 2.667em;
+      padding: .4em;
+      width: 100%;
 
       &:focus {
-        box-shadow: none;
         border: 1px solid $color_separator;
+        box-shadow: none;
       }
     }
 
     .caret {
       display: block !important;
       position: absolute;
-      top: 50%;
       right: calc(10px + 15px); // column padding
+      top: 50%;
     }
 
     .datepicker-defaults {
-      position: absolute;
-      width: 100%;
+      background-color: $color_neutral_soft;
       border: 1px solid $color_separator;
       border-top-width: 0;
-      background-color: $color_neutral_soft;
+      margin-top: -1px;
       max-height: 0;
       overflow: hidden;
-      margin-top: -1px;
+      position: absolute;
       transition: max-height 0.3s;
+      width: 100%;
       z-index: 100;
 
       li {
         cursor: pointer;
 
         a {
-          padding: 5px 10px;
-          display: block;
           color: $text_soft;
+          display: block;
           font-size: $f7;
+          padding: 5px 10px;
         }
 
         &:hover {
@@ -341,8 +402,8 @@
     }
 
     &.is-shown .datepicker-defaults {
-      max-height: 500px;
       border-top-width: 1px;
+      max-height: 500px;
     }
   }
 
@@ -370,8 +431,8 @@
 
       .ui-icon-circle-triangle-w,
       .ui-icon-circle-triangle-e {
-        width: 100%;
         height: 100%;
+        width: 100%;
       }
 
       .ui-icon-circle-triangle-w {

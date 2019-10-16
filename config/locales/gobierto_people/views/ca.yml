@@ -143,6 +143,7 @@ ca:
         meetings: Reunions
         title: Accediu a les dades al Portal de dades obertes
         trips: Viatges
+      noresults: Sense resultats
       table_item:
         view_details: Veure detalls
       view_all: Veure-ho tot
@@ -164,4 +165,6 @@ ca:
         people_box_title: Alts càrrecs
         people_rowchart_title: Alts càrrecs amb més reunions
         punchcard_title: Reunions per alt càrrec i mes
+        search: Cercar
+        search_placeholder: Cerca un càrrec
         title: Agendes

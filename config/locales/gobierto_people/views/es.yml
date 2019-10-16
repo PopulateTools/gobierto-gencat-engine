@@ -136,6 +136,7 @@ es:
         meetings: Reuniones
         title: Acceder a los datos en el Portal de datos abiertos
         trips: Viajes
+      noresults: Sin resultados
       table_item:
         view_details: Ver detalles
       view_all: Ver todos
@@ -157,4 +158,6 @@ es:
         people_box_title: Altos cargos
         people_rowchart_title: Altos cargos con más reuniones
         punchcard_title: Reuniones por alto cargo y mes
+        search: Buscar
+        search_placeholder: Busca un cargo
         title: Agendas

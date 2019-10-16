@@ -130,6 +130,7 @@ en:
         meetings: Meetings
         title: Access the data in the Open Data portal
         trips: Trips
+      noresults: No results
       table_item:
         view_details: View details
       view_all: View all
@@ -150,4 +151,6 @@ en:
         people_box_title: Officials
         people_rowchart_title: Officials with most meetings
         punchcard_title: Meetings per official and month
+        search: Search
+        search_placeholder: Search an official
         title: Agendas

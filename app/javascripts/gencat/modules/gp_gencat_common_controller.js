@@ -1,4 +1,4 @@
-import { setDatepickerFilters } from './helpers.js'
+import { setDatepickerFilters, appendUrlParam } from './helpers.js'
 
 window.GobiertoPeople.GencatCommonController = (function() {
 
@@ -77,11 +77,6 @@ function appendDateRangeParamsToUrl(baseUrl, currentUrl) {
   }
 
   return urlWithParams;
-}
-
-function appendUrlParam(url, paramName, paramValue) {
-  var separator = (url.indexOf('?') > -1) ? '&' : '?';
-  return (url + separator + paramName + '=' + paramValue);
 }
 
 window.GobiertoPeople.gencat_common_controller = new GobiertoPeople.GencatCommonController;
