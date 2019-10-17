@@ -138,6 +138,7 @@ en:
       view_officials: View Officials
     welcome:
       index:
+        departments: Departments
         departments_rowchart_title: Departments with most meetings
         description: Check with whom meets each Official in the Generalitat, companies
           and organizations that request meetings, and the trips and gifts received

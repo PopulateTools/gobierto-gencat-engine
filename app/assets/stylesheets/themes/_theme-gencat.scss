@@ -367,6 +367,7 @@
 
     &--title {
       color: $color_link;
+      cursor: pointer;
       font-size: 19px;
       font-weight: 700;
       line-height: 23px;
@@ -385,20 +386,20 @@
       margin: 0 -5px;
       width: calc(100% + 10px);
 
-      // .area {
-      //   fill: color(2, $colors_lightest);
-      // }
+      .area {
+        fill: color(2, $colors_lightest);
+      }
 
-      // .headline {
-      //   fill: none;
-      //   stroke: color(2);
-      //   stroke-width: 3;
-      // }
+      .headline {
+        fill: none;
+        stroke: color(2);
+        stroke-width: 3;
+      }
 
-      // .circle {
-      //   cursor: pointer;
-      //   fill: color(2);
-      // }
+      .circle {
+        cursor: pointer;
+        fill: color(2);
+      }
     }
 
     &--tooltip {

@@ -144,6 +144,7 @@ es:
       view_officials: Ver altos cargos
     welcome:
       index:
+        departments: Departamentos
         departments_rowchart_title: Departamentos con más reuniones
         description: Consulte con quién se reúne cada alto cargo de la Generalidad,
           las empresas y organizaciones que solicitan reuniones, y los viajes y obsequios
