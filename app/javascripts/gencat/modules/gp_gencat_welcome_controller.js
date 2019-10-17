@@ -1,4 +1,5 @@
-import { addListContent, appendUrlParam } from './helpers.js'
+import { getHTMLContent, appendUrlParam } from './helpers.js'
+import { Areachart } from 'lib/visualizations'
 
 window.GobiertoPeople.GencatWelcomeController = (function() {
 
@@ -8,9 +9,8 @@ window.GobiertoPeople.GencatWelcomeController = (function() {
     const inputSearch = document.querySelector(".js-search")
     setSearchBoxes(inputSearch, options.people_events_rowchart_api_path)
 
-
     const departmentBoxes = document.querySelector(".js-department-squares")
-    setDepartmentBoxes(options.departments_events_rowchart_api_path)
+    setDepartmentBoxes(departmentBoxes, options.departments_events_rowchart_api_path)
 
     // _loadRowchart('#departments_events_rowchart', options.departments_events_rowchart_api_path)
     // _loadRowchart('#interest_groups_events_rowchart', options.interest_groups_events_rowchart_api_path)
@@ -31,7 +31,16 @@ window.GobiertoPeople.GencatWelcomeController = (function() {
 })();
 
 function setSearchBoxes(element, url) {
-  const template = `<div class="box--result" data-url="{{ url }}" data-name="{{ name }}"><strong>{{ name }}</strong><span>{{ position }}</span></div>`;
+  // notice "name, position" are properties of the API response object
+  const template = `
+    <li>
+      <div class="box--result" data-url="{{ url }}" data-name="{{ name }}">
+        <strong>{{ name }}</strong>
+        <span>{{ position }}</span>
+      </div>
+    </li>
+  `;
+
   const emptyTemplate = `<div class="box--result">${I18n.t("gobierto_people.shared.noresults")}</div>`;
 
   const $target = $(element).siblings(".js-search-target");
@@ -59,11 +68,16 @@ function setSearchBoxes(element, url) {
     if (value.length) {
       const filterData = data.filter(d => d.name.toLowerCase().includes(value.toLowerCase()))
 
-      $target.addClass(activeClass) // display list
+      // get DOM content
+      const html = getHTMLContent(filterData, template, emptyTemplate)
+      // enable list
+      $target.addClass(activeClass)
+      // clean previous content
+      $target.children().remove()
+      // add new content
+      $target.append(`<ul>\n${html}</ul>\n`)
 
-      addListContent($target, filterData, template, emptyTemplate)
-
-      // add the listeners once is DOM
+      // add the listeners once in DOM
       const $lis = $target.find("li");
       $lis.each((_, li) => li.addEventListener("click", e => {
         const { dataset: { name, url } } = e.target
@@ -124,27 +138,63 @@ function setSearchBoxes(element, url) {
   })
 }
 
-function setDepartmentBoxes(url) {
-      const template = `
-        <div class="square">
-          <div class="square--inner">
-            <div class="square--content">
-              <div class="square--content-inner">
-                <h1 class="square--title">{{ name }}</h1>
-                <span class="square--subtitle">{{ count }} en total </span>
-                <div class="square--chart bottom">--/\-</div>
-              </div>
-            </div>
+function setDepartmentBoxes(element, url) {
+  // notice "key, value" are properties of the API response object
+  const template = `
+    <div class="square" data-key="{{ key }}">
+      <div class="square--inner">
+        <div class="square--content">
+          <div class="square--content-inner">
+            <h1 class="square--title">{{ key }}</h1>
+            <span class="square--subtitle">{{ value.reduce((a, b) => a + b.value, 0) }} ${I18n.t("gobierto_people.welcome.index.meetings_box_title")}</span>
+            <div class="square--chart bottom"></div>
           </div>
         </div>
-      `
+      </div>
+    </div>
+  `;
 
-      let data = []
+  // get initial data
+  const endpoint = appendUrlParam(appendUrlParam(url, "limit", 1000), "include_history", true)
+  $.getJSON(endpoint, response => {
+    const data = response
 
-      // get initial data
-      let endpoint = appendUrlParam(url, "limit", 1000)
-      endpoint = appendUrlParam(url, "include_history", true)
-      $.getJSON(endpoint, response => (data = response))
+    // get DOM content
+    const html = getHTMLContent(data, template)
+    // add new content
+    $(element).append(html)
+
+    const squares = element.children
+    squares.forEach((square, i) => {
+      const { dataset: { key } } = square
+      const squareData = data.find(d => d.key === key)
+
+      const ctx = square.querySelector(".square--chart")
+      const tooltip = d => (`
+        <div class="square--tooltip">
+          ${d.value} ${I18n.t("gobierto_people.welcome.index.meetings_box_title")}
+        </div>
+      `);
+
+      new Areachart({
+        ctx,
+        data: squareData.value.map(d => ({ ...d, key: new Date(d.key) })),
+        tooltip,
+        minValue: -5,
+        marginLeft: 5,
+        marginRight: 5,
+        marginBottom: 0
+      })
+
+      // TODO: habilitar click
+      // square.addEventListener("click", e => {
+      //   const { dataset: { key } } = e.currentTarget
+      //   const { properties: { url } } = data.find(d => d.key === key)
+
+      //   location.href = url
+      // })
+    });
+  })
 }
 
 window.GobiertoPeople.gencat_welcome_controller = new GobiertoPeople.GencatWelcomeController;
