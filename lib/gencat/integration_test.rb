@@ -89,7 +89,11 @@ YAML
 
     def has_svg_link?(link_href)
       sleep 2
-      all("svg a").map { |node| node[:href] }.include?(link_href)
+      all("svg a").map { |node| node[:href]&.values&.first }.include?(link_href)
+    end
+
+    def map_loaded?
+      within("#map") { all("img").any? }
     end
 
   end

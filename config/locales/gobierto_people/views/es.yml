@@ -21,10 +21,20 @@ es:
         interest_groups_rowchart_title: Grupos de interés con más reuniones con este
           departamento
         map_title: "¿A dónde viajan los altos cargos?"
+        meetings_box_title: Reuniones registradas con grupos de interés
         people_box_subtitle: con reuniones registradas
         people_box_title: Altos cargos de este departamento
         people_rowchart_title: Altos cargos de este departamento con más reuniones
         punchcard_title: Reuniones por alto cargo y mes
+    gifts:
+      coc: El Código de conducta regula qué obsequios se pueden recibir.
+      description: Los altos cargos deben abstenerse de aceptar regalos y donaciones
+        de particulares y de entidades públicas o privadas a excepción hecha de las
+        muestras no venales de cortesía y objetos conmemorativos, oficiales o protocolarios
+        que le puedan ser entregados por razón de su cargo.
+      last: Últimos obsequios
+      none: No se han registrado obsequios en este periodo
+      title: Obsequios
     interest_groups:
       index:
         description: Cualquier organización que se reúne con un alto cargo debe registrarse
@@ -44,6 +54,16 @@ es:
           grupo
         punchcard_title: Reuniones por alto cargo y mes
         status: 'Situación de inscripción en el registro de grupos de interés: %{status}'
+    invitations:
+      coc: El Código de conducta regula qué invitaciones se pueden aceptar.
+      description: Los altos cargos deben aceptar sólo el pago de viajes, desplazamientos
+        y alojamientos por parte de otras administraciones públicas o de entidades
+        públicas dependientes de éstas, universidades o entidades sin ánimo de lucro,
+        cuando tenga que asistir invitado oficialmente por razón del cargo a una actividad
+        relacionada con sus responsabilidades.
+      last: Últimas invitaciones
+      none: No se han registrado invitaciones en este periodo
+      title: Invitaciones
     people:
       gifts:
         gift:
@@ -99,8 +119,7 @@ es:
             other: personas
     shared:
       app_title: Visor de la actividad directiva
-      code_of_conduct_link:
-        check_it_out: Consúltelo
+      check_it_out: Consúltelo
       datepicker:
         1m: Último mes
         1y: Último año
@@ -117,41 +136,28 @@ es:
         meetings: Reuniones
         title: Acceder a los datos en el Portal de datos abiertos
         trips: Viajes
+      noresults: Sin resultados
+      table_item:
+        view_details: Ver detalles
       view_all: Ver todos
       view_details: Ver detalles
+      view_officials: Ver altos cargos
     welcome:
       index:
         departments_rowchart_title: Departamentos con más reuniones
         description: Consulte con quién se reúne cada alto cargo de la Generalidad,
           las empresas y organizaciones que solicitan reuniones, y los viajes y obsequios
           recibidos
-        gifts: Obsequios
-        gifts_coc: El Código de conducta regula qué obsequios se pueden recibir.
-        gifts_description: Los altos cargos deben abstenerse de aceptar regalos y
-          donaciones de particulares y de entidades públicas o privadas a excepción
-          hecha de las muestras no venales de cortesía y objetos conmemorativos, oficiales
-          o protocolarios que le puedan ser entregados por razón de su cargo.
-        interest_groups_box_subtitle: o en proceso de inscripción
-        interest_groups_box_title: Grupos de interés inscritos
+        interest_groups_box_subtitle: con reuniones en el periodo
+        interest_groups_box_title: Grupos de interés
         interest_groups_rowchart_title: Grupos de interés con más reuniones
-        invitations: Invitaciones
-        invitations_coc: El Código de conducta regula qué invitaciones se pueden aceptar.
-        invitations_description: Los altos cargos deben aceptar sólo el pago de viajes,
-          desplazamientos y alojamientos por parte de otras administraciones públicas
-          o de entidades públicas dependientes de éstas, universidades o entidades
-          sin ánimo de lucro, cuando tenga que asistir invitado oficialmente por razón
-          del cargo a una actividad relacionada con sus responsabilidades.
-        last_gifts: Últimos obsequios
-        last_invitations: Últimas invitaciones
         map_title: "¿A dónde viajan los altos cargos?"
         meetings_box_title: Reuniones registradas
-        no_gifts: No se han registrado obsequios en este periodo
-        no_invitations: No se han registrado invitaciones en este periodo
+        meetings_box_subtitle: con grupos de interés
         people_box_subtitle: con reuniones registradas
         people_box_title: Altos cargos
         people_rowchart_title: Altos cargos con más reuniones
         punchcard_title: Reuniones por alto cargo y mes
+        search: Buscar
+        search_placeholder: Busca un cargo
         title: Agendas
-        view_officials: Ver altos cargos
-      table_item:
-        view_details: Ver detalles

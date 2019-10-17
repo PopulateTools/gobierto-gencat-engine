@@ -8,33 +8,32 @@ module Gencat
     module Departments
       class IndexTest < ::Gencat::IntegrationTest
 
-        def site
-          @site ||= sites(:madrid)
+        attr_accessor(
+          :site,
+          :department,
+          :person
+        )
+
+        def setup
+          super
+          @site = sites(:madrid)
+          @department = gobierto_people_departments(:justice_department)
+          @person = gobierto_people_people(:richard)
         end
 
         def page_title
           "Departments"
         end
 
-        def department
-          @department = gobierto_people_departments(:justice_department)
-        end
-
-        def person
-          @person ||= gobierto_people_people(:richard)
-        end
-
         def test_index
-          with_javascript do
-            with_current_site(site) do
-              visit gobierto_people_departments_path
+          with(js: true, site: site) do
+            visit gobierto_people_departments_path
 
-              assert_equal page_title, header_title
-              assert_equal page_title, breadcrumb_last_item_text
+            assert_equal page_title, header_title
+            assert_equal page_title, breadcrumb_last_item_text
 
-              assert has_svg_link?(department.to_url(start_date: DEFAULT_DATE_FILTER_START))
-              assert has_svg_link?(person.to_url(start_date: DEFAULT_DATE_FILTER_START))
-            end
+            assert has_svg_link?(department.to_url(start_date: DEFAULT_DATE_FILTER_START))
+            assert has_svg_link?(person.to_url(start_date: DEFAULT_DATE_FILTER_START))
           end
         end
 

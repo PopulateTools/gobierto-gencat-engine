@@ -1,9 +1,8 @@
 .theme-gencat {
-
   @media (max-width: 47.938em) {
     &.no-fullcontainer-xs {
-      padding: 0 15px;
       overflow: visible;
+      padding: 0 15px;
     }
   }
 
@@ -32,8 +31,12 @@
     }
   }
 
-  a.no-link:hover {
-    text-decoration: none !important;
+  a.no-link {
+    color: inherit;
+
+    &:hover {
+      text-decoration: none !important;
+    }
   }
 
   ul {
@@ -49,12 +52,11 @@
     padding: 5px 10px;
   }
 
-
   // Hacks gencat-people
   .column {
-    width: inherit;
-    max-width: inherit;
     margin: inherit;
+    max-width: inherit;
+    width: inherit;
   }
 
   // Forces all rowcharts to have the same height
@@ -75,13 +77,13 @@
   .main_people_content {
     > .column {
       width: auto;
-  
+
       > .block {
         display: none;
       }
     }
 
-    @media(max-width:767px) {
+    @media (max-width: 767px) {
       padding: 0;
 
       .people-grid .person-item {
@@ -122,6 +124,14 @@
         color: color($i);
       }
 
+      input:focus {
+        border-color: color($i);
+      }
+
+      button {
+        background-color: color($i);
+      }
+
       // rowchart
       .bar {
         fill: color($i);
@@ -147,7 +157,7 @@
       }
 
       // table-list
-      li {
+      .table-item {
         border-top: 3px solid color($i, $colors_lightest);
       }
 
@@ -210,15 +220,103 @@
         }
       }
     }
+
+    .box--result strong {
+      color: color($i);
+    }
   }
 
   //@component box
   .box {
     border-radius: 0;
-    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    position: relative;
+    user-select: none;
+
+    .box--content {
+      align-items: center;
+      display: flex;
+      flex-wrap: nowrap;
+
+      > :not(:first-child) {
+        margin: 0 25px;
+      }
+    }
+
+    .box--searchbox {
+      display: flex;
+      flex: 1;
+      height: 58px;
+      margin-right: 25px;
+      position: relative;
+
+      > input {
+        flex: 0 0 70%;
+      }
+
+      > button {
+        color: $color_main_negative;
+        flex: 0 0 30%;
+        font-size: 14px;
+      }
+    }
+
+    .box--results {
+      background-color: $color_main_negative;
+      border: 1px solid $color_separator;
+      box-shadow: 0 0 8px 0 rgba(0, 0, 0, .5);
+      display: none;
+      max-height: 50vh;
+      overflow-y: auto;
+      position: absolute;
+      top: calc(100% - 1px);
+      width: calc(100% - 1px);
+      z-index: -1;
+
+      &.is-active {
+        display: block;
+      }
+    }
+
+    .box--result {
+      border: 0;
+      cursor: pointer;
+      padding: 12px 24px;
+
+      &.is-active,
+      &:hover {
+        background-color: #f4f4f4;
+      }
+
+      strong {
+        display: block;
+        font-size: 19px;
+        font-weight: 700;
+        line-height: 23px;
+        margin-bottom: .25em;
+        pointer-events: none;
+
+        &::first-letter {
+          text-transform: uppercase;
+        }
+      }
+
+      span {
+        color: inherit;
+        display: block;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 17px;
+        padding: 0;
+        pointer-events: none;
+
+        &::first-letter {
+          text-transform: uppercase;
+        }
+      }
+    }
 
     .rowchart {
       min-height: auto;
@@ -236,18 +334,110 @@
       padding: 20px;
     }
 
-    > :last-child {
-      span {
-        padding: 0 20px;
-        color: $color_meta_text;
-        font-size: $f8;
-      }
-    }
-
     h1 {
       font-size: 60px;
       font-weight: 600;
+      line-height: 77px;
       text-align: left;
+    }
+  }
+
+  //@component square
+  .square {
+    &--container {
+      @include grid(30px, 4);
+    }
+
+    &--inner {
+      @include aspect-ratio(1, 1);
+    }
+
+    &--content {
+      border: 1px solid $separator_dark;
+      box-sizing: border-box;
+      padding: 32px 16px 16px;
+    }
+
+    &--content-inner {
+      @include absolute-layout;
+
+      height: 100%;
+      width: 100%;
+    }
+
+    &--title {
+      color: $color_link;
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 23px;
+      margin-bottom: .5em;
+      text-align: left;
+    }
+
+    &--subtitle {
+      color: $color_text;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 17px;
+    }
+
+    &--chart {
+      margin: 0 -5px;
+      width: calc(100% + 10px);
+
+      // .area {
+      //   fill: color(2, $colors_lightest);
+      // }
+
+      // .headline {
+      //   fill: none;
+      //   stroke: color(2);
+      //   stroke-width: 3;
+      // }
+
+      // .circle {
+      //   cursor: pointer;
+      //   fill: color(2);
+      // }
+    }
+
+    &--tooltip {
+      background-color: $color_main_negative;
+      border: 1px solid color(2);
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 14px;
+      margin-bottom: -1px;
+      padding: .5em;
+      text-align: left;
+      white-space: nowrap;
+
+      &::after,
+      &::before {
+        border: solid transparent;
+        content: '';
+        height: 0;
+        left: 50%;
+        pointer-events: none;
+        position: absolute;
+        top: 100%;
+        width: 0;
+        z-index: 2;
+      }
+
+      &::after {
+        border-color: rgba(255, 255, 255, 0);
+        border-top-color: #fff;
+        border-width: 5px;
+        margin-left: -5px;
+      }
+
+      &::before {
+        border-color: rgba(0, 0, 255, 0);
+        border-top-color: color(2);
+        border-width: 6px;
+        margin-left: -6px;
+      }
     }
   }
 
@@ -260,59 +450,59 @@
     }
 
     .air-datepicker {
-      padding: 0.4em;
-      font-size: 0.938em;
-      border-radius: 0;
       border: 1px solid $color_separator;
-      width: 100%;
-      height: 2.667em;
+      border-radius: 0;
       box-shadow: none;
       cursor: pointer;
+      font-size: .938em;
+      height: 2.667em;
+      padding: .4em;
+      width: 100%;
 
       &:focus {
-        box-shadow: none;
         border: 1px solid $color_separator;
+        box-shadow: none;
       }
     }
 
     .caret {
       display: block !important;
       position: absolute;
-      top: 50%;
       right: calc(10px + 15px); // column padding
+      top: 50%;
     }
 
     .datepicker-defaults {
-      position: absolute;
-      width: 100%;
+      background-color: $color_neutral_soft;
       border: 1px solid $color_separator;
       border-top-width: 0;
-      background-color: $color_neutral_soft;
+      margin-top: -1px;
       max-height: 0;
       overflow: hidden;
-      margin-top: -1px;
-      transition: max-height .3s;
+      position: absolute;
+      transition: max-height 0.3s;
+      width: 100%;
       z-index: 100;
 
       li {
         cursor: pointer;
 
         a {
-          padding: 5px 10px;
-          display: block;
           color: $text_soft;
+          display: block;
           font-size: $f7;
+          padding: 5px 10px;
         }
 
         &:hover {
-          background-color: lighten($color_neutral_soft, 10%)
+          background-color: lighten($color_neutral_soft, 10%);
         }
       }
     }
 
     &.is-shown .datepicker-defaults {
-      max-height: 500px;
       border-top-width: 1px;
+      max-height: 500px;
     }
   }
 
@@ -340,8 +530,8 @@
 
       .ui-icon-circle-triangle-w,
       .ui-icon-circle-triangle-e {
-        width: 100%;
         height: 100%;
+        width: 100%;
       }
 
       .ui-icon-circle-triangle-w {
@@ -353,38 +543,37 @@
       }
     }
 
-
     .datepicker--content {
+      font-family: 'OpenSansRegular', Helvetica, Arial, sans-serif;
+      margin: 0 0 .4em;
       padding: 0;
-      margin: 0 0 0.4em;
-      font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
 
       .datepicker--body {
         font-size: .9em;
       }
 
       .datepicker--days-names {
-        border-top: 1px solid $color_separator;
         border-bottom: 1px solid $color_separator;
+        border-top: 1px solid $color_separator;
         margin: 0;
       }
 
       .datepicker--day-name {
-        text-transform: capitalize;
         color: $color_text;
         font-size: 13px;
         padding: .7em .3em;
+        text-transform: capitalize;
       }
 
       .datepicker--cell-day {
+        font-weight: 600;
         height: auto;
         padding: 4px 1px;
-        font-weight: 600;
 
         &.-current- {
-          color: $color_neutral_soft;
           background: $color_link;
           border-radius: 0;
+          color: $color_neutral_soft;
 
           &:hover {
             background: $color_link;
@@ -435,10 +624,10 @@
       }
 
       > :first-child {
+        display: inline;
         flex-basis: 25%;
         flex-shrink: 0;
         text-align: right;
-        display: inline;
       }
 
       > :last-child {
@@ -457,7 +646,7 @@
 
     > div:nth-child(3),
     > div:nth-child(2) {
-      opacity: 0.5;
+      opacity: .5;
     }
   }
 
@@ -468,9 +657,9 @@
   }
 
   // Carto popup
-  div.cartodb-popup div.cartodb-popup-content-wrapper {
-    width: 226px;
+  .cartodb-popup .cartodb-popup-content-wrapper {
     max-width: 226px;
+    width: 226px;
   }
 
   // hide subcription box (from gobierto)
@@ -481,8 +670,8 @@
   // footer box
   .open-data-footer {
     background-color: $color_neutral_soft;
-    padding: 34px 44px;
     margin-top: 100px;
+    padding: 34px 44px;
   }
 
   // Layouts / pages
@@ -493,7 +682,7 @@
       margin-bottom: 60px;
     }
 
-    > &:last-of-type {
+    > &:last-of-type  {
       margin-bottom: 100px;
     }
   }
@@ -513,5 +702,10 @@
         }
       }
     }
+  }
+
+  // helpers
+  .opacity-5 {
+    opacity: .5;
   }
 }

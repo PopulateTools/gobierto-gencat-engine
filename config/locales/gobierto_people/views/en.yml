@@ -21,10 +21,18 @@ en:
         interest_groups_rowchart_title: Interest groups with most meetings with this
           department
         map_title: Where do officials travel?
+        meetings_box_title: Registered meetings with interest groups
         people_box_subtitle: with meetings registered
         people_box_title: officials in this department
         people_rowchart_title: Officials of this department with most meetings
         punchcard_title: Meetings per official and month
+    gifts:
+      coc: The Code of Conduct regulates what gifts can be received.
+      description: Officials receive gifts as a courtesy from organizations with which
+        they meet. Here is the inventory of what has been received
+      last: Last gifts
+      none: No gifts have been registered in this period
+      title: Gifts
     interest_groups:
       index:
         description: Any organization that meets with an official must register as
@@ -43,6 +51,13 @@ en:
         people_with_events: the number of Officials with which this group has met
         punchcard_title: Meetings per official and month
         status: 'Inscription status in interest groups registry: %{status}'
+    invitations:
+      coc: The Code of Conduct regulates which invitations can be accepted.
+      description: Officials receive invitations to events, to make visits, give lectures...
+        Here is a list of accepted invitations.
+      last: Last invitations
+      none: No invitations have been registered in this period
+      title: Invitations
     people:
       gifts:
         gift:
@@ -98,8 +113,7 @@ en:
             other: people
     shared:
       app_title: Administration activity viewer
-      code_of_conduct_link:
-        check_it_out: Check it out
+      check_it_out: Check it out
       datepicker:
         1m: Last month
         1y: Last year
@@ -116,35 +130,27 @@ en:
         meetings: Meetings
         title: Access the data in the Open Data portal
         trips: Trips
+      noresults: No results
+      table_item:
+        view_details: View details
       view_all: View all
       view_details: View details
+      view_officials: View Officials
     welcome:
       index:
         departments_rowchart_title: Departments with most meetings
         description: Check with whom meets each Official in the Generalitat, companies
           and organizations that request meetings, and the trips and gifts received
-        gifts: Gifts
-        gifts_coc: The Code of Conduct regulates what gifts can be received.
-        gifts_description: Officials receive gifts as a courtesy from organizations
-          with which they meet. Here is the inventory of what has been received
-        interest_groups_box_subtitle: or in registration process
-        interest_groups_box_title: Interest groups inscribed
+        interest_groups_box_subtitle: with meetings in the period 
+        interest_groups_box_title: Interest groups
         interest_groups_rowchart_title: Interest groups with most meetings
-        invitations: Invitations
-        invitations_coc: The Code of Conduct regulates which invitations can be accepted.
-        invitations_description: Officials receive invitations to events, to make
-          visits, give lectures... Here is a list of accepted invitations.
-        last_gifts: Last gifts
-        last_invitations: Last invitations
         map_title: Where do officials travel?
         meetings_box_title: Meetings registered
-        no_gifts: No gifts have been registered in this period
-        no_invitations: No invitations have been registered in this period
+        meetings_box_subtitle: with interest groups
         people_box_subtitle: with meetings registered
         people_box_title: Officials
         people_rowchart_title: Officials with most meetings
         punchcard_title: Meetings per official and month
+        search: Search
+        search_placeholder: Search an official
         title: Agendas
-        view_officials: View Officials
-      table_item:
-        view_details: View details
