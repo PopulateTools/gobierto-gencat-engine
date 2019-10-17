@@ -154,13 +154,15 @@ function setDepartmentBoxes(element, url) {
     </div>
   `;
 
+  const emptyTemplate = `<div class="col-md-12">${I18n.t("gobierto_people.shared.noresults")}</div>`;
+
   // get initial data
   const endpoint = appendUrlParam(appendUrlParam(url, "limit", 1000), "include_history", true)
   $.getJSON(endpoint, response => {
     const data = response
 
     // get DOM content
-    const html = getHTMLContent(data, template)
+    const html = getHTMLContent(data, template, emptyTemplate)
     // add new content
     $(element).append(html)
 
@@ -186,13 +188,11 @@ function setDepartmentBoxes(element, url) {
         marginBottom: 0
       })
 
-      // TODO: habilitar click
-      // square.addEventListener("click", e => {
-      //   const { dataset: { key } } = e.currentTarget
-      //   const { properties: { url } } = data.find(d => d.key === key)
+      square.querySelector(".square--title").addEventListener("click", e => {
+        const { properties: { url } } = squareData
 
-      //   location.href = url
-      // })
+        location.href = url
+      })
     });
   })
 }
