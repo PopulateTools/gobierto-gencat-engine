@@ -12,60 +12,64 @@
 </section>
 
 <section class="row">
-  <div class="col-xs-12 col-sm-6" id="meetings-box">
 
-      <div class="box color-1">
-        <div class="color-decorator">
-          <div class="box--content">
-            <h1><strong><%= number_with_delimiter @home_statistics[:total_events] %></strong></h1>
-            <div>
-              <div><strong><%= t(".meetings_box_title") %></strong></div>
-              <div class="soft"><%= t(".meetings_box_subtitle") %></div>
+  <div class="col-md-12">
+
+    <div class="box--container">
+
+      <div id="meetings-box">
+        <div class="box color-1">
+          <div class="color-decorator">
+            <div class="box--content">
+              <h1><strong><%= number_with_delimiter @home_statistics[:total_events] %></strong></h1>
+              <div>
+                <div><strong><%= t(".meetings_box_title") %></strong></div>
+                <div class="soft"><%= t(".meetings_box_subtitle") %></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-  </div>
+      <div id="interest-groups-box">
+        <%= link_to gobierto_people_interest_groups_path(date_range_params), class: "no-link"  do %>
+          <div class="box color-2">
+            <div class="color-decorator">
+              <div class="box--content">
+                <h1><strong><%= number_with_delimiter @home_statistics[:total_interest_groups] %></strong></h1>
+                <div>
+                  <div><strong><%= t(".interest_groups_box_title") %></strong></div>
+                  <div class="soft"><%= t(".interest_groups_box_subtitle") %></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
 
-  <div class="col-xs-12 col-sm-6" id="interest-groups-box">
-    <%= link_to gobierto_people_interest_groups_path(date_range_params), class: "no-link"  do %>
-
-      <div class="box color-2">
-        <div class="color-decorator">
-          <div class="box--content">
-            <h1><strong><%= number_with_delimiter @home_statistics[:total_interest_groups] %></strong></h1>
-            <div>
-              <div><strong><%= t(".interest_groups_box_title") %></strong></div>
-              <div class="soft"><%= t(".interest_groups_box_subtitle") %></div>
+      <div id="people-box">
+        <div class="box color-3">
+          <div class="color-decorator">
+            <div class="box--content">
+              <h1><strong><%= number_with_delimiter @home_statistics[:total_people_with_attendances] %></strong></h1>
+              <div>
+                <div><strong><%= t(".people_box_title") %></strong></div>
+                <div class="soft"><%= t(".people_box_subtitle") %></div>
+              </div>
+              <div class="box--searchbox">
+                <input class="js-search" type="text" placeholder="<%= t(".search_placeholder") %>">
+                <button class="js-search-button"><i class="fas fa-search"></i><%= t(".search") %></button>
+                <div class="box--results js-search-target"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-    <% end %>
-  </div>
-
-  <div class="col-xs-12" id="people-box" style="margin-top: 30px;">
-
-      <div class="box color-3 mb_20">
-        <div class="color-decorator">
-          <div class="box--content">
-            <h1><strong><%= number_with_delimiter @home_statistics[:total_people_with_attendances] %></strong></h1>
-            <div>
-              <div><strong><%= t(".people_box_title") %></strong></div>
-              <div class="soft"><%= t(".people_box_subtitle") %></div>
-            </div>
-            <div class="box--searchbox">
-              <input class="js-search" type="text" placeholder="<%= t(".search_placeholder") %>">
-              <button class="js-search-button"><i class="fas fa-search"></i><%= t(".search") %></button>
-              <div class="box--results js-search-target"></div>
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
 
   </div>
+
 </section>
 
 <hr>
