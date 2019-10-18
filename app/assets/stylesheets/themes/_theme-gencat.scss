@@ -366,12 +366,11 @@
     }
 
     &--title {
-      color: $color_link;
+      color: color(3);
       cursor: pointer;
       font-size: 19px;
       font-weight: 700;
       line-height: 23px;
-      margin-bottom: .5em;
       text-align: left;
     }
 
@@ -380,6 +379,7 @@
       font-size: 14px;
       font-weight: 400;
       line-height: 17px;
+      margin-top: .5em;
     }
 
     &--chart {
@@ -388,12 +388,14 @@
 
       .area {
         fill: color(2, $colors_lightest);
+        pointer-events: none;
       }
 
       .headline {
         fill: none;
+        pointer-events: none;
         stroke: color(2);
-        stroke-width: 3;
+        stroke-width: 1;
       }
 
       .circle {
@@ -438,6 +440,44 @@
         border-top-color: color(2);
         border-width: 6px;
         margin-left: -6px;
+      }
+    }
+  }
+
+  //@component rectangle
+  .rectangle {
+    &--container {
+      @include grid(30px, 4);
+    }
+
+    &--inner {
+      @include aspect-ratio(4, 3);
+    }
+
+    &--content {
+      border: 1px solid $separator_dark;
+      box-sizing: border-box;
+      padding: 32px 16px 16px;
+    }
+
+    &--title {
+      color: color(3);
+      cursor: pointer;
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 23px;
+      text-align: left;
+    }
+
+    &--subtitle {
+      color: $color_text;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 17px;
+      margin-top: .5em;
+
+      &::first-letter {
+        text-transform: uppercase;
       }
     }
   }
@@ -705,8 +745,7 @@
     }
   }
 
-  // helpers
-  .opacity-5 {
-    opacity: .5;
+  .people--container {
+    @include grid(30px, 4)
   }
 }
