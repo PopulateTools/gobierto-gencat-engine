@@ -16,12 +16,13 @@ en:
         punchcard_title: Meetings per departments and month
         title: Departments
       show:
-        interest_groups_box_subtitle: have met with this department
-        interest_groups_box_title: interest groups
+        interest_groups_box_subtitle: or in the registration process
+        interest_groups_box_title: interest groups registered
         interest_groups_rowchart_title: Interest groups with most meetings with this
           department
         map_title: Where do officials travel?
-        meetings_box_title: Registered meetings with interest groups
+        meetings_box_title: Meetings registered
+        meetings_box_subtitle: with interest groups
         people_box_subtitle: with meetings registered
         people_box_title: officials in this department
         people_rowchart_title: Officials of this department with most meetings

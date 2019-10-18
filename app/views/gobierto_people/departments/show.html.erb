@@ -21,10 +21,11 @@
         <div class="corrector-margins col-xs-12 col-md-4">
           <div class="box color-1 distribuidora-nova-3">
             <div class="color-decorator">
-              <h1><%= @department_stats[:total_meetings] %></h1>
-              <h5>
-                <p><strong><%= t(".meetings_box_title") %></strong></p>
-              </h5>
+              <h1><strong><%= @department_stats[:total_meetings] %></strong></h1>
+              <div>
+                <div><strong><%= t(".meetings_box_title") %></strong></div>
+                <div class="soft"><%= t(".meetings_box_subtitle") %></div>
+              </div>
             </div>
           </div>
         </div>
@@ -32,11 +33,11 @@
         <div class="corrector-margins col-xs-12 col-md-4">
           <div class="box color-2 distribuidora-nova-3">
             <div class="color-decorator">
-              <h1><%= @department_stats[:unique_interest_groups] %></h1>
-              <h5>
-                <p><strong><%= t(".interest_groups_box_title") %></strong></p>
-                <p><%= t(".interest_groups_box_subtitle") %></p>
-              </h5>
+              <h1><strong><%= @department_stats[:unique_interest_groups] %></strong></h1>
+              <div>
+                <div><strong><%= t(".interest_groups_box_title") %></strong></div>
+                <div class="soft"><%= t(".interest_groups_box_subtitle") %></div>
+              </div>
             </div>
           </div>
         </div>
@@ -45,12 +46,12 @@
           <div class="box color-3 distribuidora-nova-3">
             <div class="color-decorator">
               <%= link_to gobierto_people_department_people_path(@department, date_range_params), class: "no-link" do %>
-                <h1><%= @department_stats[:total_people_with_attendances] %></h1>
+                <h1><strong><%= @department_stats[:total_people_with_attendances] %></strong></h1>
               <% end %>
-              <h5>
-                <p><strong><%= t(".people_box_title") %></strong></p>
-                <p><%= t(".people_box_subtitle") %></p>
-              </h5>
+              <div>
+                <div><strong><%= t(".people_box_title") %></strong></div>
+                <div class="soft"><%= t(".people_box_subtitle") %></div>
+              </div>
             </div>
           </div>
         </div>
@@ -60,11 +61,10 @@
   </div>
 </section>
 
-<section>
-  <pre>
-  URL para sacar personas, mira en departmentsShowArgs.department_people_events_rowchart_api_path:
-  <%= gobierto_people_api_v1_people_path(from_date: filter_start_date, to_date: filter_end_date, department_id: @department.id) %>
-  </pre>
+<section class="row">
+  <div class="col-md-12">
+    <div class="rectangle--container js-people-rectangles"></div>
+  </div>
 </section>
 
 <% if trips_submodule_active? %>

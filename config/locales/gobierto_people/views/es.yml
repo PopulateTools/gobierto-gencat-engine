@@ -16,12 +16,13 @@ es:
         punchcard_title: Reuniones por departamento y mes
         title: Departamentos
       show:
-        interest_groups_box_subtitle: que se han reunido con este departamento
-        interest_groups_box_title: Grupos de interés
+        interest_groups_box_subtitle: o en proceso de inscripción
+        interest_groups_box_title: Grupos de interés incritos
         interest_groups_rowchart_title: Grupos de interés con más reuniones con este
           departamento
         map_title: "¿A dónde viajan los altos cargos?"
-        meetings_box_title: Reuniones registradas con grupos de interés
+        meetings_box_title: Reuniones registradas
+        meetings_box_subtitle: con grupos de interés
         people_box_subtitle: con reuniones registradas
         people_box_title: Altos cargos de este departamento
         people_rowchart_title: Altos cargos de este departamento con más reuniones

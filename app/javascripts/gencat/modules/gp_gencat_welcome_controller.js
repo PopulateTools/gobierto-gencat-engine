@@ -11,20 +11,6 @@ window.GobiertoPeople.GencatWelcomeController = (function() {
 
     const departmentBoxes = document.querySelector(".js-department-squares")
     setDepartmentBoxes(departmentBoxes, options.departments_events_rowchart_api_path)
-
-    // _loadRowchart('#departments_events_rowchart', options.departments_events_rowchart_api_path)
-    // _loadRowchart('#interest_groups_events_rowchart', options.interest_groups_events_rowchart_api_path)
-    // _loadRowchart('#people_events_rowchart', options.people_events_rowchart_api_path)
-    // _loadPunchcard(
-    //   '#people_events_punchcard',
-    //   options.department_people_events_punchcard_api_path,
-    //   I18n.t('gobierto_people.welcome.index.punchcard_title')
-    // );
-
-    // // REVIEW: Waiting for render
-    // setTimeout(function () {
-    //   setTooltipColor()
-    // }, 1000);
   };
 
   return GencatWelcomeController;
@@ -139,14 +125,16 @@ function setSearchBoxes(element, url) {
 }
 
 function setDepartmentBoxes(element, url) {
-  // notice "key, value" are properties of the API response object
+  // notice that "key, value & properties" are properties of the API response object
   const template = `
     <div class="square" data-key="{{ key }}">
       <div class="square--inner">
         <div class="square--content">
           <div class="square--content-inner">
-            <h1 class="square--title">{{ key }}</h1>
-            <span class="square--subtitle">{{ value.reduce((a, b) => a + b.value, 0) }} ${I18n.t("gobierto_people.welcome.index.meetings_box_title")}</span>
+            <a href="{{ properties.url }}">
+              <h1 class="square--title"><strong>{{ key }}</strong></h1>
+            </a>
+            <div class="square--subtitle">{{ value.reduce((a, b) => a + b.value, 0) }} ${I18n.t("gobierto_people.welcome.index.meetings_box_title")}</div>
             <div class="square--chart bottom"></div>
           </div>
         </div>
@@ -182,16 +170,11 @@ function setDepartmentBoxes(element, url) {
         ctx,
         data: squareData.value.map(d => ({ ...d, key: new Date(d.key) })),
         tooltip,
+        circleSize: 2.5,
         minValue: -5,
         marginLeft: 5,
         marginRight: 5,
         marginBottom: 0
-      })
-
-      square.querySelector(".square--title").addEventListener("click", e => {
-        const { properties: { url } } = squareData
-
-        location.href = url
       })
     });
   })
