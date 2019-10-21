@@ -52,7 +52,8 @@ function setSearchBoxes(element, url) {
     const { value } = e.target
 
     if (value.length) {
-      const filterData = data.filter(d => d.name.toLowerCase().includes(value.toLowerCase()))
+      // https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript/37511463#37511463
+      const filterData = data.filter(d => d.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()))
 
       // get DOM content
       const html = getHTMLContent(filterData, template, emptyTemplate)
