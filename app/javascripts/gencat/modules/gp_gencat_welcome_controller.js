@@ -69,6 +69,8 @@ function setSearchBoxes(element, url) {
         const { dataset: { name, url } } = e.target
         element.value = name
         element.url = url
+
+        navigate()
       }));
     } else {
       $target.removeClass(activeClass) // hide list
@@ -111,13 +113,13 @@ function setSearchBoxes(element, url) {
 
       // enter
       if (e.keyCode === 13) {
-        navigate() // navigate before setting the url to avoid be redirected directly
-
         const { dataset: { name, url } } = results[index]
-        el.value = name
-        el.url = url
+        element.value = name
+        element.url = url
 
         $target.removeClass(activeClass) // hide list
+
+        navigate()
       }
 
     }
@@ -164,7 +166,7 @@ function setDepartmentBoxes(element, url) {
       const ctx = square.querySelector(".square--chart")
       const tooltip = d => (`
         <div class="square--tooltip">
-          ${d.value} ${I18n.t("gobierto_people.welcome.index.meetings_box_title")}
+          ${d.value} ${d.value === 1 ? I18n.t("gobierto_people.welcome.index.meetings_box_title_single") : I18n.t("gobierto_people.welcome.index.meetings_box_title")}
         </div>
       `);
 
