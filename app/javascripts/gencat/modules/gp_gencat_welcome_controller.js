@@ -47,13 +47,15 @@ function setSearchBoxes(element, url) {
   const endpoint = appendUrlParam(url, "limit", 1000)
   $.getJSON(endpoint, response => (data = response))
 
+  // https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript/37511463#37511463
+  const lookUp = (term, value) => term.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase())
+
   // search on input type values
   element.addEventListener("input", e => {
     const { value } = e.target
 
     if (value.length) {
-      // https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript/37511463#37511463
-      const filterData = data.filter(d => d.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()))
+      const filterData = data.filter(d => lookUp(d.name, value) || lookUp(d.position, value))
 
       // get DOM content
       const html = getHTMLContent(filterData, template, emptyTemplate)
@@ -165,11 +167,15 @@ function setDepartmentBoxes(element, url) {
       const squareData = data.find(d => d.key === key)
 
       const ctx = square.querySelector(".square--chart")
-      const tooltip = d => (`
+      const tooltip = d => {
+        console.log(d);
+        
+        return (`
         <div class="square--tooltip">
-          ${d.value} ${d.value === 1 ? I18n.t("gobierto_people.welcome.index.meetings_box_title_single") : I18n.t("gobierto_people.welcome.index.meetings_box_title")}
+          ${d.value} ${d.value === 1 ? I18n.t("gobierto_people.welcome.index.meetings_box_title_single") : I18n.t("gobierto_people.welcome.index.meetings_box_title")} (${d.key.toLocaleDateString(I18n.locale, { year: 'numeric', month: 'short' })})
         </div>
-      `);
+      `)
+      };
 
       new Areachart({
         ctx,

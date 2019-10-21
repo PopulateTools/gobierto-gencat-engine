@@ -21,8 +21,8 @@ en:
         interest_groups_rowchart_title: Interest groups with most meetings with this
           department
         map_title: Where do officials travel?
-        meetings_box_title: Meetings registered
         meetings_box_subtitle: with interest groups
+        meetings_box_title: Meetings registered
         people_box_subtitle: with meetings registered
         people_box_title: officials in this department
         people_rowchart_title: Officials of this department with most meetings
@@ -121,17 +121,19 @@ en:
         3m: Last three months
         all: Everything
         range: Custom range
+      destinations: destinations
+      displacements: displacements
       meetings_punchcard:
         tooltip: meetings
       meetings_rowchart:
         tooltip: meetings
+      noresults: No results
       open_data_footer:
         gifts: Gifts
         invitations: Invitations
         meetings: Meetings
         title: Access the data in the Open Data portal
         trips: Trips
-      noresults: No results
       table_item:
         view_details: View details
       view_all: View all
@@ -143,13 +145,13 @@ en:
         departments_rowchart_title: Departments with most meetings
         description: Check with whom meets each Official in the Generalitat, companies
           and organizations that request meetings, and the trips and gifts received
-        interest_groups_box_subtitle: with meetings in the period 
+        interest_groups_box_subtitle: with meetings in the period
         interest_groups_box_title: Interest groups
         interest_groups_rowchart_title: Interest groups with most meetings
         map_title: Where do officials travel?
+        meetings_box_subtitle: with interest groups
         meetings_box_title: Meetings registered
         meetings_box_title_single: Meeting registered
-        meetings_box_subtitle: with interest groups
         people_box_subtitle: with meetings registered
         people_box_title: Officials
         people_rowchart_title: Officials with most meetings

@@ -2,7 +2,21 @@ window.GobiertoPeople.GencatMapController = (function() {
   function GencatMapController() {}
 
   GencatMapController.prototype.index = function(options) {
-    if ($('#map').length === 0) return;
+    createMap(options)
+
+    const toggle = document.querySelector(".js-toggle");
+    toggle.addEventListener("click", e => {
+      const openClassName = "is-open";
+      const infoboxClassList = e.target.parentElement.classList;
+      infoboxClassList.contains(openClassName) ? infoboxClassList.remove(openClassName) : infoboxClassList.add(openClassName);
+    });
+  }
+
+  return GencatMapController;
+})();
+
+function createMap(options) {
+  if ($('#map').length === 0) return;
 
     let fromDate = options.fromDate;
     let toDate = options.toDate;
@@ -25,6 +39,7 @@ window.GobiertoPeople.GencatMapController = (function() {
         sql_api_template: 'https://gobierto.carto.com',
         cartodb_logo: false
       });
+      map.zoomControl.setPosition('topright');
       map.scrollWheelZoom.disable();
 
       let choroplethCSS = `
@@ -150,9 +165,6 @@ ORDER by count DESC
         });
       });
     });
-  }
-
-  return GencatMapController;
-})();
+}
 
 window.GobiertoPeople.gencat_map_controller = new GobiertoPeople.GencatMapController;

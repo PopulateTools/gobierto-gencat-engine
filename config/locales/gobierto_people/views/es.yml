@@ -21,8 +21,8 @@ es:
         interest_groups_rowchart_title: Grupos de interés con más reuniones con este
           departamento
         map_title: "¿A dónde viajan los altos cargos?"
-        meetings_box_title: Reuniones registradas
         meetings_box_subtitle: con grupos de interés
+        meetings_box_title: Reuniones registradas
         people_box_subtitle: con reuniones registradas
         people_box_title: Altos cargos de este departamento
         people_rowchart_title: Altos cargos de este departamento con más reuniones
@@ -127,17 +127,19 @@ es:
         3m: Últimos tres meses
         all: Todo
         range: Rango personalizado
+      destinations: destinos
+      displacements: desplazamientos
       meetings_punchcard:
         tooltip: reuniones
       meetings_rowchart:
         tooltip: reuniones
+      noresults: Sin resultados
       open_data_footer:
         gifts: Obsequios
         invitations: Invitaciones
         meetings: Reuniones
         title: Acceder a los datos en el Portal de datos abiertos
         trips: Viajes
-      noresults: Sin resultados
       table_item:
         view_details: Ver detalles
       view_all: Ver todos
@@ -154,9 +156,9 @@ es:
         interest_groups_box_title: Grupos de interés
         interest_groups_rowchart_title: Grupos de interés con más reuniones
         map_title: "¿A dónde viajan los altos cargos?"
+        meetings_box_subtitle: con grupos de interés
         meetings_box_title: Reuniones registradas
         meetings_box_title_single: Reunión registrada
-        meetings_box_subtitle: con grupos de interés
         people_box_subtitle: con reuniones registradas
         people_box_title: Altos cargos
         people_rowchart_title: Altos cargos con más reuniones
