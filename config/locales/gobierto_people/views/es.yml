@@ -127,6 +127,7 @@ es:
         3m: Últimos tres meses
         all: Todo
         range: Rango personalizado
+      datepicker_fixed: Datos correspondientes al periodo
       destinations: destinos
       displacements: desplazamientos
       meetings_punchcard:

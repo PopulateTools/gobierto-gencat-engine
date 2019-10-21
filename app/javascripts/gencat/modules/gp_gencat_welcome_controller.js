@@ -154,7 +154,7 @@ function setDepartmentBoxes(element, url) {
   $.getJSON(endpoint, response => {
     const data = response
 
-    data.sort((a, b) => a.key > b.key)
+    data.sort((a, b) => a.key < b.key ? -1 : 1)
 
     // get DOM content
     const html = getHTMLContent(data, template, emptyTemplate)
@@ -168,11 +168,13 @@ function setDepartmentBoxes(element, url) {
 
       const ctx = square.querySelector(".square--chart")
       const tooltip = d => {
-        console.log(d);
-        
+        let date = (d.key || "").toLocaleDateString(I18n.locale, { year: 'numeric', month: 'long' }).replace(" de ", " ")
+        date = date.charAt(0).toUpperCase() + date.slice(1)
+        const text = d.value === 1 ? I18n.t("gobierto_people.welcome.index.meetings_box_title_single") : I18n.t("gobierto_people.welcome.index.meetings_box_title")
         return (`
         <div class="square--tooltip">
-          ${d.value} ${d.value === 1 ? I18n.t("gobierto_people.welcome.index.meetings_box_title_single") : I18n.t("gobierto_people.welcome.index.meetings_box_title")} (${d.key.toLocaleDateString(I18n.locale, { year: 'numeric', month: 'short' })})
+          <div>${date}</div>
+          <div>${d.value || 0} ${text}</div>
         </div>
       `)
       };

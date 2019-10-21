@@ -134,6 +134,7 @@ ca:
         3m: Darrers tres mesos
         all: Tot
         range: Rang personalitzat
+      datepicker_fixed: Data corresponent al període
       destinations: destinacions
       displacements: desplaçaments
       meetings_punchcard:

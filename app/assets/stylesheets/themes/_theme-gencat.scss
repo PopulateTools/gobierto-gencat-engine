@@ -111,7 +111,6 @@
   }
   // end hacks gencat-people
 
-  //@component color
   @for $i from 1 through max(length($colors), 3) {
     .color-#{$i} {
       background-color: color($i, $colors_lightest);
@@ -232,7 +231,6 @@
     }
   }
 
-  //@component box
   .box {
     border-radius: 0;
     display: flex;
@@ -385,7 +383,6 @@
     }
   }
 
-  //@component square
   .square {
     &--container {
       @extend %grid-container;
@@ -458,14 +455,14 @@
       font-weight: 400;
       line-height: 14px;
       margin-bottom: -1px;
-      padding: 0.5em;
+      padding: .5em;
       text-align: left;
       white-space: nowrap;
 
       &::after,
       &::before {
         border: solid transparent;
-        content: "";
+        content: '';
         height: 0;
         left: 50%;
         pointer-events: none;
@@ -491,7 +488,6 @@
     }
   }
 
-  //@component rectangle
   .rectangle {
     &--container {
       @extend %grid-container;
@@ -531,6 +527,105 @@
         text-transform: uppercase;
       }
     }
+  }
+
+  .map {
+    &--container {
+      @include absolute-layout;
+
+      overflow: hidden;
+    }
+
+    &--infobox {
+      background-color: color(3);
+      color: $color_main_negative;
+      height: 100%;
+      padding: 20px;
+      transform: translateX(-100%);
+      transition: transform 250ms;
+      width: 17%;
+      z-index: 1;
+
+      &.is-open {
+        transform: translateX(0);
+        transition: transform 250ms;
+
+        .map--infobox-close {
+          transform: translateX(0);
+        }
+      }
+    }
+
+    &--infobox-close {
+      align-items: center;
+      background-color: color(3);
+      box-sizing: border-box;
+      cursor: pointer;
+      display: inline-flex;
+      font-size: 12px;
+      height: 25px;
+      justify-content: center;
+      line-height: 1;
+      padding: .25em;
+      transform: translateX(100%);
+      transition: transform 250ms;
+      width: 25px;
+
+      > * {
+        margin: 0;
+        pointer-events: none;
+      }
+    }
+
+    &--infobox-decorator {
+      border-bottom: 1px solid rgba($color_main_negative, 0.3);
+      font-size: 30px;
+      font-weight: 400;
+      line-height: 36px;
+      padding: 8px 0;
+    }
+
+    &--infobox-block {
+      margin: 12px 0;
+    }
+
+    &--infobox-title {
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 50px;
+    }
+
+    &--infobox-desc {
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
+
+  .container-fixed {
+    background-color: #fff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .25);
+    left: 0;
+    margin: 0 auto;
+    padding: .5em 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 2;
+
+    .row {
+      align-items: center;
+      display: flex;
+    }
+
+    p {
+      font-size: 14px;
+      margin: 0;
+      text-align: right;
+    }
+  }
+
+  .people--container {
+    @include grid(30px, 4);
   }
 
   //@component datepicker
@@ -742,7 +837,6 @@
     }
   }
 
-  //@component map
   #map {
     height: 500px;
     width: 100%;
@@ -777,81 +871,5 @@
     > &:last-of-type  {
       margin-bottom: 100px;
     }
-  }
-
-  .map {
-    &--container {
-      @include absolute-layout;
-
-      overflow: hidden;
-    }
-
-    &--infobox {
-      background-color: color(3);
-      color: $color_main_negative;
-      height: 100%;
-      padding: 20px;
-      transform: translateX(-100%);
-      transition: transform 250ms;
-      width: 17%;
-      z-index: 1;
-
-      &.is-open {
-        transform: translateX(0);
-        transition: transform 250ms;
-
-        .map--infobox-close {
-          transform: translateX(0);
-        }
-      }
-    }
-
-    &--infobox-close {
-      align-items: center;
-      background-color: color(3);
-      box-sizing: border-box;
-      cursor: pointer;
-      display: inline-flex;
-      font-size: 12px;
-      height: 25px;
-      justify-content: center;
-      line-height: 1;
-      padding: .25em;
-      transform: translateX(100%);
-      transition: transform 250ms;
-      width: 25px;
-
-      > * {
-        margin: 0;
-        pointer-events: none;
-      }
-    }
-
-    &--infobox-decorator {
-      border-bottom: 1px solid rgba($color_main_negative, 0.3);
-      font-size: 30px;
-      font-weight: 400;
-      line-height: 36px;
-      padding: 8px 0;
-    }
-
-    &--infobox-block {
-      margin: 12px 0;
-    }
-
-    &--infobox-title {
-      font-size: 42px;
-      font-weight: 700;
-      line-height: 50px;
-    }
-
-    &--infobox-desc {
-      font-size: 16px;
-      line-height: 19px;
-    }
-  }
-
-  .people--container {
-    @include grid(30px, 4);
   }
 }
