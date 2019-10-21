@@ -148,6 +148,7 @@ en:
         interest_groups_rowchart_title: Interest groups with most meetings
         map_title: Where do officials travel?
         meetings_box_title: Meetings registered
+        meetings_box_title_single: Meeting registered
         meetings_box_subtitle: with interest groups
         people_box_subtitle: with meetings registered
         people_box_title: Officials

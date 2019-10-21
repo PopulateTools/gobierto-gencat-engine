@@ -162,6 +162,7 @@ ca:
         interest_groups_rowchart_title: Grups d'interès amb més reunions
         map_title: On viatgen els alts carrècs?
         meetings_box_title: Reunions registrades
+        meetings_box_title_single: Reunió registrada
         meetings_box_subtitle: amb grups d'interès
         people_box_subtitle: amb reunions registrades
         people_box_title: Alts càrrecs

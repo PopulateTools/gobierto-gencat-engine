@@ -155,6 +155,7 @@ es:
         interest_groups_rowchart_title: Grupos de interés con más reuniones
         map_title: "¿A dónde viajan los altos cargos?"
         meetings_box_title: Reuniones registradas
+        meetings_box_title_single: Reunión registrada
         meetings_box_subtitle: con grupos de interés
         people_box_subtitle: con reuniones registradas
         people_box_title: Altos cargos
