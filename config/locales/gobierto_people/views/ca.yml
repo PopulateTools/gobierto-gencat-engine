@@ -23,8 +23,8 @@ ca:
         interest_groups_rowchart_title: Grups d'interès amb més reunions amb aquest
           departament
         map_title: On viatgen els alts carrècs?
-        meetings_box_title: Reunions registrades
         meetings_box_subtitle: amb grups d'interès
+        meetings_box_title: Reunions registrades
         people_box_subtitle: amb reunions registrades
         people_box_title: Alts càrrecs d'aquest departament
         people_rowchart_title: Alts càrrec d'aquest departament amb més reunions
@@ -134,17 +134,19 @@ ca:
         3m: Darrers tres mesos
         all: Tot
         range: Rang personalitzat
+      destinations: destinacions
+      displacements: desplaçaments
       meetings_punchcard:
         tooltip: reunions
       meetings_rowchart:
         tooltip: reunions
+      noresults: Sense resultats
       open_data_footer:
         gifts: Obsequis
         invitations: Invitacions
         meetings: Reunions
         title: Accediu a les dades al Portal de dades obertes
         trips: Viatges
-      noresults: Sense resultats
       table_item:
         view_details: Veure detalls
       view_all: Veure-ho tot
@@ -161,9 +163,9 @@ ca:
         interest_groups_box_title: Grups d'interès
         interest_groups_rowchart_title: Grups d'interès amb més reunions
         map_title: On viatgen els alts carrècs?
+        meetings_box_subtitle: amb grups d'interès
         meetings_box_title: Reunions registrades
         meetings_box_title_single: Reunió registrada
-        meetings_box_subtitle: amb grups d'interès
         people_box_subtitle: amb reunions registrades
         people_box_title: Alts càrrecs
         people_rowchart_title: Alts càrrecs amb més reunions

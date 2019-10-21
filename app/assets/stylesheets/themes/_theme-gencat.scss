@@ -246,7 +246,7 @@
       @include grid(30px, 1);
 
       @include min-screen(768) {
-        @include grid(30px, 2)
+        @include grid(30px, 2);
       }
 
       > :last-child {
@@ -272,7 +272,7 @@
       display: flex;
       flex: 1 0 auto;
       height: 58px;
-      margin: .5em 0 0;
+      margin: 0.5em 0 0;
       position: relative;
 
       > input {
@@ -291,7 +291,7 @@
     &--results {
       background-color: $color_main_negative;
       border: 1px solid $color_separator;
-      box-shadow: 0 0 8px 0 rgba(0, 0, 0, .5);
+      box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
       display: none;
       max-height: 50vh;
       overflow-y: auto;
@@ -321,7 +321,7 @@
         font-size: 19px;
         font-weight: 700;
         line-height: 23px;
-        margin-bottom: .25em;
+        margin-bottom: 0.25em;
         pointer-events: none;
 
         &::first-letter {
@@ -426,7 +426,7 @@
       font-size: 14px;
       font-weight: 400;
       line-height: 17px;
-      margin-top: .5em;
+      margin-top: 0.5em;
     }
 
     &--chart {
@@ -458,14 +458,14 @@
       font-weight: 400;
       line-height: 14px;
       margin-bottom: -1px;
-      padding: .5em;
+      padding: 0.5em;
       text-align: left;
       white-space: nowrap;
 
       &::after,
       &::before {
         border: solid transparent;
-        content: '';
+        content: "";
         height: 0;
         left: 50%;
         pointer-events: none;
@@ -525,7 +525,7 @@
       font-size: 14px;
       font-weight: 400;
       line-height: 17px;
-      margin-top: .5em;
+      margin-top: 0.5em;
 
       &::first-letter {
         text-transform: uppercase;
@@ -546,9 +546,9 @@
       border-radius: 0;
       box-shadow: none;
       cursor: pointer;
-      font-size: .938em;
+      font-size: 0.938em;
       height: 2.667em;
-      padding: .4em;
+      padding: 0.4em;
       width: 100%;
 
       &:focus {
@@ -636,12 +636,12 @@
     }
 
     .datepicker--content {
-      font-family: 'OpenSansRegular', Helvetica, Arial, sans-serif;
-      margin: 0 0 .4em;
+      font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
+      margin: 0 0 0.4em;
       padding: 0;
 
       .datepicker--body {
-        font-size: .9em;
+        font-size: 0.9em;
       }
 
       .datepicker--days-names {
@@ -653,7 +653,7 @@
       .datepicker--day-name {
         color: $color_text;
         font-size: 13px;
-        padding: .7em .3em;
+        padding: 0.7em 0.3em;
         text-transform: capitalize;
       }
 
@@ -738,7 +738,7 @@
 
     > div:nth-child(3),
     > div:nth-child(2) {
-      opacity: .5;
+      opacity: 0.5;
     }
   }
 
@@ -779,24 +779,78 @@
     }
   }
 
-  section#map-chart {
-    .map-container {
-      display: flex;
+  .map {
+    &--container {
+      @include absolute-layout;
 
-      .map-info {
-        flex: 1 1 33%;
-        padding: 20px;
+      overflow: hidden;
+    }
 
-        h1 {
-          font-size: 60px;
-          font-weight: 600;
-          text-align: left;
+    &--infobox {
+      background-color: color(3);
+      color: $color_main_negative;
+      height: 100%;
+      padding: 20px;
+      transform: translateX(-100%);
+      transition: transform 250ms;
+      width: 17%;
+      z-index: 1;
+
+      &.is-open {
+        transform: translateX(0);
+        transition: transform 250ms;
+
+        .map--infobox-close {
+          transform: translateX(0);
         }
       }
+    }
+
+    &--infobox-close {
+      align-items: center;
+      background-color: color(3);
+      box-sizing: border-box;
+      cursor: pointer;
+      display: inline-flex;
+      height: 30px;
+      justify-content: center;
+      line-height: 1;
+      padding: .5em;
+      transform: translateX(100%);
+      transition: transform 250ms;
+      width: 30px;
+
+      > * {
+        margin: 0;
+        pointer-events: none;
+      }
+    }
+
+    &--infobox-decorator {
+      border-bottom: 1px solid rgba($color_main_negative, 0.3);
+      font-size: 30px;
+      font-weight: 400;
+      line-height: 36px;
+      padding: 8px 0;
+    }
+
+    &--infobox-block {
+      margin: 12px 0;
+    }
+
+    &--infobox-title {
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 50px;
+    }
+
+    &--infobox-desc {
+      font-size: 16px;
+      line-height: 19px;
     }
   }
 
   .people--container {
-    @include grid(30px, 4)
+    @include grid(30px, 4);
   }
 }
