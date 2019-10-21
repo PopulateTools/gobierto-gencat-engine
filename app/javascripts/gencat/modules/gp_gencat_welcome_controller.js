@@ -149,6 +149,8 @@ function setDepartmentBoxes(element, url) {
   $.getJSON(endpoint, response => {
     const data = response
 
+    data.sort((a, b) => a.key > b.key)
+
     // get DOM content
     const html = getHTMLContent(data, template, emptyTemplate)
     // add new content

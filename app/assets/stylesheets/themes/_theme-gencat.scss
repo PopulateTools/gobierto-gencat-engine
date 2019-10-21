@@ -212,6 +212,10 @@
           }
         }
       }
+
+      .box--result strong {
+        color: color($i);
+      }
     }
 
     .toggle-container {
@@ -225,10 +229,6 @@
           }
         }
       }
-    }
-
-    .box--result strong {
-      color: color($i);
     }
   }
 
