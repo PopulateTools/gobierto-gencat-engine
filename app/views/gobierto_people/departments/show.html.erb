@@ -72,12 +72,15 @@
 
 <% if trips_submodule_active? %>
   <section id="map-chart">
-    Desplazamientos: <%= @department.trips_count %>
-    Destinos: <%= @department.trips_unique_destinations_count %>
-
     <p><strong><%= t(".map_title") %></strong></p>
 
-    <%= render "gobierto_people/shared/map", trips_statistics: @department_stats %>
+    <%= render(
+          "gobierto_people/shared/map",
+          trips_statistics: {
+            total_trips: @department.trips_count,
+            total_unique_destinations: @department.trips_unique_destinations_count
+          }
+        ) %>
   </section>
 <% end %>
 
