@@ -33,11 +33,11 @@
     <div class="map--infobox-close top right js-toggle"><i class="fas fa-times"></i></div>
     <div class="map--infobox-decorator"><i class="fas fa-globe-europe"></i></div>
     <div class="map--infobox-block">
-      <h3 class="map--infobox-title"><%= @home_statistics[:total_trips] %></h3>
+      <h3 class="map--infobox-title"><%= trips_statistics[:total_trips] %></h3>
       <p class="map--infobox-desc"><%= t("gobierto_people.shared.displacements") %></p>
     </div>
     <div class="map--infobox-block">
-      <h3 class="map--infobox-title"><%= @home_statistics[:total_unique_destinations] %></h3>
+      <h3 class="map--infobox-title"><%= trips_statistics[:total_unique_destinations] %></h3>
       <p class="map--infobox-desc"><%= t("gobierto_people.shared.destinations") %></p>
     </div>
   </div>
