@@ -12,7 +12,7 @@ window.GobiertoPeople.GencatCommonController = (function() {
       containerFixed.forEach(element => {
         const { offsetTop } = element;
         const originalNode = $(element).find("p")
-        
+
         window.addEventListener("scroll", () => onScroll.call(this, element, offsetTop, originalNode))
       });
     }
@@ -27,20 +27,15 @@ window.GobiertoPeople.GencatCommonController = (function() {
   return GencatCommonController;
 })();
 
-let isFixed = false;
 function onScroll(element, offsetTop, node) {
-  if (window.pageYOffset > offsetTop && !isFixed) {  
+  if (window.pageYOffset > offsetTop && !element.classList.contains("container-fixed")) {
     element.classList.add("container-fixed")
     $(element).find("p").replaceWith(`<p>${I18n.t("gobierto_people.shared.datepicker_fixed")}</p>`);
     $(element).children().wrapAll('<div class="container"><div class="row"></div></div>')
-
-    isFixed = true
-  } else if (window.pageYOffset < offsetTop && isFixed) {
+  } else if (window.pageYOffset < offsetTop && element.classList.contains("container-fixed")) {
     element.classList.remove("container-fixed")
     $(element).find("p").replaceWith(node)
     $(element).find("[class*='col-']").unwrap().unwrap()
-
-    isFixed = false
   }
 }
 
