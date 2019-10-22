@@ -121,6 +121,7 @@ en:
         3m: Last three months
         all: Everything
         range: Custom range
+      datepicker_fixed: Data corresponding to the period
       destinations: destinations
       displacements: displacements
       meetings_punchcard:
