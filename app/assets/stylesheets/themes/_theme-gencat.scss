@@ -276,6 +276,7 @@
 
       > input {
         flex: 0 1 70%;
+        height: 100%;
         min-width: 0;
         width: 100%;
       }
@@ -284,6 +285,7 @@
         color: $color_main_negative;
         flex: 0 0 30%;
         font-size: 14px;
+        height: 100%;
       }
     }
 
@@ -292,6 +294,7 @@
       border: 1px solid $color_separator;
       box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5);
       display: none;
+      left: 0;
       max-height: 50vh;
       overflow-y: auto;
       position: absolute;

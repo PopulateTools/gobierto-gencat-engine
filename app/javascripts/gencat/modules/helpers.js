@@ -107,6 +107,16 @@ function getHTMLContent(data, template, emptyTemplate = I18n.t("gobierto_people.
   return list
 }
 
+function lookUp(term, value) {
+  // IE11 polyfill for normalize
+  if (!String.prototype.normalize) {
+    return normalize(term).replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(normalize(value).replace(/[\u0300-\u036f]/g, "").toLowerCase())
+  }
+  
+  // https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript/37511463#37511463
+  return term.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase())
+};
+
 // issues
 function setTooltipColor() {
   if (phantomJsDetected()) { return; }
@@ -289,8 +299,31 @@ const updateQueryStringParam = (key, value) => {
     window.history.pushState({}, "", baseUrl + params);
 };
 
+// Fallback IE
+const normalize = str => {
+  var from = "1234567890ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç ‘/&().!,'",
+      to = "izeasgtogoAAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc_______",
+      mapping = {};
+
+  for (let i = 0, j = from.length; i < j; i++) {
+    mapping[from.charAt(i)] = to.charAt(i);
+  }
+
+  var ret = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+    var c = str.charAt(i);
+    if (Object.prototype.hasOwnProperty.call(mapping, str.charAt(i))) {
+      ret.push(mapping[c]);
+    } else {
+      ret.push(c);
+    }
+  }
+
+  return ret.join('').toLowerCase();
+}
+
 function phantomJsDetected() {
   return (window.callPhantom || window._phantom);
 }
 
-export { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor, setDatepickerFilters, getHTMLContent, appendUrlParam }
+export { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor, setDatepickerFilters, getHTMLContent, appendUrlParam, lookUp }

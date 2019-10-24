@@ -1,4 +1,4 @@
-import { getHTMLContent, appendUrlParam } from './helpers.js'
+import { getHTMLContent, appendUrlParam, lookUp } from './helpers.js'
 import { Areachart } from 'lib/visualizations'
 
 window.GobiertoPeople.GencatWelcomeController = (function() {
@@ -46,9 +46,6 @@ function setSearchBoxes(element, url) {
   // get initial data
   const endpoint = appendUrlParam(url, "limit", 1000)
   $.getJSON(endpoint, response => (data = response))
-
-  // https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript/37511463#37511463
-  const lookUp = (term, value) => term.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase())
 
   // search on input type values
   element.addEventListener("input", e => {
