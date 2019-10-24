@@ -117,6 +117,19 @@ function lookUp(term, value) {
   return term.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase())
 };
 
+// special sort based on position property
+function getSortingKey(value, keysToBeSorted = []) {
+  for (let index = 0; index < keysToBeSorted.length; index++) {
+    const element = keysToBeSorted[index];
+
+    if (element.test(value)) {
+      return index
+    }
+  }
+
+  return keysToBeSorted.length
+}
+
 // issues
 function setTooltipColor() {
   if (phantomJsDetected()) { return; }
@@ -326,4 +339,4 @@ function phantomJsDetected() {
   return (window.callPhantom || window._phantom);
 }
 
-export { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor, setDatepickerFilters, getHTMLContent, appendUrlParam, lookUp }
+export { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor, setDatepickerFilters, getHTMLContent, appendUrlParam, lookUp, getSortingKey }
