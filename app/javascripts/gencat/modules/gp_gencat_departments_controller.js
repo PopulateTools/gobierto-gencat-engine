@@ -1,4 +1,4 @@
-import { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor, appendUrlParam, getHTMLContent } from './helpers.js'
+import { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor, appendUrlParam, getHTMLContent, getSortingKey } from './helpers.js'
 
 window.GobiertoPeople.GencatDepartmentsController = (function() {
 
@@ -50,22 +50,12 @@ function setPeopleBoxes(element, url) {
     $.getJSON(endpoint, response => {
       const data = response
 
-      // special sort based on position property
-      function getSortingKey(value) {
-        if (new RegExp(/\bconseller[a]?/, "i").test(value)) {
-            return 1;
-        }
-        if (new RegExp(/\bsecret[a|à]ri[a]? general/, "i").test(value)) {
-            return 2;
-        }
-        return 3;
-      }
-
-      data.sort((a, b) => getSortingKey(a.position) - getSortingKey(b.position))
+      const sortingKeys = [new RegExp(/\bconseller[a]?/, "i"), new RegExp(/\bsecret[a|à]ri[a]? general/, "i")]
+      data.sort((a, b) => getSortingKey(a.position, sortingKeys) - getSortingKey(b.position, sortingKeys))
 
       // get DOM content
       const html = getHTMLContent(data, template, emptyTemplate)
-      // // add new content
+      // add new content
       $(element).append(html)
     })
 }
