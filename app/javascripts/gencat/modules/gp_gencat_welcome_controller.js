@@ -1,4 +1,4 @@
-import { getHTMLContent, appendUrlParam } from './helpers.js'
+import { getHTMLContent, appendUrlParam, lookUp } from './helpers.js'
 import { Areachart } from 'lib/visualizations'
 
 window.GobiertoPeople.GencatWelcomeController = (function() {
@@ -46,9 +46,6 @@ function setSearchBoxes(element, url) {
   // get initial data
   const endpoint = appendUrlParam(url, "limit", 1000)
   $.getJSON(endpoint, response => (data = response))
-
-  // https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript/37511463#37511463
-  const lookUp = (term, value) => term.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase())
 
   // search on input type values
   element.addEventListener("input", e => {
@@ -139,7 +136,7 @@ function setDepartmentBoxes(element, url) {
             <a href="{{ properties.url }}">
               <h1 class="square--title"><strong>{{ key }}</strong></h1>
             </a>
-            <div class="square--subtitle">{{ value.reduce((a, b) => a + b.value, 0) }} ${I18n.t("gobierto_people.welcome.index.meetings_box_title")}</div>
+            <div class="square--subtitle">{{ value.reduce(function(a, b) { return a + b.value }, 0) }} ${I18n.t("gobierto_people.welcome.index.meetings_box_title")}</div>
             <div class="square--chart bottom"></div>
           </div>
         </div>
@@ -172,11 +169,11 @@ function setDepartmentBoxes(element, url) {
         date = date.charAt(0).toUpperCase() + date.slice(1)
         const text = d.value === 1 ? I18n.t("gobierto_people.welcome.index.meetings_box_title_single") : I18n.t("gobierto_people.welcome.index.meetings_box_title")
         return (`
-        <div class="square--tooltip">
-          <div>${date}</div>
-          <div>${d.value || 0} ${text}</div>
-        </div>
-      `)
+          <div class="square--tooltip">
+            <div>${date}</div>
+            <div>${d.value || 0} ${text}</div>
+          </div>
+        `)
       };
 
       new Areachart({

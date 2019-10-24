@@ -32,8 +32,24 @@ module Gencat
             assert_equal page_title, header_title
             assert_equal page_title, breadcrumb_last_item_text
 
-            assert has_svg_link?(department.to_url(start_date: DEFAULT_DATE_FILTER_START))
-            assert has_svg_link?(person.to_url(start_date: DEFAULT_DATE_FILTER_START))
+            # Summary boxes
+
+            within all(".box")[0] do
+              assert has_content?("10\nregistered events")
+              assert has_svg_link?(department.to_url(start_date: DEFAULT_DATE_FILTER_START))
+            end
+
+            within all(".box")[1] do
+              assert has_content?("3\nofficials")
+              assert has_svg_link?(person.to_url(start_date: DEFAULT_DATE_FILTER_START))
+            end
+
+            # Punchcard
+
+            within "#department_people_events_punchcard" do
+              assert has_content?(department.name)
+              assert all("svg").any?
+            end
           end
         end
 

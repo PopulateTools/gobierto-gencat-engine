@@ -49,19 +49,33 @@ module Gencat
 
           assert title.include? page_title
 
+          # Summary boxes
+
           within "#meetings-box" do
             assert has_content? "10\nMeetings registered"
           end
 
           within "#interest-groups-box" do
-            assert has_content? "#{interest_groups_counter}\nInterest groups inscribed"
+            assert has_content? "#{interest_groups_counter}\nInterest groups\nwith meetings in the period"
           end
 
           within "#people-box" do
             assert has_content? "#{people_box_counter}\nOfficials\nwith meetings registered"
           end
 
+          # Departments
+
+          within("[data-key=\"Immigration department\"]") do
+            assert has_content? "Immigration department"
+            assert has_content? "2 Meetings registered"
+            assert all("svg").any?
+          end
+
+          # Map
+
           assert map_loaded?
+
+          # Gifts and invitations
 
           within "#gifts-wrapper" do
             assert_equal "Gifts", find("#gifts-wrapper section strong").text
@@ -80,7 +94,18 @@ module Gencat
       end
 
       def test_people_search_box
-        skip "TODO"
+        with(js: true, site: site) do
+          visit gobierto_people_root_path
+
+          find(".js-search").send_keys(person.name)
+
+          assert find(".box--result", visible: false)["innerHTML"].include?(person.name)
+          assert find(".box--result", visible: false)["innerHTML"].include?(person.charge)
+
+          find(".box--result", visible: false).execute_script("this.click()")
+
+          assert current_url.include? gobierto_people_person_path(person.slug)
+        end
       end
 
       def test_datepicker
