@@ -17,48 +17,40 @@
 </section>
 
 <section class="row">
-  <div class="fpca_distribuidora">
-    <div class="llistat_destacat_text_avancat">
-      <div class="llistat_col-lg-3 nova-altura-dist same-height-wrapper">
-
-        <div class="corrector-margins col-xs-12 col-md-4">
-          <div class="box color-1 distribuidora-nova-3">
-            <div class="color-decorator">
-              <h1><strong><%= @department_stats[:total_meetings] %></strong></h1>
-              <div>
-                <div><strong><%= t(".meetings_box_title") %></strong></div>
-                <div class="soft"><%= t(".meetings_box_subtitle") %></div>
-              </div>
-            </div>
-          </div>
+  <div class="col-xs-12 col-md-4">
+    <div class="box color-1 distribuidora-nova-3">
+      <div class="color-decorator">
+        <h1><strong><%= @department_stats[:total_meetings] %></strong></h1>
+        <div>
+          <div><strong><%= t(".meetings_box_title") %></strong></div>
+          <div class="soft"><%= t(".meetings_box_subtitle") %></div>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <div class="corrector-margins col-xs-12 col-md-4">
-          <div class="box color-2 distribuidora-nova-3">
-            <div class="color-decorator">
-              <h1><strong><%= @department_stats[:unique_interest_groups] %></strong></h1>
-              <div>
-                <div><strong><%= t(".interest_groups_box_title") %></strong></div>
-                <div class="soft"><%= t(".interest_groups_box_subtitle") %></div>
-              </div>
-            </div>
-          </div>
+  <div class="col-xs-12 col-md-4">
+    <div class="box color-2 distribuidora-nova-3">
+      <div class="color-decorator">
+        <h1><strong><%= @department_stats[:unique_interest_groups] %></strong></h1>
+        <div>
+          <div><strong><%= t(".interest_groups_box_title") %></strong></div>
+          <div class="soft"><%= t(".interest_groups_box_subtitle") %></div>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <div class="corrector-margins col-xs-12 col-md-4">
-          <div class="box color-3 distribuidora-nova-3">
-            <div class="color-decorator">
-              <%= link_to gobierto_people_department_people_path(@department, date_range_params), class: "no-link" do %>
-                <h1><strong><%= @department_stats[:total_people_with_attendances] %></strong></h1>
-              <% end %>
-              <div>
-                <div><strong><%= t(".people_box_title") %></strong></div>
-                <div class="soft"><%= t(".people_box_subtitle") %></div>
-              </div>
-            </div>
-          </div>
+  <div class="col-xs-12 col-md-4">
+    <div class="box color-3 distribuidora-nova-3">
+      <div class="color-decorator">
+        <%= link_to gobierto_people_department_people_path(@department, date_range_params), class: "no-link" do %>
+          <h1><strong><%= @department_stats[:total_people_with_attendances] %></strong></h1>
+        <% end %>
+        <div>
+          <div><strong><%= t(".people_box_title") %></strong></div>
+          <div class="soft"><%= t(".people_box_subtitle") %></div>
         </div>
-
       </div>
     </div>
   </div>

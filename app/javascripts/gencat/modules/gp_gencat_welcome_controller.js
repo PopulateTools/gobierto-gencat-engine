@@ -139,7 +139,7 @@ function setDepartmentBoxes(element, url) {
             <a href="{{ properties.url }}">
               <h1 class="square--title"><strong>{{ key }}</strong></h1>
             </a>
-            <div class="square--subtitle">{{ value.reduce((a, b) => a + b.value, 0) }} ${I18n.t("gobierto_people.welcome.index.meetings_box_title")}</div>
+            <div class="square--subtitle">{{ value.reduce(function(a, b) { return a + b.value }, 0) }} ${I18n.t("gobierto_people.welcome.index.meetings_box_title")}</div>
             <div class="square--chart bottom"></div>
           </div>
         </div>
@@ -172,11 +172,11 @@ function setDepartmentBoxes(element, url) {
         date = date.charAt(0).toUpperCase() + date.slice(1)
         const text = d.value === 1 ? I18n.t("gobierto_people.welcome.index.meetings_box_title_single") : I18n.t("gobierto_people.welcome.index.meetings_box_title")
         return (`
-        <div class="square--tooltip">
-          <div>${date}</div>
-          <div>${d.value || 0} ${text}</div>
-        </div>
-      `)
+          <div class="square--tooltip">
+            <div>${date}</div>
+            <div>${d.value || 0} ${text}</div>
+          </div>
+        `)
       };
 
       new Areachart({
