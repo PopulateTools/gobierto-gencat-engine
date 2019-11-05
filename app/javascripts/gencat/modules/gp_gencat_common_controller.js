@@ -30,7 +30,7 @@ window.GobiertoPeople.GencatCommonController = (function() {
 function onScroll(element, offsetTop, node) {
   if (window.pageYOffset > offsetTop && !element.classList.contains("container-fixed")) {
     element.classList.add("container-fixed")
-    $(element).find("p").replaceWith(`<p>${I18n.t("gobierto_people.shared.datepicker_fixed")}</p>`);
+    $(element).find("p").replaceWith(`<p><strong>${I18n.t("gobierto_people.shared.datepicker_fixed")}</strong></p>`);
     $(element).children().wrapAll('<div class="container"><div class="row"></div></div>')
   } else if (window.pageYOffset < offsetTop && element.classList.contains("container-fixed")) {
     element.classList.remove("container-fixed")

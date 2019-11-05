@@ -18,8 +18,8 @@ ca:
         punchcard_title: Reunions per departament i mes
         title: Departaments
       show:
-        interest_groups_box_subtitle: o en procés d'inscripció
-        interest_groups_box_title: Grups d'interès inscrits
+        interest_groups_box_subtitle: amb reunions en el període
+        interest_groups_box_title: Grups d'interès
         interest_groups_rowchart_title: Grups d'interès amb més reunions amb aquest
           departament
         map_title: On viatgen els alts carrècs?

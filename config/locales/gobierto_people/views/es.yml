@@ -16,8 +16,8 @@ es:
         punchcard_title: Reuniones por departamento y mes
         title: Departamentos
       show:
-        interest_groups_box_subtitle: o en proceso de inscripción
-        interest_groups_box_title: Grupos de interés incritos
+        interest_groups_box_subtitle: con reuniones en el periodo
+        interest_groups_box_title: Grupos de interés
         interest_groups_rowchart_title: Grupos de interés con más reuniones con este
           departamento
         map_title: "¿A dónde viajan los altos cargos?"

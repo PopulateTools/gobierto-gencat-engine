@@ -50,7 +50,14 @@ function setPeopleBoxes(element, url) {
     $.getJSON(endpoint, response => {
       const data = response
 
-      const sortingKeys = [new RegExp(/\bconseller[a]?/, "i"), new RegExp(/\bsecret[a|à]ri[a]? general/, "i")]
+      const sortingKeys = [
+        new RegExp(/\bconseller[a]?/, "i"), 
+        new RegExp(/\bviceconseller[a]?/, "i"), 
+        new RegExp(/\bsecret[a|à]ri[a]? general/, "i"), 
+        new RegExp(/\bsecret[a|à]ri[a]?/, "i"), 
+        new RegExp(/\bdirector[a]?/, "i"),
+        new RegExp(/\bdelega? /, "i")
+      ]
       data.sort((a, b) => getSortingKey(a.position, sortingKeys) - getSortingKey(b.position, sortingKeys))
 
       // get DOM content
