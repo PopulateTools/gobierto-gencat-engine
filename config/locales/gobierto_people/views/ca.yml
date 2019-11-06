@@ -150,7 +150,8 @@ ca:
         trips: Viatges
       table_item:
         view_details: Veure detalls
-      view_all: Veure-ho tot
+      view_all: Veure tot
+      view_all_f: Veure totes
       view_details: Veure detalls
       view_gifts: Veure tots els obsequis al Portal de dades oberts
       view_invitations: Veure totes les invitacions al Portal de dades oberts
