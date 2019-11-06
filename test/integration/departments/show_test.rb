@@ -41,11 +41,11 @@ module Gencat
             end
 
             within all(".box")[1] do
-              assert has_content? "2\ninterest groups registered"
+              assert has_content? "2\nInterest groups"
             end
 
             within all(".box")[2] do
-              assert has_content? "2\nofficials in this department\nwith meetings registered"
+              assert has_content? "2\nofficials in this department"
             end
 
             # People
