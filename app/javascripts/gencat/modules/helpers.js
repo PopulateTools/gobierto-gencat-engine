@@ -1,5 +1,5 @@
-import * as d3 from 'd3'
 import moment from 'moment'
+import { timeFormat, timeFormatDefaultLocale } from 'd3-time-format'
 import { d3locale } from 'lib/shared'
 import { rowchart, punchcard } from 'lib/visualizations'
 
@@ -32,8 +32,8 @@ function _loadPunchcard(container, url, title) {
         let intervalLength = (arr.length > 12) ? 3 : (arr.length > 5) ? 2 : 1
         let distanceFromEnd = arr.length - i - 1
         
-        d3.timeFormatDefaultLocale(d3locale[I18n.locale])
-        return ((distanceFromEnd % intervalLength) === 0) ? d3.timeFormat("%b %y")(d) : null
+        timeFormatDefaultLocale(d3locale[I18n.locale])
+        return ((distanceFromEnd % intervalLength) === 0) ? timeFormat("%b %y")(d) : null
       }
     }
 

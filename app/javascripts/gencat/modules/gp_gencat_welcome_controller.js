@@ -1,5 +1,6 @@
 import { getHTMLContent, appendUrlParam, lookUp } from './helpers.js'
 import { Areachart } from 'lib/visualizations'
+import { timeFormat } from 'd3-time-format'
 
 window.GobiertoPeople.GencatWelcomeController = (function() {
 
@@ -176,15 +177,28 @@ function setDepartmentBoxes(element, url) {
         `)
       };
 
+      const parsedData = squareData.value.map(d => ({ ...d, key: new Date(d.key) }))
+
       new Areachart({
         ctx,
-        data: squareData.value.map(d => ({ ...d, key: new Date(d.key) })),
+        data: parsedData,
         tooltip,
         circleSize: 2.5,
         minValue: -5,
-        marginLeft: 5,
-        marginRight: 5,
-        marginBottom: 0
+        xTickFormat: (d, i, arr) => {
+          const ticks = 3
+          const intervalLength = Math.floor(arr.length / ticks)
+          const distanceFromEnd = arr.length - i - 1
+
+          // Never add first tick
+          if (i === 0 && arr.length !== 1) return null
+          // Always add ticks if very few 
+          if (arr.length < ticks) return timeFormat("%b %y")(d)
+          // From last one, add ticks by interval
+          if ((distanceFromEnd % intervalLength) === 0) return timeFormat("%b %y")(d)
+
+          return null
+        }
       })
     });
   })
