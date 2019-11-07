@@ -40,7 +40,7 @@ module Gencat
       end
 
       def page_title
-        "Administration activity viewer"
+        "Public management activity derived from the Code of Conduct"
       end
 
       def test_welcome_index
