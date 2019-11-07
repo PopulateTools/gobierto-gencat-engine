@@ -5,7 +5,7 @@
       <p><strong><%= t("gobierto_people.gifts.title") %></strong></p>
       <p><%= t("gobierto_people.gifts.description") %></p>
       <div class="alert alert-warning">
-        <small><%= t("gobierto_people.gifts.title") %> <%= render 'gobierto_people/shared/code_of_conduct_link' %></small>
+        <small><%= render 'gobierto_people/shared/code_of_conduct_link' %></small>
       </div>
     </section>
 
@@ -28,6 +28,16 @@
         </ul>
       </figure>
 
+      <div>
+        <small>
+          <%= link_to(
+                t("gobierto_people.shared.view_gifts"),
+                "https://analisi.transparenciacatalunya.cat/Sector-P-blic/Codi-de-conducta-dels-alts-c-rrecs-Obsequis/std5-i2zv",
+                target: "_blank"
+              ) %>
+        </small>
+      </div>
+
       <%= link_to gobierto_people_people_path do %>
         <small><%= t("gobierto_people.shared.view_officials") %></small>
       <% end %>
@@ -41,7 +51,7 @@
       <p><strong><%= t("gobierto_people.invitations.title") %></strong></p>
       <p><%= t("gobierto_people.invitations.description") %></p>
       <div class="alert alert-warning">
-        <small><%= t("gobierto_people.invitations.coc") %> <%= render 'gobierto_people/shared/code_of_conduct_link' %></small>
+        <small><%= render 'gobierto_people/shared/code_of_conduct_link' %></small>
       </div>
     </section>
 
@@ -63,6 +73,16 @@
           <% end %>
         </ul>
       </figure>
+
+      <div>
+        <small>
+          <%= link_to(
+            t("gobierto_people.shared.view_invitations"),
+            "https://analisi.transparenciacatalunya.cat/Sector-P-blic/Codi-de-conducta-dels-alts-c-rrecs-Invitacions-a-v/sdnv-univ",
+            target: "_blank"
+          ) %>
+        </small>
+      </div>
 
       <%= link_to gobierto_people_people_path do %>
         <small><%= t("gobierto_people.shared.view_officials") %></small>

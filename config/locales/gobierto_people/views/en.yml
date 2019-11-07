@@ -16,8 +16,8 @@ en:
         punchcard_title: Meetings per departments and month
         title: Departments
       show:
-        interest_groups_box_subtitle: or in the registration process
-        interest_groups_box_title: interest groups registered
+        interest_groups_box_subtitle: with meetings in the period
+        interest_groups_box_title: Interest groups
         interest_groups_rowchart_title: Interest groups with most meetings with this
           department
         map_title: Where do officials travel?
@@ -113,8 +113,8 @@ en:
             one: person
             other: people
     shared:
-      app_title: Administration activity viewer
-      check_it_out: Check it out
+      app_title: Public management activity derived from the Code of Conduct
+      check_it_out: Check the text of the Code of Conduct
       datepicker:
         1m: Last month
         1y: Last year
@@ -138,14 +138,22 @@ en:
       table_item:
         view_details: View details
       view_all: View all
+      view_all_f: View all
       view_details: View details
+      view_gifts: View all the gifts on the Open Data portal
+      view_invitations: View all the invitations on the Open Data portal
       view_officials: View Officials
     welcome:
       index:
         departments: Departments
         departments_rowchart_title: Departments with most meetings
-        description: Check with whom meets each Official in the Generalitat, companies
-          and organizations that request meetings, and the trips and gifts received
+        description: The viewer shows the meetings of the senior management of the
+          Generalitat administration with the people who have the status of interest
+          group. There are also the gifts and invitations allowed by the Code of Conduct.
+          The Code of Conduct commits senior officials to making this information
+          public. Also, in the viewer you will be able to consult the trips abroad
+          of the President, advisers, advisers and high positions in the exercise
+          of their functions.
         interest_groups_box_subtitle: with meetings in the period
         interest_groups_box_title: Interest groups
         interest_groups_rowchart_title: Interest groups with most meetings

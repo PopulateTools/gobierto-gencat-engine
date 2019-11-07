@@ -16,6 +16,7 @@
 </section>
 
 <section class="row">
+
   <div class="col-xs-12 col-md-6 js-rowchart-component">
     <div class="box color-1">
 
@@ -35,12 +36,13 @@
 
     <div class="margin_top_xs js-reload-rowchart-wrapper">
       <p><%= t(".explore_departments") %></p>
-      <%= link_to gobierto_people_departments_path(date_range_params) do %>
-        <small><%= t("gobierto_people.shared.view_all") %></small>
+      <%= link_to "" do %>
+        <small><%= t("gobierto_people.shared.view_all_f") %></small>
       <% end %>
     </div>
   </div>
-  <div class="col-xs-12 col-md-6">
+
+  <div class="col-xs-12 col-md-6 js-rowchart-component">
     <div class="box color-3">
       <div class="color-decorator">
         <%= link_to gobierto_people_people_path(date_range_params), class: "no-link" do %>
@@ -50,15 +52,15 @@
           <div><strong><%= t(".people_with_events") %></strong></div>
         </h5>
       </div>
-      <div class="margin_top_xs js-rowchart-component">
+      <div class="margin_top_xs">
         <span style="padding: 0 20px"><%= t(".people_events") %></span>
         <div id="people_events_rowchart" class="rowchart"></div>
       </div>
     </div>
-    <div class="margin_top_xs">
+    <div class="margin_top_xs js-reload-rowchart-wrapper">
       <p><%= t(".explore_people") %></p>
-      <%= link_to gobierto_people_people_path(date_range_params) do %>
-      <small><%= t("gobierto_people.shared.view_all") %></small>
+      <%= link_to "" do %>
+        <small><%= t("gobierto_people.shared.view_all") %></small>
       <% end %>
     </div>
   </div>

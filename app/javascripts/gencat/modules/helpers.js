@@ -1,7 +1,7 @@
-import * as d3 from 'd3'
 import moment from 'moment'
+import { timeFormat, timeFormatDefaultLocale } from 'd3-time-format'
 import { d3locale } from 'lib/shared'
-import { rowchart, punchcard } from 'lib/visualizations'
+import { Rowchart, Punchcard } from 'lib/visualizations'
 
 function _loadRowchart(container, url) {
   $.getJSON(url, (data) => {
@@ -13,7 +13,7 @@ function _loadRowchart(container, url) {
     }
 
     data.sort((a, b) => a.value - b.value)
-    rowchart(container, data, opts);
+    new Rowchart(container, data, opts);
 
     // tweak axis
     $(container).find(".axis").removeAttr("font-size").removeAttr("font-family")
@@ -32,8 +32,8 @@ function _loadPunchcard(container, url, title) {
         let intervalLength = (arr.length > 12) ? 3 : (arr.length > 5) ? 2 : 1
         let distanceFromEnd = arr.length - i - 1
         
-        d3.timeFormatDefaultLocale(d3locale[I18n.locale])
-        return ((distanceFromEnd % intervalLength) === 0) ? d3.timeFormat("%b %y")(d) : null
+        timeFormatDefaultLocale(d3locale[I18n.locale])
+        return ((distanceFromEnd % intervalLength) === 0) ? timeFormat("%b %y")(d) : null
       }
     }
 
@@ -51,7 +51,7 @@ function _loadPunchcard(container, url, title) {
 
     // data.reverse to show it as it was received
     // https://stackoverflow.com/questions/23849680/d3-y-scale-y-vs-height
-    punchcard(container, data.reverse(), opts)
+    new Punchcard(container, data.reverse(), opts)
 
     // tweak axis
     $(container).find(".axis").removeAttr("font-size").removeAttr("font-family")

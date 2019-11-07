@@ -8,7 +8,17 @@ window.GobiertoPeople.GencatMapController = (function() {
     toggle.addEventListener("click", e => {
       const openClassName = "is-open";
       const infoboxClassList = e.target.parentElement.classList;
-      infoboxClassList.contains(openClassName) ? infoboxClassList.remove(openClassName) : infoboxClassList.add(openClassName);
+      const iconClassList = e.target.firstElementChild.classList;
+
+      if (infoboxClassList.contains(openClassName)) {
+        infoboxClassList.remove(openClassName)
+        iconClassList.toggle("fa-arrow-left")
+        iconClassList.toggle("fa-arrow-right")
+      } else { 
+        infoboxClassList.add(openClassName)
+        iconClassList.toggle("fa-arrow-left")
+        iconClassList.toggle("fa-arrow-right")
+      }
     });
   }
 

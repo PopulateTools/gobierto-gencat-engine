@@ -11,6 +11,7 @@ window.GobiertoPeople.GencatDepartmentsController = (function() {
     _loadPunchcard('#department_people_events_punchcard', options.department_people_events_punchcard_api_path, I18n.t('gobierto_people.departments.index.punchcard_title'))
 
     _reloadRowchart('#departments_events_rowchart', options.departments_events_api_path, 10000)
+    _reloadRowchart('#people_events_rowchart', options.people_events_api_path, 10000)
 
     // REVIEW: Waiting for render
     setTimeout(function () {
@@ -50,7 +51,14 @@ function setPeopleBoxes(element, url) {
     $.getJSON(endpoint, response => {
       const data = response
 
-      const sortingKeys = [new RegExp(/\bconseller[a]?/, "i"), new RegExp(/\bsecret[a|à]ri[a]? general/, "i")]
+      const sortingKeys = [
+        new RegExp(/\bconseller[a]?/, "i"), 
+        new RegExp(/\bviceconseller[a]?/, "i"), 
+        new RegExp(/\bsecret[a|à]ri[a]? general/, "i"), 
+        new RegExp(/\bsecret[a|à]ri[a]?/, "i"), 
+        new RegExp(/\bdirector[a]?/, "i"),
+        new RegExp(/\bdelega? /, "i")
+      ]
       data.sort((a, b) => getSortingKey(a.position, sortingKeys) - getSortingKey(b.position, sortingKeys))
 
       // get DOM content

@@ -450,6 +450,10 @@
         cursor: pointer;
         fill: color(2);
       }
+
+      .tick {
+        color: $color_text;
+      }
     }
 
     &--tooltip {
@@ -807,6 +811,10 @@
 
     li {
       margin-bottom: 10px;
+
+      &:only-of-type a {
+        cursor: default;
+      }
     }
 
     a {

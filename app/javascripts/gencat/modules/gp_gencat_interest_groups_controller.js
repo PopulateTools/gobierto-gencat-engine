@@ -14,6 +14,9 @@ window.GobiertoPeople.GencatInterestGroupsController = (function() {
     _loadRowchart('#people_events_rowchart', options.people_events_rowchart_api_path)
     _loadPunchcard('#interest_group_people_events_punchcard', options.interest_group_people_events_punchcard_api_path, I18n.t('gobierto_people.interest_groups.show.punchcard_title'))
 
+    _reloadRowchart('#departments_events_rowchart', options.departments_events_rowchart_api_path, 10000)
+    _reloadRowchart('#people_events_rowchart', options.people_events_rowchart_api_path, 10000)
+
     // REVIEW: Waiting for render
     setTimeout(function () {
       setTooltipColor()

@@ -16,8 +16,8 @@ es:
         punchcard_title: Reuniones por departamento y mes
         title: Departamentos
       show:
-        interest_groups_box_subtitle: o en proceso de inscripción
-        interest_groups_box_title: Grupos de interés incritos
+        interest_groups_box_subtitle: con reuniones en el periodo
+        interest_groups_box_title: Grupos de interés
         interest_groups_rowchart_title: Grupos de interés con más reuniones con este
           departamento
         map_title: "¿A dónde viajan los altos cargos?"
@@ -119,8 +119,8 @@ es:
             one: persona
             other: personas
     shared:
-      app_title: Visor de la actividad directiva
-      check_it_out: Consúltelo
+      app_title: Actividad directiva pública derivada del Código de conducta
+      check_it_out: Consultad el texto del Código de conducta
       datepicker:
         1m: Último mes
         1y: Último año
@@ -144,15 +144,22 @@ es:
       table_item:
         view_details: Ver detalles
       view_all: Ver todos
+      view_all_f: Ver todas
       view_details: Ver detalles
+      view_gifts: Ver todos los obsequios en el Portal de datos abiertos
+      view_invitations: Ver todas las invitaciones en el Portal de datos abiertos
       view_officials: Ver altos cargos
     welcome:
       index:
         departments: Departamentos
         departments_rowchart_title: Departamentos con más reuniones
-        description: Consulte con quién se reúne cada alto cargo de la Generalidad,
-          las empresas y organizaciones que solicitan reuniones, y los viajes y obsequios
-          recibidos
+        description: El visor muestra las reuniones de los altos cargos de la Administración
+          de la Generalitat con las personas que tienen la condición de grupo de interés.
+          También se encuentran los obsequios y las invitaciones permitidos por el
+          Código de conducta. El Código de conducta compromete a los altos cargos
+          a hacer pública esta información. Asimismo, en el visor podréis consultar
+          los viajes al extranjero del Presidente, consejeras, consejeros y altos
+          cargos en ejercicio de sus funciones.
         interest_groups_box_subtitle: con reuniones en el periodo
         interest_groups_box_title: Grupos de interés
         interest_groups_rowchart_title: Grupos de interés con más reuniones
