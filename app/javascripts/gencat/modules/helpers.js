@@ -43,12 +43,6 @@ function _loadPunchcard(container, url, title) {
       opts = { ...opts, width: breakpoint, gutter: 15 }
     }
 
-    // filter data up to 18m back
-    let mostRecentDate = _.max(_.map(_.flatten(_.concat(_.map(data, 'value'))), 'key'))
-    for (var i = 0; i < data.length; i++) {
-      data[i].value = data[i].value.filter((i) => moment(i.key).isAfter(moment(mostRecentDate).subtract(18, 'months')))
-    }
-
     // data.reverse to show it as it was received
     // https://stackoverflow.com/questions/23849680/d3-y-scale-y-vs-height
     new Punchcard(container, data.reverse(), opts)
