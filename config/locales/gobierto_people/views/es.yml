@@ -119,7 +119,7 @@ es:
             one: persona
             other: personas
     shared:
-      app_title: Visor de la actividad directiva
+      app_title: Actividad directiva pública derivada del Código de conducta
       check_it_out: Consultad el texto del Código de conducta
       datepicker:
         1m: Último mes

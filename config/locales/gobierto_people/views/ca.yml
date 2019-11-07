@@ -126,7 +126,7 @@ ca:
             one: persona
             other: persones
     shared:
-      app_title: Visor de l'activitat directiva
+      app_title: Activitat directiva públic derivat de el Codi de conducta
       check_it_out: Consulteu el text del Codi de conducta
       datepicker:
         1m: Darrer mes

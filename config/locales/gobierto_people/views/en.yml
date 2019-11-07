@@ -113,7 +113,7 @@ en:
             one: person
             other: people
     shared:
-      app_title: Administration activity viewer
+      app_title: Public management activity derived from the Code of Conduct
       check_it_out: Check the text of the Code of Conduct
       datepicker:
         1m: Last month
