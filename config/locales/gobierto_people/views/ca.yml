@@ -159,6 +159,7 @@ ca:
     welcome:
       index:
         departments: Departaments
+        departments_extra: es mostren els Departaments que existeixen o han existit en funció del període seleccionat
         departments_rowchart_title: Departaments amb més reunions
         description: El visor mostra les reunions dels alts càrrecs de l’administració
           de la Generalitat amb les persones que tenen la condició de grup d’interès.

@@ -146,6 +146,7 @@ en:
     welcome:
       index:
         departments: Departments
+        departments_extra: Departments that exist or have existed based on the selected period
         departments_rowchart_title: Departments with most meetings
         description: The viewer shows the meetings of the senior management of the
           Generalitat administration with the people who have the status of interest
