@@ -67,8 +67,6 @@ es:
       title: Invitaciones
     people:
       gifts:
-        gift:
-          from: de
         index:
           gifts: Obsequios
           no_gifts: No hay obsequios en las fechas seleccionadas
@@ -130,6 +128,8 @@ es:
       datepicker_fixed: Datos correspondientes al periodo
       destinations: destinos
       displacements: desplazamientos
+      from: de
+      to: para
       meetings_punchcard:
         tooltip: reuniones
       meetings_rowchart:

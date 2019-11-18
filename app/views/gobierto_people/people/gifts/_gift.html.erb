@@ -1,7 +1,8 @@
 <%= render(
       "gobierto_people/people/item_teaser",
       title: gift.name,
-      subtitle: "#{t('.from')}: #{gift.delivered_by}",
+      from: gift.delivered_by,
+      to: gift.reason,
       id: gift.to_anchor,
       dates: gift.date,
       item_details_path: local_assigns[:teaser] ? gobierto_people_person_gifts_path(gift.person.slug, { anchor: gift.to_anchor }.merge(date_range_params)) : nil

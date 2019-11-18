@@ -61,8 +61,6 @@ en:
       title: Invitations
     people:
       gifts:
-        gift:
-          from: from
         index:
           gifts: Gifts
           no_gifts: There are no gifts in the given dates
@@ -124,6 +122,8 @@ en:
       datepicker_fixed: Data corresponding to the period
       destinations: destinations
       displacements: displacements
+      from: from
+      to: to
       meetings_punchcard:
         tooltip: meetings
       meetings_rowchart:

@@ -71,8 +71,6 @@ ca:
       title: Invitacions
     people:
       gifts:
-        gift:
-          from: de
         index:
           gifts: Obsequis
           no_gifts: No hi ha obsequis en les dates seleccionades
@@ -137,6 +135,8 @@ ca:
       datepicker_fixed: Data corresponent al període
       destinations: destinacions
       displacements: desplaçaments
+      from: de
+      to: per a
       meetings_punchcard:
         tooltip: reunions
       meetings_rowchart:
