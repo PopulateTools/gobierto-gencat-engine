@@ -1,7 +1,0 @@
-<li><%= link_to_unless(
-          (controller_path.include?("gobierto_people/departments/people") && controller_path.exclude?("departments")) || (
-            controller_path == "gobierto_people/people" && action_name == "index"),
-          t("gobierto_people.people.index.officials"),
-          gobierto_people_people_path(date_range_params),
-          data: { turbolinks: false }
-        ) %></li>
