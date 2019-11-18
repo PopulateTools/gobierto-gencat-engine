@@ -6,9 +6,11 @@
       <% if local_assigns[:title] %>
         <strong><%= title %></strong>
       <% end %>
-
-      <% if local_assigns[:subtitle] %>
-        <div><%= subtitle %></div>
+      <% if local_assigns[:from] %>
+        <div><i><%= t("gobierto_people.shared.from") %>:</i>&nbsp;<%= from %></div>
+      <% end %>
+      <% if local_assigns[:to] %>
+        <div><i><%= t("gobierto_people.shared.to") %>:</i>&nbsp;<%= to %></div>
       <% end %>
     </div>
 

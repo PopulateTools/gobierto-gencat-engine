@@ -67,8 +67,6 @@ es:
       title: Invitaciones
     people:
       gifts:
-        gift:
-          from: de
         index:
           gifts: Obsequios
           no_gifts: No hay obsequios en las fechas seleccionadas
@@ -130,6 +128,8 @@ es:
       datepicker_fixed: Datos correspondientes al periodo
       destinations: destinos
       displacements: desplazamientos
+      from: de
+      to: para
       meetings_punchcard:
         tooltip: reuniones
       meetings_rowchart:
@@ -152,6 +152,7 @@ es:
     welcome:
       index:
         departments: Departamentos
+        departments_extra: se muestran los Departamentos que existen o han existido en función del periodo seleccionado
         departments_rowchart_title: Departamentos con más reuniones
         description: El visor muestra las reuniones de los altos cargos de la Administración
           de la Generalitat con las personas que tienen la condición de grupo de interés.
