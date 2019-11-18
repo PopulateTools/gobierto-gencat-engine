@@ -12,6 +12,14 @@
     <div class="<%= dispay_range ? 'col-md-7' : 'col-md-9' %>">
       <strong><%= link_to title, resource_path, class: "no-link" %></strong>
       <div><%= link_to resource.person.name, "#{ resource.person.to_path }#{ "?#{ date_range_params.to_query }" if date_range_params.present? }", class: "no-link" %></div>
+
+      <% if local_assigns[:from] %>
+        <div><i><%= t("gobierto_people.shared.from") %>:</i>&nbsp;<%= local_assigns[:from] %></div>
+      <% end %>
+
+      <% if local_assigns[:to] %>
+        <div><i><%= t("gobierto_people.shared.to") %>:</i>&nbsp;<%= local_assigns[:to] %></div>
+      <% end %>
     </div>
 
     <div class="<%= dispay_range ? 'col-md-5' : 'col-md-3' %> text-right">

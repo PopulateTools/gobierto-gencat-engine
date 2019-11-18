@@ -17,6 +17,8 @@
             <%= render(
                   "gobierto_people/shared/table_item",
                   title: gift.name,
+                  from: gift.delivered_by,
+                  to: gift.reason,
                   resource: gift,
                   resource_path: gobierto_people_person_gifts_path(
                     gift.person.slug,
