@@ -25,7 +25,7 @@
             <div class="box--content">
               <h1><strong><%= number_with_delimiter @home_statistics[:total_events] %></strong></h1>
               <div>
-                <div><strong><%= t(".meetings_box_title") %></strong></div>
+                <div><strong><%= simple_pluralize(@home_statistics[:total_events], t(".meetings_box_title_single"), t(".meetings_box_title")) %></strong></div>
                 <div class="soft"><%= t(".meetings_box_subtitle") %></div>
               </div>
             </div>
@@ -40,7 +40,7 @@
               <div class="box--content">
                 <h1><strong><%= number_with_delimiter @home_statistics[:total_interest_groups] %></strong></h1>
                 <div>
-                  <div><strong><%= t(".interest_groups_box_title") %></strong></div>
+                  <div><strong><%= simple_pluralize(@home_statistics[:total_interest_groups], t(".interest_groups_box_title_single"), t(".interest_groups_box_title")) %></strong></div>
                   <div class="soft"><%= t(".interest_groups_box_subtitle") %></div>
                 </div>
               </div>
@@ -55,7 +55,7 @@
             <div class="box--content">
               <h1><strong><%= number_with_delimiter @home_statistics[:total_people_with_attendances] %></strong></h1>
               <div>
-                <div><strong><%= t(".people_box_title") %></strong></div>
+                <div><strong><%= simple_pluralize(@home_statistics[:total_people_with_attendances], t(".people_box_title_single"), t(".people_box_title")) %></strong></div>
                 <div class="soft"><%= t(".people_box_subtitle") %></div>
               </div>
               <div class="box--searchbox">

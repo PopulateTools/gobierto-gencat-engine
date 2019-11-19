@@ -18,13 +18,16 @@ en:
       show:
         interest_groups_box_subtitle: with meetings in the period
         interest_groups_box_title: Interest groups
+        interest_groups_box_title_single: Interest group
         interest_groups_rowchart_title: Interest groups with most meetings with this
           department
         map_title: Where do officials travel?
         meetings_box_subtitle: with interest groups
         meetings_box_title: Meetings registered
+        meetings_box_title_single: Meeting registered
         people_box_subtitle: with meetings registered
         people_box_title: officials in this department
+        people_box_title_single: official in this department
         people_rowchart_title: Officials of this department with most meetings
         punchcard_title: Meetings per official and month
     gifts:
@@ -44,6 +47,7 @@ en:
         rowchart_title: Interest groups with most meetings
         title: Interest Groups
       show:
+        event: registered event
         events: registered events
         events_by_department: With which departments does this group meet?
         events_by_person: Officials with which this group has met
@@ -120,7 +124,9 @@ en:
         all: Everything
         range: Custom range
       datepicker_fixed: Data corresponding to the period
+      destination: destination
       destinations: destinations
+      displacement: displacement
       displacements: displacements
       from: from
       to: to
@@ -157,6 +163,7 @@ en:
           of their functions.
         interest_groups_box_subtitle: with meetings in the period
         interest_groups_box_title: Interest groups
+        interest_groups_box_title_single: Interest group
         interest_groups_rowchart_title: Interest groups with most meetings
         map_title: Where do officials travel?
         meetings_box_subtitle: with interest groups
@@ -164,6 +171,7 @@ en:
         meetings_box_title_single: Meeting registered
         people_box_subtitle: with meetings registered
         people_box_title: Officials
+        people_box_title_single: Official
         people_rowchart_title: Officials with most meetings
         punchcard_title: Meetings per official and month
         search: Search

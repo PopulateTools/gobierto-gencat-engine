@@ -24,7 +24,7 @@
       <div class="color-decorator">
         <h1><%= number_with_delimiter(@total_events) %></h1>
         <h5>
-          <div><strong><%= t(".events") %></strong></div>
+          <div><strong><%= simple_pluralize(@total_events, t(".event"), t(".events")) %></strong></div>
         </h5>
       </div>
 

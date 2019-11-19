@@ -18,13 +18,16 @@ es:
       show:
         interest_groups_box_subtitle: con reuniones en el periodo
         interest_groups_box_title: Grupos de interés
+        interest_groups_box_title_single: Grupo de interés
         interest_groups_rowchart_title: Grupos de interés con más reuniones con este
           departamento
         map_title: "¿A dónde viajan los altos cargos?"
         meetings_box_subtitle: con grupos de interés
         meetings_box_title: Reuniones registradas
+        meetings_box_title_single: Reunión registrada
         people_box_subtitle: con reuniones registradas
         people_box_title: Altos cargos de este departamento
+        people_box_title_single: Alto cargo de este departamento
         people_rowchart_title: Altos cargos de este departamento con más reuniones
         punchcard_title: Reuniones por alto cargo y mes
     gifts:
@@ -46,6 +49,7 @@ es:
         rowchart_title: Grupos de interés con más reuniones
         title: Grupos de interés
       show:
+        event: Reunión registradas
         events: Reuniones registradas
         events_by_department: Con qué departamentos se reúne este grupo
         events_by_person: Altos cargos con los que se ha reunido este grupo
@@ -126,7 +130,9 @@ es:
         all: Todo
         range: Rango personalizado
       datepicker_fixed: Datos correspondientes al periodo
+      destination: destino
       destinations: destinos
+      displacement: desplazamiento
       displacements: desplazamientos
       from: de
       to: para
@@ -163,6 +169,7 @@ es:
           cargos en ejercicio de sus funciones.
         interest_groups_box_subtitle: con reuniones en el periodo
         interest_groups_box_title: Grupos de interés
+        interest_groups_box_title_single: Grupo de interés
         interest_groups_rowchart_title: Grupos de interés con más reuniones
         map_title: "¿A dónde viajan los altos cargos?"
         meetings_box_subtitle: con grupos de interés
@@ -170,6 +177,7 @@ es:
         meetings_box_title_single: Reunión registrada
         people_box_subtitle: con reuniones registradas
         people_box_title: Altos cargos
+        people_box_title_single: Alto cargo
         people_rowchart_title: Altos cargos con más reuniones
         punchcard_title: Reuniones por alto cargo y mes
         search: Buscar
