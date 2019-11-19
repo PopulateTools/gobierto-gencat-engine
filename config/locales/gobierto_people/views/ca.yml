@@ -142,7 +142,6 @@ ca:
       displacement: desplaçament
       displacements: desplaçaments
       from: de
-      to: per a
       meetings_punchcard:
         tooltip: reunions
       meetings_rowchart:
@@ -156,6 +155,7 @@ ca:
         trips: Viatges
       table_item:
         view_details: Veure detalls
+      to: per a
       view_all: Veure tot
       view_all_f: Veure totes
       view_details: Veure detalls
@@ -165,7 +165,8 @@ ca:
     welcome:
       index:
         departments: Departaments
-        departments_extra: es mostren els Departaments que existeixen o han existit en funció del període seleccionat
+        departments_extra: es mostren els Departaments que existeixen o han existit
+          en funció del període seleccionat
         departments_rowchart_title: Departaments amb més reunions
         description: El visor mostra les reunions dels alts càrrecs de l’administració
           de la Generalitat amb les persones que tenen la condició de grup d’interès.

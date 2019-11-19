@@ -135,7 +135,6 @@ es:
       displacement: desplazamiento
       displacements: desplazamientos
       from: de
-      to: para
       meetings_punchcard:
         tooltip: reuniones
       meetings_rowchart:
@@ -149,6 +148,7 @@ es:
         trips: Viajes
       table_item:
         view_details: Ver detalles
+      to: para
       view_all: Ver todos
       view_all_f: Ver todas
       view_details: Ver detalles
@@ -158,7 +158,8 @@ es:
     welcome:
       index:
         departments: Departamentos
-        departments_extra: se muestran los Departamentos que existen o han existido en función del periodo seleccionado
+        departments_extra: se muestran los Departamentos que existen o han existido
+          en función del periodo seleccionado
         departments_rowchart_title: Departamentos con más reuniones
         description: El visor muestra las reuniones de los altos cargos de la Administración
           de la Generalitat con las personas que tienen la condición de grupo de interés.
