@@ -137,7 +137,7 @@ function setDepartmentBoxes(element, url) {
             <a href="{{ properties.url }}">
               <h1 class="square--title"><strong>{{ key }}</strong></h1>
             </a>
-            <div class="square--subtitle">{{ value.reduce(function(a, b) { return a + b.value }, 0) }} ${I18n.t("gobierto_people.welcome.index.meetings_box_title")}</div>
+            <div class="square--subtitle">{{ value.reduce(function(a, b) { return a + b.value }, 0) }} {{ value.reduce(function(a, b) { return a + b.value }, 0) === 1 ? '${I18n.t("gobierto_people.welcome.index.meetings_box_title_single")}' : '${I18n.t("gobierto_people.welcome.index.meetings_box_title")}' }}</div>
             <div class="square--chart bottom"></div>
           </div>
         </div>
