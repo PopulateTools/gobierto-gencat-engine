@@ -1,4 +1,4 @@
-<%= render "gobierto_people/people/content_for_module_breadcrumb" %>
+<li><%= t("gobierto_people.people.index.officials") %></li>
 <li><%= link_to_unless_current(
           @person.name,
           gobierto_people_person_path(@person.slug, date_range_params),
