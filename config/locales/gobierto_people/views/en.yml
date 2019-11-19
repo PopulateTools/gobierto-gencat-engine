@@ -131,8 +131,10 @@ en:
       from: from
       meetings_punchcard:
         tooltip: meetings
+        tooltip_single: meeting
       meetings_rowchart:
         tooltip: meetings
+        tooltip_single: meeting
       noresults: No results
       open_data_footer:
         gifts: Gifts

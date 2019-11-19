@@ -8,7 +8,7 @@ function _loadRowchart(container, url) {
     let opts = {
       tooltipContainer: ".theme-gencat",
       tooltipContent: {
-        eval: "d.value.toLocaleString() + ' " + I18n.t('gobierto_people.shared.meetings_rowchart.tooltip') + "'"
+        eval: `d.value.toLocaleString() + (d.value === 1 ? ' ${I18n.t('gobierto_people.shared.meetings_rowchart.tooltip_single')}' : ' ${I18n.t('gobierto_people.shared.meetings_rowchart.tooltip')}')`
       },
     }
 
@@ -26,7 +26,7 @@ function _loadPunchcard(container, url, title) {
       title: title,
       tooltipContainer: ".theme-gencat",
       tooltipContent: {
-        eval: "d.value.toLocaleString() + ' " + I18n.t('gobierto_people.shared.meetings_punchcard.tooltip') + "'"
+        eval: `d.value.toLocaleString() + (d.value === 1 ? ' ${I18n.t('gobierto_people.shared.meetings_punchcard.tooltip_single')}' : ' ${I18n.t('gobierto_people.shared.meetings_punchcard.tooltip')}')`
       },
       xTickFormat: (d, i, arr) => {
         let intervalLength = (arr.length > 12) ? 3 : (arr.length > 5) ? 2 : 1

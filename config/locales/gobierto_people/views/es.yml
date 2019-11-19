@@ -137,8 +137,10 @@ es:
       from: de
       meetings_punchcard:
         tooltip: reuniones
+        tooltip_single: reunión
       meetings_rowchart:
         tooltip: reuniones
+        tooltip_single: reunión
       noresults: Sin resultados
       open_data_footer:
         gifts: Obsequios

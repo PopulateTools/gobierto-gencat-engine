@@ -144,8 +144,10 @@ ca:
       from: de
       meetings_punchcard:
         tooltip: reunions
+        tooltip_single: reunió
       meetings_rowchart:
         tooltip: reunions
+        tooltip_single: reunió
       noresults: Sense resultats
       open_data_footer:
         gifts: Obsequis
