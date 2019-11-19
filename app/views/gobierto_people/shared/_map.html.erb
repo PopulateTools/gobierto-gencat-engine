@@ -34,11 +34,11 @@
     <div class="map--infobox-decorator"><i class="fas fa-globe-europe"></i></div>
     <div class="map--infobox-block">
       <h3 class="map--infobox-title"><%= number_with_delimiter trips_statistics[:total_trips] %></h3>
-      <p class="map--infobox-desc"><%= t("gobierto_people.shared.displacements") %></p>
+      <p class="map--infobox-desc"><%= simple_pluralize(trips_statistics[:total_trips], t("gobierto_people.shared.displacement"), t("gobierto_people.shared.displacements")) %></p>
     </div>
     <div class="map--infobox-block">
       <h3 class="map--infobox-title"><%= number_with_delimiter trips_statistics[:total_unique_destinations] %></h3>
-      <p class="map--infobox-desc"><%= t("gobierto_people.shared.destinations") %></p>
+      <p class="map--infobox-desc"><%= simple_pluralize(trips_statistics[:total_unique_destinations], t("gobierto_people.shared.destination"), t("gobierto_people.shared.destinations")) %></p>
     </div>
   </div>
 

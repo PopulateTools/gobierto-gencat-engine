@@ -20,13 +20,16 @@ ca:
       show:
         interest_groups_box_subtitle: amb reunions en el període
         interest_groups_box_title: Grups d'interès
+        interest_groups_box_title_single: Grup d'interès
         interest_groups_rowchart_title: Grups d'interès amb més reunions amb aquest
           departament
         map_title: On viatgen els alts carrècs?
         meetings_box_subtitle: amb grups d'interès
         meetings_box_title: Reunions registrades
+        meetings_box_title_single: Reunió registrada
         people_box_subtitle: amb reunions registrades
         people_box_title: Alts càrrecs d'aquest departament
+        people_box_title_single: Alt càrrec d'aquest departament
         people_rowchart_title: Alts càrrec d'aquest departament amb més reunions
         punchcard_title: Reunions per alt càrrec i mes
     gifts:
@@ -50,6 +53,7 @@ ca:
         rowchart_title: Grups d'interès amb més reunions
         title: Grups d'interès
       show:
+        event: Reunió registrada
         events: Reunions registrades
         events_by_department: Amb quins departaments es reuneix aquest grup
         events_by_person: Alts càrrecs amb els quals s'ha reunit aquest grup
@@ -133,14 +137,17 @@ ca:
         all: Tot
         range: Rang personalitzat
       datepicker_fixed: Data corresponent al període
+      destination: destinació
       destinations: destinacions
+      displacement: desplaçament
       displacements: desplaçaments
       from: de
-      to: per a
       meetings_punchcard:
         tooltip: reunions
+        tooltip_single: reunió
       meetings_rowchart:
         tooltip: reunions
+        tooltip_single: reunió
       noresults: Sense resultats
       open_data_footer:
         gifts: Obsequis
@@ -150,6 +157,7 @@ ca:
         trips: Viatges
       table_item:
         view_details: Veure detalls
+      to: per a
       view_all: Veure tot
       view_all_f: Veure totes
       view_details: Veure detalls
@@ -159,7 +167,8 @@ ca:
     welcome:
       index:
         departments: Departaments
-        departments_extra: es mostren els Departaments que existeixen o han existit en funció del període seleccionat
+        departments_extra: es mostren els Departaments que existeixen o han existit
+          en funció del període seleccionat
         departments_rowchart_title: Departaments amb més reunions
         description: El visor mostra les reunions dels alts càrrecs de l’administració
           de la Generalitat amb les persones que tenen la condició de grup d’interès.
@@ -170,6 +179,7 @@ ca:
           funcions.
         interest_groups_box_subtitle: amb reunions en el període
         interest_groups_box_title: Grups d'interès
+        interest_groups_box_title_single: Grup d'interès
         interest_groups_rowchart_title: Grups d'interès amb més reunions
         map_title: On viatgen els alts carrècs?
         meetings_box_subtitle: amb grups d'interès
@@ -177,6 +187,7 @@ ca:
         meetings_box_title_single: Reunió registrada
         people_box_subtitle: amb reunions registrades
         people_box_title: Alts càrrecs
+        people_box_title_single: Alt càrrec
         people_rowchart_title: Alts càrrecs amb més reunions
         punchcard_title: Reunions per alt càrrec i mes
         search: Cercar
