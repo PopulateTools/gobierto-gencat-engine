@@ -14,7 +14,7 @@ window.GobiertoPeople.GencatMapController = (function() {
         infoboxClassList.remove(openClassName)
         iconClassList.toggle("fa-arrow-left")
         iconClassList.toggle("fa-arrow-right")
-      } else { 
+      } else {
         infoboxClassList.add(openClassName)
         iconClassList.toggle("fa-arrow-left")
         iconClassList.toggle("fa-arrow-right")
@@ -76,7 +76,7 @@ SELECT country, country_name, count(*) as count, world_borders.the_geom as the_g
 array_to_string(array_agg(DISTINCT person_name), ',') as person_names, array_to_string(array_agg(DISTINCT person_slug), ',') as person_slugs
 FROM gencat_trips_staging
 INNER JOIN world_borders ON world_borders.iso2 = country
-WHERE country is not null
+WHERE country is not null AND country != 'ES'
 ${dateRangeConditions}
 ${departmentCondition}
 GROUP BY country, country_name, world_borders.the_geom, world_borders.the_geom_webmercator
@@ -86,7 +86,7 @@ GROUP BY country, country_name, world_borders.the_geom, world_borders.the_geom_w
 SELECT count(*) as count, city_name, country_name, the_geom, the_geom_webmercator, array_to_string(array_agg(DISTINCT person_name), ',') as person_names,
 array_to_string(array_agg(DISTINCT person_slug), ',') as person_slugs, array_to_string(array_agg(DISTINCT destination_name), ',') as destination_names
 FROM gencat_trips_staging
-WHERE country is not null
+WHERE country is not null AND country != 'ES'
 ${dateRangeConditions}
 ${departmentCondition}
 GROUP BY city_name, country_name, the_geom, the_geom_webmercator
