@@ -31,6 +31,7 @@ function createMap(options) {
     let fromDate = options.fromDate;
     let toDate = options.toDate;
     let departmentCondition = options.departmentId || "";
+    let cartoDatabaseName = options.cartoDatabaseName;
     let dateRangeConditions = [];
     if(fromDate !== "")
       dateRangeConditions.push(`start_date >= '${fromDate}'`)
@@ -74,7 +75,7 @@ function createMap(options) {
       let choroplethSQL = `
 SELECT country, country_name, count(*) as count, world_borders.the_geom as the_geom, world_borders.the_geom_webmercator,
 array_to_string(array_agg(DISTINCT person_name), ',') as person_names, array_to_string(array_agg(DISTINCT person_slug), ',') as person_slugs
-FROM gencat_trips_staging
+FROM ${cartoDatabaseName}
 INNER JOIN world_borders ON world_borders.iso2 = country
 WHERE country is not null AND country != 'ES'
 ${dateRangeConditions}
@@ -85,7 +86,7 @@ GROUP BY country, country_name, world_borders.the_geom, world_borders.the_geom_w
       let bubbleSQL = `
 SELECT count(*) as count, city_name, country_name, the_geom, the_geom_webmercator, array_to_string(array_agg(DISTINCT person_name), ',') as person_names,
 array_to_string(array_agg(DISTINCT person_slug), ',') as person_slugs, array_to_string(array_agg(DISTINCT destination_name), ',') as destination_names
-FROM gencat_trips_staging
+FROM ${cartoDatabaseName}
 WHERE country is not null AND country != 'ES'
 ${dateRangeConditions}
 ${departmentCondition}
@@ -95,7 +96,7 @@ ORDER by count DESC
 
       let clorplethActive = true;
 
-      L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',{
+      L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png',{
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
       }).addTo(map);
 

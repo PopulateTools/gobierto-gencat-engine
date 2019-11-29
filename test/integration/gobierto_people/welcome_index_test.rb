@@ -81,14 +81,14 @@ module Gencat
             assert_equal "Gifts", find("#gifts-wrapper section strong").text
             assert has_link? gift.name
             assert has_link? gift.person.name
-            assert has_link? "View Officials"
+            assert has_link? "View all the gifts"
           end
 
           within "#invitations-wrapper" do
             assert_equal "Invitations", find("#invitations-wrapper section strong").text
             assert has_link? invitation.title
             assert has_link? invitation.person.name
-            assert has_link? "View Officials"
+            assert has_link? "View all the invitations"
           end
         end
       end
