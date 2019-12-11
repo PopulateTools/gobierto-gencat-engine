@@ -163,13 +163,19 @@ es:
         departments_extra: se muestran los Departamentos que existen o han existido
           en función del periodo seleccionado
         departments_rowchart_title: Departamentos con más reuniones
-        description: El visor muestra las reuniones de los altos cargos de la Administración
-          de la Generalitat con las personas que tienen la condición de grupo de interés.
-          También se encuentran los obsequios y las invitaciones permitidos por el
-          Código de conducta. El Código de conducta compromete a los altos cargos
-          a hacer pública esta información. Asimismo, en el visor podréis consultar
-          los viajes al extranjero del Presidente, consejeras, consejeros y altos
-          cargos en ejercicio de sus funciones.
+        description_1: El visor muestra las reuniones de los altos cargos de la administración
+          de la Generalitat con los grupos de interés en el periodo temporal que seleccione.
+          También encontrará los regalos e invitaciones permitidos por el Código de
+          conducta, que obliga a los altos cargos a hacer pública esta información.
+          Asimismo, el visor permite consultar los viajes al extranjero del Presidente,
+          consejeros, asesores y altos cargos en el ejercicio de sus funciones.
+        description_2_html: Respecto de la información de los altos cargos, se muestra
+          el último cargo que ocupan o han ocupado en la última actividad registrada.
+          Para saber si un alto cargo está actualmente en activo y el cargo que ocupa,
+          acceda a <a href="http://governobert.gencat.cat/es/transparencia/Organitzacio-i-normativa/organigrames/index.html">Organigramas</a>.
+          Para conocer el cargo que ocupaban en un momento determinado, acceda al
+          enlace al dataset correspondiente del Portal de datos abiertas, al final
+          de la página, y busque la persona a través del buscador.
         interest_groups_box_subtitle: con reuniones en el periodo
         interest_groups_box_title: Grupos de interés
         interest_groups_box_title_single: Grupo de interés
