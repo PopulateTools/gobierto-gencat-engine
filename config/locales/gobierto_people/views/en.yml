@@ -157,13 +157,20 @@ en:
         departments_extra: Departments that exist or have existed based on the selected
           period
         departments_rowchart_title: Departments with most meetings
-        description: The viewer shows the meetings of the senior management of the
+        description_1: The viewer shows the meetings of the senior management of the
           Generalitat administration with the people who have the status of interest
-          group. There are also the gifts and invitations allowed by the Code of Conduct.
-          The Code of Conduct commits senior officials to making this information
-          public. Also, in the viewer you will be able to consult the trips abroad
-          of the President, advisers, advisers and high positions in the exercise
-          of their functions.
+          group in the time period you select. You will also find the gifts and invitations
+          allowed by the Code of Conduct, which forces senior management to make this
+          information public. Likewise, the viewer allows to consult the trips abroad
+          of the President, advisors and senior positions in the exercise of their
+          functions.
+        description_2_html: Regarding the information of the senior management, the last
+          position they occupy or have occupied in the last activity registered is
+          shown. To find out if a senior official is currently active and the position
+          he/she occupies, access <a href="http://governobert.gencat.cat/en/transparencia/Organitzacio-i-normativa/organigrames/index.html">Organizational
+          Chart</a>. To find out the position they occupied at a given date, access
+          the link to the corresponding dataset of the Open Data Portal, at the bottom
+          of the page, and search for the person through the search engine.
         interest_groups_box_subtitle: with meetings in the period
         interest_groups_box_title: Interest groups
         interest_groups_box_title_single: Interest group
