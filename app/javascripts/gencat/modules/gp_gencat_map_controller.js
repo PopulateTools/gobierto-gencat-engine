@@ -2,11 +2,36 @@ window.GobiertoPeople.GencatMapController = (function() {
   function GencatMapController() {}
 
   GencatMapController.prototype.index = function(options) {
-    if ($('#map').length === 0) return;
+    createMap(options)
+
+    const toggle = document.querySelector(".js-toggle");
+    toggle.addEventListener("click", e => {
+      const openClassName = "is-open";
+      const infoboxClassList = e.target.parentElement.classList;
+      const iconClassList = e.target.firstElementChild.classList;
+
+      if (infoboxClassList.contains(openClassName)) {
+        infoboxClassList.remove(openClassName)
+        iconClassList.toggle("fa-arrow-left")
+        iconClassList.toggle("fa-arrow-right")
+      } else {
+        infoboxClassList.add(openClassName)
+        iconClassList.toggle("fa-arrow-left")
+        iconClassList.toggle("fa-arrow-right")
+      }
+    });
+  }
+
+  return GencatMapController;
+})();
+
+function createMap(options) {
+  if ($('#map').length === 0) return;
 
     let fromDate = options.fromDate;
     let toDate = options.toDate;
     let departmentCondition = options.departmentId || "";
+    let cartoDatabaseName = options.cartoDatabaseName;
     let dateRangeConditions = [];
     if(fromDate !== "")
       dateRangeConditions.push(`start_date >= '${fromDate}'`)
@@ -25,6 +50,7 @@ window.GobiertoPeople.GencatMapController = (function() {
         sql_api_template: 'https://gobierto.carto.com',
         cartodb_logo: false
       });
+      map.zoomControl.setPosition('topright');
       map.scrollWheelZoom.disable();
 
       let choroplethCSS = `
@@ -49,9 +75,9 @@ window.GobiertoPeople.GencatMapController = (function() {
       let choroplethSQL = `
 SELECT country, country_name, count(*) as count, world_borders.the_geom as the_geom, world_borders.the_geom_webmercator,
 array_to_string(array_agg(DISTINCT person_name), ',') as person_names, array_to_string(array_agg(DISTINCT person_slug), ',') as person_slugs
-FROM gencat_trips_staging
+FROM ${cartoDatabaseName}
 INNER JOIN world_borders ON world_borders.iso2 = country
-WHERE country is not null
+WHERE country is not null AND country != 'ES'
 ${dateRangeConditions}
 ${departmentCondition}
 GROUP BY country, country_name, world_borders.the_geom, world_borders.the_geom_webmercator
@@ -60,8 +86,8 @@ GROUP BY country, country_name, world_borders.the_geom, world_borders.the_geom_w
       let bubbleSQL = `
 SELECT count(*) as count, city_name, country_name, the_geom, the_geom_webmercator, array_to_string(array_agg(DISTINCT person_name), ',') as person_names,
 array_to_string(array_agg(DISTINCT person_slug), ',') as person_slugs, array_to_string(array_agg(DISTINCT destination_name), ',') as destination_names
-FROM gencat_trips_staging
-WHERE country is not null
+FROM ${cartoDatabaseName}
+WHERE country is not null AND country != 'ES'
 ${dateRangeConditions}
 ${departmentCondition}
 GROUP BY city_name, country_name, the_geom, the_geom_webmercator
@@ -150,9 +176,6 @@ ORDER by count DESC
         });
       });
     });
-  }
-
-  return GencatMapController;
-})();
+}
 
 window.GobiertoPeople.gencat_map_controller = new GobiertoPeople.GencatMapController;

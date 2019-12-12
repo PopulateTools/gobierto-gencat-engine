@@ -1,4 +1,4 @@
-import { setDatepickerFilters } from './helpers.js'
+import { setDatepickerFilters, appendUrlParam } from './helpers.js'
 
 window.GobiertoPeople.GencatCommonController = (function() {
 
@@ -6,6 +6,16 @@ window.GobiertoPeople.GencatCommonController = (function() {
 
   GencatCommonController.prototype.load = function(options) {
     setDatepickerFilters(options);
+
+    const containerFixed = document.querySelectorAll('.js-container-fixed')
+    if (containerFixed.length) {
+      containerFixed.forEach(element => {
+        const { offsetTop } = element;
+        const originalNode = $(element).find("p")
+
+        window.addEventListener("scroll", () => onScroll.call(this, element, offsetTop, originalNode))
+      });
+    }
   };
 
   GencatCommonController.prototype.updatePageHeader = function(options) {
@@ -16,6 +26,18 @@ window.GobiertoPeople.GencatCommonController = (function() {
 
   return GencatCommonController;
 })();
+
+function onScroll(element, offsetTop, node) {
+  if (window.pageYOffset > offsetTop && !element.classList.contains("container-fixed")) {
+    element.classList.add("container-fixed")
+    $(element).find("p").replaceWith(`<p><strong>${I18n.t("gobierto_people.shared.datepicker_fixed")}</strong></p>`);
+    $(element).children().wrapAll('<div class="container"><div class="row"></div></div>')
+  } else if (window.pageYOffset < offsetTop && element.classList.contains("container-fixed")) {
+    element.classList.remove("container-fixed")
+    $(element).find("p").replaceWith(node)
+    $(element).find("[class*='col-']").unwrap().unwrap()
+  }
+}
 
 function setPageTitle(pageTitle) {
   $("#impacteContainer h1").text(pageTitle);
@@ -77,11 +99,6 @@ function appendDateRangeParamsToUrl(baseUrl, currentUrl) {
   }
 
   return urlWithParams;
-}
-
-function appendUrlParam(url, paramName, paramValue) {
-  var separator = (url.indexOf('?') > -1) ? '&' : '?';
-  return (url + separator + paramName + '=' + paramValue);
 }
 
 window.GobiertoPeople.gencat_common_controller = new GobiertoPeople.GencatCommonController;

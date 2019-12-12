@@ -33,33 +33,29 @@ module Gencat
         end
 
         def test_index
-          with_javascript do
-            with_current_site(site) do
-              visit gobierto_people_person_gifts_path(person.slug)
+          with(js: true, site: site) do
+            visit gobierto_people_person_gifts_path(person.slug)
 
-              assert_equal page_title, header_title
-              assert_equal breadcrumb_current_item, breadcrumb_last_item_text
-              assert has_content? "Gifts received by #{person.name}"
+            assert_equal page_title, header_title
+            assert_equal breadcrumb_current_item, breadcrumb_last_item_text
+            assert has_content? "Gifts received by #{person.name}"
 
-              assert has_content? recent_gift.name
-              assert has_content? old_gift.name
+            assert has_content? recent_gift.name
+            assert has_content? old_gift.name
 
-              assert ordered_elements(page, [recent_gift.name, old_gift.name])
-            end
+            assert ordered_elements(page, [recent_gift.name, old_gift.name])
           end
         end
 
         def test_index_when_no_gifts
           person.received_gifts.destroy_all
 
-          with_javascript do
-            with_current_site(site) do
-              visit gobierto_people_person_gifts_path(person.slug)
+          with(js: true, site: site) do
+            visit gobierto_people_person_gifts_path(person.slug)
 
-              assert_equal page_title, header_title
-              assert_equal breadcrumb_current_item, breadcrumb_last_item_text
-              assert has_content? "There are no gifts in the given dates"
-            end
+            assert_equal page_title, header_title
+            assert_equal breadcrumb_current_item, breadcrumb_last_item_text
+            assert has_content? "There are no gifts in the given dates"
           end
         end
 

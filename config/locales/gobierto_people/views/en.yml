@@ -16,15 +16,27 @@ en:
         punchcard_title: Meetings per departments and month
         title: Departments
       show:
-        interest_groups_box_subtitle: have met with this department
-        interest_groups_box_title: interest groups
+        interest_groups_box_subtitle: with meetings in the period
+        interest_groups_box_title: Interest groups
+        interest_groups_box_title_single: Interest group
         interest_groups_rowchart_title: Interest groups with most meetings with this
           department
         map_title: Where do officials travel?
+        meetings_box_subtitle: with interest groups
+        meetings_box_title: Meetings registered
+        meetings_box_title_single: Meeting registered
         people_box_subtitle: with meetings registered
         people_box_title: officials in this department
+        people_box_title_single: official in this department
         people_rowchart_title: Officials of this department with most meetings
         punchcard_title: Meetings per official and month
+    gifts:
+      coc: The Code of Conduct regulates what gifts can be received.
+      description: Officials receive gifts as a courtesy from organizations with which
+        they meet. Here is the inventory of what has been received
+      last: Last gifts
+      none: No gifts have been registered in this period
+      title: Gifts
     interest_groups:
       index:
         description: Any organization that meets with an official must register as
@@ -35,6 +47,7 @@ en:
         rowchart_title: Interest groups with most meetings
         title: Interest Groups
       show:
+        event: registered event
         events: registered events
         events_by_department: With which departments does this group meet?
         events_by_person: Officials with which this group has met
@@ -43,10 +56,15 @@ en:
         people_with_events: the number of Officials with which this group has met
         punchcard_title: Meetings per official and month
         status: 'Inscription status in interest groups registry: %{status}'
+    invitations:
+      coc: The Code of Conduct regulates which invitations can be accepted.
+      description: Officials receive invitations to events, to make visits, give lectures...
+        Here is a list of accepted invitations.
+      last: Last invitations
+      none: No invitations have been registered in this period
+      title: Invitations
     people:
       gifts:
-        gift:
-          from: from
         index:
           gifts: Gifts
           no_gifts: There are no gifts in the given dates
@@ -97,54 +115,75 @@ en:
             one: person
             other: people
     shared:
-      app_title: Administration activity viewer
-      code_of_conduct_link:
-        check_it_out: Check it out
+      app_title: Public management activity derived from the Code of Conduct
+      check_it_out: Check the text of the Code of Conduct
       datepicker:
         1m: Last month
         1y: Last year
         3m: Last three months
         all: Everything
         range: Custom range
+      datepicker_fixed: Data corresponding to the period
+      destination: destination
+      destinations: destinations
+      displacement: displacement
+      displacements: displacements
+      from: from
       meetings_punchcard:
         tooltip: meetings
+        tooltip_single: meeting
       meetings_rowchart:
         tooltip: meetings
+        tooltip_single: meeting
+      noresults: No results
       open_data_footer:
         gifts: Gifts
         invitations: Invitations
         meetings: Meetings
         title: Access the data in the Open Data portal
         trips: Trips
-      view_all: View all
-      view_details: View details
-    welcome:
-      index:
-        departments_rowchart_title: Departments with most meetings
-        description: Check with whom meets each Official in the Generalitat, companies
-          and organizations that request meetings, and the trips and gifts received
-        gifts: Gifts
-        gifts_coc: The Code of Conduct regulates what gifts can be received.
-        gifts_description: Officials receive gifts as a courtesy from organizations
-          with which they meet. Here is the inventory of what has been received
-        interest_groups_box_subtitle: or in registration process
-        interest_groups_box_title: Interest groups inscribed
-        interest_groups_rowchart_title: Interest groups with most meetings
-        invitations: Invitations
-        invitations_coc: The Code of Conduct regulates which invitations can be accepted.
-        invitations_description: Officials receive invitations to events, to make
-          visits, give lectures... Here is a list of accepted invitations.
-        last_gifts: Last gifts
-        last_invitations: Last invitations
-        map_title: Where do officials travel?
-        meetings_box_title: Meetings registered
-        no_gifts: No gifts have been registered in this period
-        no_invitations: No invitations have been registered in this period
-        people_box_subtitle: with meetings registered
-        people_box_title: Officials
-        people_rowchart_title: Officials with most meetings
-        punchcard_title: Meetings per official and month
-        title: Agendas
-        view_officials: View Officials
       table_item:
         view_details: View details
+      to: to
+      view_all: View all
+      view_all_f: View all
+      view_details: View details
+      view_gifts: View all the gifts on the Open Data portal
+      view_invitations: View all the invitations on the Open Data portal
+      view_officials: View Officials
+    welcome:
+      index:
+        departments: Departments
+        departments_extra: Departments that exist or have existed based on the selected
+          period
+        departments_rowchart_title: Departments with most meetings
+        description_1: The viewer shows the meetings of the senior management of the
+          Generalitat administration with the people who have the status of interest
+          group in the time period you select. You will also find the gifts and invitations
+          allowed by the Code of Conduct, which forces senior management to make this
+          information public. Likewise, the viewer allows to consult the trips abroad
+          of the President, advisors and senior positions in the exercise of their
+          functions.
+        description_2_html: Regarding the information of the senior management, the last
+          position they occupy or have occupied in the last activity registered is
+          shown. To find out if a senior official is currently active and the position
+          he/she occupies, access <a href="http://governobert.gencat.cat/en/transparencia/Organitzacio-i-normativa/organigrames/index.html">Organizational
+          Chart</a>. To find out the position they occupied at a given date, access
+          the link to the corresponding dataset of the Open Data Portal, at the bottom
+          of the page, and search for the person through the search engine.
+        interest_groups_box_subtitle: with meetings in the period
+        interest_groups_box_title: Interest groups
+        interest_groups_box_title_single: Interest group
+        interest_groups_rowchart_title: Interest groups with most meetings
+        map_title: Where do officials travel?
+        meetings_box_subtitle: with interest groups
+        meetings_box_title: Meetings registered
+        meetings_box_title_single: Meeting registered
+        people_box_subtitle: with meetings registered
+        people_box_title: Officials
+        people_box_title_single: Official
+        people_rowchart_title: Officials with most meetings
+        punchcard_title: Meetings per official and month
+        search: Search
+        search_placeholder: Search an official
+        title: Agendas

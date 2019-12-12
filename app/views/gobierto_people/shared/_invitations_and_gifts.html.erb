@@ -1,0 +1,91 @@
+<section class="row">
+
+  <div class="col-md-6" id="gifts-wrapper">
+    <section>
+      <p><strong><%= t("gobierto_people.gifts.title") %></strong></p>
+      <p><%= t("gobierto_people.gifts.description") %></p>
+      <div class="alert alert-warning">
+        <small><%= render 'gobierto_people/shared/code_of_conduct_link' %></small>
+      </div>
+    </section>
+
+    <% if gifts.any? %>
+      <figure>
+        <figcaption class="mb_20"><%= t("gobierto_people.gifts.last") %></figcaption>
+        <ul class="color-4 transparent mb_20">
+          <% gifts.each do |gift| %>
+            <%= render(
+                  "gobierto_people/shared/table_item",
+                  title: gift.name,
+                  from: gift.delivered_by,
+                  to: gift.reason,
+                  resource: gift,
+                  resource_path: gobierto_people_person_gifts_path(
+                    gift.person.slug,
+                    { anchor: gift.to_anchor }.merge(date_range_params)
+                  ),
+                  display_date: gift.date
+                ) %>
+          <% end %>
+        </ul>
+      </figure>
+
+      <div>
+        <small>
+          <%= link_to(
+                t("gobierto_people.shared.view_gifts"),
+                "https://analisi.transparenciacatalunya.cat/Sector-P-blic/Codi-de-conducta-dels-alts-c-rrecs-Obsequis/std5-i2zv",
+                target: "_blank"
+              ) %>
+        </small>
+      </div>
+
+    <% else %>
+      <em><%= t("gobierto_people.gifts.none") %></em>
+    <% end %>
+  </div>
+
+  <div class="col-md-6" id="invitations-wrapper">
+    <section>
+      <p><strong><%= t("gobierto_people.invitations.title") %></strong></p>
+      <p><%= t("gobierto_people.invitations.description") %></p>
+      <div class="alert alert-warning">
+        <small><%= render 'gobierto_people/shared/code_of_conduct_link' %></small>
+      </div>
+    </section>
+
+    <% if invitations.any? %>
+      <figure>
+        <figcaption class="mb_20"><%= t("gobierto_people.invitations.last") %></figcaption>
+        <ul class="color-3 transparent mb_20 mb_20">
+          <% invitations.each do |invitation| %>
+            <%= render(
+                  "gobierto_people/shared/table_item",
+                  title: invitation.title,
+                  resource: invitation,
+                  resource_path: gobierto_people_person_invitations_path(
+                    invitation.person.slug,
+                    { anchor: invitation.to_anchor }.merge(date_range_params)
+                  ),
+                  display_date_range: [invitation.start_date, invitation.end_date]
+                ) %>
+          <% end %>
+        </ul>
+      </figure>
+
+      <div>
+        <small>
+          <%= link_to(
+            t("gobierto_people.shared.view_invitations"),
+            "https://analisi.transparenciacatalunya.cat/Sector-P-blic/Codi-de-conducta-dels-alts-c-rrecs-Invitacions-a-v/sdnv-univ",
+            target: "_blank"
+          ) %>
+        </small>
+      </div>
+
+    <% else %>
+      <em><%= t("gobierto_people.invitations.none") %></em>
+    <% end %>
+  </div>
+
+</section>

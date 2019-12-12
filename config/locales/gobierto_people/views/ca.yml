@@ -18,15 +18,29 @@ ca:
         punchcard_title: Reunions per departament i mes
         title: Departaments
       show:
-        interest_groups_box_subtitle: que s'han reunit amb aquest departament
+        interest_groups_box_subtitle: amb reunions en el període
         interest_groups_box_title: Grups d'interès
+        interest_groups_box_title_single: Grup d'interès
         interest_groups_rowchart_title: Grups d'interès amb més reunions amb aquest
           departament
         map_title: On viatgen els alts carrècs?
+        meetings_box_subtitle: amb grups d'interès
+        meetings_box_title: Reunions registrades
+        meetings_box_title_single: Reunió registrada
         people_box_subtitle: amb reunions registrades
         people_box_title: Alts càrrecs d'aquest departament
+        people_box_title_single: Alt càrrec d'aquest departament
         people_rowchart_title: Alts càrrec d'aquest departament amb més reunions
         punchcard_title: Reunions per alt càrrec i mes
+    gifts:
+      coc: El Codi de conducta regula quins obsequis es poden rebre.
+      description: Els alts càrrecs han d’abstenir-se d'acceptar regals i donacions
+        de particulars i d'entitats públiques o privades a excepció feta de les mostres
+        no venals de cortesia i objectes commemoratius, oficials o protocol·laris
+        que li puguin ser lliurats per raó del seu càrrec.
+      last: Darrers obsequis
+      none: No s'han registrat obsequis en aquest període
+      title: Obsequis
     interest_groups:
       index:
         description: Qualsevol organització que es reuneix amb un alt càrrec ha de
@@ -39,6 +53,7 @@ ca:
         rowchart_title: Grups d'interès amb més reunions
         title: Grups d'interès
       show:
+        event: Reunió registrada
         events: Reunions registrades
         events_by_department: Amb quins departaments es reuneix aquest grup
         events_by_person: Alts càrrecs amb els quals s'ha reunit aquest grup
@@ -48,10 +63,18 @@ ca:
           grup
         punchcard_title: Reunions per alt càrrec i mes
         status: 'Situació d''inscripció al registre de grups d''interès: %{status}'
+    invitations:
+      coc: El Codi de conducta regula quines invitacions es poden acceptar.
+      description: Els alts càrrecs han d’acceptar només el pagament de viatges, desplaçaments
+        i allotjaments per part d'altres administracions públiques o d'entitats públiques
+        dependents d'aquestes, universitats o entitats sense ànim de lucre, quan hagi
+        d'assistir convidat oficialment per raó del càrrec a una activitat relacionada
+        amb les seves responsabilitats.
+      last: Darreres invitacions
+      none: No s'han registrat invitacions en aquest període
+      title: Invitacions
     people:
       gifts:
-        gift:
-          from: de
         index:
           gifts: Obsequis
           no_gifts: No hi ha obsequis en les dates seleccionades
@@ -105,60 +128,74 @@ ca:
             one: persona
             other: persones
     shared:
-      app_title: Visor de l'activitat directiva
-      code_of_conduct_link:
-        check_it_out: Consulteu-ho
+      app_title: Activitat directiva pública derivada del Codi de conducta
+      check_it_out: Consulteu el text del Codi de conducta
       datepicker:
         1m: Darrer mes
         1y: Darrer any
         3m: Darrers tres mesos
         all: Tot
         range: Rang personalitzat
+      datepicker_fixed: Data corresponent al període
+      destination: destinació
+      destinations: destinacions
+      displacement: desplaçament
+      displacements: desplaçaments
+      from: de
       meetings_punchcard:
         tooltip: reunions
+        tooltip_single: reunió
       meetings_rowchart:
         tooltip: reunions
+        tooltip_single: reunió
+      noresults: Sense resultats
       open_data_footer:
         gifts: Obsequis
         invitations: Invitacions
         meetings: Reunions
         title: Accediu a les dades al Portal de dades obertes
         trips: Viatges
-      view_all: Veure-ho tot
-      view_details: Veure detalls
-    welcome:
-      index:
-        departments_rowchart_title: Departaments amb més reunions
-        description: Consulteu amb qui es reuneix cada alt càrrec de la Generalitat,
-          les empreses i organitzacions que sol·liciten reunions, i els viatges i
-          obsequis rebuts
-        gifts: Obsequis
-        gifts_coc: El Codi de conducta regula quins obsequis es poden rebre.
-        gifts_description: Els alts càrrecs han d’abstenir-se d'acceptar regals i
-          donacions de particulars i d'entitats públiques o privades a excepció feta
-          de les mostres no venals de cortesia i objectes commemoratius, oficials
-          o protocol·laris que li puguin ser lliurats per raó del seu càrrec.
-        interest_groups_box_subtitle: o en procés d'inscripció
-        interest_groups_box_title: Grups d'interès inscrits
-        interest_groups_rowchart_title: Grups d'interès amb més reunions
-        invitations: Invitacions
-        invitations_coc: El Codi de conducta regula quines invitacions es poden acceptar.
-        invitations_description: Els alts càrrecs han d’acceptar només el pagament
-          de viatges, desplaçaments i allotjaments per part d'altres administracions
-          públiques o d'entitats públiques dependents d'aquestes, universitats o entitats
-          sense ànim de lucre, quan hagi d'assistir convidat oficialment per raó del
-          càrrec a una activitat relacionada amb les seves responsabilitats.
-        last_gifts: Darrers obsequis
-        last_invitations: Darreres invitacions
-        map_title: On viatgen els alts carrècs?
-        meetings_box_title: Reunions registrades
-        no_gifts: No s'han registrat obsequis en aquest període
-        no_invitations: No s'han registrat invitacions en aquest període
-        people_box_subtitle: amb reunions registrades
-        people_box_title: Alts càrrecs
-        people_rowchart_title: Alts càrrecs amb més reunions
-        punchcard_title: Reunions per alt càrrec i mes
-        title: Agendes
-        view_officials: Veure alts càrrecs
       table_item:
         view_details: Veure detalls
+      to: per a
+      view_all: Vegeu-ne més
+      view_all_f: Vegeu-ne més
+      view_details: Veure detalls
+      view_gifts: Veure tots els obsequis al Portal de dades oberts
+      view_invitations: Veure totes les invitacions al Portal de dades oberts
+      view_officials: Veure alts càrrecs
+    welcome:
+      index:
+        departments: Departaments
+        departments_extra: es mostren els Departaments que existeixen o han existit
+          en funció del període seleccionat
+        departments_rowchart_title: Departaments amb més reunions
+        description_1: El visor mostra les reunions dels alts càrrecs de l’administració
+          de la Generalitat amb els grups d’interès en el període temporal que seleccioneu.
+          També hi trobareu els regals i invitacions permesos pel Codi de conducta,
+          que obliga els alts càrrecs a fer pública aquesta informació. Així mateix,
+          el visor permet consultar els viatges a l’estranger del President, consellers,
+          assessors i alts càrrecs en l’exercici de les seves funcions.
+        description_2_html: Respecte de la informació dels alts càrrecs, es mostra l’últim
+          càrrec que ocupen o han ocupat en l’última activitat registrada. Per saber
+          si un alt càrrec està actualment en actiu i el càrrec que ocupa, accediu
+          a <a href="http://governobert.gencat.cat/ca/transparencia/Organitzacio-i-normativa/organigrames/index.html">Organigrames</a>.
+          Per conèixer el càrrec que ocupaven en un moment determinat, accediu a l’enllaç
+          al dataset corresponent del Portal de dades obertes, al final de la pàgina,
+          i busqueu la persona a través del cercador.
+        interest_groups_box_subtitle: amb reunions en el període
+        interest_groups_box_title: Grups d'interès
+        interest_groups_box_title_single: Grup d'interès
+        interest_groups_rowchart_title: Grups d'interès amb més reunions
+        map_title: On viatgen els alts carrècs?
+        meetings_box_subtitle: amb grups d'interès
+        meetings_box_title: Reunions registrades
+        meetings_box_title_single: Reunió registrada
+        people_box_subtitle: amb reunions registrades
+        people_box_title: Alts càrrecs
+        people_box_title_single: Alt càrrec
+        people_rowchart_title: Alts càrrecs amb més reunions
+        punchcard_title: Reunions per alt càrrec i mes
+        search: Cercar
+        search_placeholder: Cerca un càrrec
+        title: Agendes

@@ -1,5 +1,5 @@
 <% content_for :breadcrumb do %>
-  <li><%= link_to t("gobierto_people.departments.index.title"), gobierto_people_departments_path(date_range_params) %></li>
+  <li><%= t("gobierto_people.departments.index.title") %></li>
   <li><%= title @department.name %></li>
 <% end %>
 
@@ -7,63 +7,56 @@
   <meta name="turbolinks-visit-control" content="reload">
 <% end %>
 
-<section class="row">
-  <div class="col-md-offset-9 col-md-3">
+<section class="row js-container-fixed">
+  <div class="col-md-9">
+    <p></p>
+  </div>
+  <div class="col-md-3">
     <%= render "gobierto_people/shared/datepicker" %>
   </div>
 </section>
 
 <section class="row">
-  <div class="fpca_distribuidora">
-    <div class="llistat_destacat_text_avancat">
-      <div class="llistat_col-lg-3 nova-altura-dist same-height-wrapper">
-        <div class="corrector-margins col-xs-12 col-md-6">
-          <div class="box color-1 distribuidora-nova-3">
-
-            <div class="color-decorator">
-              <%= link_to gobierto_people_department_people_path(@department, date_range_params), class: "no-link" do %>
-                <h1><%= @department_stats[:total_people_with_attendances] %></h1>
-              <% end %>
-              <h5>
-                <p><strong><%= t(".people_box_title") %></strong></p>
-                <p><%= t(".people_box_subtitle") %></p>
-              </h5>
-            </div>
-
-            <div class="margin_top_xs js-rowchart-component">
-              <span><%= t(".people_rowchart_title") %></span>
-              <div id="department_people_events_rowchart" class="rowchart"></div>
-            </div>
-
-          </div>
-          <div class="margin_top_xs js-reload-rowchart-wrapper">
-            <%= link_to gobierto_people_department_people_path(@department, date_range_params) do %>
-              <small><%= t("gobierto_people.shared.view_all") %></small>
-            <% end %>
-          </div>
-        </div>
-        <div class="corrector-margins col-xs-12 col-md-6">
-          <div class="box color-3 distribuidora-nova-3">
-            <div class="color-decorator">
-              <h1><%= @department_stats[:unique_interest_groups] %></h1>
-              <h5>
-                <p><strong><%= t(".interest_groups_box_title") %></strong></p>
-                <p><%= t(".interest_groups_box_subtitle") %></p>
-              </h5>
-            </div>
-            <div class="margin_top_xs js-rowchart-component">
-              <span><%= t(".interest_groups_rowchart_title") %></span>
-              <div id="department_interest_groups_events_rowchart" class="rowchart"></div>
-            </div>
-          </div>
-          <div class="margin_top_xs">
-            <%= link_to gobierto_people_interest_groups_path(date_range_params) do %>
-              <small><%= t("gobierto_people.shared.view_all") %></small>
-            <% end %>
-          </div>
+  <div class="col-xs-12 col-md-4">
+    <div class="box color-1 distribuidora-nova-3">
+      <div class="color-decorator">
+        <h1><strong><%= number_with_delimiter @department_stats[:total_meetings] %></strong></h1>
+        <div>
+          <div><strong><%= simple_pluralize(@department_stats[:total_meetings], t(".meetings_box_title_single"), t(".meetings_box_title")) %></strong></div>
+          <div class="soft"><%= t(".meetings_box_subtitle") %></div>
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="col-xs-12 col-md-4">
+    <div class="box color-2 distribuidora-nova-3">
+      <div class="color-decorator">
+        <h1><strong><%= number_with_delimiter @department_stats[:unique_interest_groups] %></strong></h1>
+        <div>
+          <div><strong><%= simple_pluralize(@department_stats[:unique_interest_groups], t(".interest_groups_box_title_single"), t(".interest_groups_box_title")) %></strong></div>
+          <div class="soft"><%= t(".interest_groups_box_subtitle") %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-md-4">
+    <div class="box color-3 distribuidora-nova-3">
+      <div class="color-decorator">
+        <h1><strong><%= number_with_delimiter @department_stats[:total_people_with_attendances] %></strong></h1>
+        <div>
+          <div><strong><%= simple_pluralize(@department_stats[:total_people_with_attendances], t(".people_box_title_single"), t(".people_box_title")) %></strong></div>
+          <div class="soft"><%= t(".people_box_subtitle") %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="row">
+  <div class="col-md-12">
+    <div class="rectangle--container js-people-rectangles"></div>
   </div>
 </section>
 
@@ -71,18 +64,27 @@
   <section id="map-chart">
     <p><strong><%= t(".map_title") %></strong></p>
 
-    <%= render "gobierto_people/shared/map" %>
+    <%= render(
+          "gobierto_people/shared/map",
+          trips_statistics: {
+            total_trips: @department.trips_count,
+            total_unique_destinations: @department.trips_unique_destinations_count
+          }
+        ) %>
   </section>
 <% end %>
 
-<section>
-  <div id="department_people_events_punchcard" class="punchcard color-2 transparent"></div>
-</section>
+<%= render(
+      "gobierto_people/shared/invitations_and_gifts",
+      invitations: @department.invitations,
+      gifts: @department.gifts
+    ) %>
 
 <%= render "gobierto_people/shared/open_data_footer" %>
 
 <%= javascript_tag do %>
   mapControllerIndexParams = {
+    cartoDatabaseName: 'gencat_trips_<%= Rails.env.development? ? "staging" : Rails.env %>',
     fromDate: '<%= filter_start_date.try(:iso8601) %>',
     toDate: '<%= filter_end_date.try(:iso8601) %>',
     departmentId: '<%= @department.id %>'

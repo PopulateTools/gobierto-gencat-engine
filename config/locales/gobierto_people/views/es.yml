@@ -16,15 +16,29 @@ es:
         punchcard_title: Reuniones por departamento y mes
         title: Departamentos
       show:
-        interest_groups_box_subtitle: que se han reunido con este departamento
+        interest_groups_box_subtitle: con reuniones en el periodo
         interest_groups_box_title: Grupos de interés
+        interest_groups_box_title_single: Grupo de interés
         interest_groups_rowchart_title: Grupos de interés con más reuniones con este
           departamento
         map_title: "¿A dónde viajan los altos cargos?"
+        meetings_box_subtitle: con grupos de interés
+        meetings_box_title: Reuniones registradas
+        meetings_box_title_single: Reunión registrada
         people_box_subtitle: con reuniones registradas
         people_box_title: Altos cargos de este departamento
+        people_box_title_single: Alto cargo de este departamento
         people_rowchart_title: Altos cargos de este departamento con más reuniones
         punchcard_title: Reuniones por alto cargo y mes
+    gifts:
+      coc: El Código de conducta regula qué obsequios se pueden recibir.
+      description: Los altos cargos deben abstenerse de aceptar regalos y donaciones
+        de particulares y de entidades públicas o privadas a excepción hecha de las
+        muestras no venales de cortesía y objetos conmemorativos, oficiales o protocolarios
+        que le puedan ser entregados por razón de su cargo.
+      last: Últimos obsequios
+      none: No se han registrado obsequios en este periodo
+      title: Obsequios
     interest_groups:
       index:
         description: Cualquier organización que se reúne con un alto cargo debe registrarse
@@ -35,6 +49,7 @@ es:
         rowchart_title: Grupos de interés con más reuniones
         title: Grupos de interés
       show:
+        event: Reunión registradas
         events: Reuniones registradas
         events_by_department: Con qué departamentos se reúne este grupo
         events_by_person: Altos cargos con los que se ha reunido este grupo
@@ -44,10 +59,18 @@ es:
           grupo
         punchcard_title: Reuniones por alto cargo y mes
         status: 'Situación de inscripción en el registro de grupos de interés: %{status}'
+    invitations:
+      coc: El Código de conducta regula qué invitaciones se pueden aceptar.
+      description: Los altos cargos deben aceptar sólo el pago de viajes, desplazamientos
+        y alojamientos por parte de otras administraciones públicas o de entidades
+        públicas dependientes de éstas, universidades o entidades sin ánimo de lucro,
+        cuando tenga que asistir invitado oficialmente por razón del cargo a una actividad
+        relacionada con sus responsabilidades.
+      last: Últimas invitaciones
+      none: No se han registrado invitaciones en este periodo
+      title: Invitaciones
     people:
       gifts:
-        gift:
-          from: de
         index:
           gifts: Obsequios
           no_gifts: No hay obsequios en las fechas seleccionadas
@@ -98,60 +121,74 @@ es:
             one: persona
             other: personas
     shared:
-      app_title: Visor de la actividad directiva
-      code_of_conduct_link:
-        check_it_out: Consúltelo
+      app_title: Actividad directiva pública derivada del Código de conducta
+      check_it_out: Consultad el texto del Código de conducta
       datepicker:
         1m: Último mes
         1y: Último año
         3m: Últimos tres meses
         all: Todo
         range: Rango personalizado
+      datepicker_fixed: Datos correspondientes al periodo
+      destination: destino
+      destinations: destinos
+      displacement: desplazamiento
+      displacements: desplazamientos
+      from: de
       meetings_punchcard:
         tooltip: reuniones
+        tooltip_single: reunión
       meetings_rowchart:
         tooltip: reuniones
+        tooltip_single: reunión
+      noresults: Sin resultados
       open_data_footer:
         gifts: Obsequios
         invitations: Invitaciones
         meetings: Reuniones
         title: Acceder a los datos en el Portal de datos abiertos
         trips: Viajes
-      view_all: Ver todos
-      view_details: Ver detalles
-    welcome:
-      index:
-        departments_rowchart_title: Departamentos con más reuniones
-        description: Consulte con quién se reúne cada alto cargo de la Generalidad,
-          las empresas y organizaciones que solicitan reuniones, y los viajes y obsequios
-          recibidos
-        gifts: Obsequios
-        gifts_coc: El Código de conducta regula qué obsequios se pueden recibir.
-        gifts_description: Los altos cargos deben abstenerse de aceptar regalos y
-          donaciones de particulares y de entidades públicas o privadas a excepción
-          hecha de las muestras no venales de cortesía y objetos conmemorativos, oficiales
-          o protocolarios que le puedan ser entregados por razón de su cargo.
-        interest_groups_box_subtitle: o en proceso de inscripción
-        interest_groups_box_title: Grupos de interés inscritos
-        interest_groups_rowchart_title: Grupos de interés con más reuniones
-        invitations: Invitaciones
-        invitations_coc: El Código de conducta regula qué invitaciones se pueden aceptar.
-        invitations_description: Los altos cargos deben aceptar sólo el pago de viajes,
-          desplazamientos y alojamientos por parte de otras administraciones públicas
-          o de entidades públicas dependientes de éstas, universidades o entidades
-          sin ánimo de lucro, cuando tenga que asistir invitado oficialmente por razón
-          del cargo a una actividad relacionada con sus responsabilidades.
-        last_gifts: Últimos obsequios
-        last_invitations: Últimas invitaciones
-        map_title: "¿A dónde viajan los altos cargos?"
-        meetings_box_title: Reuniones registradas
-        no_gifts: No se han registrado obsequios en este periodo
-        no_invitations: No se han registrado invitaciones en este periodo
-        people_box_subtitle: con reuniones registradas
-        people_box_title: Altos cargos
-        people_rowchart_title: Altos cargos con más reuniones
-        punchcard_title: Reuniones por alto cargo y mes
-        title: Agendas
-        view_officials: Ver altos cargos
       table_item:
         view_details: Ver detalles
+      to: para
+      view_all: Ver todos
+      view_all_f: Ver todas
+      view_details: Ver detalles
+      view_gifts: Ver todos los obsequios en el Portal de datos abiertos
+      view_invitations: Ver todas las invitaciones en el Portal de datos abiertos
+      view_officials: Ver altos cargos
+    welcome:
+      index:
+        departments: Departamentos
+        departments_extra: se muestran los Departamentos que existen o han existido
+          en función del periodo seleccionado
+        departments_rowchart_title: Departamentos con más reuniones
+        description_1: El visor muestra las reuniones de los altos cargos de la administración
+          de la Generalitat con los grupos de interés en el periodo temporal que seleccione.
+          También encontrará los regalos e invitaciones permitidos por el Código de
+          conducta, que obliga a los altos cargos a hacer pública esta información.
+          Asimismo, el visor permite consultar los viajes al extranjero del Presidente,
+          consejeros, asesores y altos cargos en el ejercicio de sus funciones.
+        description_2_html: Respecto de la información de los altos cargos, se muestra
+          el último cargo que ocupan o han ocupado en la última actividad registrada.
+          Para saber si un alto cargo está actualmente en activo y el cargo que ocupa,
+          acceda a <a href="http://governobert.gencat.cat/es/transparencia/Organitzacio-i-normativa/organigrames/index.html">Organigramas</a>.
+          Para conocer el cargo que ocupaban en un momento determinado, acceda al
+          enlace al dataset correspondiente del Portal de datos abiertas, al final
+          de la página, y busque la persona a través del buscador.
+        interest_groups_box_subtitle: con reuniones en el periodo
+        interest_groups_box_title: Grupos de interés
+        interest_groups_box_title_single: Grupo de interés
+        interest_groups_rowchart_title: Grupos de interés con más reuniones
+        map_title: "¿A dónde viajan los altos cargos?"
+        meetings_box_subtitle: con grupos de interés
+        meetings_box_title: Reuniones registradas
+        meetings_box_title_single: Reunión registrada
+        people_box_subtitle: con reuniones registradas
+        people_box_title: Altos cargos
+        people_box_title_single: Alto cargo
+        people_rowchart_title: Altos cargos con más reuniones
+        punchcard_title: Reuniones por alto cargo y mes
+        search: Buscar
+        search_placeholder: Busca un cargo
+        title: Agendas

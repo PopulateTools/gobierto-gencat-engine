@@ -1,19 +1,19 @@
-import * as d3 from 'd3'
 import moment from 'moment'
+import { timeFormat, timeFormatDefaultLocale } from 'd3-time-format'
 import { d3locale } from 'lib/shared'
-import { rowchart, punchcard } from 'lib/visualizations'
+import { Rowchart, Punchcard } from 'lib/visualizations'
 
 function _loadRowchart(container, url) {
   $.getJSON(url, (data) => {
     let opts = {
       tooltipContainer: ".theme-gencat",
       tooltipContent: {
-        eval: "d.value.toLocaleString() + ' " + I18n.t('gobierto_people.shared.meetings_rowchart.tooltip') + "'"
+        eval: `d.value.toLocaleString() + (d.value === 1 ? ' ${I18n.t('gobierto_people.shared.meetings_rowchart.tooltip_single')}' : ' ${I18n.t('gobierto_people.shared.meetings_rowchart.tooltip')}')`
       },
     }
 
     data.sort((a, b) => a.value - b.value)
-    rowchart(container, data, opts);
+    new Rowchart(container, data, opts);
 
     // tweak axis
     $(container).find(".axis").removeAttr("font-size").removeAttr("font-family")
@@ -26,14 +26,14 @@ function _loadPunchcard(container, url, title) {
       title: title,
       tooltipContainer: ".theme-gencat",
       tooltipContent: {
-        eval: "d.value.toLocaleString() + ' " + I18n.t('gobierto_people.shared.meetings_punchcard.tooltip') + "'"
+        eval: `d.value.toLocaleString() + (d.value === 1 ? ' ${I18n.t('gobierto_people.shared.meetings_punchcard.tooltip_single')}' : ' ${I18n.t('gobierto_people.shared.meetings_punchcard.tooltip')}')`
       },
       xTickFormat: (d, i, arr) => {
         let intervalLength = (arr.length > 12) ? 3 : (arr.length > 5) ? 2 : 1
         let distanceFromEnd = arr.length - i - 1
         
-        d3.timeFormatDefaultLocale(d3locale[I18n.locale])
-        return ((distanceFromEnd % intervalLength) === 0) ? d3.timeFormat("%b %y")(d) : null
+        timeFormatDefaultLocale(d3locale[I18n.locale])
+        return ((distanceFromEnd % intervalLength) === 0) ? timeFormat("%b %y")(d) : null
       }
     }
 
@@ -43,19 +43,85 @@ function _loadPunchcard(container, url, title) {
       opts = { ...opts, width: breakpoint, gutter: 15 }
     }
 
-    // filter data up to 18m back
-    let mostRecentDate = _.max(_.map(_.flatten(_.concat(_.map(data, 'value'))), 'key'))
-    for (var i = 0; i < data.length; i++) {
-      data[i].value = data[i].value.filter((i) => moment(i.key).isAfter(moment(mostRecentDate).subtract(18, 'months')))
-    }
-
     // data.reverse to show it as it was received
     // https://stackoverflow.com/questions/23849680/d3-y-scale-y-vs-height
-    punchcard(container, data.reverse(), opts)
+    new Punchcard(container, data.reverse(), opts)
 
     // tweak axis
     $(container).find(".axis").removeAttr("font-size").removeAttr("font-family")
   });
+}
+
+function appendUrlParam(url, paramName, paramValue) {
+  var separator = (url.indexOf('?') > -1) ? '&' : '?';
+  return (url + separator + paramName + '=' + paramValue);
+}
+
+function getHTMLContent(data, template, emptyTemplate = I18n.t("gobierto_people.shared.noresults")) {
+  const moustache = new RegExp(/\{\{ (\w+)\.*?(.*?) \}\}/, 'g') // regex to find the moustache expressions
+
+  let list = "";
+  if (data.length) {
+    for (let i = 0; i < data.length; i++) {
+      const element = data[i];
+
+      const matchedText = []; // search for the string to be replaced
+      const matchedKey = []; // get the matching group, i.e, the data element key, to replace the content
+      const matchedOperations = []; // if there are chained properties (operators) over the key
+
+      // get all replaceable elements
+      let match = moustache.exec(template)
+      while (match !== null) {
+        matchedText.push(match[0])
+        matchedKey.push(match[1])
+        matchedOperations.push(match[2])
+        match = moustache.exec(template)
+      }
+
+      // replace the previous found element with the proper values
+      let tpl = template;
+      for (let j = 0; j < matchedKey.length; j++) {
+        const key = matchedKey[j];
+        const operation = matchedOperations[j];
+
+        let replacement = element[key]
+        if (operation) {
+          replacement = eval(`element[key]${operation}`)
+        }
+        
+        tpl = tpl.replace(matchedText[j], replacement)
+      }
+
+      list += tpl
+    }
+  } else {
+    list = emptyTemplate
+  }
+
+  return list
+}
+
+function lookUp(term, value) {
+  // IE11 polyfill for normalize
+  if (!String.prototype.normalize) {
+    return normalize(term).replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(normalize(value).replace(/[\u0300-\u036f]/g, "").toLowerCase())
+  }
+  
+  // https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript/37511463#37511463
+  return term.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase())
+};
+
+// special sort based on position property
+function getSortingKey(value, keysToBeSorted = []) {
+  for (let index = 0; index < keysToBeSorted.length; index++) {
+    const element = keysToBeSorted[index];
+
+    if (element.test(value)) {
+      return index
+    }
+  }
+
+  return keysToBeSorted.length
 }
 
 // issues
@@ -240,8 +306,31 @@ const updateQueryStringParam = (key, value) => {
     window.history.pushState({}, "", baseUrl + params);
 };
 
+// Fallback IE
+const normalize = str => {
+  var from = "1234567890ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç ‘/&().!,'",
+      to = "izeasgtogoAAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc_______",
+      mapping = {};
+
+  for (let i = 0, j = from.length; i < j; i++) {
+    mapping[from.charAt(i)] = to.charAt(i);
+  }
+
+  var ret = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+    var c = str.charAt(i);
+    if (Object.prototype.hasOwnProperty.call(mapping, str.charAt(i))) {
+      ret.push(mapping[c]);
+    } else {
+      ret.push(c);
+    }
+  }
+
+  return ret.join('').toLowerCase();
+}
+
 function phantomJsDetected() {
   return (window.callPhantom || window._phantom);
 }
 
-export { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor, setDatepickerFilters }
+export { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor, setDatepickerFilters, getHTMLContent, appendUrlParam, lookUp, getSortingKey }

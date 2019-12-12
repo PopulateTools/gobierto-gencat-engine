@@ -8,12 +8,12 @@ module Gencat
     module InterestGroups
       class IndexTest < ::Gencat::IntegrationTest
 
-        def site
-          @site ||= sites(:madrid)
-        end
+        attr_accessor :site, :interest_group
 
-        def interest_group
-          @interest_group ||= gobierto_people_interest_groups(:google)
+        def setup
+          super
+          @site = sites(:madrid)
+          @interest_group = gobierto_people_interest_groups(:google)
         end
 
         def page_title
@@ -21,23 +21,21 @@ module Gencat
         end
 
         def test_index
-          with_javascript do
-            with_current_site(site) do
-              visit gobierto_people_interest_groups_path
+          with(js: true, site: site) do
+            visit gobierto_people_interest_groups_path
 
-              assert_equal page_title, header_title
-              assert_equal page_title, breadcrumb_last_item_text
+            assert_equal page_title, header_title
+            assert_equal page_title, breadcrumb_last_item_text
 
-              assert has_svg_link?(interest_group.to_url(start_date: DEFAULT_DATE_FILTER_START))
-              assert has_no_content? "There is no data for the selected dates"
-            end
+            assert has_svg_link?(interest_group.to_url(start_date: DEFAULT_DATE_FILTER_START))
+            assert has_no_content? "There is no data for the selected dates"
           end
         end
 
         def test_index_when_no_data
           site.events.destroy_all
 
-          with_current_site(site) do
+          with(js: true, site: site) do
             visit gobierto_people_interest_groups_path
 
             assert title.include? page_title
