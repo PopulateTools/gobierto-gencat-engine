@@ -167,14 +167,14 @@ ca:
     welcome:
       index:
         departments: Departaments
-        departments_extra: es mostren els Departaments que existeixen o han existit
+        departments_extra: es mostren els departaments que existeixen o han existit
           en funció del període seleccionat
         departments_rowchart_title: Departaments amb més reunions
         description_1: El visor mostra les reunions dels alts càrrecs de l’administració
           de la Generalitat amb els grups d’interès en el període temporal que seleccioneu.
           També hi trobareu els regals i invitacions permesos pel Codi de conducta,
           que obliga els alts càrrecs a fer pública aquesta informació. Així mateix,
-          el visor permet consultar els viatges a l’estranger del President, consellers,
+          el visor permet consultar els viatges a l’estranger del president, consellers,
           assessors i alts càrrecs en l’exercici de les seves funcions.
         description_2_html: Respecte de la informació dels alts càrrecs, es mostra l’últim
           càrrec que ocupen o han ocupat en l’última activitat registrada. Per saber
