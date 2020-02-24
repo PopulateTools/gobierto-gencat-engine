@@ -83,7 +83,7 @@ function setSearchBoxes(element, url) {
 
   // enable results on input focus
   element.addEventListener("focus", () => element.value.length ? $target.addClass(activeClass) : null)
-  
+
   // postpone event to allow input event set the values, then disable results
   element.addEventListener("focusout", () => setTimeout(() => $target.removeClass(activeClass), 250))
 
@@ -192,7 +192,7 @@ function setDepartmentBoxes(element, url) {
 
           // Never add first tick
           if (i === 0 && arr.length !== 1) return null
-          // Always add ticks if very few 
+          // Always add ticks if very few
           if (arr.length < ticks) return timeFormat("%b %y")(d)
           // From last one, add ticks by interval
           if ((distanceFromEnd % intervalLength) === 0) return timeFormat("%b %y")(d)
