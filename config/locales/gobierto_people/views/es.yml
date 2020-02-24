@@ -160,14 +160,14 @@ es:
     welcome:
       index:
         departments: Departamentos
-        departments_extra: se muestran los Departamentos que existen o han existido
+        departments_extra: se muestran los departamentos que existen o han existido
           en función del periodo seleccionado
         departments_rowchart_title: Departamentos con más reuniones
         description_1: El visor muestra las reuniones de los altos cargos de la administración
           de la Generalitat con los grupos de interés en el periodo temporal que seleccione.
           También encontrará los regalos e invitaciones permitidos por el Código de
           conducta, que obliga a los altos cargos a hacer pública esta información.
-          Asimismo, el visor permite consultar los viajes al extranjero del Presidente,
+          Asimismo, el visor permite consultar los viajes al extranjero del presidente,
           consejeros, asesores y altos cargos en el ejercicio de sus funciones.
         description_2_html: Respecto de la información de los altos cargos, se muestra
           el último cargo que ocupan o han ocupado en la última actividad registrada.
