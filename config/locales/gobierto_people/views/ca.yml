@@ -16,7 +16,6 @@ ca:
         people_events: Alts càrrecs amb més reunions en departaments
         people_with_events: Alts càrrecs amb reunions registrades
         punchcard_title: Reunions per departament i mes
-        title: Departaments
       show:
         interest_groups_box_subtitle: amb reunions en el període
         interest_groups_box_title: Grups d'interès
@@ -81,7 +80,6 @@ ca:
           title: Obsequis rebuts per %{person_name}
       index:
         department_officials: Alts càrrecs en %{department_name}
-        officials: Alts càrrecs
       invitations:
         index:
           invitations: Invitacions
@@ -128,6 +126,7 @@ ca:
             one: persona
             other: persones
     shared:
+      app_breadcrumb_title: Visor de l’activitat directiva
       app_title: Activitat directiva pública derivada del Codi de conducta
       check_it_out: Consulteu el text del Codi de conducta
       datepicker:

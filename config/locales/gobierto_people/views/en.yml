@@ -14,7 +14,6 @@ en:
         people_events: Officials with more events
         people_with_events: officials with registered events
         punchcard_title: Meetings per departments and month
-        title: Departments
       show:
         interest_groups_box_subtitle: with meetings in the period
         interest_groups_box_title: Interest groups
@@ -71,7 +70,6 @@ en:
           title: Gifts received by %{person_name}
       index:
         department_officials: Officials in %{department_name}
-        officials: Officials
       invitations:
         index:
           invitations: Invitations
@@ -115,6 +113,7 @@ en:
             one: person
             other: people
     shared:
+      app_breadcrumb_title: Public management activity viewer
       app_title: Public management activity derived from the Code of Conduct
       check_it_out: Check the text of the Code of Conduct
       datepicker:
