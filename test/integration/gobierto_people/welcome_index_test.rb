@@ -43,6 +43,10 @@ module Gencat
         "Public management activity derived from the Code of Conduct"
       end
 
+      def app_breadcrumb_title
+        "Public management activity viewer"
+      end
+
       def test_welcome_index
         with(js: true, site: site) do
           visit gobierto_people_root_path
@@ -125,7 +129,7 @@ module Gencat
           assert current_url.include? expected_path
 
           assert_equal page_title, header_title
-          assert_equal page_title, breadcrumb_last_item_text
+          assert_equal app_breadcrumb_title, breadcrumb_last_item_text
         end
       end
 
