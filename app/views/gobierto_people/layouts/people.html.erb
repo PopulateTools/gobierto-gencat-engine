@@ -2,7 +2,7 @@
 
   <section class="row js-container-fixed">
     <div class="col-md-9">
-      <p><%= @person.charge %></p>
+      <p><%= @person.charge(filter_end_date) %></p>
     </div>
     <div class="col-md-3">
       <%= render "gobierto_people/shared/datepicker" %>

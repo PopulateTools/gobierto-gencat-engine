@@ -104,7 +104,7 @@ module Gencat
           find(".js-search").send_keys(person.name)
 
           assert find(".box--result", visible: false)["innerHTML"].include?(person.name)
-          assert find(".box--result", visible: false)["innerHTML"].include?(person.charge)
+          assert find(".box--result", visible: false)["innerHTML"].include?(person.charge(Date.current))
 
           find(".box--result", visible: false).execute_script("this.click()")
 
