@@ -90,8 +90,8 @@
   }
 
   departmentsShowArgs = {
-    department_people_events_rowchart_api_path: '<%= gobierto_people_api_v1_people_path(from_date: filter_start_date, to_date: filter_end_date, department_id: @department.id) %>',
-    department_interest_groups_rowchart_api_path: '<%= gobierto_people_api_v1_interest_groups_path(from_date: filter_start_date, to_date: filter_end_date, department_id: @department.id) %>',
-    department_people_events_punchcard_api_path: '<%= gobierto_people_api_v1_people_path(from_date: filter_start_date, to_date: filter_end_date, include_history: true, department_id: @department.id) %>'
+    department_people_events_rowchart_api_path: '<%= gobierto_people_api_v1_people_path(start_date: filter_start_date, end_date: filter_end_date, department_id: @department.id) %>',
+    department_interest_groups_rowchart_api_path: '<%= gobierto_people_api_v1_interest_groups_path(start_date: filter_start_date, end_date: filter_end_date, department_id: @department.id) %>',
+    department_people_events_punchcard_api_path: '<%= gobierto_people_api_v1_people_path(start_date: filter_start_date, end_date: filter_end_date, include_history: true, department_id: @department.id) %>'
   }
 <% end %>
