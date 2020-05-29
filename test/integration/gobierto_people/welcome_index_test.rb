@@ -71,7 +71,7 @@ module Gencat
 
           within("[data-key=\"Immigration department\"]") do
             assert has_content? "Immigration department"
-            assert has_content? "2 Meetings registered"
+            assert has_content? "3 Meetings registered"
             assert all("svg").any?
           end
 
