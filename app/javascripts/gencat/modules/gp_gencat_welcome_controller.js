@@ -23,7 +23,7 @@ function setSearchBoxes(element, url) {
     <li>
       <div class="box--result" data-url="{{ url }}" data-name="{{ name }}">
         <strong>{{ name }}</strong>
-        <span>{{ position }}</span>
+        {{ positions_html }}
       </div>
     </li>
   `;
@@ -53,7 +53,7 @@ function setSearchBoxes(element, url) {
     const { value } = e.target
 
     if (value.length) {
-      const filterData = data.filter(d => lookUp(d.name, value) || lookUp(d.position, value))
+      const filterData = data.filter(d => lookUp(d.name, value) || lookUp(d.positions_str, value))
 
       // get DOM content
       const html = getHTMLContent(filterData, template, emptyTemplate)
