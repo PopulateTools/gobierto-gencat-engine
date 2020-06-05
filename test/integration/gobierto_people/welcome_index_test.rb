@@ -36,7 +36,11 @@ module Gencat
       end
 
       def people_box_counter
-        site.event_attendances.joins(:event).where("#{GobiertoCalendars::Event.table_name}.department_id is not null").select(:person_id).distinct.count
+        site.event_attendances.with_department.select(:person_id).distinct.count
+      end
+
+      def meetings_box_counter
+        site.event_attendances.with_department.count
       end
 
       def page_title
@@ -56,7 +60,7 @@ module Gencat
           # Summary boxes
 
           within "#meetings-box" do
-            assert has_content? "10\nMeetings registered"
+            assert has_content? "#{meetings_box_counter}\nMeetings registered"
           end
 
           within "#interest-groups-box" do
