@@ -43,6 +43,6 @@
 
 <%= javascript_tag do %>
   interestGroupsIndexArgs = {
-    interest_groups_events_rowchart_api_path: "<%= gobierto_people_api_v1_interest_groups_path(from_date: filter_start_date, to_date: filter_end_date, limit: 20) %>"
+    interest_groups_events_rowchart_api_path: "<%= gobierto_people_api_v1_interest_groups_path(from_date: filter_start_date, to_date: filter_end_date, limit: 20, locale: I18n.locale) %>"
   }
 <% end %>
