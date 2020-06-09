@@ -175,13 +175,8 @@ ca:
           que obliga els alts càrrecs a fer pública aquesta informació. Així mateix,
           el visor permet consultar els viatges a l’estranger del president, consellers,
           assessors i alts càrrecs en l’exercici de les seves funcions.
-        description_2_html: Respecte de la informació dels alts càrrecs, es mostra l’últim
-          càrrec que ocupen o han ocupat en l’última activitat registrada. Per saber
-          si un alt càrrec està actualment en actiu i el càrrec que ocupa, accediu
-          a <a href="http://governobert.gencat.cat/ca/transparencia/Organitzacio-i-normativa/organigrames/index.html">Organigrames</a>.
-          Per conèixer el càrrec que ocupaven en un moment determinat, accediu a l’enllaç
-          al dataset corresponent del Portal de dades obertes, al final de la pàgina,
-          i busqueu la persona a través del cercador.
+        description_2_html: Respecte de la informació dels alts càrrecs, es mostren
+          els càrrecs que ocupen o han ocupat en el període temporal seleccionat.
         interest_groups_box_subtitle: amb reunions en el període
         interest_groups_box_title: Grups d'interès
         interest_groups_box_title_single: Grup d'interès

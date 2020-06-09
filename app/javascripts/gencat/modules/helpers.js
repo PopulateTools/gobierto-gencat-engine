@@ -102,6 +102,9 @@ function getHTMLContent(data, template, emptyTemplate = I18n.t("gobierto_people.
 }
 
 function lookUp(term, value) {
+  if (!term) {
+    return false
+  }
   // IE11 polyfill for normalize
   if (!String.prototype.normalize) {
     return normalize(term).replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(normalize(value).replace(/[\u0300-\u036f]/g, "").toLowerCase())

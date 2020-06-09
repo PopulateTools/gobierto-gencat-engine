@@ -36,7 +36,11 @@ module Gencat
       end
 
       def people_box_counter
-        site.event_attendances.joins(:event).where("#{GobiertoCalendars::Event.table_name}.department_id is not null").select(:person_id).distinct.count
+        site.event_attendances.with_department.select(:person_id).distinct.count
+      end
+
+      def meetings_box_counter
+        site.event_attendances.with_department.count
       end
 
       def page_title
@@ -56,7 +60,7 @@ module Gencat
           # Summary boxes
 
           within "#meetings-box" do
-            assert has_content? "10\nMeetings registered"
+            assert has_content? "#{meetings_box_counter}\nMeetings registered"
           end
 
           within "#interest-groups-box" do
@@ -71,7 +75,7 @@ module Gencat
 
           within("[data-key=\"Immigration department\"]") do
             assert has_content? "Immigration department"
-            assert has_content? "2 Meetings registered"
+            assert has_content? "3 Meetings registered"
             assert all("svg").any?
           end
 
@@ -104,7 +108,7 @@ module Gencat
           find(".js-search").send_keys(person.name)
 
           assert find(".box--result", visible: false)["innerHTML"].include?(person.name)
-          assert find(".box--result", visible: false)["innerHTML"].include?(person.charge)
+          assert find(".box--result", visible: false)["innerHTML"].include?(person.charge(Date.current))
 
           find(".box--result", visible: false).execute_script("this.click()")
 

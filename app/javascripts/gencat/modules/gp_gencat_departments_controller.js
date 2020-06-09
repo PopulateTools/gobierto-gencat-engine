@@ -37,7 +37,9 @@ function setPeopleBoxes(element, url) {
               <a href="{{ url }}">
                 <h1 class="rectangle--title"><strong>{{ name }}</strong></h1>
               </a>
-              <div class="rectangle--subtitle">{{ position }}</div>
+                <div class="rectangle--subtitle tipsit-n" title="{{ filtered_positions_tooltip }}">
+                  {{ position }}
+              </div>
             </div>
           </div>
         </div>

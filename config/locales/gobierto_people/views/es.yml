@@ -168,13 +168,8 @@ es:
           conducta, que obliga a los altos cargos a hacer pública esta información.
           Asimismo, el visor permite consultar los viajes al extranjero del presidente,
           consejeros, asesores y altos cargos en el ejercicio de sus funciones.
-        description_2_html: Respecto de la información de los altos cargos, se muestra
-          el último cargo que ocupan o han ocupado en la última actividad registrada.
-          Para saber si un alto cargo está actualmente en activo y el cargo que ocupa,
-          acceda a <a href="http://governobert.gencat.cat/es/transparencia/Organitzacio-i-normativa/organigrames/index.html">Organigramas</a>.
-          Para conocer el cargo que ocupaban en un momento determinado, acceda al
-          enlace al dataset correspondiente del Portal de datos abiertas, al final
-          de la página, y busque la persona a través del buscador.
+        description_2_html: Respecto de la información de los altos cargos, se muestran
+          los cargos que ocupan o han ocupado en el periodo temporal seleccionado.
         interest_groups_box_subtitle: con reuniones en el periodo
         interest_groups_box_title: Grupos de interés
         interest_groups_box_title_single: Grupo de interés
