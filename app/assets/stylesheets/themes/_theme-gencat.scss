@@ -378,11 +378,11 @@
       @include grid(30px, 2);
     }
 
-    @include screen(768, 1024) {
+    @include screen(768, 1280) {
       @include grid(30px, 3);
     }
 
-    @include min-screen(1024) {
+    @include min-screen(1280) {
       @include grid(30px, 4);
     }
   }
@@ -395,7 +395,11 @@
     &--inner {
       @include aspect-ratio(4, 3);
 
-      @include min-screen(480) {
+      @include screen(480, 1024) {
+        @include aspect-ratio(9, 10);
+      }
+
+      @include min-screen(1024) {
         @include aspect-ratio(1, 1);
       }
     }
@@ -842,6 +846,7 @@
   //@component table item
   .table-item {
     padding: 5px 0 20px;
+    word-break: break-word;
 
     > div:nth-child(3) {
       font-size: $f8;
