@@ -2,6 +2,7 @@
       "gobierto_people/people/item_teaser",
       title: event.interest_group.name,
       subtitle: event.title,
+      charge: event.historical_charge,
       id: event.to_anchor,
       dates: [event.starts_at, event.ends_at],
       item_details_path: local_assigns[:teaser] ? gobierto_people_person_past_events_path(event.collection.container.slug, { anchor: event.to_anchor }.merge(date_range_params)) : nil

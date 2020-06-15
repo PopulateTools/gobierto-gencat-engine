@@ -2,6 +2,7 @@
       "gobierto_people/people/item_teaser",
       title: invitation.organizer,
       subtitle: invitation.title,
+      charge: invitation.historical_charge,
       id: invitation.to_anchor,
       dates: [invitation.start_date, invitation.end_date],
       item_details_path: local_assigns[:teaser] ? gobierto_people_person_invitations_path(invitation.person.slug, { anchor: invitation.to_anchor }.merge(date_range_params)) : nil
