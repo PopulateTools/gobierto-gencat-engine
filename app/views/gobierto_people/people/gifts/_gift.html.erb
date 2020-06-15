@@ -4,6 +4,7 @@
       from: gift.delivered_by,
       to: gift.reason,
       id: gift.to_anchor,
+      charge: gift.historical_charge,
       dates: gift.date,
       item_details_path: local_assigns[:teaser] ? gobierto_people_person_gifts_path(gift.person.slug, { anchor: gift.to_anchor }.merge(date_range_params)) : nil
     ) %>
