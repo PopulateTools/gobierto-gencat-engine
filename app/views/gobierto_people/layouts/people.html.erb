@@ -3,7 +3,7 @@
   <section class="row js-container-fixed">
     <div class="col-md-9">
       <p>
-        <% @person.historical_charges.reverse_sorted.each do |charge| %>
+        <% @person.historical_charges_names.each do |charge| %>
           <%= charge %><br>
         <% end %>
       </p>
