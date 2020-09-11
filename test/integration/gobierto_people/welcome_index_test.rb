@@ -101,6 +101,7 @@ module Gencat
         with(js: true, site: site) do
           visit gobierto_people_root_path
 
+          sleep 2
           find(".js-search").send_keys(person.name)
 
           assert find(".box--result", visible: false)["innerHTML"].include?(person.name)
