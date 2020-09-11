@@ -146,6 +146,7 @@ en:
       to: to
       view_all: View all
       view_all_f: View all
+      view_charges: View all positions
       view_details: View details
       view_gifts: View all the gifts on the Open Data portal
       view_invitations: View all the invitations on the Open Data portal
@@ -173,7 +174,7 @@ en:
         meetings_box_subtitle: with interest groups
         meetings_box_title: Meetings registered
         meetings_box_title_single: Meeting registered
-        people_box_subtitle: with meetings registered
+        people_box_subtitle: with registered activity
         people_box_title: Officials
         people_box_title_single: Official
         people_rowchart_title: Officials with most meetings

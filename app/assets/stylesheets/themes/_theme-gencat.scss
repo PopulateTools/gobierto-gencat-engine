@@ -539,6 +539,18 @@
         text-transform: uppercase;
       }
     }
+
+    &--tooltip {
+      color: $color_text;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 17px;
+      margin-top: 0.5em;
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
   }
 
   .map {
