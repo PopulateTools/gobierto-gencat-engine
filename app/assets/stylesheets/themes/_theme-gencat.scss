@@ -519,6 +519,13 @@
       padding: 32px 16px 16px;
     }
 
+    &--content-inner {
+      @include absolute-layout;
+
+      height: 100%;
+      width: 100%;
+    }
+
     &--title {
       color: color(3);
       cursor: pointer;
@@ -542,9 +549,9 @@
 
     &--tooltip {
       color: $color_text;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 400;
-      line-height: 17px;
+      line-height: 14px;
       margin-top: 0.5em;
 
       &::first-letter {
@@ -903,6 +910,21 @@
 
     > &:last-of-type  {
       margin-bottom: 100px;
+    }
+  }
+}
+
+.tooltip-content {
+  ul {
+    padding-left: 20px;
+  }
+
+  li {
+    list-style-type: disc;
+    text-align: left;
+  
+    &::first-letter {
+      text-transform: uppercase;
     }
   }
 }
