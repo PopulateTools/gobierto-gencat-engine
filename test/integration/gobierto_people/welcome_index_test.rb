@@ -36,7 +36,10 @@ module Gencat
       end
 
       def people_box_counter
-        site.event_attendances.with_department.select(:person_id).distinct.count
+        (site.event_attendances.map(&:person_id) +
+         site.trips.map(&:person_id) +
+         site.gifts.map(&:person_id) +
+         site.invitations.map(&:person_id)).uniq.count
       end
 
       def meetings_box_counter
@@ -68,7 +71,7 @@ module Gencat
           end
 
           within "#people-box" do
-            assert has_content? "#{people_box_counter}\nOfficials\nwith meetings registered"
+            assert has_content? "#{people_box_counter}\nOfficials\nwith registered activity"
           end
 
           # Departments
