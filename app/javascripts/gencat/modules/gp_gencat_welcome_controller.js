@@ -8,7 +8,7 @@ window.GobiertoPeople.GencatWelcomeController = (function() {
 
   GencatWelcomeController.prototype.index = function(options) {
     const inputSearch = document.querySelector(".js-search")
-    setSearchBoxes(inputSearch, options.people_events_rowchart_api_path)
+    setSearchBoxes(inputSearch, options.people_activities_api_path)
 
     const departmentBoxes = document.querySelector(".js-department-squares")
     setDepartmentBoxes(departmentBoxes, options.departments_events_rowchart_api_path)
