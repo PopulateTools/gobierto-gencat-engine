@@ -1,3 +1,15 @@
+import { csv, json } from 'd3-request'
+import { min, max } from 'd3-array'
+import { geoPath, geoMercator, geoTransform } from 'd3-geo'
+import { select, selectAll, mouse, event } from 'd3-selection'
+import { scaleThreshold } from 'd3-scale'
+import { queue } from 'd3-queue'
+import { nest, map } from 'd3-collection'
+import * as topojson from "topojson-client";
+import mapboxgl from 'mapbox-gl';
+
+const d3 = { csv, json, min, max, geoPath, geoMercator, geoTransform, select, selectAll, scaleThreshold, queue, nest, map, mouse, event }
+
 window.GobiertoPeople.GencatMapController = (function() {
   function GencatMapController() {}
 
@@ -25,8 +37,116 @@ window.GobiertoPeople.GencatMapController = (function() {
   return GencatMapController;
 })();
 
+
 function createMap(options) {
-  if ($('#map').length === 0) return;
+
+  mapboxgl.accessToken = 'pk.eyJ1IjoiYmltdXgiLCJhIjoiY2swbmozcndlMDBjeDNuczNscTZzaXEwYyJ9.oMM71W-skMU6IN0XUZJzGQ';
+
+  let map = new mapboxgl.Map({
+    container: "map",
+    style: "mapbox://styles/mapbox/light-v9",
+    center: [-3.703790, 40.416775],
+    zoom: 3,
+    minZoom: 3,
+    maxZoom: 16,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  });
+
+  map.addControl(new mapboxgl.NavigationControl());
+
+  const container = map.getCanvasContainer()
+  const svg = d3.select(container)
+    .append("svg")
+    .attr('class', 'map--svg')
+
+  const dataGenCatTrips = 'https://gencat.gobify.net/api/v1/data/data.csv?sql=select%20*%20from%20trips'
+  const URLTOPOJSON = 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json'
+
+  const CHOROPLET_SCALE = ['#ecda9a', '#efc47e', '#f3ad6a', '#f7945d', '#f97b57', '#f66356', '#ee4d5a']
+  const dataTravels = d3.map();
+
+  const tooltip = d3
+    .select(".map--container")
+    .append("div")
+    .attr("class", "map--tooltip");
+
+  d3.csv(dataGenCatTrips, function(data) {
+    const nest = d3
+      .nest()
+      .key(function(d) { return d.country_name })
+      .entries(data);
+
+    nest.forEach(function(d) {
+      dataTravels.set(d.key, +d.values.length);
+    })
+
+    const minValue = d3.min(nest, d => d.values.length)
+    const maxValue = d3.max(nest, d => d.values.length)
+    const domainScale = [ minValue, (maxValue / 12), (maxValue / 10), (maxValue / 7), (maxValue / 5), (maxValue / 3), maxValue ]
+
+    const colorScale = d3.scaleThreshold()
+      .domain(domainScale)
+      .range(CHOROPLET_SCALE);
+
+    d3.json(URLTOPOJSON, function(data) {
+
+      const transform = d3.geoTransform({point: projectPoint});
+      const path = d3.geoPath().projection(transform);
+
+      let dataTOPOJSON = data
+      let featureElement = svg
+        .selectAll("path")
+        .data(dataTOPOJSON.features)
+        .enter()
+        .append("path")
+        .attr('stroke', '#fff')
+        .attr("fill", function (d) {
+          d.travels = dataTravels.get(d.properties.name);
+          if(d.travels === undefined) {
+            return 'transparent'
+          } else {
+            return colorScale(d.travels);
+          }
+        })
+        .on("click", showTooltip);
+
+      function update() {
+        featureElement.attr("d", path);
+      }
+
+      map.on("viewreset", update)
+      map.on("movestart", function() {
+        svg.classed("hidden", true);
+      });
+
+      map.on("moveend", function(){
+        update()
+        svg.classed("hidden", false);
+      })
+
+      update()
+
+      function projectPoint(lon, lat) {
+        var point = map.project(new mapboxgl.LngLat(lon, lat));
+        this.stream.point(point.x, point.y);
+      }
+
+      function showTooltip(d) {
+
+        /*TODO: filter csv with the name of country to obtain the list of travelers*/
+        const mouse = d3.mouse(svg.node()).map(d => parseInt(d));
+        tooltip
+          .style("display", "block")
+          .html(`<h2>Han viajado a ${d.properties.name} en ${d.travels} ocasiones</h2>`)
+          .style('left', `${mouse[0]}px`)
+          .style('top', `${mouse[1]}px`)
+          .transition()
+          .duration(200);
+      }
+    })
+  })
+
+ /* if ($('#map').length === 0) return;
 
     let fromDate = options.fromDate;
     let toDate = options.toDate;
@@ -175,7 +295,8 @@ ORDER by count DESC
           }
         });
       });
-    });
+    });*/
 }
 
 window.GobiertoPeople.gencat_map_controller = new GobiertoPeople.GencatMapController;
+
