@@ -99,7 +99,6 @@ function createMap(options) {
         .data(dataTOPOJSON.features)
         .enter()
         .append("path")
-        .attr('stroke', '#fff')
         .attr("fill", function (d) {
           d.travels = dataTravels.get(d.properties.name);
           if(d.travels === undefined) {
@@ -108,23 +107,28 @@ function createMap(options) {
             return colorScale(d.travels);
           }
         })
+        .attr("stroke", function (d) {
+          if(d.travels === undefined) {
+            return 'transparent'
+          } else {
+            return '#fff'
+          }
+        })
         .on("click", showTooltip);
 
       function update() {
         featureElement.attr("d", path);
       }
 
-      map.on("viewreset", update)
-      map.on("movestart", function() {
-        svg.classed("hidden", true);
-      });
-
-      map.on("moveend", function(){
-        update()
-        svg.classed("hidden", false);
-      })
+      map.on("viewreset", update);
+      map.on("move", update);
+      map.on("moveend", update);
 
       update()
+
+      function project(d) {
+        return map.project(new mapboxgl.LngLat(+d[0], +d[1]));
+      }
 
       function projectPoint(lon, lat) {
         var point = map.project(new mapboxgl.LngLat(lon, lat));
