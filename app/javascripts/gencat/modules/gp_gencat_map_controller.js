@@ -5,10 +5,11 @@ import { select, selectAll, mouse, event } from 'd3-selection'
 import { scaleThreshold } from 'd3-scale'
 import { queue } from 'd3-queue'
 import { nest, map } from 'd3-collection'
+import { zoom } from 'd3-zoom'
 import * as topojson from "topojson-client";
 import mapboxgl from 'mapbox-gl';
 
-const d3 = { csv, json, min, max, geoPath, geoMercator, geoTransform, select, selectAll, scaleThreshold, queue, nest, map, mouse, event }
+const d3 = { csv, json, min, max, geoPath, geoMercator, geoTransform, select, selectAll, scaleThreshold, queue, nest, map, mouse, event, zoom }
 
 window.GobiertoPeople.GencatMapController = (function() {
   function GencatMapController() {}
@@ -42,6 +43,21 @@ function createMap(options) {
 
   mapboxgl.accessToken = 'pk.eyJ1IjoiYmltdXgiLCJhIjoiY2swbmozcndlMDBjeDNuczNscTZzaXEwYyJ9.oMM71W-skMU6IN0XUZJzGQ';
 
+  let dots
+  let featureElement
+  let initZoom
+  const buttonCloseTooltip = document.getElementById('tooltip--close')
+  buttonCloseTooltip.addEventListener('click', closeTooltip)
+  const dataGenCatTrips = 'https://gencat.gobify.net/api/v1/data/data.csv?sql=select%20*%20from%20trips'
+  const urlTopoJSON = 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json'
+  const choropletScale = ['#ecda9a', '#efc47e', '#f3ad6a', '#f7945d', '#f97b57', '#f66356', '#ee4d5a']
+  const dataTravels = d3.map();
+  const tooltip = d3
+    .select('.map--tooltip')
+
+  const tooltipText = d3
+    .select(".map--tooltip-text")
+
   let map = new mapboxgl.Map({
     container: "map",
     style: "mapbox://styles/mapbox/light-v9",
@@ -59,17 +75,6 @@ function createMap(options) {
     .append("svg")
     .attr('class', 'map--svg')
 
-  const dataGenCatTrips = 'https://gencat.gobify.net/api/v1/data/data.csv?sql=select%20*%20from%20trips'
-  const URLTOPOJSON = 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json'
-
-  const CHOROPLET_SCALE = ['#ecda9a', '#efc47e', '#f3ad6a', '#f7945d', '#f97b57', '#f66356', '#ee4d5a']
-  const dataTravels = d3.map();
-
-  const tooltip = d3
-    .select(".map--container")
-    .append("div")
-    .attr("class", "map--tooltip");
-
   d3.csv(dataGenCatTrips, function(data) {
     const nest = d3
       .nest()
@@ -80,54 +85,111 @@ function createMap(options) {
       dataTravels.set(d.key, +d.values.length);
     })
 
+    data.forEach(function(d) {
+      d.lat = +d.lat
+      d.lon = +d.lon
+    })
+
     const minValue = d3.min(nest, d => d.values.length)
     const maxValue = d3.max(nest, d => d.values.length)
     const domainScale = [ minValue, (maxValue / 12), (maxValue / 10), (maxValue / 7), (maxValue / 5), (maxValue / 3), maxValue ]
 
     const colorScale = d3.scaleThreshold()
       .domain(domainScale)
-      .range(CHOROPLET_SCALE);
+      .range(choropletScale);
 
-    d3.json(URLTOPOJSON, function(json) {
+    d3.json(urlTopoJSON, function(json) {
 
       const transform = d3.geoTransform({point: projectPoint});
       const path = d3.geoPath().projection(transform);
 
       let dataTOPOJSON = json
-      let featureElement = svg
-        .selectAll("path")
-        .data(dataTOPOJSON.features)
-        .enter()
-        .append("path")
-        .attr("fill", function (d) {
-          d.travels = dataTravels.get(d.properties.name);
-          if(d.travels === undefined) {
-            return 'transparent'
-          } else {
-            return colorScale(d.travels);
-          }
-        })
-        .attr("stroke", function (d) {
-          if(d.travels === undefined) {
-            return 'transparent'
-          } else {
-            return '#fff'
-          }
-        })
-        .on("click", showTooltip);
+
+      function renderChoropleth() {
+        featureElement = svg
+          .selectAll("path")
+          .data(dataTOPOJSON.features)
+          .enter()
+          .append("path")
+          .attr('class', 'map--countries')
+          .attr("fill", function (d) {
+            d.travels = dataTravels.get(d.properties.name);
+            if(d.travels === undefined) {
+              return 'transparent'
+            } else {
+              return colorScale(d.travels);
+            }
+          })
+          .attr("stroke", function (d) {
+            if(d.travels === undefined) {
+              return 'transparent'
+            } else {
+              return '#fff'
+            }
+          })
+          .on("click", showTooltip);
+      }
 
       function update() {
         featureElement.attr("d", path);
       }
 
       map.on("viewreset", update);
-      map.on("move", update);
-      map.on("moveend", update);
+      map.on("move", function() {
+        update()
+        if(initZoom > 4) renderDots()
+      });
 
-      update()
+      map.on("moveend", function() {
+        update()
+        if (initZoom > 4) {
+          dots
+            .attr("cx", function(d) { return project([d.lon, d.lat]).x })
+            .attr("cy", function(d) { return project([d.lon, d.lat]).y })
+        }
+      });
+
+      map.on('zoom', function(e) {
+
+        const { target: { scrollZoom: { _startZoom } } } = e
+        initZoom = _startZoom
+
+        if(initZoom > 4) {
+          d3.selectAll('.map--countries')
+            .remove()
+            .exit()
+          renderDots()
+
+        } else {
+          d3.selectAll('.map--dots')
+            .remove()
+            .exit()
+          renderChoropleth()
+        }
+      })
+
+      function renderDots() {
+        dots = svg
+          .selectAll("circle")
+          .data(data)
+
+        dots
+          .enter()
+          .append("circle")
+          .attr('class', 'map--dots')
+          .attr("r", 6)
+          .attr("cx", d => project([d.lon, d.lat]).x)
+          .attr("cy", d => project([d.lon, d.lat]).y)
+          .attr('fill', '#F05E6A')
+          .attr('stroke', '#fff')
+          //TODO: same tooltip as chroloplets but with the name of the city.
+          .on('click', function(d) {
+            console.log(d)
+          })
+      }
 
       function project(d) {
-        return map.project(new mapboxgl.LngLat(+d[0], +d[1]));
+        return map.project(new mapboxgl.LngLat(d[0], d[1]));
       }
 
       function projectPoint(lon, lat) {
@@ -148,13 +210,16 @@ function createMap(options) {
         }
 
         const mouse = d3.mouse(svg.node()).map(d => parseInt(d));
+
         tooltip
           .style("display", "block")
-          .html(`<h2>Han viajado a ${name} en ${travels} ocasiones</h2><ul>${arrayTravelers}</ul>`)
           .style('left', `${mouse[0]}px`)
           .style('top', `${mouse[1]}px`)
           .transition()
           .duration(200);
+
+        tooltipText
+          .html(`<h2>${travels} reuniones en ${name} por:</h2><ul>${arrayTravelers}</ul>`)
       }
 
       function filterTravelers(country) {
@@ -165,8 +230,17 @@ function createMap(options) {
         filteredData = getUniqueListBy(filteredData, 'person_name')
         return filteredData
       }
+
+      renderChoropleth()
+      update()
+
     })
   })
+
+  function closeTooltip() {
+    tooltip
+      .style("display", "none")
+  }
 
  /* if ($('#map').length === 0) return;
 

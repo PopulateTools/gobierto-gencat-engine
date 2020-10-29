@@ -43,6 +43,10 @@
       <p class="map--infobox-desc"><%= simple_pluralize(trips_statistics[:total_unique_destinations], t("gobierto_people.shared.destination"), t("gobierto_people.shared.destinations")) %></p>
     </div>
   </div>
+  <div class="map--tooltip">
+    <i id="tooltip--close" class="far fa-times-circle"></i>
+    <div class="map--tooltip-text"></div>
+  </div>
 
 
   <div id="map"></div>
