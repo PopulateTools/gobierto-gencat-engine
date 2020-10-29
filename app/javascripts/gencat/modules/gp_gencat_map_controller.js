@@ -73,7 +73,7 @@ function createMap(options) {
   d3.csv(dataGenCatTrips, function(data) {
     const nest = d3
       .nest()
-      .key(function(d) { return d.country_name })
+      .key(d => d.country_name)
       .entries(data);
 
     nest.forEach(function(d) {
@@ -88,12 +88,12 @@ function createMap(options) {
       .domain(domainScale)
       .range(CHOROPLET_SCALE);
 
-    d3.json(URLTOPOJSON, function(data) {
+    d3.json(URLTOPOJSON, function(json) {
 
       const transform = d3.geoTransform({point: projectPoint});
       const path = d3.geoPath().projection(transform);
 
-      let dataTOPOJSON = data
+      let dataTOPOJSON = json
       let featureElement = svg
         .selectAll("path")
         .data(dataTOPOJSON.features)
@@ -136,16 +136,34 @@ function createMap(options) {
       }
 
       function showTooltip(d) {
+        const { travels, properties: { name } } = d
 
-        /*TODO: filter csv with the name of country to obtain the list of travelers*/
+        //Get the list of travellers
+        const filterTravelersData = filterTravelers(name)
+
+        let arrayTravelers = '';
+        for(let person of filterTravelersData) {
+          let url = `/personas/${person.person_slug}/viajes-y-desplazamientos`
+          arrayTravelers = `${arrayTravelers}<li><a href='${url}'>${person.person_name}</a></li>`;
+        }
+
         const mouse = d3.mouse(svg.node()).map(d => parseInt(d));
         tooltip
           .style("display", "block")
-          .html(`<h2>Han viajado a ${d.properties.name} en ${d.travels} ocasiones</h2>`)
+          .html(`<h2>Han viajado a ${name} en ${travels} ocasiones</h2><ul>${arrayTravelers}</ul>`)
           .style('left', `${mouse[0]}px`)
           .style('top', `${mouse[1]}px`)
           .transition()
           .duration(200);
+      }
+
+      function filterTravelers(country) {
+        let filteredData = data.filter(({ country_name }) => country_name === country);
+        function getUniqueListBy(arr, key) {
+          return [...new Map(arr.map(item => [item[key], item])).values()]
+        }
+        filteredData = getUniqueListBy(filteredData, 'person_name')
+        return filteredData
       }
     })
   })
