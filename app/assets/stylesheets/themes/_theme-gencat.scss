@@ -913,11 +913,12 @@
       display: none;
       position: absolute;
       padding: .5rem;
-      min-width: 250px;
+      width: 350px;
       height: 230px;
       z-index: 1;
       right: 1rem;
       overflow: hidden;
+      overflow-y: scroll;
       color: $color_text;
       background-color: #fff;
       box-shadow: 0 2px 4px rgba(0, 0, 0, .18);
@@ -932,6 +933,13 @@
       top: .5rem;
       right: .5rem;
       cursor: pointer;
+    }
+
+    .map--tooltip--list {
+    }
+
+    .map--tooltip--list-element {
+
     }
   }
 }

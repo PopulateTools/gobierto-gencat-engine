@@ -54,7 +54,8 @@ function createMap(options) {
   const urlTopoJSON = 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json'
   const choropletScale = ['#ecda9a', '#efc47e', '#f3ad6a', '#f7945d', '#f97b57', '#f66356', '#ee4d5a']
   const dataTravels = d3.map();
-  const meetingName = I18n.t('gobierto_people.people.trips.trip.meeting_name')
+  const meetingNameOne = I18n.t('gobierto_people.people.trips.trip.meeting_name.one')
+  const meetingNameOther = I18n.t('gobierto_people.people.trips.trip.meeting_name.other')
   const tripIn = I18n.t('gobierto_people.people.trips.trip.in')
   const tripBy = I18n.t('gobierto_people.people.trips.trip.by')
   const tooltip = d3
@@ -132,7 +133,7 @@ function createMap(options) {
               return '#fff'
             }
           })
-          .on("click", showTooltip);
+          .on("click", showTooltipChoropleth);
       }
 
       function updateChroloplet() {
@@ -187,10 +188,7 @@ function createMap(options) {
           .attr('fill', '#F05E6A')
           .attr('stroke', '#fff')
           .style('visibility', 'hidden')
-          //TODO: same tooltip as chroloplets but with the name of the city.
-          .on('click', function(d) {
-            console.log(d)
-          })
+          .on('click', showTooltipDots)
       }
 
       function updateDots() {
@@ -243,18 +241,14 @@ function createMap(options) {
         this.stream.point(point.x, point.y);
       }
 
-      function showTooltip(d) {
+      function showTooltipChoropleth(d) {
         const { travels, properties: { name } } = d
 
         //Get the list of travellers
-        const filterTravelersData = filterTravelers(name)
-
-        let arrayTravelers = '';
-        for(let person of filterTravelersData) {
-          const { person_name, person_slug } = person
-          let url = `/personas/${person_slug}/viajes-y-desplazamientos`
-          arrayTravelers = `${arrayTravelers}<li><a href='${url}'>${person_name}</a></li>`;
-        }
+        const valueCountry = 'country_name'
+        const valuePerson = 'person_name'
+        const filterTravelersData = filterTravelers(name, valueCountry, valuePerson)
+        const listTravelers = getListTravelers(filterTravelersData)
 
         const mouse = d3.mouse(svg.node()).map(d => parseInt(d));
 
@@ -265,16 +259,53 @@ function createMap(options) {
           .transition()
           .duration(200);
 
+        const countTrips = travels > 1 ? meetingNameOther : meetingNameOne
         tooltipText
-          .html(`<h2>${travels} ${meetingName} ${tripIn} ${name} ${tripBy}:</h2><ul>${arrayTravelers}</ul>`)
+          .html(`<h2>${travels} ${countTrips} ${tripIn} ${name} ${tripBy}:</h2><ul>${listTravelers}</ul>`)
       }
 
-      function filterTravelers(country) {
-        let filteredData = data.filter(({ country_name }) => country_name === country);
+      function showTooltipDots(d) {
+
+        const { city_name, totalTrips } = d
+
+        //Get the list of travellers
+        const valueCountry = 'city_name'
+        const valuePerson = 'person_name'
+        const filterTravelersData = filterTravelers(city_name, valueCountry, valuePerson)
+        const listTravelers = getListTravelers(filterTravelersData)
+
+        const mouse = d3.mouse(svg.node()).map(d => parseInt(d));
+
+        tooltip
+          .style("display", "block")
+          .style('left', `${mouse[0]}px`)
+          .style('top', `${mouse[1]}px`)
+          .transition()
+          .duration(200);
+
+        const countTrips = totalTrips > 1 ? meetingNameOther : meetingNameOne
+        tooltipText
+          .html(`<h2>${totalTrips} ${countTrips} ${tripIn} ${city_name} ${tripBy}:</h2><ul class="map--tooltip--list">${listTravelers}</ul>`)
+
+      }
+
+      function getListTravelers(data) {
+        let arrayTravelers = '';
+        for(let person of data) {
+          const { person_name, person_slug } = person
+          let url = `/personas/${person_slug}/viajes-y-desplazamientos`
+          arrayTravelers = `${arrayTravelers}<li class="map--tooltip--list-element"><a href='${url}'>${person_name}</a></li>`;
+        }
+
+        return arrayTravelers;
+      }
+
+      function filterTravelers(country, filterKey, value) {
+        let filteredData = data.filter((d) => d[filterKey] === country);
         function getUniqueListBy(arr, key) {
           return [...new Map(arr.map(item => [item[key], item])).values()]
         }
-        filteredData = getUniqueListBy(filteredData, 'person_name')
+        filteredData = getUniqueListBy(filteredData, value)
         return filteredData
       }
 
