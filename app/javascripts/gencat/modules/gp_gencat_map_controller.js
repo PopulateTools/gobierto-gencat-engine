@@ -51,7 +51,7 @@ function createMap(options) {
   const buttonCloseTooltip = document.getElementById('tooltip--close')
   buttonCloseTooltip.addEventListener('click', closeTooltip)
   const dataGenCatTrips = 'https://gencat.gobify.net/api/v1/data/data.csv?sql=select%20*%20from%20trips'
-  const urlTopoJSON = 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json'
+  const urlTopoJSON = 'https://raw.githubusercontent.com/johan/world.geo.json/5947ef8dac07fd5a5026d25bec664e04d42a0abe/countries.geo.json'
   const choropletScale = ['#ecda9a', '#efc47e', '#f3ad6a', '#f7945d', '#f97b57', '#f66356', '#ee4d5a']
   const dataTravels = new Map();
   const meetingNameOne = I18n.t('gobierto_people.people.trips.trip.meeting_name.one')
@@ -91,7 +91,7 @@ function createMap(options) {
   d3.csv(dataGenCatTrips, function(data) {
     const nest = d3
       .nest()
-      .key(d => d.country_name)
+      .key(d => d.country)
       .entries(data);
 
     nest.forEach(function(d) {
@@ -126,7 +126,7 @@ function createMap(options) {
           .append("path")
           .attr('class', 'map--countries')
           .attr("fill", function (d) {
-            d.travels = dataTravels.get(d.properties.name);
+            d.travels = dataTravels.get(d.properties.alpha2);
             if(d.travels === undefined) {
               return 'transparent'
             } else {
@@ -308,6 +308,7 @@ function createMap(options) {
       }
 
       function filterTravelers(country, filterKey, value) {
+        if (country === 'United States of America') country = 'United States'
         let filteredData = data.filter((d) => d[filterKey] === country);
         function getUniqueListBy(arr, key) {
           return [...new Map(arr.map(item => [item[key], item])).values()]
