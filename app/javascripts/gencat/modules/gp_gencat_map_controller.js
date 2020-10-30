@@ -6,7 +6,6 @@ import { scaleThreshold } from 'd3-scale'
 import { queue } from 'd3-queue'
 import { nest, map } from 'd3-collection'
 import { zoom } from 'd3-zoom'
-import * as topojson from "topojson-client";
 import mapboxgl from 'mapbox-gl';
 
 const d3 = { csv, json, min, max, geoPath, geoMercator, geoTransform, select, selectAll, scaleThreshold, queue, nest, map, mouse, zoom }
@@ -51,7 +50,7 @@ function createMap() {
   const buttonCloseTooltip = document.getElementById('tooltip--close')
   buttonCloseTooltip.addEventListener('click', closeTooltip)
   const dataGenCatTrips = 'https://gencat.gobify.net/api/v1/data/data.csv?sql=select%20*%20from%20trips'
-  const urlTopoJSON = 'https://raw.githubusercontent.com/johan/world.geo.json/5947ef8dac07fd5a5026d25bec664e04d42a0abe/countries.geo.json'
+  const geoJSON = '/countries.geo.json'
   const choropletScale = ['#ecda9a', '#efc47e', '#f3ad6a', '#f7945d', '#f97b57', '#f66356', '#ee4d5a']
   const dataTravels = new Map();
   const meetingNameOne = I18n.t('gobierto_people.people.trips.trip.meeting_name.one')
@@ -111,17 +110,17 @@ function createMap() {
       .domain(domainScale)
       .range(choropletScale);
 
-    d3.json(urlTopoJSON, function(json) {
+    d3.json(geoJSON, function(json) {
 
       const transform = d3.geoTransform({point: projectPoint});
       const path = d3.geoPath().projection(transform);
 
-      let dataTOPOJSON = json
+      let dataGEOJSON = json
 
       function renderChoropleth() {
         featureElement = svg
           .selectAll("path")
-          .data(dataTOPOJSON.features)
+          .data(dataGEOJSON.features)
           .enter()
           .append("path")
           .attr('class', 'map--countries')
