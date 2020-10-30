@@ -41,6 +41,8 @@ window.GobiertoPeople.GencatMapController = (function() {
 
 function createMap(options) {
 
+  if ($('#map').length === 0) return;
+
   mapboxgl.accessToken = 'pk.eyJ1IjoiYmltdXgiLCJhIjoiY2swbmozcndlMDBjeDNuczNscTZzaXEwYyJ9.oMM71W-skMU6IN0XUZJzGQ';
 
   let dots
@@ -52,6 +54,9 @@ function createMap(options) {
   const urlTopoJSON = 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json'
   const choropletScale = ['#ecda9a', '#efc47e', '#f3ad6a', '#f7945d', '#f97b57', '#f66356', '#ee4d5a']
   const dataTravels = d3.map();
+  const meetingName = I18n.t('gobierto_people.people.trips.trip.meeting_name')
+  const tripIn = I18n.t('gobierto_people.people.trips.trip.in')
+  const tripBy = I18n.t('gobierto_people.people.trips.trip.by')
   const tooltip = d3
     .select('.map--tooltip')
 
@@ -130,41 +135,40 @@ function createMap(options) {
           .on("click", showTooltip);
       }
 
-      function update() {
+      function updateChroloplet() {
         featureElement.attr("d", path);
       }
 
-      map.on("viewreset", update);
       map.on("move", function() {
-        update()
-        if(initZoom > 4) renderDots()
+        updateChroloplet()
+        updateDots()
       });
 
       map.on("moveend", function() {
-        update()
-        if (initZoom > 4) {
-          dots
-            .attr("cx", function(d) { return project([d.lon, d.lat]).x })
-            .attr("cy", function(d) { return project([d.lon, d.lat]).y })
-        }
+        updateChroloplet()
+        updateDots()
       });
 
       map.on('zoom', function(e) {
 
+        updateChroloplet()
+
         const { target: { scrollZoom: { _startZoom } } } = e
         initZoom = _startZoom
 
-        if(initZoom > 4) {
-          d3.selectAll('.map--countries')
-            .remove()
-            .exit()
-          renderDots()
+        if(initZoom >= 4) {
+          updateDots()
+          d3.selectAll('.map--dots')
+            .style('visibility', 'visible')
 
+          d3.selectAll('.map--countries')
+            .style('visibility', 'hidden')
         } else {
           d3.selectAll('.map--dots')
-            .remove()
-            .exit()
-          renderChoropleth()
+            .style('visibility', 'hidden')
+
+          d3.selectAll('.map--countries')
+            .style('visibility', 'visible')
         }
       })
 
@@ -177,15 +181,57 @@ function createMap(options) {
           .enter()
           .append("circle")
           .attr('class', 'map--dots')
-          .attr("r", 6)
+          .attr("r", radiusDots)
           .attr("cx", d => project([d.lon, d.lat]).x)
           .attr("cy", d => project([d.lon, d.lat]).y)
           .attr('fill', '#F05E6A')
           .attr('stroke', '#fff')
+          .style('visibility', 'hidden')
           //TODO: same tooltip as chroloplets but with the name of the city.
           .on('click', function(d) {
             console.log(d)
           })
+      }
+
+      function updateDots() {
+        d3.selectAll('.map--dots')
+          .attr("cx", d => project([d.lon, d.lat]).x)
+          .attr("cy", d => project([d.lon, d.lat]).y)
+      }
+
+      //group cities by trips
+      const groupBy = function(data, key) {
+        return data.reduce(function(storage, item) {
+          var group = item[key];
+          storage[group] = storage[group] || [];
+          storage[group].push(item);
+          return storage;
+        }, {});
+      };
+
+      const dataGroupByKey = groupBy(data, 'city_name')
+
+      const ValuesFromGroups = Object.values(dataGroupByKey)
+
+      function radiusDots(d) {
+        //Create a new property with the total of the trips group by cities
+        for (let value of ValuesFromGroups) {
+          if (value[0].city_name === d.city_name) {
+            d.totalTrips = value.length
+          }
+        }
+
+        if (d.totalTrips < 4) {
+          return 5
+        } else if (d.totalTrips < 8) {
+          return 10
+        } else if (d.totalTrips < 12) {
+          return 16
+        } else if (d.totalTrips < 18) {
+          return 20
+        } else if (d.totalTrips > 18) {
+          return 24
+        }
       }
 
       function project(d) {
@@ -205,8 +251,9 @@ function createMap(options) {
 
         let arrayTravelers = '';
         for(let person of filterTravelersData) {
-          let url = `/personas/${person.person_slug}/viajes-y-desplazamientos`
-          arrayTravelers = `${arrayTravelers}<li><a href='${url}'>${person.person_name}</a></li>`;
+          const { person_name, person_slug } = person
+          let url = `/personas/${person_slug}/viajes-y-desplazamientos`
+          arrayTravelers = `${arrayTravelers}<li><a href='${url}'>${person_name}</a></li>`;
         }
 
         const mouse = d3.mouse(svg.node()).map(d => parseInt(d));
@@ -219,7 +266,7 @@ function createMap(options) {
           .duration(200);
 
         tooltipText
-          .html(`<h2>${travels} reuniones en ${name} por:</h2><ul>${arrayTravelers}</ul>`)
+          .html(`<h2>${travels} ${meetingName} ${tripIn} ${name} ${tripBy}:</h2><ul>${arrayTravelers}</ul>`)
       }
 
       function filterTravelers(country) {
@@ -232,7 +279,8 @@ function createMap(options) {
       }
 
       renderChoropleth()
-      update()
+      renderDots()
+      updateChroloplet()
 
     })
   })
