@@ -14,7 +14,7 @@ window.GobiertoPeople.GencatMapController = (function() {
   function GencatMapController() {}
 
   GencatMapController.prototype.index = function(options) {
-    createMap()
+    createMap(options)
 
     const toggle = document.querySelector(".js-toggle");
     toggle.addEventListener("click", e => {
@@ -38,9 +38,10 @@ window.GobiertoPeople.GencatMapController = (function() {
 })();
 
 
-function createMap() {
+function createMap(options) {
 
   if ($('#map').length === 0) return;
+  const { fromDate } = options
 
   mapboxgl.accessToken = 'pk.eyJ1IjoiYmltdXgiLCJhIjoiY2swbmozcndlMDBjeDNuczNscTZzaXEwYyJ9.oMM71W-skMU6IN0XUZJzGQ';
 
@@ -72,7 +73,7 @@ function createMap() {
     container: "map",
     style: "mapbox://styles/mapbox/light-v9",
     center: [-3.703790, 40.416775],
-    zoom: 3,
+    zoom: 2,
     minZoom: 2,
     maxZoom: 16,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -300,7 +301,7 @@ function createMap() {
         let arrayTravelers = '';
         for(let person of data) {
           const { person_name, person_slug } = person
-          let url = `/personas/${person_slug}/viajes-y-desplazamientos`
+          let url = `/personas/${person_slug}/viajes-y-desplazamientos?start_date=${fromDate}`
           arrayTravelers = `${arrayTravelers}<li class="map--tooltip--list-element"><a href='${url}'>${person_name}</a></li>`;
         }
 
