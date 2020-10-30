@@ -74,7 +74,7 @@ function createMap(options) {
     style: "mapbox://styles/mapbox/light-v9",
     center: [-3.703790, 40.416775],
     zoom: 3,
-    minZoom: 3,
+    minZoom: 2,
     maxZoom: 16,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   });
@@ -151,6 +151,7 @@ function createMap(options) {
       map.on("move", function() {
         updateChroloplet()
         updateDots()
+        closeTooltip()
       });
 
       map.on("moveend", function() {
@@ -285,8 +286,8 @@ function createMap(options) {
 
         tooltip
           .style("display", "block")
-          .style('left', `${mouse[0]}px`)
-          .style('top', `${mouse[1]}px`)
+          .style('left', `${mouse[0] - 50}px`)
+          .style('top', `${mouse[1] + 10}px`)
           .transition()
           .duration(200);
 
