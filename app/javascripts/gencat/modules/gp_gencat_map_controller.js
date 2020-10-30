@@ -1,7 +1,7 @@
 import { csv, json } from 'd3-request'
 import { min, max } from 'd3-array'
 import { geoPath, geoMercator, geoTransform } from 'd3-geo'
-import { select, selectAll, mouse, event } from 'd3-selection'
+import { select, selectAll, mouse } from 'd3-selection'
 import { scaleThreshold } from 'd3-scale'
 import { queue } from 'd3-queue'
 import { nest, map } from 'd3-collection'
@@ -9,7 +9,7 @@ import { zoom } from 'd3-zoom'
 import * as topojson from "topojson-client";
 import mapboxgl from 'mapbox-gl';
 
-const d3 = { csv, json, min, max, geoPath, geoMercator, geoTransform, select, selectAll, scaleThreshold, queue, nest, map, mouse, event, zoom }
+const d3 = { csv, json, min, max, geoPath, geoMercator, geoTransform, select, selectAll, scaleThreshold, queue, nest, map, mouse, zoom }
 
 window.GobiertoPeople.GencatMapController = (function() {
   function GencatMapController() {}
@@ -53,11 +53,16 @@ function createMap(options) {
   const dataGenCatTrips = 'https://gencat.gobify.net/api/v1/data/data.csv?sql=select%20*%20from%20trips'
   const urlTopoJSON = 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json'
   const choropletScale = ['#ecda9a', '#efc47e', '#f3ad6a', '#f7945d', '#f97b57', '#f66356', '#ee4d5a']
-  const dataTravels = d3.map();
+  const dataTravels = new Map();
   const meetingNameOne = I18n.t('gobierto_people.people.trips.trip.meeting_name.one')
   const meetingNameOther = I18n.t('gobierto_people.people.trips.trip.meeting_name.other')
   const tripIn = I18n.t('gobierto_people.people.trips.trip.in')
   const tripBy = I18n.t('gobierto_people.people.trips.trip.by')
+  var zoomInButton = document.getElementById('zoomIn')
+  var zoomOutButton = document.getElementById('zoomOut')
+  zoomInButton.addEventListener("click", zoomIn)
+  zoomOutButton.addEventListener("click", zoomOut)
+
   const tooltip = d3
     .select('.map--tooltip')
 
@@ -73,6 +78,8 @@ function createMap(options) {
     maxZoom: 16,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   });
+
+  let currentZoom = map.getZoom()
 
   map.addControl(new mapboxgl.NavigationControl());
 
@@ -126,6 +133,7 @@ function createMap(options) {
               return colorScale(d.travels);
             }
           })
+          .attr('fill-opacity', '0.8')
           .attr("stroke", function (d) {
             if(d.travels === undefined) {
               return 'transparent'
@@ -154,10 +162,9 @@ function createMap(options) {
 
         updateChroloplet()
 
-        const { target: { scrollZoom: { _startZoom } } } = e
-        initZoom = _startZoom
+        currentZoom = map.getZoom();
 
-        if(initZoom >= 4) {
+        if(currentZoom >= 4) {
           updateDots()
           d3.selectAll('.map--dots')
             .style('visibility', 'visible')
@@ -315,6 +322,16 @@ function createMap(options) {
 
     })
   })
+
+  function zoomIn() {
+    currentZoom = currentZoom + 1
+    map.setZoom(currentZoom)
+  }
+
+  function zoomOut() {
+    currentZoom = currentZoom - 1
+    map.setZoom(currentZoom)
+  }
 
   function closeTooltip() {
     tooltip
