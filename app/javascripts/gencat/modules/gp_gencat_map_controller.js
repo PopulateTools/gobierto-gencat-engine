@@ -42,7 +42,41 @@ window.GobiertoPeople.GencatMapController = (function() {
 function createMap(options) {
 
   if ($('#map').length === 0) return;
-  const { fromDate } = options
+
+  const { fromDate, toDate, departmentId = '' } = options
+
+  function convertDate(date) {
+    let newDate = new Date(date)
+    var monthNewDate = newDate.getUTCMonth() + 1;
+    var dayNewDate = newDate.getUTCDate();
+    var yearNewDate = newDate.getUTCFullYear();
+    newDate = `${yearNewDate}-${monthNewDate}-${dayNewDate}`
+
+    return newDate
+  }
+
+  let dateRangeConditions = [];
+
+  if(fromDate !== "") {
+    let newFromDate = convertDate(fromDate)
+    dateRangeConditions.push(`start_date+>=+'${newFromDate}'`)
+  }
+
+  if(toDate !== "") {
+    let newToDate = convertDate(toDate)
+    dateRangeConditions.push(`end_date+<=+'${newToDate}'`)
+  }
+
+  if(dateRangeConditions.length)
+    dateRangeConditions = `+AND+${dateRangeConditions.join('+AND+')}`;
+
+  if(departmentId !== "") {
+    departmentId = `+AND+department_id+=+${departmentId}`;
+  }
+
+  let dataGenCatTrips = `${location.origin}/api/v1/data/data.csv?sql=SELECT+*+FROM+trips+WHERE+country+is+not+null+AND+country+%21%3D+%27ES%27`
+
+  dataGenCatTrips = `${dataGenCatTrips}${dateRangeConditions}${departmentId}`
 
   mapboxgl.accessToken = 'pk.eyJ1IjoiYmltdXgiLCJhIjoiY2swbmozcndlMDBjeDNuczNscTZzaXEwYyJ9.oMM71W-skMU6IN0XUZJzGQ';
 
@@ -51,7 +85,6 @@ function createMap(options) {
   let initZoom
   const buttonCloseTooltip = document.getElementById('tooltip--close')
   buttonCloseTooltip.addEventListener('click', closeTooltip)
-  const dataGenCatTrips = 'https://gencat.gobify.net/api/v1/data/data.csv?sql=select%20*%20from%20trips'
   const geoJSON = dataGeoJson.default
   const choropletScale = ['#ecda9a', '#efc47e', '#f3ad6a', '#f7945d', '#f97b57', '#f66356', '#ee4d5a']
   const dataTravels = new Map();
@@ -137,6 +170,13 @@ function createMap(options) {
             return 'transparent'
           } else {
             return '#fff'
+          }
+        })
+        .style('pointer-events', function(d) {
+          if(d.travels === undefined) {
+            return 'none'
+          } else {
+            return 'auto'
           }
         })
         .on("click", showTooltipChoropleth);
