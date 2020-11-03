@@ -1,4 +1,4 @@
-import { csv, json } from 'd3-request'
+import { csv } from 'd3-request'
 import { min, max } from 'd3-array'
 import { geoPath, geoMercator, geoTransform } from 'd3-geo'
 import { select, selectAll, mouse } from 'd3-selection'
@@ -9,7 +9,7 @@ import { zoom } from 'd3-zoom'
 import mapboxgl from 'mapbox-gl';
 import * as dataGeoJson from '../vendor/countries.geo.json';
 
-const d3 = { csv, json, min, max, geoPath, geoMercator, geoTransform, select, selectAll, scaleThreshold, queue, nest, map, mouse, zoom }
+const d3 = { csv, min, max, geoPath, geoMercator, geoTransform, select, selectAll, scaleThreshold, queue, nest, map, mouse, zoom }
 
 window.GobiertoPeople.GencatMapController = (function() {
   function GencatMapController() {}
@@ -53,7 +53,6 @@ function createMap(options) {
   buttonCloseTooltip.addEventListener('click', closeTooltip)
   const dataGenCatTrips = 'https://gencat.gobify.net/api/v1/data/data.csv?sql=select%20*%20from%20trips'
   const geoJSON = dataGeoJson.default
-  console.log("geoJSON", geoJSON);
   const choropletScale = ['#ecda9a', '#efc47e', '#f3ad6a', '#f7945d', '#f97b57', '#f66356', '#ee4d5a']
   const dataTravels = new Map();
   const meetingNameOne = I18n.t('gobierto_people.people.trips.trip.meeting_name.one')
@@ -113,7 +112,6 @@ function createMap(options) {
       .domain(domainScale)
       .range(choropletScale);
 
-    console.log("json", json);
 
     const transform = d3.geoTransform({point: projectPoint});
     const path = d3.geoPath().projection(transform);
