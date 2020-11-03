@@ -74,8 +74,8 @@ function createMap(options) {
     container: "map",
     style: "mapbox://styles/mapbox/light-v9",
     center: [-3.703790, 40.416775],
-    zoom: 2,
-    minZoom: 2,
+    zoom: 2.25,
+    minZoom: 2.25,
     maxZoom: 16,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   });
