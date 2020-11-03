@@ -1,4 +1,4 @@
-import { csv, json } from 'd3-request'
+import { csv } from 'd3-request'
 import { min, max } from 'd3-array'
 import { geoPath, geoMercator, geoTransform } from 'd3-geo'
 import { select, selectAll, mouse } from 'd3-selection'
@@ -7,8 +7,9 @@ import { queue } from 'd3-queue'
 import { nest, map } from 'd3-collection'
 import { zoom } from 'd3-zoom'
 import mapboxgl from 'mapbox-gl';
+import * as dataGeoJson from '../vendor/countries.geo.json';
 
-const d3 = { csv, json, min, max, geoPath, geoMercator, geoTransform, select, selectAll, scaleThreshold, queue, nest, map, mouse, zoom }
+const d3 = { csv, min, max, geoPath, geoMercator, geoTransform, select, selectAll, scaleThreshold, queue, nest, map, mouse, zoom }
 
 window.GobiertoPeople.GencatMapController = (function() {
   function GencatMapController() {}
@@ -51,7 +52,7 @@ function createMap(options) {
   const buttonCloseTooltip = document.getElementById('tooltip--close')
   buttonCloseTooltip.addEventListener('click', closeTooltip)
   const dataGenCatTrips = 'https://gencat.gobify.net/api/v1/data/data.csv?sql=select%20*%20from%20trips'
-  const geoJSON = '/countries.geo.json'
+  const geoJSON = dataGeoJson.default
   const choropletScale = ['#ecda9a', '#efc47e', '#f3ad6a', '#f7945d', '#f97b57', '#f66356', '#ee4d5a']
   const dataTravels = new Map();
   const meetingNameOne = I18n.t('gobierto_people.people.trips.trip.meeting_name.one')
@@ -73,8 +74,8 @@ function createMap(options) {
     container: "map",
     style: "mapbox://styles/mapbox/light-v9",
     center: [-3.703790, 40.416775],
-    zoom: 2,
-    minZoom: 2,
+    zoom: 2.25,
+    minZoom: 2.25,
     maxZoom: 16,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   });
@@ -111,218 +112,214 @@ function createMap(options) {
       .domain(domainScale)
       .range(choropletScale);
 
-    d3.json(geoJSON, function(json) {
 
-      const transform = d3.geoTransform({point: projectPoint});
-      const path = d3.geoPath().projection(transform);
+    const transform = d3.geoTransform({point: projectPoint});
+    const path = d3.geoPath().projection(transform);
 
-      let dataGEOJSON = json
-
-      function renderChoropleth() {
-        featureElement = svg
-          .selectAll("path")
-          .data(dataGEOJSON.features)
-          .enter()
-          .append("path")
-          .attr('class', 'map--countries')
-          .attr("fill", function (d) {
-            d.travels = dataTravels.get(d.properties.alpha2);
-            if(d.travels === undefined) {
-              return 'transparent'
-            } else {
-              return colorScale(d.travels);
-            }
-          })
-          .attr('fill-opacity', '0.8')
-          .attr("stroke", function (d) {
-            if(d.travels === undefined) {
-              return 'transparent'
-            } else {
-              return '#fff'
-            }
-          })
-          .on("click", showTooltipChoropleth);
-      }
-
-      function updateChroloplet() {
-        featureElement.attr("d", path);
-      }
-
-      map.on("move", function() {
-        updateChroloplet()
-        updateDots()
-        closeTooltip()
-      });
-
-      map.on("moveend", function() {
-        updateChroloplet()
-        updateDots()
-      });
-
-      map.on('zoom', function(e) {
-
-        updateChroloplet()
-
-        currentZoom = map.getZoom();
-
-        if(currentZoom >= 4) {
-          updateDots()
-          d3.selectAll('.map--dots')
-            .style('visibility', 'visible')
-
-          d3.selectAll('.map--countries')
-            .style('visibility', 'hidden')
-        } else {
-          d3.selectAll('.map--dots')
-            .style('visibility', 'hidden')
-
-          d3.selectAll('.map--countries')
-            .style('visibility', 'visible')
-        }
-      })
-
-      function renderDots() {
-        dots = svg
-          .selectAll("circle")
-          .data(data)
-
-        dots
-          .enter()
-          .append("circle")
-          .attr('class', 'map--dots')
-          .attr("r", radiusDots)
-          .attr("cx", d => project([d.lon, d.lat]).x)
-          .attr("cy", d => project([d.lon, d.lat]).y)
-          .attr('fill', '#F05E6A')
-          .attr('stroke', '#fff')
-          .style('visibility', 'hidden')
-          .on('click', showTooltipDots)
-      }
-
-      function updateDots() {
-        d3.selectAll('.map--dots')
-          .attr("cx", d => project([d.lon, d.lat]).x)
-          .attr("cy", d => project([d.lon, d.lat]).y)
-      }
-
-      //group cities by trips
-      const groupBy = function(data, key) {
-        return data.reduce(function(storage, item) {
-          var group = item[key];
-          storage[group] = storage[group] || [];
-          storage[group].push(item);
-          return storage;
-        }, {});
-      };
-
-      const dataGroupByKey = groupBy(data, 'city_name')
-
-      const ValuesFromGroups = Object.values(dataGroupByKey)
-
-      function radiusDots(d) {
-        //Create a new property with the total of the trips group by cities
-        for (let value of ValuesFromGroups) {
-          if (value[0].city_name === d.city_name) {
-            d.totalTrips = value.length
+    function renderChoropleth() {
+      featureElement = svg
+        .selectAll("path")
+        .data(geoJSON.features)
+        .enter()
+        .append("path")
+        .attr('class', 'map--countries')
+        .attr("fill", function (d) {
+          d.travels = dataTravels.get(d.properties.alpha2);
+          if(d.travels === undefined) {
+            return 'transparent'
+          } else {
+            return colorScale(d.travels);
           }
-        }
+        })
+        .attr('fill-opacity', '0.8')
+        .attr("stroke", function (d) {
+          if(d.travels === undefined) {
+            return 'transparent'
+          } else {
+            return '#fff'
+          }
+        })
+        .on("click", showTooltipChoropleth);
+    }
 
-        if (d.totalTrips < 4) {
-          return 5
-        } else if (d.totalTrips < 8) {
-          return 10
-        } else if (d.totalTrips < 12) {
-          return 16
-        } else if (d.totalTrips < 18) {
-          return 20
-        } else if (d.totalTrips > 18) {
-          return 24
-        }
-      }
+    function updateChroloplet() {
+      featureElement.attr("d", path);
+    }
 
-      function project(d) {
-        return map.project(new mapboxgl.LngLat(d[0], d[1]));
-      }
+    map.on("move", function() {
+      updateChroloplet()
+      updateDots()
+      closeTooltip()
+    });
 
-      function projectPoint(lon, lat) {
-        var point = map.project(new mapboxgl.LngLat(lon, lat));
-        this.stream.point(point.x, point.y);
-      }
+    map.on("moveend", function() {
+      updateChroloplet()
+      updateDots()
+    });
 
-      function showTooltipChoropleth(d) {
-        const { travels, properties: { name } } = d
+    map.on('zoom', function(e) {
 
-        //Get the list of travellers
-        const valueCountry = 'country_name'
-        const valuePerson = 'person_name'
-        const filterTravelersData = filterTravelers(name, valueCountry, valuePerson)
-        const listTravelers = getListTravelers(filterTravelersData)
-
-        const mouse = d3.mouse(svg.node()).map(d => parseInt(d));
-
-        tooltip
-          .style("display", "block")
-          .style('left', `${mouse[0] - 50}px`)
-          .style('top', `${mouse[1] + 10}px`)
-          .transition()
-          .duration(200);
-
-        const countTrips = travels > 1 ? meetingNameOther : meetingNameOne
-        tooltipText
-          .html(`<h2>${travels} ${countTrips} ${tripIn} ${name} ${tripBy}:</h2><ul>${listTravelers}</ul>`)
-      }
-
-      function showTooltipDots(d) {
-
-        const { city_name, totalTrips } = d
-
-        //Get the list of travellers
-        const valueCountry = 'city_name'
-        const valuePerson = 'person_name'
-        const filterTravelersData = filterTravelers(city_name, valueCountry, valuePerson)
-        const listTravelers = getListTravelers(filterTravelersData)
-
-        const mouse = d3.mouse(svg.node()).map(d => parseInt(d));
-
-        tooltip
-          .style("display", "block")
-          .style('left', `${mouse[0] - 50}px`)
-          .style('top', `${mouse[1] + 10}px`)
-          .transition()
-          .duration(200);
-
-        const countTrips = totalTrips > 1 ? meetingNameOther : meetingNameOne
-        tooltipText
-          .html(`<h2>${totalTrips} ${countTrips} ${tripIn} ${city_name} ${tripBy}:</h2><ul class="map--tooltip--list">${listTravelers}</ul>`)
-
-      }
-
-      function getListTravelers(data) {
-        let arrayTravelers = '';
-        for(let person of data) {
-          const { person_name, person_slug } = person
-          let url = `/personas/${person_slug}/viajes-y-desplazamientos?start_date=${fromDate}`
-          arrayTravelers = `${arrayTravelers}<li class="map--tooltip--list-element"><a href='${url}'>${person_name}</a></li>`;
-        }
-
-        return arrayTravelers;
-      }
-
-      function filterTravelers(country, filterKey, value) {
-        if (country === 'United States of America') country = 'United States'
-        let filteredData = data.filter((d) => d[filterKey] === country);
-        function getUniqueListBy(arr, key) {
-          return [...new Map(arr.map(item => [item[key], item])).values()]
-        }
-        filteredData = getUniqueListBy(filteredData, value)
-        return filteredData
-      }
-
-      renderChoropleth()
-      renderDots()
       updateChroloplet()
 
+      currentZoom = map.getZoom();
+
+      if(currentZoom >= 4) {
+        updateDots()
+        d3.selectAll('.map--dots')
+          .style('visibility', 'visible')
+
+        d3.selectAll('.map--countries')
+          .style('visibility', 'hidden')
+      } else {
+        d3.selectAll('.map--dots')
+          .style('visibility', 'hidden')
+
+        d3.selectAll('.map--countries')
+          .style('visibility', 'visible')
+      }
     })
+
+    function renderDots() {
+      dots = svg
+        .selectAll("circle")
+        .data(data)
+
+      dots
+        .enter()
+        .append("circle")
+        .attr('class', 'map--dots')
+        .attr("r", radiusDots)
+        .attr("cx", d => project([d.lon, d.lat]).x)
+        .attr("cy", d => project([d.lon, d.lat]).y)
+        .attr('fill', '#F05E6A')
+        .attr('stroke', '#fff')
+        .style('visibility', 'hidden')
+        .on('click', showTooltipDots)
+    }
+
+    function updateDots() {
+      d3.selectAll('.map--dots')
+        .attr("cx", d => project([d.lon, d.lat]).x)
+        .attr("cy", d => project([d.lon, d.lat]).y)
+    }
+
+    //group cities by trips
+    const groupBy = function(data, key) {
+      return data.reduce(function(storage, item) {
+        var group = item[key];
+        storage[group] = storage[group] || [];
+        storage[group].push(item);
+        return storage;
+      }, {});
+    };
+
+    const dataGroupByKey = groupBy(data, 'city_name')
+
+    const ValuesFromGroups = Object.values(dataGroupByKey)
+
+    function radiusDots(d) {
+      //Create a new property with the total of the trips group by cities
+      for (let value of ValuesFromGroups) {
+        if (value[0].city_name === d.city_name) {
+          d.totalTrips = value.length
+        }
+      }
+
+      if (d.totalTrips < 4) {
+        return 5
+      } else if (d.totalTrips < 8) {
+        return 10
+      } else if (d.totalTrips < 12) {
+        return 16
+      } else if (d.totalTrips < 18) {
+        return 20
+      } else if (d.totalTrips > 18) {
+        return 24
+      }
+    }
+
+    function project(d) {
+      return map.project(new mapboxgl.LngLat(d[0], d[1]));
+    }
+
+    function projectPoint(lon, lat) {
+      var point = map.project(new mapboxgl.LngLat(lon, lat));
+      this.stream.point(point.x, point.y);
+    }
+
+    function showTooltipChoropleth(d) {
+      const { travels, properties: { name } } = d
+
+      //Get the list of travellers
+      const valueCountry = 'country_name'
+      const valuePerson = 'person_name'
+      const filterTravelersData = filterTravelers(name, valueCountry, valuePerson)
+      const listTravelers = getListTravelers(filterTravelersData)
+
+      const mouse = d3.mouse(svg.node()).map(d => parseInt(d));
+
+      tooltip
+        .style("display", "block")
+        .style('left', `${mouse[0] - 50}px`)
+        .style('top', `${mouse[1] + 10}px`)
+        .transition()
+        .duration(200);
+
+      const countTrips = travels > 1 ? meetingNameOther : meetingNameOne
+      tooltipText
+        .html(`<h2>${travels} ${countTrips} ${tripIn} ${name} ${tripBy}:</h2><ul>${listTravelers}</ul>`)
+    }
+
+    function showTooltipDots(d) {
+
+      const { city_name, totalTrips } = d
+
+      //Get the list of travellers
+      const valueCountry = 'city_name'
+      const valuePerson = 'person_name'
+      const filterTravelersData = filterTravelers(city_name, valueCountry, valuePerson)
+      const listTravelers = getListTravelers(filterTravelersData)
+
+      const mouse = d3.mouse(svg.node()).map(d => parseInt(d));
+
+      tooltip
+        .style("display", "block")
+        .style('left', `${mouse[0] - 50}px`)
+        .style('top', `${mouse[1] + 10}px`)
+        .transition()
+        .duration(200);
+
+      const countTrips = totalTrips > 1 ? meetingNameOther : meetingNameOne
+      tooltipText
+        .html(`<h2>${totalTrips} ${countTrips} ${tripIn} ${city_name} ${tripBy}:</h2><ul class="map--tooltip--list">${listTravelers}</ul>`)
+
+    }
+
+    function getListTravelers(data) {
+      let arrayTravelers = '';
+      for(let person of data) {
+        const { person_name, person_slug } = person
+        let url = `/personas/${person_slug}/viajes-y-desplazamientos?start_date=${fromDate}`
+        arrayTravelers = `${arrayTravelers}<li class="map--tooltip--list-element"><a href='${url}'>${person_name}</a></li>`;
+      }
+
+      return arrayTravelers;
+    }
+
+    function filterTravelers(country, filterKey, value) {
+      if (country === 'United States of America') country = 'United States'
+      let filteredData = data.filter((d) => d[filterKey] === country);
+      function getUniqueListBy(arr, key) {
+        return [...new Map(arr.map(item => [item[key], item])).values()]
+      }
+      filteredData = getUniqueListBy(filteredData, value)
+      return filteredData
+    }
+
+    renderChoropleth()
+    renderDots()
+    updateChroloplet()
+
   })
 
   function zoomIn() {
