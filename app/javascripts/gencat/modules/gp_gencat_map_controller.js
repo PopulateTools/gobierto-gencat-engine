@@ -45,6 +45,8 @@ function createMap(options) {
 
   const { fromDate, toDate, departmentId = '' } = options
 
+  let departmentCondition = departmentId
+
   function convertDate(date) {
     let newDate = new Date(date)
     var monthNewDate = newDate.getUTCMonth() + 1;
@@ -70,13 +72,13 @@ function createMap(options) {
   if(dateRangeConditions.length)
     dateRangeConditions = `+AND+${dateRangeConditions.join('+AND+')}`;
 
-  if(departmentId !== "") {
-    departmentId = `+AND+department_id+=+${departmentId}`;
+  if(departmentCondition !== "") {
+    departmentCondition = `+AND+department_id+=+${departmentId}`;
   }
 
   let dataGenCatTrips = `${location.origin}/api/v1/data/data.csv?sql=SELECT+*+FROM+trips+WHERE+country+is+not+null+AND+country+%21%3D+%27ES%27`
 
-  dataGenCatTrips = `${dataGenCatTrips}${dateRangeConditions}${departmentId}`
+  dataGenCatTrips = `${dataGenCatTrips}${dateRangeConditions}${departmentCondition}`
 
   mapboxgl.accessToken = 'pk.eyJ1IjoiYmltdXgiLCJhIjoiY2swbmozcndlMDBjeDNuczNscTZzaXEwYyJ9.oMM71W-skMU6IN0XUZJzGQ';
 
