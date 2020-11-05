@@ -975,7 +975,7 @@
       position: absolute;
       padding: 1rem;
       width: 300px;
-      height: 200px;
+      height: auto;
       z-index: 1;
       right: 1rem;
       color: $color_text;
@@ -1005,12 +1005,9 @@
     }
 
     .map--tooltip-text {
-      overflow: hidden;
-      height: 100%;
-
       ul {
-        height: 80%;
-        overflow-y: scroll;
+        max-height: 155px;
+        overflow-y: auto;
       }
     }
 
