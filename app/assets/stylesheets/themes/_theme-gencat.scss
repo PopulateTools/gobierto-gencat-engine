@@ -863,12 +863,6 @@
     width: 100%;
   }
 
-  // Carto popup
-  .cartodb-popup .cartodb-popup-content-wrapper {
-    max-width: 226px;
-    width: 226px;
-  }
-
   // hide subcription box (from gobierto)
   .subscribable-box {
     display: none;
@@ -891,6 +885,156 @@
 
     > &:last-of-type  {
       margin-bottom: 100px;
+    }
+  }
+
+  .map--container {
+    height: 600px;
+    #map {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      margin: auto auto;
+    }
+
+    .mapboxgl-map {
+      font: 12px/20px Helvetica Neue,Arial,Helvetica,sans-serif;
+    }
+
+    .mapboxgl-ctrl-bottom-right {
+      right: 0;
+      bottom: 0;
+      position: absolute;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .mapboxgl-ctrl {
+      pointer-events: auto;
+    }
+
+    .mapboxgl-ctrl-attrib a {
+      text-decoration: none;
+    }
+
+    .mapboxgl-ctrl.mapboxgl-ctrl-attrib {
+      padding: 0 5px;
+      background-color: hsla(0, 0%, 100%, .5);
+      margin: 0
+    }
+
+    .mapboxgl-ctrl-bottom-right .mapboxgl-ctrl {
+      float: right;
+    }
+
+    .mapboxgl-ctrl {
+      clear: both;
+      pointer-events: auto;
+      transform: translate(0);
+    }
+
+    .mapboxgl-ctrl-attrib.mapboxgl-compact::after {
+      content: "";
+      cursor: pointer;
+      position: absolute;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='24' height='24' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' fill-rule='evenodd'%3E%3Cpath d='M4 10a6 6 0 1012 0 6 6 0 10-12 0m5-3a1 1 0 102 0 1 1 0 10-2 0m0 3a1 1 0 112 0v3a1 1 0 11-2 0'/%3E%3C/svg%3E");
+      background-color: hsla(0,0%,100%,.5);
+      width: 24px;
+      height: 24px;
+      box-sizing: border-box;
+      border-radius: 12px;
+    }
+
+    .map--svg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .map--tooltip {
+      display: none;
+      position: absolute;
+      padding: 1rem;
+      width: 300px;
+      height: auto;
+      z-index: 1;
+      right: 1rem;
+      color: $color_text;
+      background-color: #fff;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, .18);
+
+      h2 {
+        font-size: 13px;
+        margin-bottom: .5rem;
+      }
+
+      &:before {
+        bottom: 100%;
+        left: 10%;
+        border: solid transparent;
+        content: "";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: rgba(255, 255, 255, 0);
+        border-bottom-color: #fff;
+        border-width: 10px;
+        margin-left: 0;
+      }
+    }
+
+    .map--tooltip-text {
+      ul {
+        max-height: 155px;
+        overflow-y: auto;
+      }
+    }
+
+    .map--countries,
+    .map--dots {
+      cursor: pointer;
+    }
+
+    #tooltip--close {
+      position: absolute;
+      top: .5rem;
+      right: .5rem;
+      cursor: pointer;
+    }
+
+    .map--tooltip--list-element {
+      font-size: 12px;
+    }
+
+    .map--zoom {
+      border-radius: 4px;
+      border: 1px solid $color_separator;
+      z-index: 1;
+      box-shadow: rgba(0,0,0,.2) 0 0 4px 2px;
+      background: #fff;
+      width: 1.75rem;
+      position: absolute;
+      right: .5rem;
+      top: .5rem;
+    }
+
+    .map--zoom_button {
+      background-color: #fff;
+      color: $color_link;
+      border: 0;
+      border-radius: 4px;
+      width: 100%;
+      height: 100%;
+      padding: .25rem;
+      display: inline-block;
+      text-align: center;
+      &:first-child {
+        border-bottom: 1px solid $color_separator;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
     }
   }
 }
