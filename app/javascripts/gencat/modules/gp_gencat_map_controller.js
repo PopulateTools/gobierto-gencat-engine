@@ -1,7 +1,7 @@
 import { csv } from 'd3-request'
 import { min, max } from 'd3-array'
 import { geoPath, geoMercator, geoTransform } from 'd3-geo'
-import { select, selectAll, mouse } from 'd3-selection'
+import { select, selectAll } from 'd3-selection'
 import { scaleThreshold } from 'd3-scale'
 import { queue } from 'd3-queue'
 import { nest, map } from 'd3-collection'
@@ -9,7 +9,7 @@ import { zoom } from 'd3-zoom'
 import mapboxgl from 'mapbox-gl';
 import * as dataGeoJson from '../vendor/countries.geo.json';
 
-const d3 = { csv, min, max, geoPath, geoMercator, geoTransform, select, selectAll, scaleThreshold, queue, nest, map, mouse, zoom }
+const d3 = { csv, min, max, geoPath, geoMercator, geoTransform, select, selectAll, scaleThreshold, queue, nest, map, zoom }
 
 window.GobiertoPeople.GencatMapController = (function() {
   function GencatMapController() {}
@@ -181,7 +181,9 @@ function createMap(options) {
             return 'auto'
           }
         })
-        .on("click", showTooltipChoropleth);
+        .on("click", function(d, event) {
+          showTooltipChoropleth(d, event)
+        });
     }
 
     function updateChroloplet() {
@@ -236,7 +238,9 @@ function createMap(options) {
         .attr('fill', '#F05E6A')
         .attr('stroke', '#fff')
         .style('visibility', 'hidden')
-        .on('click', showTooltipDots)
+        .on("click", function(d, event) {
+          showTooltipDots(d, event)
+        });
     }
 
     function updateDots() {
@@ -289,8 +293,9 @@ function createMap(options) {
       this.stream.point(point.x, point.y);
     }
 
-    function showTooltipChoropleth(d) {
-      const { travels, properties: { name } } = d
+    function showTooltipChoropleth(d, event) {
+      const { travels, properties: { name } } = event
+      const { layerX, layerY } = d
 
       //Get the list of travellers
       const valueCountry = 'country_name'
@@ -298,12 +303,10 @@ function createMap(options) {
       const filterTravelersData = filterTravelers(name, valueCountry, valuePerson)
       const listTravelers = getListTravelers(filterTravelersData)
 
-      const mouse = d3.mouse(svg.node()).map(d => parseInt(d));
-
       tooltip
         .style("display", "block")
-        .style('left', `${mouse[0] - 50}px`)
-        .style('top', `${mouse[1] + 10}px`)
+        .style('left', `${layerX - 50}px`)
+        .style('top', `${layerY + 10}px`)
         .transition()
         .duration(200);
 
@@ -312,9 +315,10 @@ function createMap(options) {
         .html(`<h2>${travels} ${countTrips} ${tripIn} ${name} ${tripBy}:</h2><ul>${listTravelers}</ul>`)
     }
 
-    function showTooltipDots(d) {
+    function showTooltipDots(d, event) {
 
-      const { city_name, totalTrips } = d
+      const { city_name, totalTrips } = event
+      const { layerX, layerY } = d
 
       //Get the list of travellers
       const valueCountry = 'city_name'
@@ -322,12 +326,10 @@ function createMap(options) {
       const filterTravelersData = filterTravelers(city_name, valueCountry, valuePerson)
       const listTravelers = getListTravelers(filterTravelersData)
 
-      const mouse = d3.mouse(svg.node()).map(d => parseInt(d));
-
       tooltip
         .style("display", "block")
-        .style('left', `${mouse[0] - 50}px`)
-        .style('top', `${mouse[1] + 10}px`)
+        .style('left', `${layerX - 50}px`)
+        .style('top', `${layerY + 10}px`)
         .transition()
         .duration(200);
 
