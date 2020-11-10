@@ -112,11 +112,8 @@ module Gencat
           find(".js-search").send_keys(person.name)
 
           assert find(".box--result", visible: false)["innerHTML"].include?(person.name)
-          assert find(".box--result", visible: false)["innerHTML"].include?(person.charge(Date.current))
-
-          find(".box--result", visible: false).execute_script("this.click()")
-
-          assert current_url.include? gobierto_people_person_path(person.slug)
+          assert find(".box--result", visible: false)["innerHTML"].include?(person.charge)
+          assert find(".box--result", visible: false)['data-url'].include? gobierto_people_person_path(person.slug)
         end
       end
 
