@@ -17,7 +17,7 @@ const d3 = {
   select,
   selectAll,
   scaleThreshold,
-  zoom
+  zoom,
 };
 
 window.GobiertoPeople.GencatMapController = (function() {
@@ -27,7 +27,7 @@ window.GobiertoPeople.GencatMapController = (function() {
     createMap(options);
 
     const toggle = document.querySelector(".js-toggle");
-    toggle.addEventListener("click", e => {
+    toggle.addEventListener("click", (e) => {
       const openClassName = "is-open";
       const infoboxClassList = e.target.parentElement.classList;
       const iconClassList = e.target.firstElementChild.classList;
@@ -104,7 +104,7 @@ function createMap(options) {
     "#f7945d",
     "#f97b57",
     "#f66356",
-    "#ee4d5a"
+    "#ee4d5a",
   ];
   const dataTravels = new Map();
   const meetingNameOne = I18n.t(
@@ -132,7 +132,7 @@ function createMap(options) {
     minZoom: 2.25,
     maxZoom: 16,
     attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   });
 
   let currentZoom = map.getZoom();
@@ -145,10 +145,10 @@ function createMap(options) {
     .append("svg")
     .attr("class", "map--svg");
 
-  d3.csv(dataGenCatTrips).then(data => {
-    const nest = Array.from(group(data, d => d.country), ([key, values]) => ({
+  d3.csv(dataGenCatTrips).then((data) => {
+    const nest = Array.from(group(data, (d) => d.country), ([key, values]) => ({
       key,
-      values
+      values,
     }));
 
     nest.forEach(function(d) {
@@ -160,8 +160,8 @@ function createMap(options) {
       d.lon = +d.lon;
     });
 
-    const minValue = d3.min(nest, d => d.values.length);
-    const maxValue = d3.max(nest, d => d.values.length);
+    const minValue = d3.min(nest, (d) => d.values.length);
+    const maxValue = d3.max(nest, (d) => d.values.length);
     const domainScale = [
       minValue,
       maxValue / 12,
@@ -169,7 +169,7 @@ function createMap(options) {
       maxValue / 7,
       maxValue / 5,
       maxValue / 3,
-      maxValue
+      maxValue,
     ];
 
     const colorScale = d3
@@ -255,8 +255,8 @@ function createMap(options) {
         .append("circle")
         .attr("class", "map--dots")
         .attr("r", radiusDots)
-        .attr("cx", d => project([d.lon, d.lat]).x)
-        .attr("cy", d => project([d.lon, d.lat]).y)
+        .attr("cx", (d) => project([d.lon, d.lat]).x)
+        .attr("cy", (d) => project([d.lon, d.lat]).y)
         .attr("fill", "#F05E6A")
         .attr("stroke", "#fff")
         .style("visibility", "hidden")
@@ -267,8 +267,8 @@ function createMap(options) {
 
     function updateDots() {
       d3.selectAll(".map--dots")
-        .attr("cx", d => project([d.lon, d.lat]).x)
-        .attr("cy", d => project([d.lon, d.lat]).y);
+        .attr("cx", (d) => project([d.lon, d.lat]).x)
+        .attr("cy", (d) => project([d.lon, d.lat]).y);
     }
 
     //group cities by trips
@@ -318,7 +318,7 @@ function createMap(options) {
     function showTooltipChoropleth(d, event) {
       const {
         travels,
-        properties: { name }
+        properties: { name },
       } = event;
       const { layerX, layerY } = d;
 
@@ -385,9 +385,9 @@ function createMap(options) {
 
     function filterTravelers(country, filterKey, value) {
       if (country === "United States of America") country = "United States";
-      let filteredData = data.filter(d => d[filterKey] === country);
+      let filteredData = data.filter((d) => d[filterKey] === country);
       function getUniqueListBy(arr, key) {
-        return [...new Map(arr.map(item => [item[key], item])).values()];
+        return [...new Map(arr.map((item) => [item[key], item])).values()];
       }
       filteredData = getUniqueListBy(filteredData, value);
       return filteredData;
