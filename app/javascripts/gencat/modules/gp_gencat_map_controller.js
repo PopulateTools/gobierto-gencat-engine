@@ -1,4 +1,5 @@
-import { group, max, min } from "d3-array";
+import { max, min } from "d3-array";
+import { nest } from 'd3-collection';
 import { csv } from "d3-fetch";
 import { geoMercator, geoPath, geoTransform } from "d3-geo";
 import { scaleThreshold } from "d3-scale";
@@ -18,6 +19,7 @@ const d3 = {
   selectAll,
   scaleThreshold,
   zoom,
+  nest
 };
 
 window.GobiertoPeople.GencatMapController = (function() {
@@ -146,10 +148,18 @@ function createMap(options) {
     .attr("class", "map--svg");
 
   d3.csv(dataGenCatTrips).then((data) => {
-    const nest = Array.from(group(data, (d) => d.country), ([key, values]) => ({
-      key,
-      values,
-    }));
+          // d3v5
+      //
+      const nest = d3
+      .nest()
+      .key(d => d.country)
+      .entries(data);
+          // d3v6
+      //
+    // const nest = Array.from(group(data, (d) => d.country), ([key, values]) => ({
+    //   key,
+    //   values,
+    // }));
 
     nest.forEach(function(d) {
       dataTravels.set(d.key, +d.values.length);
