@@ -3,7 +3,7 @@ import { nest } from 'd3-collection';
 import { csv } from "d3-fetch";
 import { geoMercator, geoPath, geoTransform } from "d3-geo";
 import { scaleThreshold } from "d3-scale";
-import { select, selectAll } from "d3-selection";
+import { mouse, select, selectAll } from "d3-selection";
 import { zoom } from "d3-zoom";
 import mapboxgl from "mapbox-gl";
 import * as dataGeoJson from "../vendor/countries.geo.json";
@@ -19,7 +19,8 @@ const d3 = {
   selectAll,
   scaleThreshold,
   zoom,
-  nest
+  nest,
+  mouse
 };
 
 window.GobiertoPeople.GencatMapController = (function() {
@@ -85,9 +86,10 @@ function createMap(options) {
     departmentCondition = `+AND+department_id+=+${departmentId}`;
   }
 
-  let dataGenCatTrips = `${
-    location.origin
-  }/api/v1/data/data.csv?sql=SELECT+*+FROM+trips+WHERE+country+is+not+null+AND+country+%21%3D+%27ES%27`;
+  let dataGenCatTrips = `https://gencat.gobify.net/api/v1/data/data.csv?sql=SELECT+*+FROM+trips+WHERE+country+is+not+null+AND+country+%21%3D+%27ES%27`;
+  // let dataGenCatTrips = `${
+  //   location.origin
+  // }/api/v1/data/data.csv?sql=SELECT+*+FROM+trips+WHERE+country+is+not+null+AND+country+%21%3D+%27ES%27`;
 
   dataGenCatTrips = `${dataGenCatTrips}${dateRangeConditions}${departmentCondition}`;
 
@@ -220,9 +222,7 @@ function createMap(options) {
             return "auto";
           }
         })
-        .on("click", function(d, event) {
-          showTooltipChoropleth(d, event);
-        });
+        .on("click", showTooltipChoropleth);
     }
 
     function updateChroloplet() {
@@ -270,9 +270,7 @@ function createMap(options) {
         .attr("fill", "#F05E6A")
         .attr("stroke", "#fff")
         .style("visibility", "hidden")
-        .on("click", function(d, event) {
-          showTooltipDots(d, event);
-        });
+        .on("click", showTooltipDots);
     }
 
     function updateDots() {
@@ -325,12 +323,12 @@ function createMap(options) {
       this.stream.point(point.x, point.y);
     }
 
-    function showTooltipChoropleth(d, event) {
+    function showTooltipChoropleth(d) {
       const {
         travels,
         properties: { name },
-      } = event;
-      const { layerX, layerY } = d;
+      } = d;
+      const [layerX, layerY] = d3.mouse(this);
 
       //Get the list of travellers
       const valueCountry = "country_name";
@@ -355,9 +353,9 @@ function createMap(options) {
       );
     }
 
-    function showTooltipDots(d, event) {
-      const { city_name, totalTrips } = event;
-      const { layerX, layerY } = d;
+    function showTooltipDots(d) {
+      const { city_name, totalTrips } = d;
+      const [layerX, layerY] = d3.mouse(this);
 
       //Get the list of travellers
       const valueCountry = "city_name";
