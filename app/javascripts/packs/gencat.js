@@ -8,6 +8,5 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import 'lib/commons'
-// import 'gencat'
+import 'gencat'
 import 'lib/i18n'
-
