@@ -2,7 +2,7 @@ import { group, max, min } from "d3-array";
 import { csv } from "d3-fetch";
 import { geoMercator, geoPath, geoTransform } from "d3-geo";
 import { scaleThreshold } from "d3-scale";
-import { mouse, select, selectAll } from "d3-selection";
+import { select, selectAll } from "d3-selection";
 import { zoom } from "d3-zoom";
 import mapboxgl from "mapbox-gl";
 import * as dataGeoJson from "../vendor/countries.geo.json";
@@ -18,7 +18,6 @@ const d3 = {
   selectAll,
   scaleThreshold,
   zoom,
-  mouse
 };
 
 window.GobiertoPeople.GencatMapController = (function() {
@@ -84,9 +83,8 @@ function createMap(options) {
     departmentCondition = `+AND+department_id+=+${departmentId}`;
   }
 
-  const origin = location.origin.includes("gobierto.test") ? location.origin.replace("gobierto.test", "gobify.net") : location.origin
   let dataGenCatTrips = `${
-    origin
+    location.origin
   }/api/v1/data/data.csv?sql=SELECT+*+FROM+trips+WHERE+country+is+not+null+AND+country+%21%3D+%27ES%27`;
 
   dataGenCatTrips = `${dataGenCatTrips}${dateRangeConditions}${departmentCondition}`;
@@ -212,7 +210,9 @@ function createMap(options) {
             return "auto";
           }
         })
-        .on("click", showTooltipChoropleth);
+        .on("click", function(d, event) {
+          showTooltipChoropleth(d, event);
+        });
     }
 
     function updateChroloplet() {
@@ -260,7 +260,9 @@ function createMap(options) {
         .attr("fill", "#F05E6A")
         .attr("stroke", "#fff")
         .style("visibility", "hidden")
-        .on("click", showTooltipDots);
+        .on("click", function(d, event) {
+          showTooltipDots(d, event);
+        });
     }
 
     function updateDots() {
@@ -313,13 +315,12 @@ function createMap(options) {
       this.stream.point(point.x, point.y);
     }
 
-    // WARNING: replace mouse event in d3v6
-    function showTooltipChoropleth(event) {
+    function showTooltipChoropleth(d, event) {
       const {
         travels,
         properties: { name },
       } = event;
-      const [ layerX, layerY ] = d3.mouse(this);
+      const { layerX, layerY } = d;
 
       //Get the list of travellers
       const valueCountry = "country_name";
@@ -344,10 +345,9 @@ function createMap(options) {
       );
     }
 
-    // WARNING: replace mouse event in d3v6
-    function showTooltipDots(event) {
+    function showTooltipDots(d, event) {
       const { city_name, totalTrips } = event;
-      const { layerX, layerY } = d3.mouse(this);
+      const { layerX, layerY } = d;
 
       //Get the list of travellers
       const valueCountry = "city_name";
