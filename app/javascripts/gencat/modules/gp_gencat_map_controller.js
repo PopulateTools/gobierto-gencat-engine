@@ -88,10 +88,7 @@ function createMap(options) {
 
   const token = process.env.GOBIERTO_DATA_TOKEN
 
-  /*let dataGenCatTrips = `https://gencat.gobify.net/api/v1/data/data.csv?sql=SELECT+*+FROM+trips+WHERE+country+is+not+null+AND+country+%21%3D+%27ES%27`;*/
-  let dataGenCatTrips = `${
-    location.origin
-  }/api/v1/data/data.csv?sql=SELECT+*+FROM+trips+WHERE+country+is+not+null+AND+country+%21%3D+%27ES%27`;
+  let dataGenCatTrips = '/api/v1/data/data.csv?sql=SELECT+*+FROM+trips+WHERE+country+is+not+null+AND+country+%21%3D+%27ES%27';
 
   dataGenCatTrips = `${dataGenCatTrips}${dateRangeConditions}${departmentCondition}&token=${token}`;
 
