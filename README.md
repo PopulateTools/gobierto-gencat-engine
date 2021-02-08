@@ -15,6 +15,15 @@ After that, `gobierto-gencat-engine` will be available as theme in a site. Go to
 destination site configuration in admin and set `gobierto-gencat-engine` in "engine overrides param"
 attribute
 
+## Configuration
+
+In order to use this engine you need to:
+
+- use a Gobierto Data account to store trips. The data can be obtained [from this
+  pipeline](https://github.com/PopulateTools/gobierto-etl-gencat/blob/master/pipelines/import_agendas/Jenkinsfile#L59-L75)
+
+- use a site configuration variable named `mapbox_token` to provide the token to render the base map
+
 ## Contributing
 Contribution directions go here.
 

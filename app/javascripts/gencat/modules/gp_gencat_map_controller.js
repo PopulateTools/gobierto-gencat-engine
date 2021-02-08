@@ -86,12 +86,11 @@ function createMap(options) {
     departmentCondition = `+AND+department_id+=+${departmentId}`;
   }
 
-  let dataGenCatTrips = `https://gencat.gobify.net/api/v1/data/data.csv?sql=SELECT+*+FROM+trips+WHERE+country+is+not+null+AND+country+%21%3D+%27ES%27`;
-  // let dataGenCatTrips = `${
-  //   location.origin
-  // }/api/v1/data/data.csv?sql=SELECT+*+FROM+trips+WHERE+country+is+not+null+AND+country+%21%3D+%27ES%27`;
+  const token = process.env.GOBIERTO_DATA_TOKEN
 
-  dataGenCatTrips = `${dataGenCatTrips}${dateRangeConditions}${departmentCondition}`;
+  let dataGenCatTrips = '/api/v1/data/data.csv?sql=SELECT+*+FROM+trips+WHERE+country+is+not+null+AND+country+%21%3D+%27ES%27';
+
+  dataGenCatTrips = `${dataGenCatTrips}${dateRangeConditions}${departmentCondition}&token=${token}`;
 
   mapboxgl.accessToken =
     "pk.eyJ1IjoiYmltdXgiLCJhIjoiY2swbmozcndlMDBjeDNuczNscTZzaXEwYyJ9.oMM71W-skMU6IN0XUZJzGQ";
