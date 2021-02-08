@@ -53,7 +53,7 @@ window.GobiertoPeople.GencatMapController = (function() {
 function createMap(options) {
   if ($("#map").length === 0) return;
 
-  const { fromDate, toDate, departmentId = "" } = options;
+  const { fromDate, toDate, mapboxToken, departmentId = "" } = options;
 
   let departmentCondition = departmentId;
 
@@ -86,14 +86,11 @@ function createMap(options) {
     departmentCondition = `+AND+department_id+=+${departmentId}`;
   }
 
-  const token = process.env.GOBIERTO_DATA_TOKEN
-
   let dataGenCatTrips = '/api/v1/data/data.csv?sql=SELECT+*+FROM+trips+WHERE+country+is+not+null+AND+country+%21%3D+%27ES%27';
 
-  dataGenCatTrips = `${dataGenCatTrips}${dateRangeConditions}${departmentCondition}&token=${token}`;
+  dataGenCatTrips = `${dataGenCatTrips}${dateRangeConditions}${departmentCondition}`;
 
-  mapboxgl.accessToken =
-    "pk.eyJ1IjoiYmltdXgiLCJhIjoiY2swbmozcndlMDBjeDNuczNscTZzaXEwYyJ9.oMM71W-skMU6IN0XUZJzGQ";
+  mapboxgl.accessToken = mapboxToken;
 
   let dots;
   let featureElement;
