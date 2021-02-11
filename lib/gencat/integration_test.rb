@@ -93,7 +93,7 @@ YAML
     end
 
     def map_loaded?
-      all(:xpath, "//*[@id=\"map\"]//img").any?
+      all(:xpath, "//*[@id=\"map\"]//canvas").any?
     end
 
   end

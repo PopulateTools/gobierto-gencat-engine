@@ -1,33 +1,3 @@
-<script type="infowindow/html" id="infowindow_template_choroplethe">
-<div class="cartodb-popup">
-  <a href="#close" class="cartodb-popup-close-button close">x</a>
-
-  <div class="cartodb-popup-content-wrapper">
-    <div class="cartodb-popup-content" data-count="{{count}}" data-country-name="{{country}}">
-      <p></p>
-      <ul data-person-names>{{person_names}}</ul>
-      <ul data-person-slugs>{{person_slugs}}</ul>
-    </div>
-  </div>
-  <div class="cartodb-popup-tip-container"></div>
-</div>
-</script>
-
-<script type="infowindow/html" id="infowindow_template_bubble">
-<div class="cartodb-popup">
-  <a href="#close" class="cartodb-popup-close-button close">x</a>
-
-  <div class="cartodb-popup-content-wrapper">
-    <div class="cartodb-popup-content" data-count="{{count}}" data-country-name="{{country_name}}" data-city-name="{{destination_names}}">
-      <p></p>
-      <ul data-person-names>{{person_names}}</ul>
-      <ul data-person-slugs>{{person_slugs}}</ul>
-    </div>
-  </div>
-  <div class="cartodb-popup-tip-container"></div>
-</div>
-</script>
-
 <div class="map--container">
   <div class="map--infobox is-open top left">
     <div class="map--infobox-close top right js-toggle"><i class="fas fa-arrow-left"></i></div>
@@ -41,6 +11,20 @@
       <p class="map--infobox-desc"><%= simple_pluralize(trips_statistics[:total_unique_destinations], t("gobierto_people.shared.destination"), t("gobierto_people.shared.destinations")) %></p>
     </div>
   </div>
+  <div class="map--tooltip">
+    <i id="tooltip--close" class="far fa-times-circle"></i>
+    <div class="map--tooltip-text"></div>
+  </div>
+
+  <div class="map--zoom">
+    <button class="map--zoom_button" id="zoomIn">
+      <i class="fa fa-plus"></i>
+    </button>
+    <button class="map--zoom_button" id="zoomOut">
+      <i class="fa fa-minus"></i>
+    </button>
+  </div>
+
 
   <div id="map"></div>
 </div>

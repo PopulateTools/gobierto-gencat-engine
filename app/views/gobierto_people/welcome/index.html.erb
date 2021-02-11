@@ -117,7 +117,7 @@
 <%= javascript_tag do %>
 
   mapControllerIndexParams = {
-    cartoDatabaseName: 'gencat_trips_<%= Rails.env.development? ? "staging" : Rails.env %>',
+    mapboxToken: '<%= current_site.configuration.configuration_variables["mapbox_token"].to_s %>',
     fromDate: '<%= filter_start_date.try(:iso8601) %>',
     toDate: '<%= filter_end_date.try(:iso8601) %>'
   }
