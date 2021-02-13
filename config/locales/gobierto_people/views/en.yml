@@ -146,6 +146,7 @@ en:
       to: to
       view_all: View all
       view_all_f: View all
+      view_charges: View all positions
       view_details: View details
       view_gifts: View all the gifts on the Open Data portal
       view_invitations: View all the invitations on the Open Data portal
@@ -163,13 +164,8 @@ en:
           information public. Likewise, the viewer allows to consult the trips abroad
           of the President, advisors and senior positions in the exercise of their
           functions.
-        description_2_html: Regarding the information of the senior management, the last
-          position they occupy or have occupied in the last activity registered is
-          shown. To find out if a senior official is currently active and the position
-          he/she occupies, access <a href="http://governobert.gencat.cat/en/transparencia/Organitzacio-i-normativa/organigrames/index.html">Organizational
-          Chart</a>. To find out the position they occupied at a given date, access
-          the link to the corresponding dataset of the Open Data Portal, at the bottom
-          of the page, and search for the person through the search engine.
+        description_2_html: Regarding the information of the senior management, the
+          positions that they occupy or have occupied in the selected period are shown.
         interest_groups_box_subtitle: with meetings in the period
         interest_groups_box_title: Interest groups
         interest_groups_box_title_single: Interest group
@@ -178,7 +174,7 @@ en:
         meetings_box_subtitle: with interest groups
         meetings_box_title: Meetings registered
         meetings_box_title_single: Meeting registered
-        people_box_subtitle: with meetings registered
+        people_box_subtitle: with registered activity
         people_box_title: Officials
         people_box_title_single: Official
         people_rowchart_title: Officials with most meetings

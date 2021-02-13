@@ -7,6 +7,10 @@
         <strong><%= title %></strong>
       <% end %>
 
+      <% if local_assigns[:charge] %>
+        <div><%= charge.name %></div>
+      <% end %>
+
       <% if local_assigns[:subtitle] %>
         <div><%= subtitle %></div>
       <% end %>

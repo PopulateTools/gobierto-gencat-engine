@@ -37,7 +37,12 @@ function setPeopleBoxes(element, url) {
               <a href="{{ url }}">
                 <h1 class="rectangle--title"><strong>{{ name }}</strong></h1>
               </a>
-              <div class="rectangle--subtitle">{{ position }}</div>
+              <div class="rectangle--subtitle">
+                {{ position }}
+              </div>
+              <div class="rectangle--tooltip tipsit-n bottom" title="<div class='tooltip-content'>{{ filtered_positions_tooltip }}</div>">
+                ${I18n.t("gobierto_people.shared.view_charges")}
+              </div>
             </div>
           </div>
         </div>
