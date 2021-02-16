@@ -8,6 +8,7 @@ module Gencat
     include ::GobiertoPeople::SubmodulesHelper
 
     DEFAULT_DATE_FILTER_START = "2003-06-20".freeze
+    MAPBOX_TOKEN = "pk.eyJ1IjoiZ29iaWVydG8iLCJhIjoiY2tsN3N1bG82MGo0MjJwbnA3aGZibHhuMyJ9.59MQvCVemJIdvCbBNB46Iw"
 
     def reference_site
       @reference_site ||= sites(:madrid)
@@ -36,6 +37,7 @@ module Gencat
       reference_site.configuration.engine_overrides = ["gobierto-gencat-engine"]
       reference_site.configuration.raw_configuration_variables = <<-YAML
 gobierto_people_default_filter_start_date: "#{DEFAULT_DATE_FILTER_START}"
+mapbox_token: "#{MAPBOX_TOKEN}"
 YAML
       reference_site.save!
       super
