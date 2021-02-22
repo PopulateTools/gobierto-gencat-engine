@@ -36,6 +36,7 @@ module Gencat
       reference_site.configuration.engine_overrides = ["gobierto-gencat-engine"]
       reference_site.configuration.raw_configuration_variables = <<-YAML
 gobierto_people_default_filter_start_date: "#{DEFAULT_DATE_FILTER_START}"
+mapbox_token: "#{ENV["MAPBOX_TOKEN"]}"
 YAML
       reference_site.save!
       super
