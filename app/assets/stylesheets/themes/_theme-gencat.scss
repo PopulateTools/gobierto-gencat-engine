@@ -1,3 +1,13 @@
+// It must replicate the future plugin location:
+// $PROJECTROOT/vendor/gobierto_engines/gobierto-gencat-engine/app/assets/stylesheets/themes
+@import "../../../../../../../app/assets/stylesheets/css-conf";
+@import "conf/theme-gencat-conf";
+@import "../../../../../../../app/assets/stylesheets/mixins";
+@import "../../../../../../../app/assets/stylesheets/comp-graph-rowchart";
+@import "../../../../../../../app/assets/stylesheets/comp-graph-punchcard";
+@import "../../../../../../../app/assets/stylesheets/comp-graph-tooltip";
+@import "../../../../../../../app/assets/stylesheets/comp-graph-areachart";
+
 .theme-gencat {
   @media (max-width: 47.938em) {
     &.no-fullcontainer-xs {
