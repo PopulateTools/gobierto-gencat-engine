@@ -1,4 +1,4 @@
-import './../../../vendor/gobierto_engines/gobierto-gencat-engine/app/assets/stylesheets/themes/_theme-gencat.scss'
+import './../../../vendor/gobierto_engines/gobierto-gencat-engine/app/javascripts/stylesheets/themes/_theme-gencat.scss'
 
 import './modules/application.js'
 import './modules/gp_gencat_departments_controller.js'
