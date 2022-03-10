@@ -12,7 +12,7 @@
   <% if @person_trips.any? && trips_submodule_active? %>
 
     <ul class="color-2 transparent">
-      <% cache "#{cache_key_preffix}-trips" do %>
+      <% cache_service.fetch("#{cache_key_preffix}-trips") do %>
         <% @person_trips.each do |trip| %>
           <%= render "trip", trip: trip %>
         <% end %>
