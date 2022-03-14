@@ -12,7 +12,7 @@
   <% if @person_gifts.any? %>
 
     <ul class="color-4 transparent">
-      <% cache "#{cache_key_preffix}-gifts" do %>
+      <% cache_service.fetch("#{cache_key_preffix}-gifts") do %>
         <% @person_gifts.each do |gift| %>
           <%= render "gift", gift: gift %>
         <% end %>
