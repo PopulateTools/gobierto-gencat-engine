@@ -12,7 +12,7 @@
   <% if @person_invitations.any? %>
 
     <ul class="color-3 transparent">
-      <% cache_service.fetch("#{cache_key_preffix}-invitations") do %>
+      <% cache_service_fragment("#{cache_key_preffix}-invitations") do %>
         <% @person_invitations.each do |invitation| %>
           <%= render "invitation", invitation: invitation %>
         <% end %>
