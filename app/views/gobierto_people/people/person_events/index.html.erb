@@ -12,7 +12,7 @@
   <% if @events.any? %>
 
     <ul class="color-1 transparent">
-      <% cache_service.fetch("#{cache_key_preffix}-events") do %>
+      <% cache_service_fragment("#{cache_key_preffix}-events") do %>
         <% @events.each do |event| %>
           <%= render "event", event: event %>
         <% end %>
