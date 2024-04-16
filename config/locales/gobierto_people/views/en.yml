@@ -128,6 +128,10 @@ en:
       displacement: displacement
       displacements: displacements
       from: from
+      locales:
+        locale: Language
+        page_locale: Page locale
+        select_locale: Select language
       meetings_punchcard:
         tooltip: meetings
         tooltip_single: meeting

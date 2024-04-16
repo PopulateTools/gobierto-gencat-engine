@@ -141,6 +141,10 @@ ca:
       displacement: desplaçament
       displacements: desplaçaments
       from: de
+      locales:
+        locale: Idioma
+        page_locale: Idioma de la pàgina
+        select_locale: Selecciona idioma
       meetings_punchcard:
         tooltip: reunions
         tooltip_single: reunió
