@@ -134,6 +134,10 @@ es:
       displacement: desplazamiento
       displacements: desplazamientos
       from: de
+      locales:
+        locale: Idioma
+        page_locale: Idioma de la página
+        select_locale: Selecciona idioma
       meetings_punchcard:
         tooltip: reuniones
         tooltip_single: reunión
