@@ -10,7 +10,7 @@
     <img class="NG-rotate-image NG-navbar__image NG-navbar__image--float-right" src="https://web.gencat.cat/web/resources/fwkResponsive/fpca_capcalera/img/chevron-down-thin-b.svg" alt="">
   </a>
   <ul class="NG-navbar__list-language idioma" aria-label="<% t(".page_locale") %>">
-    <% (%w(ca es) - [I18n.locale.to_s]).each do |locale| %>
+    <% %w(ca es).each do |locale| %>
       <% locale_tr = t(locale, scope: "locales") %>
 
       <li class="NG-block__content"><a title="<%= locale_tr %>" data-idioma="<%= locale_tr %>" lang="es" role="button" tabindex="0" class="js-NG-idioma-item js-NG-idioma-tooltip NG-block__content_label notranslate enllacIdioma" href="<%= url_for(locale: locale, only_path: true) %>"><%= locale_tr %></a></li>
