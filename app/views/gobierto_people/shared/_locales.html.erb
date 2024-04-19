@@ -1,2 +1,23 @@
-<%= link_to "ca", url_for(locale: "ca", only_path: true), title: "Català" %>
-<%= link_to "es", url_for(locale: "es", only_path: true), title: "Castellano" %>
+<li class="NG-navbar__list NG-navbar__list--vertical-sm">
+  <a class="NG-navbar__link js-NG-menu-idioma" id="rotate_icon" role="button" aria-expanded="false" title="<%= t(".select_locale") %>" tabindex="0">
+    <img class="NG-navbar__image" src="https://web.gencat.cat/web/resources/fwkResponsive/fpca_capcalera/img/idioma-b.svg" alt="">
+    <span class="NG-idioma">
+      <%= t(".locale") %>:</span>
+    <span class="NG-nom-idioma-letter">
+      <span class="js-NG-idioma-text notranslate"><%= I18n.locale %></span>
+      <img class="NG-navbar__down" src="https://web.gencat.cat/web/resources/fwkResponsive/fpca_capcalera/img/chevron-down-small-w.svg" alt="">
+    </span>
+    <img class="NG-rotate-image NG-navbar__image NG-navbar__image--float-right" src="https://web.gencat.cat/web/resources/fwkResponsive/fpca_capcalera/img/chevron-down-thin-b.svg" alt="">
+  </a>
+  <ul class="NG-navbar__list-language idioma" aria-label="<% t(".page_locale") %>">
+    <% %w(ca es).each do |locale| %>
+      <% locale_tr = t(locale, scope: "locales") %>
+
+      <li class="NG-block__content">
+        <a title="<%= locale_tr %>" data-idioma="<%= locale_tr %>" lang="es" role="button" tabindex="0" class="js-NG-idioma-item js-NG-idioma-tooltip NG-block__content_label notranslate enllacIdioma" href="<%= url_for(locale: locale, only_path: true) %>" data-turbolinks="false">
+          <%= locale_tr %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</li>
