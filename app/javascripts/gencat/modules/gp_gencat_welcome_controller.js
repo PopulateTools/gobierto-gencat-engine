@@ -1,6 +1,6 @@
-import { getHTMLContent, appendUrlParam, lookUp } from './helpers.js'
-import { Areachart } from 'lib/visualizations'
-import { timeFormat } from 'd3-time-format'
+import { timeFormat } from 'd3-time-format';
+import { Areachart } from '../../lib/visualizations';
+import { appendUrlParam, getHTMLContent, lookUp } from './helpers.js';
 
 window.GobiertoPeople.GencatWelcomeController = (function() {
 

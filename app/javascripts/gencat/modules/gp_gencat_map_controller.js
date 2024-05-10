@@ -1,12 +1,12 @@
-import { max, min } from "d3-array";
+import { max, min } from 'd3-array';
 import { nest } from 'd3-collection';
-import { csv } from "d3-fetch";
-import { geoMercator, geoPath, geoTransform } from "d3-geo";
-import { scaleThreshold } from "d3-scale";
-import { mouse, select, selectAll } from "d3-selection";
-import { zoom } from "d3-zoom";
-import mapboxgl from "mapbox-gl";
-import * as dataGeoJson from "../vendor/countries.geo.json";
+import { csv } from 'd3-fetch';
+import { geoMercator, geoPath, geoTransform } from 'd3-geo';
+import { scaleThreshold } from 'd3-scale';
+import { mouse, select, selectAll } from 'd3-selection';
+import { zoom } from 'd3-zoom';
+import mapboxgl from 'mapbox-gl';
+import * as dataGeoJson from '../vendor/countries.geo.json';
 
 const d3 = {
   csv,
