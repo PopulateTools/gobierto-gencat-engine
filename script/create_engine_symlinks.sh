@@ -1,6 +1,6 @@
 #!/bin/bash
 
-engine_webpack_entry_path="app/javascripts/packs/gencat.js"
+engine_webpack_entry_path="app/javascripts/gencat.js"
 engine_webpack_source_path="app/javascripts/gencat"
 
 echo "Running engine setup"

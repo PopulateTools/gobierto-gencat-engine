@@ -1,12 +1,10 @@
-// It must replicate the future plugin location:
-// $PROJECTROOT/vendor/gobierto_engines/gobierto-gencat-engine/app/assets/stylesheets/themes
-@import "../../../../../../../app/javascript/stylesheets/css-conf";
+@import "../../../../../../../app/assets/stylesheets/modules/css-conf";
 @import "conf/theme-gencat-conf";
-@import "../../../../../../../app/javascript/stylesheets/mixins";
-@import "../../../../../../../app/javascript/stylesheets/comp-graph-rowchart";
-@import "../../../../../../../app/javascript/stylesheets/comp-graph-punchcard";
-@import "../../../../../../../app/javascript/stylesheets/comp-graph-tooltip";
-@import "../../../../../../../app/javascript/stylesheets/comp-graph-areachart";
+@import "../../../../../../../app/assets/stylesheets/modules/mixins";
+@import "../../../../../../../app/assets/stylesheets/modules/comp-graph-rowchart";
+@import "../../../../../../../app/assets/stylesheets/modules/comp-graph-punchcard";
+@import "../../../../../../../app/assets/stylesheets/modules/comp-graph-tooltip";
+@import "../../../../../../../app/assets/stylesheets/modules/comp-graph-areachart";
 
 .theme-gencat {
   @media (max-width: 47.938em) {
@@ -766,13 +764,13 @@
         width: 100%;
       }
 
-      .ui-icon-circle-triangle-w {
-        background: url(image_path("NG_ico_mes_consultat.png")) no-repeat 50%;
-      }
+      // .ui-icon-circle-triangle-w {
+      //   background: url(image_path("NG_ico_mes_consultat.png")) no-repeat 50%;
+      // }
 
-      .ui-icon-circle-triangle-e {
-        background: url(image_path("NG_ico_mes_consultat_tancar.png")) no-repeat 50%;
-      }
+      // .ui-icon-circle-triangle-e {
+      //   background: url(image_path("NG_ico_mes_consultat_tancar.png")) no-repeat 50%;
+      // }
     }
 
     .datepicker--content {
@@ -908,11 +906,11 @@
   section {
     margin-bottom: 40px;
 
-    > &:first-of-type {
+    & > &:first-of-type {
       margin-bottom: 60px;
     }
 
-    > &:last-of-type  {
+    & > &:last-of-type  {
       margin-bottom: 100px;
     }
   }

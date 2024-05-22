@@ -1,5 +1,6 @@
-import { timeFormat, timeFormatDefaultLocale } from 'd3-time-format';
+import * as d3 from 'd3';
 import moment from 'moment';
+import { toArray } from 'lodash';
 import { d3locale } from '../../lib/shared';
 import { Punchcard, Rowchart } from '../../lib/visualizations';
 
@@ -7,10 +8,12 @@ function _loadRowchart(container, url) {
   $.getJSON(url, (data) => {
     let opts = {
       tooltipContainer: ".theme-gencat",
-      tooltipContent: {
-        eval: `d.value.toLocaleString() + (d.value === 1 ? ' ${I18n.t('gobierto_people.shared.meetings_rowchart.tooltip_single')}' : ' ${I18n.t('gobierto_people.shared.meetings_rowchart.tooltip')}')`
-      },
-    }
+      tooltipContent: (d) =>
+        d.value.toLocaleString() +
+        (d.value === 1
+          ? ` ${I18n.t("gobierto_people.shared.meetings_rowchart.tooltip_single")}`
+          : ` ${I18n.t("gobierto_people.shared.meetings_rowchart.tooltip")}`),
+    };
 
     data.sort((a, b) => a.value - b.value)
     new Rowchart(container, data, opts);
@@ -25,17 +28,19 @@ function _loadPunchcard(container, url, title) {
     let opts = {
       title: title,
       tooltipContainer: ".theme-gencat",
-      tooltipContent: {
-        eval: `d.value.toLocaleString() + (d.value === 1 ? ' ${I18n.t('gobierto_people.shared.meetings_punchcard.tooltip_single')}' : ' ${I18n.t('gobierto_people.shared.meetings_punchcard.tooltip')}')`
-      },
+      tooltipContent: (d) =>
+        d.value.toLocaleString() +
+        (d.value === 1
+          ? ` ${I18n.t("gobierto_people.shared.meetings_punchcard.tooltip_single")}`
+          : ` ${I18n.t("gobierto_people.shared.meetings_punchcard.tooltip")}`),
       xTickFormat: (d, i, arr) => {
-        let intervalLength = (arr.length > 12) ? 3 : (arr.length > 5) ? 2 : 1
-        let distanceFromEnd = arr.length - i - 1
+        let intervalLength = arr.length > 12 ? 3 : arr.length > 5 ? 2 : 1;
+        let distanceFromEnd = arr.length - i - 1;
 
-        timeFormatDefaultLocale(d3locale[I18n.locale])
-        return ((distanceFromEnd % intervalLength) === 0) ? timeFormat("%b %y")(d) : null
-      }
-    }
+        d3.timeFormatDefaultLocale(d3locale[I18n.locale]);
+        return distanceFromEnd % intervalLength === 0 ? d3.timeFormat("%b %y")(d) : null;
+      },
+    };
 
     // tweak on small devices
     const breakpoint = 568
@@ -86,7 +91,7 @@ function getHTMLContent(data, template, emptyTemplate = I18n.t("gobierto_people.
 
         let replacement = element[key]
         if (operation) {
-          replacement = eval(`element[key]${operation}`)
+          replacement = ((p) => element[key][p])(operation)
         }
 
         tpl = tpl.replace(matchedText[j], replacement)
@@ -137,7 +142,7 @@ function setTooltipColor() {
     // look for its color-X dependency through its parents
     const classElement = chart.closest("[class*=color-]")
     // get color class name
-    const className = _.toArray(classElement.classList).filter(c => c.includes("color-")).toString()
+    const className = toArray(classElement.classList).filter(c => c.includes("color-")).toString()
     // set it up to the related tooltip
     $(this).addClass(className)
   })
@@ -185,8 +190,8 @@ function setDatepickerFilters(opts) {
     autoClose: true,
     showOtherMonths: false,
     offset: -1,
-    prevHtml: '<span class="ui-icon-circle-triangle-w"></span>',
-    nextHtml: '<span class="ui-icon-circle-triangle-e"></span>',
+    prevHtml: '<span class="ui-icon-circle-triangle-w">◀</span>',
+    nextHtml: '<span class="ui-icon-circle-triangle-e">▶</span>',
     onSelect: function(fd, date) {
       // Update only if there's a range
       if (date.length !== 2) return
