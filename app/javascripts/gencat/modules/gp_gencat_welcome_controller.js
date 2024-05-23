@@ -18,12 +18,11 @@ window.GobiertoPeople.GencatWelcomeController = (function() {
 })();
 
 function setSearchBoxes(element, url) {
-  // notice "name, position" are properties of the API response object
-  const template = `
+  const template = d => `
     <li>
-      <div class="box--result" data-url="{{ url }}" data-name="{{ name }}">
-        <strong>{{ name }}</strong>
-        {{ filtered_positions_html }}
+      <div class="box--result" data-url="${d.url}" data-name="${d.name}">
+        <strong>${d.name}</strong>
+        ${d.filtered_positions_html}
       </div>
     </li>
   `;
@@ -128,22 +127,24 @@ function setSearchBoxes(element, url) {
 }
 
 function setDepartmentBoxes(element, url) {
-  // notice that "key, value & properties" are properties of the API response object
-  const template = `
-    <div class="square" data-key="{{ key }}">
+  const template = d => {
+    const value = d.value.reduce(function(a, b) { return a + b.value }, 0)
+    const text = value === 1 ? I18n.t("gobierto_people.welcome.index.meetings_box_title_single") : I18n.t("gobierto_people.welcome.index.meetings_box_title")
+    return `
+    <div class="square" data-key="${d.key}">
       <div class="square--inner">
         <div class="square--content">
           <div class="square--content-inner">
-            <a href="{{ properties.url }}">
-              <h1 class="square--title"><strong>{{ key }}</strong></h1>
+            <a href="${d.properties.url}">
+              <h1 class="square--title"><strong>${d.key}</strong></h1>
             </a>
-            <div class="square--subtitle">{{ value.reduce(function(a, b) { return a + b.value }, 0) }} {{ value.reduce(function(a, b) { return a + b.value }, 0) === 1 ? '${I18n.t("gobierto_people.welcome.index.meetings_box_title_single")}' : '${I18n.t("gobierto_people.welcome.index.meetings_box_title")}' }}</div>
+            <div class="square--subtitle">${value} ${text}</div>
             <div class="square--chart bottom"></div>
           </div>
         </div>
       </div>
     </div>
-  `;
+  `};
 
   const emptyTemplate = `<div class="col-md-12">${I18n.t("gobierto_people.shared.noresults")}</div>`;
 

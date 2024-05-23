@@ -28,49 +28,48 @@ window.GobiertoPeople.GencatDepartmentsController = (function() {
 })();
 
 function setPeopleBoxes(element, url) {
-    // notice that "key, value & url" are properties of the API response object
-    const template = `
-      <div class="rectangle">
-        <div class="rectangle--inner">
-          <div class="rectangle--content">
-            <div class="rectangle--content-inner">
-              <a href="{{ url }}">
-                <h1 class="rectangle--title"><strong>{{ name }}</strong></h1>
-              </a>
-              <div class="rectangle--subtitle">
-                {{ position }}
-              </div>
-              <div class="rectangle--tooltip tipsit-n bottom" title="<div class='tooltip-content'>{{ filtered_positions_tooltip }}</div>">
-                ${I18n.t("gobierto_people.shared.view_charges")}
-              </div>
+  const template = d => `
+    <div class="rectangle">
+      <div class="rectangle--inner">
+        <div class="rectangle--content">
+          <div class="rectangle--content-inner">
+            <a href="${d.url}">
+              <h1 class="rectangle--title"><strong>${d.name}</strong></h1>
+            </a>
+            <div class="rectangle--subtitle">
+              ${d.position}
+            </div>
+            <div class="rectangle--tooltip tipsit-n bottom" title="<div class='tooltip-content'>${d.filtered_positions_tooltip}</div>">
+              ${I18n.t("gobierto_people.shared.view_charges")}
             </div>
           </div>
         </div>
       </div>
-    `;
+    </div>
+  `;
 
-    const emptyTemplate = `<div class="col-md-12">${I18n.t("gobierto_people.shared.noresults")}</div>`;
+  const emptyTemplate = `<div class="col-md-12">${I18n.t("gobierto_people.shared.noresults")}</div>`;
 
-    // get initial data
-    const endpoint = appendUrlParam(url, "limit", 1000)
-    $.getJSON(endpoint, response => {
-      const data = response
+  // get initial data
+  const endpoint = appendUrlParam(url, "limit", 1000)
+  $.getJSON(endpoint, response => {
+    const data = response
 
-      const sortingKeys = [
-        new RegExp(/\bconseller[a]?/, "i"),
-        new RegExp(/\bviceconseller[a]?/, "i"),
-        new RegExp(/\bsecret[a|à]ri[a]? general/, "i"),
-        new RegExp(/\bsecret[a|à]ri[a]?/, "i"),
-        new RegExp(/\bdirector[a]?/, "i"),
-        new RegExp(/\bdelega? /, "i")
-      ]
-      data.sort((a, b) => getSortingKey(a.position, sortingKeys) - getSortingKey(b.position, sortingKeys))
+    const sortingKeys = [
+      new RegExp(/\bconseller[a]?/, "i"),
+      new RegExp(/\bviceconseller[a]?/, "i"),
+      new RegExp(/\bsecret[a|à]ri[a]? general/, "i"),
+      new RegExp(/\bsecret[a|à]ri[a]?/, "i"),
+      new RegExp(/\bdirector[a]?/, "i"),
+      new RegExp(/\bdelega? /, "i")
+    ]
+    data.sort((a, b) => getSortingKey(a.position, sortingKeys) - getSortingKey(b.position, sortingKeys))
 
-      // get DOM content
-      const html = getHTMLContent(data, template, emptyTemplate)
-      // add new content
-      $(element).append(html)
-    })
+    // get DOM content
+    const html = getHTMLContent(data, template, emptyTemplate)
+    // add new content
+    $(element).append(html)
+  })
 }
 
 window.GobiertoPeople.gencat_departments_controller = new GobiertoPeople.GencatDepartmentsController;
