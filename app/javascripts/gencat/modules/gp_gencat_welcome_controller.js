@@ -1,6 +1,6 @@
-import { getHTMLContent, appendUrlParam, lookUp } from './helpers.js'
-import { Areachart } from 'lib/visualizations'
-import { timeFormat } from 'd3-time-format'
+import * as d3 from 'd3';
+import { Areachart } from '../../lib/visualizations';
+import { appendUrlParam, getHTMLContent, lookUp } from './helpers.js';
 
 window.GobiertoPeople.GencatWelcomeController = (function() {
 
@@ -193,9 +193,9 @@ function setDepartmentBoxes(element, url) {
           // Never add first tick
           if (i === 0 && arr.length !== 1) return null
           // Always add ticks if very few
-          if (arr.length < ticks) return timeFormat("%b %y")(d)
+          if (arr.length < ticks) return d3.timeFormat("%b %y")(d)
           // From last one, add ticks by interval
-          if ((distanceFromEnd % intervalLength) === 0) return timeFormat("%b %y")(d)
+          if ((distanceFromEnd % intervalLength) === 0) return d3.timeFormat("%b %y")(d)
 
           return null
         }

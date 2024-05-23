@@ -1,0 +1,1 @@
+import './gencat/index.js'

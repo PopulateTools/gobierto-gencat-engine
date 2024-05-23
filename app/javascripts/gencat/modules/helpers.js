@@ -1,16 +1,19 @@
-import moment from 'moment'
-import { timeFormat, timeFormatDefaultLocale } from 'd3-time-format'
-import { d3locale } from 'lib/shared'
-import { Rowchart, Punchcard } from 'lib/visualizations'
+import * as d3 from 'd3';
+import moment from 'moment';
+import { toArray } from 'lodash';
+import { d3locale } from '../../lib/shared';
+import { Punchcard, Rowchart } from '../../lib/visualizations';
 
 function _loadRowchart(container, url) {
   $.getJSON(url, (data) => {
     let opts = {
       tooltipContainer: ".theme-gencat",
-      tooltipContent: {
-        eval: `d.value.toLocaleString() + (d.value === 1 ? ' ${I18n.t('gobierto_people.shared.meetings_rowchart.tooltip_single')}' : ' ${I18n.t('gobierto_people.shared.meetings_rowchart.tooltip')}')`
-      },
-    }
+      tooltipContent: (d) =>
+        d.value.toLocaleString() +
+        (d.value === 1
+          ? ` ${I18n.t("gobierto_people.shared.meetings_rowchart.tooltip_single")}`
+          : ` ${I18n.t("gobierto_people.shared.meetings_rowchart.tooltip")}`),
+    };
 
     data.sort((a, b) => a.value - b.value)
     new Rowchart(container, data, opts);
@@ -25,21 +28,23 @@ function _loadPunchcard(container, url, title) {
     let opts = {
       title: title,
       tooltipContainer: ".theme-gencat",
-      tooltipContent: {
-        eval: `d.value.toLocaleString() + (d.value === 1 ? ' ${I18n.t('gobierto_people.shared.meetings_punchcard.tooltip_single')}' : ' ${I18n.t('gobierto_people.shared.meetings_punchcard.tooltip')}')`
-      },
+      tooltipContent: (d) =>
+        d.value.toLocaleString() +
+        (d.value === 1
+          ? ` ${I18n.t("gobierto_people.shared.meetings_punchcard.tooltip_single")}`
+          : ` ${I18n.t("gobierto_people.shared.meetings_punchcard.tooltip")}`),
       xTickFormat: (d, i, arr) => {
-        let intervalLength = (arr.length > 12) ? 3 : (arr.length > 5) ? 2 : 1
-        let distanceFromEnd = arr.length - i - 1
-        
-        timeFormatDefaultLocale(d3locale[I18n.locale])
-        return ((distanceFromEnd % intervalLength) === 0) ? timeFormat("%b %y")(d) : null
-      }
-    }
+        let intervalLength = arr.length > 12 ? 3 : arr.length > 5 ? 2 : 1;
+        let distanceFromEnd = arr.length - i - 1;
+
+        d3.timeFormatDefaultLocale(d3locale[I18n.locale]);
+        return distanceFromEnd % intervalLength === 0 ? d3.timeFormat("%b %y")(d) : null;
+      },
+    };
 
     // tweak on small devices
     const breakpoint = 568
-    if(window.matchMedia(`(max-width: ${breakpoint}px)`).matches || document.documentElement.clientWidth < breakpoint) {
+    if (window.matchMedia(`(max-width: ${breakpoint}px)`).matches || document.documentElement.clientWidth < breakpoint) {
       opts = { ...opts, width: breakpoint, gutter: 15 }
     }
 
@@ -86,9 +91,9 @@ function getHTMLContent(data, template, emptyTemplate = I18n.t("gobierto_people.
 
         let replacement = element[key]
         if (operation) {
-          replacement = eval(`element[key]${operation}`)
+          replacement = ((p) => element[key][p])(operation)
         }
-        
+
         tpl = tpl.replace(matchedText[j], replacement)
       }
 
@@ -109,10 +114,10 @@ function lookUp(term, value) {
   if (!String.prototype.normalize) {
     return normalize(term).replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(normalize(value).replace(/[\u0300-\u036f]/g, "").toLowerCase())
   }
-  
+
   // https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript/37511463#37511463
   return term.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase())
-};
+}
 
 // special sort based on position property
 function getSortingKey(value, keysToBeSorted = []) {
@@ -137,7 +142,7 @@ function setTooltipColor() {
     // look for its color-X dependency through its parents
     const classElement = chart.closest("[class*=color-]")
     // get color class name
-    const className = _.toArray(classElement.classList).filter(c => c.includes("color-")).toString()
+    const className = toArray(classElement.classList).filter(c => c.includes("color-")).toString()
     // set it up to the related tooltip
     $(this).addClass(className)
   })
@@ -185,8 +190,8 @@ function setDatepickerFilters(opts) {
     autoClose: true,
     showOtherMonths: false,
     offset: -1,
-    prevHtml: '<span class="ui-icon-circle-triangle-w"></span>',
-    nextHtml: '<span class="ui-icon-circle-triangle-e"></span>',
+    prevHtml: '<span class="ui-icon-circle-triangle-w">◀</span>',
+    nextHtml: '<span class="ui-icon-circle-triangle-e">▶</span>',
     onSelect: function(fd, date) {
       // Update only if there's a range
       if (date.length !== 2) return
@@ -291,7 +296,7 @@ const updateQueryStringParam = (key, value) => {
         var updateRegex = new RegExp('([\?&])' + key + '[^&]*');
         var removeRegex = new RegExp('([\?&])' + key + '=[^&;]+[&;]?');
 
-        if( typeof value == 'undefined' || value == null || value == '' ) { // Remove param if value is empty
+        if ( typeof value == 'undefined' || value == null || value == '' ) { // Remove param if value is empty
             params = urlQueryString.replace(removeRegex, "$1");
             params = params.replace( /[&;]$/, "" );
 
@@ -336,4 +341,4 @@ function phantomJsDetected() {
   return (window.callPhantom || window._phantom);
 }
 
-export { _loadRowchart, _loadPunchcard, _reloadRowchart, setTooltipColor, setDatepickerFilters, getHTMLContent, appendUrlParam, lookUp, getSortingKey }
+export { _loadPunchcard, _loadRowchart, _reloadRowchart, appendUrlParam, getHTMLContent, getSortingKey, lookUp, setDatepickerFilters, setTooltipColor };
