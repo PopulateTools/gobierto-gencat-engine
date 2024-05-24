@@ -150,8 +150,8 @@ function setDatepickerFilters(opts) {
     autoClose: true,
     showOtherMonths: false,
     offset: -1,
-    prevHtml: '<span class="ui-icon-circle-triangle-w">◀</span>',
-    nextHtml: '<span class="ui-icon-circle-triangle-e">▶</span>',
+    prevHtml: '<span class="ui-icon-circle-triangle-w"></span>',
+    nextHtml: '<span class="ui-icon-circle-triangle-e"></span>',
     onSelect: function(fd, date) {
       // Update only if there's a range
       if (date.length !== 2) return
