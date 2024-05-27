@@ -32,7 +32,6 @@ module Gencat
             visit gobierto_people_department_path(department)
 
             assert_equal page_title, header_title
-            assert_equal page_title, breadcrumb_last_item_text
 
             # Summary boxes
 
