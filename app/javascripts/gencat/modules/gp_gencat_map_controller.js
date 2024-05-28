@@ -298,12 +298,12 @@ function createMap(options) {
       this.stream.point(point.x, point.y);
     }
 
-    function showTooltipChoropleth(d) {
+    function showTooltipChoropleth(event, d) {
       const {
         travels,
         properties: { name },
       } = d;
-      const [layerX, layerY] = d3.mouse(this);
+      const [layerX, layerY] = d3.pointer(event);
 
       //Get the list of travellers
       const valueCountry = "country_name";
