@@ -42,7 +42,7 @@ module Gencat
 
         def test_show
           update_fixtures_to_match_gencat_data!
-          event.update_attributes!(starts_at: 1.minute.ago)
+          event.update(starts_at: 1.minute.ago)
 
           with(js: true, site: site) do
             visit gobierto_people_person_path(person.slug)
