@@ -42,6 +42,7 @@ module Gencat
 
         def test_show
           update_fixtures_to_match_gencat_data!
+
           event.update!(starts_at: 1.minute.ago)
 
           with(js: true, site: site) do

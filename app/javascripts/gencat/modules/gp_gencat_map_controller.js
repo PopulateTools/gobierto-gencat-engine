@@ -1,27 +1,6 @@
-import { max, min } from "d3-array";
-import { nest } from 'd3-collection';
-import { csv } from "d3-fetch";
-import { geoMercator, geoPath, geoTransform } from "d3-geo";
-import { scaleThreshold } from "d3-scale";
-import { mouse, select, selectAll } from "d3-selection";
-import { zoom } from "d3-zoom";
-import mapboxgl from "mapbox-gl";
-import * as dataGeoJson from "../vendor/countries.geo.json";
-
-const d3 = {
-  csv,
-  min,
-  max,
-  geoPath,
-  geoMercator,
-  geoTransform,
-  select,
-  selectAll,
-  scaleThreshold,
-  zoom,
-  nest,
-  mouse
-};
+import * as d3 from 'd3';
+import mapboxgl from 'mapbox-gl';
+import * as dataGeoJson from '../vendor/countries.geo.json';
 
 window.GobiertoPeople.GencatMapController = (function() {
   function GencatMapController() {}
@@ -148,16 +127,16 @@ function createMap(options) {
   d3.csv(dataGenCatTrips).then((data) => {
           // d3v5
       //
-      const nest = d3
-      .nest()
-      .key(d => d.country)
-      .entries(data);
+      // const nest = d3
+      // .nest()
+      // .key(d => d.country)
+      // .entries(data);
           // d3v6
       //
-    // const nest = Array.from(group(data, (d) => d.country), ([key, values]) => ({
-    //   key,
-    //   values,
-    // }));
+    const nest = Array.from(d3.group(data, (d) => d.country), ([key, values]) => ({
+      key,
+      values,
+    }));
 
     nest.forEach(function(d) {
       dataTravels.set(d.key, +d.values.length);
@@ -319,12 +298,12 @@ function createMap(options) {
       this.stream.point(point.x, point.y);
     }
 
-    function showTooltipChoropleth(d) {
+    function showTooltipChoropleth(event, d) {
       const {
         travels,
         properties: { name },
       } = d;
-      const [layerX, layerY] = d3.mouse(this);
+      const [layerX, layerY] = d3.pointer(event);
 
       //Get the list of travellers
       const valueCountry = "country_name";
@@ -349,9 +328,9 @@ function createMap(options) {
       );
     }
 
-    function showTooltipDots(d) {
+    function showTooltipDots(event, d) {
       const { city_name, totalTrips } = d;
-      const [layerX, layerY] = d3.mouse(this);
+      const [layerX, layerY] = d3.pointer(event);
 
       //Get the list of travellers
       const valueCountry = "city_name";
