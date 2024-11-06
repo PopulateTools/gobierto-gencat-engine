@@ -185,7 +185,6 @@ function setDatepickerFilters(opts) {
   $datepickerwidget.find('.datepicker').width($container.width() - 2)
 
   // init dates
-  // TODO: no inicializar si hay params en la queryString
   const from = new Date(startDate).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
   const to = endDate
     ? new Date(endDate).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" })
