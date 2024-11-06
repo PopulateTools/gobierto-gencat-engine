@@ -1,5 +1,4 @@
 import * as d3 from 'd3';
-import moment from 'moment';
 import { toArray } from 'lodash';
 import { d3locale } from '../../lib/shared';
 import { Punchcard, Rowchart } from '../../lib/visualizations';
@@ -130,15 +129,21 @@ function _reloadRowchart(container, url, maxElements) {
   });
 }
 
+function customFormat(date) {
+  // YYYY-MM-DD
+  return date.toISOString().split("T")[0]
+};
+
+function subtractMonths(date, months) {
+  date.setMonth(date.getMonth() - months);
+  return date;
+};
+
 function setDatepickerFilters(opts) {
   // parse opts
   const minDate = opts.people_events_first_date
   const startDate = opts.people_events_filter_start_date
   const endDate = opts.people_events_filter_end_date
-
-  // Set locale to language site
-  moment.locale(I18n.locale)
-
   const $container = $('.js-datepicker-container')
   const $datepicker = $('#datepicker')
   const dp = $datepicker.datepicker({
@@ -156,7 +161,7 @@ function setDatepickerFilters(opts) {
       // Update only if there's a range
       if (date.length !== 2) return
 
-      let dates = date.map((i) => moment(i).format('YYYY-MM-DD'))
+      let dates = date.map((i) => customFormat(i))
 
       if (URLSearchParams) {
         const params = new URLSearchParams(location.search);
@@ -180,8 +185,11 @@ function setDatepickerFilters(opts) {
   $datepickerwidget.find('.datepicker').width($container.width() - 2)
 
   // init dates
-  // TODO: no inicializar si hay params en la queryString
-  $datepicker.val(`${moment(startDate).format('D MMM YYYY')} · ${(endDate) ? moment(endDate).format('D MMM YYYY') : moment().calendar().split(' ')[0]}`)
+  const from = new Date(startDate).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+  const to = endDate
+    ? new Date(endDate).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" })
+    : I18n.t("gobierto_people.shared.datepicker.today");
+  $datepicker.val(`${from} · ${to}`)
 
   $datepicker.click(function (e) {
     $container.toggleClass('is-shown')
@@ -203,28 +211,27 @@ function setDatepickerFilters(opts) {
 
   // onClick for default filters
   $('.datepicker-defaults a:not(#range)').click(function () {
-    let params = window.location.search
     let date = undefined
 
     switch (this.id) {
       case '1m':
-        date = moment().subtract(1, 'month')
+        date = subtractMonths(new Date(), 1)
         break;
       case '3m':
-        date = moment().subtract(3, 'month')
+        date = subtractMonths(new Date(), 3)
         break;
       case '1y':
-        date = moment().subtract(1, 'year')
+        date = subtractMonths(new Date(), 12)
         break;
       case 'all':
-        date = moment(minDate)
+        date = minDate && new Date(minDate)
         break;
       default:
     }
 
     // format
     if (date) {
-      date = date.format('YYYY-MM-DD')
+      date = customFormat(date)
     }
 
     if (!phantomJsDetected() && URLSearchParams) {
@@ -245,7 +252,6 @@ function setDatepickerFilters(opts) {
 
 // Fallback IE
 const updateQueryStringParam = (key, value) => {
-
     let baseUrl = [location.protocol, '//', location.host, location.pathname].join('')
     let urlQueryString = document.location.search
     let newParam = key + '=' + value
@@ -301,4 +307,4 @@ function phantomJsDetected() {
   return (window.callPhantom || window._phantom);
 }
 
-export { _loadPunchcard, _loadRowchart, _reloadRowchart, appendUrlParam, getHTMLContent, getSortingKey, lookUp, setDatepickerFilters, setTooltipColor };
+export { _loadPunchcard, _loadRowchart, _reloadRowchart, appendUrlParam, getHTMLContent, getSortingKey, lookUp, subtractMonths, setDatepickerFilters, setTooltipColor };

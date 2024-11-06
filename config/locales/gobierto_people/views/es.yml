@@ -128,6 +128,7 @@ es:
         3m: Últimos tres meses
         all: Todo
         range: Rango personalizado
+        today: Hoy
       datepicker_fixed: Datos correspondientes al periodo
       destination: destino
       destinations: destinos

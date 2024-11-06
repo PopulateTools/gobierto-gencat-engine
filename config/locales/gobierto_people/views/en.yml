@@ -122,6 +122,7 @@ en:
         3m: Last three months
         all: Everything
         range: Custom range
+        today: Today
       datepicker_fixed: Data corresponding to the period
       destination: destination
       destinations: destinations
