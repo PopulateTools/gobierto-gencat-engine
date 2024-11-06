@@ -135,6 +135,7 @@ ca:
         3m: Darrers tres mesos
         all: Tot
         range: Rang personalitzat
+        today: Avui
       datepicker_fixed: Data corresponent al període
       destination: destinació
       destinations: destinacions
