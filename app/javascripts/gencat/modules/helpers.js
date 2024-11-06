@@ -224,7 +224,7 @@ function setDatepickerFilters(opts) {
         date = subtractMonths(new Date(), 12)
         break;
       case 'all':
-        date = new Date(minDate)
+        date = minDate && new Date(minDate)
         break;
       default:
     }
