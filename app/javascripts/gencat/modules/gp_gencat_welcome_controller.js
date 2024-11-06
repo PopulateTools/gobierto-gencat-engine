@@ -165,6 +165,9 @@ function setDepartmentBoxes(element, url) {
       const { dataset: { key } } = square
       const squareData = data.find(d => d.key === key)
 
+      // no results
+      if (!squareData) return null
+
       const ctx = square.querySelector(".square--chart")
       const tooltip = d => {
         let date = (d.key || "").toLocaleDateString(I18n.locale, { year: 'numeric', month: 'long' }).replace(" de ", " ")
