@@ -2,6 +2,10 @@ function currentLocationMatches(controller_action) {
   return $("body.gobierto_people." + controller_action).length > 0
 }
 
+window.GobiertoPeople = {
+  init: function() {}
+};
+
 $(document).on('turbolinks:load', function() {
 
   window.GobiertoPeople.gencat_common_controller.load(commonControllerLoadArgs);
