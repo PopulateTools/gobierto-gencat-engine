@@ -37,7 +37,7 @@ function setPeopleBoxes(element, url) {
               <h1 class="rectangle--title"><strong>${d.name}</strong></h1>
             </a>
             <div class="rectangle--subtitle">
-              ${d.position}
+              ${d.current_positions}
             </div>
             <div class="rectangle--tooltip tipsit-n bottom" title="<div class='tooltip-content'>${d.filtered_positions_tooltip}</div>">
               ${I18n.t("gobierto_people.shared.view_charges")}
