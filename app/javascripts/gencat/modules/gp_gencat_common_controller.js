@@ -72,7 +72,8 @@ function loadBreadcrumb() {
 
 function appendDateRangeToLocaleLinks() {
   $(".idioma li a").each(function(index) {
-    this.href = appendDateRangeParamsToUrl(document.location.pathname, document.location.href);
+    const url = new URL(this.href);
+    this.href = appendDateRangeParamsToUrl(url.pathname, document.location.href);
   });
 }
 
