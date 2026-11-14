@@ -7,7 +7,7 @@ module Gencat
 
     include ::GobiertoPeople::SubmodulesHelper
 
-    DEFAULT_DATE_FILTER_START = "2003-06-20".freeze
+    DEFAULT_DATE_FILTER_START = "2010-01-01".freeze
 
     def reference_site
       @reference_site ||= sites(:madrid)
